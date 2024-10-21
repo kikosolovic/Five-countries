@@ -27,3 +27,18 @@ C:/Users/maxdk/source/repos/WorldOfZuul/WorldOfZuul/obj/Debug/net6.0/ref/WorldOf
 /home/kikosolovic/Downloads/world of yuui/WorldOfZuul/WorldOfZuul/bin/Debug/net6.0/WorldOfZuul.pdb
 /home/kikosolovic/Downloads/world of yuui/WorldOfZuul/WorldOfZuul/obj/Debug/net6.0/WorldOfZuul.genruntimeconfig.cache
 /home/kikosolovic/Downloads/world of yuui/WorldOfZuul/WorldOfZuul/obj/Debug/net6.0/ref/WorldOfZuul.dll
+/home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZul/WorldOfZuul/obj/Debug/net6.0/WorldOfZuul.GeneratedMSBuildEditorConfig.editorconfig
+/home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZul/WorldOfZuul/obj/Debug/net6.0/WorldOfZuul.AssemblyInfoInputs.cache
+/home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZul/WorldOfZuul/obj/Debug/net6.0/WorldOfZuul.AssemblyInfo.cs
+/home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZul/WorldOfZuul/obj/Debug/net6.0/WorldOfZuul.csproj.CoreCompileInputs.cache
+/home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZul/WorldOfZuul/obj/Debug/net6.0/WorldOfZuul.sourcelink.json
+/home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZul/WorldOfZuul/obj/Debug/net6.0/WorldOfZuul.dll
+/home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZul/WorldOfZuul/obj/Debug/net6.0/refint/WorldOfZuul.dll
+/home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZul/WorldOfZuul/obj/Debug/net6.0/WorldOfZuul.pdb
+/home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZul/WorldOfZuul/bin/Debug/net6.0/WorldOfZuul
+/home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZul/WorldOfZuul/bin/Debug/net6.0/WorldOfZuul.deps.json
+/home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZul/WorldOfZuul/bin/Debug/net6.0/WorldOfZuul.runtimeconfig.json
+/home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZul/WorldOfZuul/bin/Debug/net6.0/WorldOfZuul.dll
+/home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZul/WorldOfZuul/bin/Debug/net6.0/WorldOfZuul.pdb
+/home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZul/WorldOfZuul/obj/Debug/net6.0/WorldOfZuul.genruntimeconfig.cache
+/home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZul/WorldOfZuul/obj/Debug/net6.0/ref/WorldOfZuul.dll

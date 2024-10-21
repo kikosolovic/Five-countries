@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZuul/WorldOfZuul/WorldOfZuul.csproj": {}
+    "/home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZul/WorldOfZuul/WorldOfZuul.csproj": {}
   },
   "projects": {
-    "/home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZuul/WorldOfZuul/WorldOfZuul.csproj": {
+    "/home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZul/WorldOfZuul/WorldOfZuul.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZuul/WorldOfZuul/WorldOfZuul.csproj",
+        "projectUniqueName": "/home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZul/WorldOfZuul/WorldOfZuul.csproj",
         "projectName": "WorldOfZuul",
-        "projectPath": "/home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZuul/WorldOfZuul/WorldOfZuul.csproj",
+        "projectPath": "/home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZul/WorldOfZuul/WorldOfZuul.csproj",
         "packagesPath": "/home/kikosolovic/.nuget/packages/",
-        "outputPath": "/home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZuul/WorldOfZuul/obj/",
+        "outputPath": "/home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZul/WorldOfZuul/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/kikosolovic/.nuget/NuGet/NuGet.Config"

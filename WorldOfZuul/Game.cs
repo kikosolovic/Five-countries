@@ -5,14 +5,41 @@
         private Room? currentRoom;
         private Room? previousRoom;
 
+        private Country? currentCountry;
+        private Country? previousCountry;
+
         public Game()
         {
-            CreateRooms();
+            List<Country> Countries = CreateCountries();
+            List<Room> Rooms = CreateRooms();
+            QuickAssign(Rooms, Countries);
         }
 
-        private void CreateRooms()
+        private List<Country> CreateCountries()
         {
-  
+            Country? Haiti = new("Haiti", "Wouldnt you know, Haiti is located in the Caribbean");
+            Country? India = new("India", "Wouldnt you know, India is located in South Asia");
+            Country? Brazil = new("Brazil", "Wouldnt you know, Brazil is located in South America");
+            Country? Mozambique = new("Mozambique", "Wouldnt you know, Mozambique is located in Africa");
+            Country? USA = new("USA", "Wouldnt you know, USA is located in North America");
+            Haiti.SetExits(Haiti, India, Brazil, Mozambique, USA);
+            India.SetExits(Haiti, India, Brazil, Mozambique, USA);
+            Brazil.SetExits(Haiti, India, Brazil, Mozambique, USA);
+            Mozambique.SetExits(Haiti, India, Brazil, Mozambique, USA);
+            USA.SetExits(Haiti, India, Brazil, Mozambique, USA);
+
+            currentCountry = Haiti;
+
+            List<Country> Countries = new List<Country>();
+            foreach (Country country in Countries)
+            {
+                Countries.Add(country);
+            }
+            return Countries;
+        }
+        private List<Room> CreateRooms()
+        {
+
             Room? outside = new("Outside", "You are standing outside the main entrance of the university. To the east is a large building, to the south is a computing lab, and to the west is the campus pub.");
             Room? theatre = new("Theatre", "You find yourself inside a large lecture theatre. Rows of seats ascend up to the back, and there's a podium at the front. It's quite dark and quiet.");
             Room? pub = new("Pub", "You've entered the campus pub. It's a cozy place, with a few students chatting over drinks. There's a bar near you and some pool tables at the far end.");
@@ -28,8 +55,25 @@
             lab.SetExits(outside, office, null, null);
 
             office.SetExit("west", lab);
-
             currentRoom = outside;
+            List<Room> Rooms = new List<Room>();
+            foreach (Room room in Rooms)
+            {
+                Rooms.Add(room);
+            }
+            return Rooms;
+
+        }
+        public void QuickAssign(List<Room> Rooms, List<Country> Countries)
+        {
+            foreach (var country in Countries)
+            {
+                foreach (var Room in Rooms)
+                {
+                    country.addRoom(Room);
+                }
+
+            }
         }
 
         public void Play()
@@ -40,7 +84,13 @@
 
             bool continuePlaying = true;
             while (continuePlaying)
+
+
+            // note below
             {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(currentCountry?.ShortDescription);
+                Console.ResetColor();
                 Console.WriteLine(currentRoom?.ShortDescription);
                 Console.Write("> ");
 
@@ -53,6 +103,10 @@
                 }
 
                 Command? command = parser.GetCommand(input);
+                // 
+
+
+                // 
 
                 if (command == null)
                 {
@@ -60,10 +114,11 @@
                     continue;
                 }
 
-                switch(command.Name)
+                switch (command.Name)
                 {
                     case "look":
                         Console.WriteLine(currentRoom?.LongDescription);
+
                         break;
 
                     case "back":
@@ -72,7 +127,10 @@
                         else
                             currentRoom = previousRoom;
                         break;
-
+                    case "travel":
+                        Travel(command.SecondWord);
+                        Console.WriteLine(currentCountry?.LongDescription);
+                        break;
                     case "north":
                     case "south":
                     case "east":
@@ -95,7 +153,7 @@
             }
 
             Console.WriteLine("Thank you for playing World of Zuul!");
-        }
+        } // instead of all cases implement dynamic method invocation
 
         private void Move(string direction)
         {
@@ -107,6 +165,19 @@
             else
             {
                 Console.WriteLine($"You can't go {direction}!");
+            }
+        }
+        private void Travel(string country)
+
+        {
+            if (currentCountry?.Exits.ContainsKey(country) == true)
+            {
+                previousCountry = currentCountry;
+                currentCountry = currentCountry?.Exits[country];
+            }
+            else
+            {
+                Console.WriteLine($"You can't go {country} yet!");
             }
         }
 
