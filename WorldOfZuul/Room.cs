@@ -21,6 +21,7 @@
             SetExit("west", west);
         }
 
+
         public void SetExit(string direction, Room? neighbor)
         {
             if (neighbor != null)

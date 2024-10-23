@@ -1,85 +1,23 @@
 ﻿namespace WorldOfZuul
 {
-    public class Game
+    public class Game : Init
     {
-        private Room? currentRoom;
-        private Room? previousRoom;
 
         private Country? currentCountry;
-        private Country? previousCountry;
+        private Country? previousCountry; //back command for country if needed
 
         public Game()
         {
+            //initialize the game
             List<Country> Countries = CreateCountries();
+            this.currentCountry = Countries[0];
             List<Room> Rooms = CreateRooms();
             QuickAssign(Rooms, Countries);
-        }
-
-        private List<Country> CreateCountries()
-        {
-            Country? Haiti = new("Haiti", "Wouldnt you know, Haiti is located in the Caribbean");
-            Country? India = new("India", "Wouldnt you know, India is located in South Asia");
-            Country? Brazil = new("Brazil", "Wouldnt you know, Brazil is located in South America");
-            Country? Mozambique = new("Mozambique", "Wouldnt you know, Mozambique is located in Africa");
-            Country? USA = new("USA", "Wouldnt you know, USA is located in North America");
-            Haiti.SetExits(Haiti, India, Brazil, Mozambique, USA);
-            India.SetExits(Haiti, India, Brazil, Mozambique, USA);
-            Brazil.SetExits(Haiti, India, Brazil, Mozambique, USA);
-            Mozambique.SetExits(Haiti, India, Brazil, Mozambique, USA);
-            USA.SetExits(Haiti, India, Brazil, Mozambique, USA);
-
-            currentCountry = Haiti;
-
-            List<Country> Countries = new List<Country>();
-            foreach (Country country in Countries)
-            {
-                Countries.Add(country);
-            }
-            return Countries;
-        }
-        private List<Room> CreateRooms()
-        {
-
-            Room? outside = new("Outside", "You are standing outside the main entrance of the university. To the east is a large building, to the south is a computing lab, and to the west is the campus pub.");
-            Room? theatre = new("Theatre", "You find yourself inside a large lecture theatre. Rows of seats ascend up to the back, and there's a podium at the front. It's quite dark and quiet.");
-            Room? pub = new("Pub", "You've entered the campus pub. It's a cozy place, with a few students chatting over drinks. There's a bar near you and some pool tables at the far end.");
-            Room? lab = new("Lab", "You're in a computing lab. Desks with computers line the walls, and there's an office to the east. The hum of machines fills the room.");
-            Room? office = new("Office", "You've entered what seems to be an administration office. There's a large desk with a computer on it, and some bookshelves lining one wall.");
-
-            outside.SetExits(null, theatre, lab, pub); // North, East, South, West
-
-            theatre.SetExit("west", outside);
-
-            pub.SetExit("east", outside);
-
-            lab.SetExits(outside, office, null, null);
-
-            office.SetExit("west", lab);
-            currentRoom = outside;
-            List<Room> Rooms = new List<Room>();
-            foreach (Room room in Rooms)
-            {
-                Rooms.Add(room);
-            }
-            return Rooms;
-
-        }
-        public void QuickAssign(List<Room> Rooms, List<Country> Countries)
-        {
-            foreach (var country in Countries)
-            {
-                foreach (var Room in Rooms)
-                {
-                    country.addRoom(Room);
-                }
-
-            }
         }
 
         public void Play()
         {
             Parser parser = new();
-
             PrintWelcome();
 
             bool continuePlaying = true;
@@ -90,8 +28,9 @@
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine(currentCountry?.ShortDescription);
+
                 Console.ResetColor();
-                Console.WriteLine(currentRoom?.ShortDescription);
+                Console.WriteLine(currentCountry?.currentRoom?.ShortDescription);
                 Console.Write("> ");
 
                 string? input = Console.ReadLine();
@@ -117,15 +56,16 @@
                 switch (command.Name)
                 {
                     case "look":
-                        Console.WriteLine(currentRoom?.LongDescription);
+                        Console.WriteLine(currentCountry?.currentRoom?.LongDescription);
 
                         break;
 
                     case "back":
-                        if (previousRoom == null)
+                        if (currentCountry?.previousRoom == null)
                             Console.WriteLine("You can't go back from here!");
                         else
-                            currentRoom = previousRoom;
+                            // currentRoom = previousRoom;
+                            currentCountry.setRoom(currentCountry.previousRoom, currentCountry?.currentRoom);//can only go back once?
                         break;
                     case "travel":
                         Travel(command.SecondWord);
@@ -157,10 +97,12 @@
 
         private void Move(string direction)
         {
-            if (currentRoom?.Exits.ContainsKey(direction) == true)
+            if (currentCountry?.currentRoom?.Exits.ContainsKey(direction) == true)
             {
-                previousRoom = currentRoom;
-                currentRoom = currentRoom?.Exits[direction];
+                // previousRoom = currentRoom;
+                // currentRoom = currentRoom?.Exits[direction];
+                currentCountry.setRoom(currentCountry.currentRoom?.Exits[direction], currentCountry.currentRoom);
+
             }
             else
             {
@@ -174,6 +116,7 @@
             {
                 previousCountry = currentCountry;
                 currentCountry = currentCountry?.Exits[country];
+
             }
             else
             {
@@ -196,6 +139,7 @@
             Console.WriteLine("around the university.");
             Console.WriteLine();
             Console.WriteLine("Navigate by typing 'north', 'south', 'east', or 'west'.");
+            Console.WriteLine("Travel between countries by typing 'travel' and the name of the country. ");
             Console.WriteLine("Type 'look' for more details.");
             Console.WriteLine("Type 'back' to go to the previous room.");
             Console.WriteLine("Type 'help' to print this message again.");

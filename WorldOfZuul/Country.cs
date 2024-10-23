@@ -12,12 +12,15 @@ namespace WorldOfZuul
         public string LongDescription { get; private set; }
         public List<Room> Rooms { get; private set; } = new();
         public Dictionary<string, Country> Exits { get; private set; } = new();
+        public Room? currentRoom { get; private set; }
+        public Room? previousRoom { get; private set; }
 
         public Country(string shortDesc, string longDesc)
         {
             ShortDescription = shortDesc;
             LongDescription = longDesc;
         }
+
 
         public void SetExits(Country? Haiti, Country? India, Country? Brazil, Country? Mozambique, Country? USA)
         {
@@ -32,6 +35,19 @@ namespace WorldOfZuul
         public void addRoom(Room room)
         {
             Rooms.Add(room);
+            Console.WriteLine(room);
+            if (Rooms.Count == 1)
+            {
+                this.currentRoom = room;
+                Console.WriteLine(this.currentRoom.ShortDescription);
+            }
+        }
+
+        public void setRoom(Room croom, Room proom)
+        {
+            this.currentRoom = croom;
+            this.previousRoom = proom;
+
         }
 
         public void SetExit(string direction, Country? neighbor)
