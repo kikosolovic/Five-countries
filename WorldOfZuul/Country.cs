@@ -32,15 +32,6 @@ namespace WorldOfZuul
 
         }
 
-        public void addRoom(Room room)
-        {
-            Rooms.Add(room);
-            if (Rooms.Count == 1)
-            {
-                this.currentRoom = room;
-                Console.WriteLine(this.currentRoom.ShortDescription);
-            }
-        }
 
 
         public void InitRoom(string ShortDescription, string LongDescription)
