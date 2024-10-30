@@ -32,42 +32,93 @@ namespace WorldOfZuul
 
 
         }
-        public List<Room> CreateRooms()
+        public void CreateRooms(List<Country> countries)
         {
+            Country Haiti = countries[0];
+            Country India = countries[1];
+            Country Brazil = countries[2];
+            Country Mozambique = countries[3];
+            Country USA = countries[4];
 
-            List<Room> Rooms = new List<Room>();
-            Room? outside = new("Outside", "You are standing outside the main entrance of the university. To the east is a large building, to the south is a computing lab, and to the west is the campus pub.");
-            Rooms.Add(outside);
-            Room? theatre = new("Theatre", "You find yourself inside a large lecture theatre. Rows of seats ascend up to the back, and there's a podium at the front. It's quite dark and quiet.");
-            Rooms.Add(theatre);
-            Room? pub = new("Pub", "You've entered the campus pub. It's a cozy place, with a few students chatting over drinks. There's a bar near you and some pool tables at the far end.");
-            Rooms.Add(pub);
-            Room? lab = new("Lab", "You're in a computing lab. Desks with computers line the walls, and there's an office to the east. The hum of machines fills the room.");
-            Rooms.Add(lab);
-            Room? office = new("Office", "You've entered what seems to be an administration office. There's a large desk with a computer on it, and some bookshelves lining one wall.");
-            Rooms.Add(office);
-            outside.SetExits(null, theatre, lab, pub); // North, East, South, West
+            // //initialize rooms to Haiti
+            Haiti.InitRoom("Outside", "You are standing outside the main entrance of the university. To the east is a large building, to the south is a computing lab, and to the west is the campus pub.");
+            Haiti.InitRoom("Theatre", "You find yourself inside a large lecture theatre. Rows of seats ascend up to the back, and there's a podium at the front. It's quite dark and quiet.");
+            Haiti.InitRoom("Pub", "You've entered the campus pub. It's a cosy place, with a few students chatting over drinks. There's a bar near you and some pool tables at the far end.");
+            Haiti.InitRoom("Lab", "You're in a computing lab. Desks with computers line the walls, and there's an office to the east. The hum of machines fills the room.");
+            Haiti.InitRoom("Office", "You've entered what seems to be an administration office. There's a large desk with a computer on it, and some bookshelves lining one wall.");
 
-            theatre.SetExit("west", outside);
 
-            pub.SetExit("east", outside);
+            Haiti.addExit("Outside", new List<string> { "east", "south", "west" }, new List<string> { "Theatre", "Lab", "Pub" });
+            Haiti.addExit("Theatre", new List<string> { "west" }, new List<string> { "Outside" });
+            Haiti.addExit("Pub", new List<string> { "east" }, new List<string> { "Outside" });
+            Haiti.addExit("Lab", new List<string> { "north", "east" }, new List<string> { "Outside", "Office" });
+            Haiti.addExit("Office", new List<string> { "west" }, new List<string> { "Lab" });
 
-            lab.SetExits(outside, office, null, null);
 
-            office.SetExit("west", lab);
-            return Rooms;
+            // //initialize rooms to India
+            India.InitRoom("Outside", "You are standing outside the main entrance of the university. To the east is a large building, to the south is a computing lab, and to the west is the campus pub.");
+            India.InitRoom("Theatre", "You find yourself inside a large lecture theatre. Rows of seats ascend up to the back, and there's a podium at the front. It's quite dark and quiet.");
+            India.InitRoom("Pub", "You've entered the campus pub. It's a cosy place, with a few students chatting over drinks. There's a bar near you and some pool tables at the far end.");
+            India.InitRoom("Lab", "You're in a computing lab. Desks with computers line the walls, and there's an office to the east. The hum of machines fills the room.");
+            India.InitRoom("Office", "You've entered what seems to be an administration office. There's a large desk with a computer on it, and some bookshelves lining one wall.");
 
+
+            India.addExit("Outside", new List<string> { "east", "south", "west" }, new List<string> { "Theatre", "Lab", "Pub" });
+            India.addExit("Theatre", new List<string> { "west" }, new List<string> { "Outside" });
+            India.addExit("Pub", new List<string> { "east" }, new List<string> { "Outside" });
+            India.addExit("Lab", new List<string> { "north", "east" }, new List<string> { "Outside", "Office" });
+            India.addExit("Office", new List<string> { "west" }, new List<string> { "Lab" });
+
+
+            // //initialize rooms to Brazil
+            Brazil.InitRoom("Outside", "You are standing outside the main entrance of the university. To the east is a large building, to the south is a computing lab, and to the west is the campus pub.");
+            Brazil.InitRoom("Theatre", "You find yourself inside a large lecture theatre. Rows of seats ascend up to the back, and there's a podium at the front. It's quite dark and quiet.");
+            Brazil.InitRoom("Pub", "You've entered the campus pub. It's a cosy place, with a few students chatting over drinks. There's a bar near you and some pool tables at the far end.");
+            Brazil.InitRoom("Lab", "You're in a computing lab. Desks with computers line the walls, and there's an office to the east. The hum of machines fills the room.");
+            Brazil.InitRoom("Office", "You've entered what seems to be an administration office. There's a large desk with a computer on it, and some bookshelves lining one wall.");
+
+
+            Brazil.addExit("Outside", new List<string> { "east", "south", "west" }, new List<string> { "Theatre", "Lab", "Pub" });
+            Brazil.addExit("Theatre", new List<string> { "west" }, new List<string> { "Outside" });
+            Brazil.addExit("Pub", new List<string> { "east" }, new List<string> { "Outside" });
+            Brazil.addExit("Lab", new List<string> { "north", "east" }, new List<string> { "Outside", "Office" });
+            Brazil.addExit("Office", new List<string> { "west" }, new List<string> { "Lab" });
+
+
+            //initialize rooms to Mozambique
+
+
+            Mozambique.InitRoom("Outside", "You are standing outside the main entrance of the university. To the east is a large building, to the south is a computing lab, and to the west is the campus pub.");
+            Mozambique.InitRoom("Theatre", "You find yourself inside a large lecture theatre. Rows of seats ascend up to the back, and there's a podium at the front. It's quite dark and quiet.");
+            Mozambique.InitRoom("Pub", "You've entered the campus pub. It's a cosy place, with a few students chatting over drinks. There's a bar near you and some pool tables at the far end.");
+            Mozambique.InitRoom("Lab", "You're in a computing lab. Desks with computers line the walls, and there's an office to the east. The hum of machines fills the room.");
+            Mozambique.InitRoom("Office", "You've entered what seems to be an administration office. There's a large desk with a computer on it, and some bookshelves lining one wall.");
+
+
+            Mozambique.addExit("Outside", new List<string> { "east", "south", "west" }, new List<string> { "Theatre", "Lab", "Pub" });
+            Mozambique.addExit("Theatre", new List<string> { "west" }, new List<string> { "Outside" });
+            Mozambique.addExit("Pub", new List<string> { "east" }, new List<string> { "Outside" });
+            Mozambique.addExit("Lab", new List<string> { "north", "east" }, new List<string> { "Outside", "Office" });
+            Mozambique.addExit("Office", new List<string> { "west" }, new List<string> { "Lab" });
+
+
+
+            // //initialize rooms to USA
+
+            USA.InitRoom("Outside", "You are standing outside the main entrance of the university. To the east is a large building, to the south is a computing lab, and to the west is the campus pub.");
+            USA.InitRoom("Theatre", "You find yourself inside a large lecture theatre. Rows of seats ascend up to the back, and there's a podium at the front. It's quite dark and quiet.");
+            USA.InitRoom("Pub", "You've entered the campus pub. It's a cosy place, with a few students chatting over drinks. There's a bar near you and some pool tables at the far end.");
+            USA.InitRoom("Lab", "You're in a computing lab. Desks with computers line the walls, and there's an office to the east. The hum of machines fills the room.");
+            USA.InitRoom("Office", "You've entered what seems to be an administration office. There's a large desk with a computer on it, and some bookshelves lining one wall.");
+
+
+            USA.addExit("Outside", new List<string> { "east", "south", "west" }, new List<string> { "Theatre", "Lab", "Pub" });
+            USA.addExit("Theatre", new List<string> { "west" }, new List<string> { "Outside" });
+            USA.addExit("Pub", new List<string> { "east" }, new List<string> { "Outside" });
+            USA.addExit("Lab", new List<string> { "north", "east" }, new List<string> { "Outside", "Office" });
+            USA.addExit("Office", new List<string> { "west" }, new List<string> { "Lab" });
 
         }
-        public void QuickAssign(List<Room> Rooms, List<Country> Countries)
-        {
-            foreach (var country in Countries)
-            {
-                foreach (var Room in Rooms)
-                {
-                    country.addRoom(Room);
-                }
-            }
-        }
+
     }
 }

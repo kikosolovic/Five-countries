@@ -11,8 +11,8 @@
             //initialize the game
             List<Country> Countries = CreateCountries();
             this.currentCountry = Countries[0];
-            List<Room> Rooms = CreateRooms();
-            QuickAssign(Rooms, Countries);
+            CreateRooms(Countries);
+            // QuickAssign(Rooms, Countries);
         }
 
         public void Play()
