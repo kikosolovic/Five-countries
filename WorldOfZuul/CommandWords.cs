@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WorldOfZuul
+namespace FiveCountries
 {
     public class CommandWords
     {
-        public List<string> ValidCommands { get; } = new List<string> { "north", "east", "south", "west", "look", "back", "quit", "travel", "Haiti", "India", "Brazil", "Mozambique", "USA" };
+        public List<string> ValidCommands { get; } = new List<string> { "north", "east", "south", "west", "look", "back", "help", "quit", "travel", "haiti", "india", "brazil", "mozambique", "usa" };
 
         public bool IsValidCommand(string command)
         {
-            return ValidCommands.Contains(command);
+            return ValidCommands.Contains(command.ToLower());
         }
     }
 
