@@ -1,4 +1,4 @@
-﻿namespace WorldOfZuul
+﻿namespace FiveCountries
 {
     public class Game : Init
     {
@@ -92,7 +92,7 @@
                 }
             }
 
-            Console.WriteLine("Thank you for playing World of Zuul!");
+            Console.WriteLine("Thank you for playing Five Countries!");
         } // instead of all cases implement dynamic method invocation
 
         private void Move(string direction)
@@ -127,8 +127,8 @@
 
         private static void PrintWelcome()
         {
-            Console.WriteLine("Welcome to the World of Zuul!");
-            Console.WriteLine("World of Zuul is a new, incredibly boring adventure game.");
+            Console.WriteLine("Welcome to Five Countries!");
+            Console.WriteLine("Five Countries is a new, incredibly boring adventure game.");
             PrintHelp();
             Console.WriteLine();
         }
