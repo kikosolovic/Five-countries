@@ -120,7 +120,7 @@
             }
             else
             {
-                Console.WriteLine($"You can't go {country} yet!");
+                Console.WriteLine($"You can't go to {country} yet!");
             }
         }
 
