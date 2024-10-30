@@ -41,7 +41,7 @@
                     continue;
                 }
 
-                Command? command = parser.GetCommand(input);
+                Command? command = parser.GetCommand(input.ToLower());
                 // 
 
 
@@ -49,7 +49,7 @@
 
                 if (command == null)
                 {
-                    Console.WriteLine("I don't know that command.");
+                    Console.WriteLine("I don't know that command: "+command);
                     continue;
                 }
 
@@ -87,7 +87,7 @@
                         break;
 
                     default:
-                        Console.WriteLine("I don't know what command.");
+                        Console.WriteLine("I don't know what command: "+command.Name+".");
                         break;
                 }
             }

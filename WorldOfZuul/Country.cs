@@ -24,11 +24,11 @@ namespace FiveCountries
 
         public void SetExits(Country? Haiti, Country? India, Country? Brazil, Country? Mozambique, Country? USA)
         {
-            SetExit("Haiti", Haiti);
-            SetExit("India", India);
-            SetExit("Brazil", Brazil);
-            SetExit("Mozambique", Mozambique);
-            SetExit("USA", USA);
+            SetExit("haiti", Haiti);
+            SetExit("india", India);
+            SetExit("brazil", Brazil);
+            SetExit("mozambique", Mozambique);
+            SetExit("usa", USA);
 
         }
 
