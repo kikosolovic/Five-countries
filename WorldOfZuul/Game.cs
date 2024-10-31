@@ -1,4 +1,6 @@
-﻿namespace FiveCountries
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace FiveCountries
 {
     public class Game : Init
     {
@@ -19,6 +21,8 @@
         {
             Parser parser = new();
             CustomFunctions customFunctions = new();
+            List<Minigame> minigames = CreateGames();
+            
             PrintWelcome();
 
             bool continuePlaying = true;
@@ -58,7 +62,7 @@
                 {
                     case "look":
                         Console.WriteLine(currentCountry?.currentRoom?.LongDescription);
-                        customFunctions.PrintMap2(currentCountry?.currentRoom?.ShortDescription);
+                        customFunctions.PrintMap(currentCountry?.currentRoom?.ShortDescription);
                         break;
 
                     case "back":
@@ -77,6 +81,12 @@
                     case "east":
                     case "west":
                         Move(command.Name);
+                        break;
+                    case "map":
+                        customFunctions.PrintMap(currentCountry?.currentRoom?.ShortDescription);
+                        break;
+                    case "play":
+                        customFunctions.PlayGame(currentCountry, currentCountry.currentRoom, minigames, int.Parse(command?.SecondWord ?? "0"));
                         break;
 
                     case "quit":
@@ -142,6 +152,7 @@
             Console.WriteLine("Navigate by typing 'north', 'south', 'east', or 'west'.");
             Console.WriteLine("Travel between countries by typing 'travel' and the name of the country. ");
             Console.WriteLine("Type 'look' for more details.");
+            Console.WriteLine("Type 'map' to see the map.");
             Console.WriteLine("Type 'back' to go to the previous room.");
             Console.WriteLine("Type 'help' to print this message again.");
             Console.WriteLine("Type 'quit' to exit the game.");

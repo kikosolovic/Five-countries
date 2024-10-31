@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
@@ -8,7 +9,9 @@ using System.Xml.Serialization;
 namespace FiveCountries
 {
     public class CustomFunctions{
-        public void PrintMap2(string room){
+        MinigameCode minigamesCode = new();
+
+        public void PrintMap(string room){
             Console.WriteLine("\n-- -- -- -- --  MAP  -- -- -- -- -- --");
             Console.WriteLine("+---------+------------+-------------+");
             Console.WriteLine("|         |            |             |");
@@ -75,5 +78,69 @@ namespace FiveCountries
             
 
         }
+        
+        public void PlayGame(Country country, Room room, List<Minigame> minigames, int gameNumber = 0){
+            int counter = 1;
+            List<Minigame> gamesForHere = new List<Minigame>();
+
+            foreach (var minigame in minigames)// Get all games for this room
+            {
+                if (minigame.country == country.ShortDescription && minigame.room == room.ShortDescription){
+                    gamesForHere.Add(minigame);
+                }
+            }
+            if (gameNumber == 0){
+                if (gamesForHere.Count == 0){
+                    Console.WriteLine("Sorry, there are no games available in this room.");
+                    return;
+                }else{
+                    Console.WriteLine("Here you can choose from the following games:");
+                    foreach (var minigame in gamesForHere)
+                    {
+                        Console.WriteLine($"{counter}.{minigame.description}");
+                        counter++;
+                    }
+                }
+                Console.Write("# of the game you want to play: ");
+                string? input = Console.ReadLine();
+                gameNumber = int.Parse(input);
+            }
+            
+            if (gameNumber > gamesForHere.Count || gameNumber < 1){
+                Console.WriteLine("Invalid game number.");
+                return;
+            }
+
+            int gameid = gamesForHere[gameNumber-1].id;
+
+            //here add a call to the game
+            switch(gameid){
+                case 11:
+                    minigamesCode.minigame11();
+                    break;
+                case 12:
+                    minigamesCode.minigame12();
+                    break;
+                case 13:
+                    minigamesCode.minigame13();
+                    break;
+                case 14:
+                    minigamesCode.minigame14();
+                    break;
+                default:
+                    Console.WriteLine("Invalid game number.");
+                    break;
+            }
+
+
+
+        }
+
+
+
+
+
+
+
     }
 }

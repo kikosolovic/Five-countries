@@ -59,6 +59,25 @@ namespace FiveCountries
 
 
         }
+
+        public List<Minigame> CreateGames()
+        {
+            List<Minigame> minigames = new List<Minigame>();
+            Minigame[] Games = {
+                new("Haiti", "Lab", "This is 1 game.", 11),
+                new("Haiti", "Lab", "This is 2 game.", 12),
+                new("Haiti", "Lab", "This is 3 game.", 13),
+                new("Haiti", "Lab", "This is 4 game.", 14),
+            
+            };
+            foreach (Minigame minigame in Games)
+            {
+                minigames.Add(minigame);
+            }
+            
+            return minigames;
+        }
+
         public void QuickAssign(List<Room> Rooms, List<Country> Countries)
         {
             foreach (var country in Countries)
