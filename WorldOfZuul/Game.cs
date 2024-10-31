@@ -18,6 +18,7 @@
         public void Play()
         {
             Parser parser = new();
+            CustomFunctions customFunctions = new();
             PrintWelcome();
 
             bool continuePlaying = true;
@@ -57,7 +58,7 @@
                 {
                     case "look":
                         Console.WriteLine(currentCountry?.currentRoom?.LongDescription);
-
+                        customFunctions.PrintMap2(currentCountry?.currentRoom?.ShortDescription);
                         break;
 
                     case "back":
