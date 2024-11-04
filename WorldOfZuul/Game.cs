@@ -73,6 +73,11 @@ namespace FiveCountries
                             currentCountry.setRoom(currentCountry.previousRoom, currentCountry?.currentRoom);//can only go back once?
                         break;
                     case "travel":
+                        if (command.SecondWord ==  null || command.SecondWord ==  "" || command.SecondWord == " ")
+                        {
+                            Console.WriteLine("Travel where?");
+                            break;
+                        }
                         Travel(command.SecondWord);
                         Console.WriteLine(currentCountry?.LongDescription);
                         break;

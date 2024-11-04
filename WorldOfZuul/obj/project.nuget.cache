@@ -1,10 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "TKJE9uTJ0nIocCEHH82yEvfx9J7bg+/vzuCJTpbklTUX/Dw+DaA4V3T/ZUu/a8WqlLm5pr6fY2vPs17uaPG+3A==",
+  "dgSpecHash": "3hGQVDM3+rU=",
   "success": true,
-  "projectFilePath": "/home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZul/WorldOfZuul/WorldOfZuul.csproj",
-  "expectedPackageFiles": [
-    "/home/kikosolovic/.nuget/packages/microsoft.netcore.app.host.linux-x64/6.0.35/microsoft.netcore.app.host.linux-x64.6.0.35.nupkg.sha512"
-  ],
+  "projectFilePath": "/Users/miki/WorldOfZul/WorldOfZuul/WorldOfZuul.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = WorldOfZuul
-build_property.ProjectDir = /home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZul/WorldOfZuul/
+build_property.ProjectDir = /Users/miki/WorldOfZul/WorldOfZuul/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

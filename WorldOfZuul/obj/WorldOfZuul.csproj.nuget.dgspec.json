@@ -1,30 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "/home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZul/WorldOfZuul/WorldOfZuul.csproj": {}
+    "/Users/miki/WorldOfZul/WorldOfZuul/WorldOfZuul.csproj": {}
   },
   "projects": {
-    "/home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZul/WorldOfZuul/WorldOfZuul.csproj": {
+    "/Users/miki/WorldOfZul/WorldOfZuul/WorldOfZuul.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZul/WorldOfZuul/WorldOfZuul.csproj",
+        "projectUniqueName": "/Users/miki/WorldOfZul/WorldOfZuul/WorldOfZuul.csproj",
         "projectName": "WorldOfZuul",
-        "projectPath": "/home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZul/WorldOfZuul/WorldOfZuul.csproj",
-        "packagesPath": "/home/kikosolovic/.nuget/packages/",
-        "outputPath": "/home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZul/WorldOfZuul/obj/",
+        "projectPath": "/Users/miki/WorldOfZul/WorldOfZuul/WorldOfZuul.csproj",
+        "packagesPath": "/Users/miki/.nuget/packages/",
+        "outputPath": "/Users/miki/WorldOfZul/WorldOfZuul/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/kikosolovic/.nuget/NuGet/NuGet.Config"
+          "/Users/miki/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net6.0"
+          "net8.0"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {}
           }
         },
@@ -32,11 +32,16 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "imports": [
             "net461",
             "net462",
@@ -48,18 +53,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.NETCore.App.Host.linux-x64",
-              "version": "[6.0.35, 6.0.35]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.110/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.401/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

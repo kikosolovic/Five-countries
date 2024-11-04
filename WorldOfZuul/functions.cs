@@ -12,34 +12,34 @@ namespace FiveCountries
         MinigameCode minigamesCode = new();
 
         public void PrintMap(string room){
-            Console.WriteLine("\n-- -- -- -- --  MAP  -- -- -- -- -- --");
-            Console.WriteLine("+---------+------------+-------------+");
-            Console.WriteLine("|         |            |             |");
+            Console.WriteLine("\n-- -- -- -- --  MAP  -- -- -- -- -- --       ^ N");
+            Console.WriteLine("+---------+------------+-------------+       |");
+            Console.WriteLine("|         |            |             |  W ---+---> E");
             switch(room){
                 case "Pub":
                     //Console.WriteLine("|   Pub       Office       Theatre   |");
-                    string[] text = {"|   ", "Pub", "       Outside      Theatre   |"};
+                    string[] text = {"|   ", "Pub", "       Outside      Theatre   |       |"};
                     ConsoleColor[] colors = {ConsoleColor.White, ConsoleColor.Green, ConsoleColor.White};
                     PrintStringColorful(text, colors);
                     break;
                 case "Outside":
                     //Console.WriteLine("|   Pub       Outside      Theatre   |");
-                    string[] text2 = {"|   Pub       ", "Outside", "      Theatre   |"};
+                    string[] text2 = {"|   Pub       ", "Outside", "      Theatre   |       |"};
                     ConsoleColor[] colors2 = {ConsoleColor.White, ConsoleColor.Green, ConsoleColor.White};
                     PrintStringColorful(text2, colors2);
                     break;
                 case "Theatre":
                     //Console.WriteLine("|   Pub       Outside      Theatre   |");
-                    string[] text3 = {"|   Pub       Outside      ", "Theatre", "   |"};
+                    string[] text3 = {"|   Pub       Outside      ", "Theatre", "   |       |"};
                     ConsoleColor[] colors3 = {ConsoleColor.White, ConsoleColor.Green, ConsoleColor.White};
                     PrintStringColorful(text3, colors3);
                     break;
                 default:
-                    Console.WriteLine("|   Pub       Outside      Theatre   |");
+                    Console.WriteLine("|   Pub       Outside      Theatre   |       |");
                     break;
             }
-            Console.WriteLine("|         |            |             |");
-            Console.WriteLine("+---------++---   ---+-+----------+--+");
+            Console.WriteLine("|         |            |             |       |");
+            Console.WriteLine("+---------++---   ---+-+----------+--+       S");
             Console.WriteLine("           |         |            |");
             switch(room){
                 case "Lab":
