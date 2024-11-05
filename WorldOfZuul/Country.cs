@@ -35,11 +35,10 @@ namespace FiveCountries
         public void addRoom(Room room)
         {
             Rooms.Add(room);
-            Console.WriteLine(room);
             if (Rooms.Count == 1)
             {
                 this.currentRoom = room;
-                Console.WriteLine(this.currentRoom.ShortDescription);
+
             }
         }
 

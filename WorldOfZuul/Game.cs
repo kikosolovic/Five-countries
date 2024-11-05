@@ -22,8 +22,9 @@ namespace FiveCountries
             Parser parser = new();
             CustomFunctions customFunctions = new();
             List<Minigame> minigames = CreateGames();
-            
+
             PrintWelcome();
+            PrintHelp();
 
             bool continuePlaying = true;
             while (continuePlaying)
@@ -54,7 +55,7 @@ namespace FiveCountries
 
                 if (command == null)
                 {
-                    Console.WriteLine("I don't know that command: "+command);
+                    Console.WriteLine("I don't know that command: " + command);
                     continue;
                 }
 
@@ -73,7 +74,7 @@ namespace FiveCountries
                             currentCountry.setRoom(currentCountry.previousRoom, currentCountry?.currentRoom);//can only go back once?
                         break;
                     case "travel":
-                        if (command.SecondWord ==  null || command.SecondWord ==  "" || command.SecondWord == " ")
+                        if (command.SecondWord == null || command.SecondWord == "" || command.SecondWord == " ")
                         {
                             Console.WriteLine("Travel where?");
                             break;
@@ -103,7 +104,7 @@ namespace FiveCountries
                         break;
 
                     default:
-                        Console.WriteLine("I don't know what command: "+command.Name+".");
+                        Console.WriteLine("I don't know what command: " + command.Name + ".");
                         break;
                 }
             }
@@ -143,9 +144,16 @@ namespace FiveCountries
 
         private static void PrintWelcome()
         {
-            Console.WriteLine("Welcome to Five Countries!");
-            Console.WriteLine("Five Countries is a new, incredibly boring adventure game.");
-            PrintHelp();
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("""
+ __      __       .__                                  __           ___________.__               _________                      __         .__              ._.
+/  \    /  \ ____ |  |   ____  ____   _____   ____   _/  |_  ____   \_   _____/|__|__  __ ____   \_   ___ \  ____  __ __  _____/  |________|__| ____   _____| |
+\   \/\/   // __ \|  | _/ ___\/  _ \ /     \_/ __ \  \   __\/  _ \   |    __)  |  \  \/ // __ \  /    \  \/ /  _ \|  |  \/    \   __\_  __ \  |/ __ \ /  ___/ |
+ \        /\  ___/|  |_\  \__(  <_> )  Y Y  \  ___/   |  | (  <_> )  |     \   |  |\   /\  ___/  \     \___(  <_> )  |  /   |  \  |  |  | \/  \  ___/ \___ \ \|
+  \__/\  /  \___  >____/\___  >____/|__|_|  /\___  >  |__|  \____/   \___  /   |__| \_/  \___  >  \______  /\____/|____/|___|  /__|  |__|  |__|\___  >____  >__
+       \/       \/          \/            \/     \/                      \/                  \/          \/                  \/                    \/     \/ \/
+""");
+            Console.ResetColor();
             Console.WriteLine();
         }
 

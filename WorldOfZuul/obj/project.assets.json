@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "/Users/miki/.nuget/packages/": {}
+    "/home/kikosolovic/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/miki/WorldOfZul/WorldOfZuul/WorldOfZuul.csproj",
+      "projectUniqueName": "/home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZul2/Five-countries/WorldOfZuul/WorldOfZuul.csproj",
       "projectName": "WorldOfZuul",
-      "projectPath": "/Users/miki/WorldOfZul/WorldOfZuul/WorldOfZuul.csproj",
-      "packagesPath": "/Users/miki/.nuget/packages/",
-      "outputPath": "/Users/miki/WorldOfZul/WorldOfZuul/obj/",
+      "projectPath": "/home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZul2/Five-countries/WorldOfZuul/WorldOfZuul.csproj",
+      "packagesPath": "/home/kikosolovic/.nuget/packages/",
+      "outputPath": "/home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZul2/Five-countries/WorldOfZuul/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/miki/.nuget/NuGet/NuGet.Config"
+        "/home/kikosolovic/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -38,11 +38,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -64,7 +59,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.401/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.110/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
