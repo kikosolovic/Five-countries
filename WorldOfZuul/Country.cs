@@ -32,15 +32,39 @@ namespace FiveCountries
 
         }
 
-        public void addRoom(Room room)
+
+        public void InitRoom(string ShortDescription, string LongDescription)
         {
-            Rooms.Add(room);
-            if (Rooms.Count == 1)
+            Room room = new Room(ShortDescription, LongDescription);
+            this.Rooms.Add(room);
+            if (this.Rooms.Count == 1)
             {
                 this.currentRoom = room;
-
             }
         }
+
+        public void addExit(string roomName, List<string> directions, List<string> neighborNames)
+        {
+
+            Room? room = Rooms.Find(r => r.ShortDescription == roomName);
+
+            if (room != null)
+            {
+
+                for (int i = 0; i < directions.Count; i++)
+                {
+                    room.SetExit(directions[i], Rooms.Find(r => r.ShortDescription == neighborNames[i]));
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("Room not found " + roomName);
+            }
+
+        }
+
+
 
         public void setRoom(Room croom, Room proom)
         {

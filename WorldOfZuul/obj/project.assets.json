@@ -9,23 +9,31 @@
   },
   "packageFolders": {
     "/home/kikosolovic/.nuget/packages/": {}
+    "C:\\Users\\Acer\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
       "projectUniqueName": "/home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZul2/Five-countries/WorldOfZuul/WorldOfZuul.csproj",
+      "projectUniqueName": "C:\\Users\\Acer\\Desktop\\5counriess\\Five-countries\\WorldOfZuul\\WorldOfZuul.csproj",
       "projectName": "WorldOfZuul",
       "projectPath": "/home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZul2/Five-countries/WorldOfZuul/WorldOfZuul.csproj",
       "packagesPath": "/home/kikosolovic/.nuget/packages/",
       "outputPath": "/home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZul2/Five-countries/WorldOfZuul/obj/",
+      "projectPath": "C:\\Users\\Acer\\Desktop\\5counriess\\Five-countries\\WorldOfZuul\\WorldOfZuul.csproj",
+      "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Acer\\Desktop\\5counriess\\Five-countries\\WorldOfZuul\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/kikosolovic/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -60,6 +68,7 @@
           }
         },
         "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.110/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
