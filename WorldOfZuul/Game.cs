@@ -13,8 +13,8 @@ namespace FiveCountries
             //initialize the game
             List<Country> Countries = CreateCountries();
             this.currentCountry = Countries[0];
-            List<Room> Rooms = CreateRooms();
-            QuickAssign(Rooms, Countries);
+            CreateRooms(Countries);
+            // QuickAssign(Rooms, Countries);
         }
 
         public void Play()
@@ -151,9 +151,13 @@ namespace FiveCountries
 
         private static void PrintHelp()
         {
-            Console.WriteLine("You are lost. You are alone. You wander");
-            Console.WriteLine("around the university.");
-            Console.WriteLine();
+            Console.WriteLine("You've been sent by the United Nations to complete various tasks in the following countries:");
+            Console.WriteLine("Haiti");
+            Console.WriteLine("Mozambique");
+            Console.WriteLine("India");
+            Console.WriteLine("Brazil");
+            Console.WriteLine("USA");
+            Console.WriteLine("");
             Console.WriteLine("Navigate by typing 'north', 'south', 'east', or 'west'.");
             Console.WriteLine("Travel between countries by typing 'travel' and the name of the country. ");
             Console.WriteLine("Type 'look' for more details.");
