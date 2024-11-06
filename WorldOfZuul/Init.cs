@@ -20,7 +20,7 @@ namespace FiveCountries
             Country? Mozambique = new("Mozambique", "Wouldn't you know, Mozambique is located in Africa");
             Countries.Add(Mozambique);
             Country? USA = new("USA", "Wouldn't you know, USA is located in North America");
-            Countries.Add(Mozambique);
+            Countries.Add(USA);
 
             Haiti.SetExits(Haiti, India, Brazil, Mozambique, USA);
             India.SetExits(Haiti, India, Brazil, Mozambique, USA);
