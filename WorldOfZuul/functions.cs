@@ -63,6 +63,92 @@ namespace FiveCountries
         }
 
 
+        public void PrintMap2(Country Country, string room){
+
+            // get position of the room in the map
+            static (int, int) getPos(string[,] map, string room){
+                for(int i = 0; i < 11; i++){
+                    for(int j = 0; j < 11; j++){
+                        if (map[i, j] == room){
+                            return (i, j);
+                        }
+                    }
+                }
+                return (-1, -1);
+            }
+
+            //MAX map size is 11x11AND the furthest room can be in 5 connections
+            string[,] map = new string[11,11];
+            List<String> roomsAdded = new List<String>();
+            Console.WriteLine("\n\n-------MAP------");
+            bool first = true;
+
+            foreach (Room room2 in Country.Rooms){
+                if (first){
+                    map[5, 5] = room2.ShortDescription;
+                    roomsAdded.Add(room2.ShortDescription);
+                    first = false;
+                }
+                foreach (var exit in room2.Exits){
+                    Console.Write(room2.ShortDescription+" "+exit.Value.ShortDescription+" "+exit.Key+"\n");
+
+                    if (roomsAdded.Contains(exit.Value.ShortDescription)){
+                        continue;
+                    }
+                    //just print map
+                    Console.WriteLine("Current map:");
+                    for(int i = 0; i < 11; i++){
+                        for(int j = 0; j < 11; j++){
+                                Console.Write((map[i, j]??"").PadLeft(8));
+                                Console.Write(",");
+                        }
+                        Console.WriteLine();
+                    }
+
+                    (int, int) lastRoomPos = getPos(map, room2.ShortDescription);
+                    Console.WriteLine(lastRoomPos.Item1+" "+lastRoomPos.Item2);
+                    if (lastRoomPos.Item1 == -1){
+                        lastRoomPos = getPos(map, exit.Value.ShortDescription);
+                        Console.WriteLine(lastRoomPos.Item1+" "+lastRoomPos.Item2);
+                        if (lastRoomPos.Item1 == -1){
+                            throw new Exception("Rooms not found in map");
+                        }
+                        break;
+                    }
+                    (int, int) direction = (0, 0);
+                    switch(exit.Key){
+                        case "north":
+                            direction = (-1, 0);
+                            break;
+                        case "south":
+                            direction = (1, 0);
+                            break;
+                        case "east":
+                            direction = (0, 1);
+                            break;
+                        case "west":
+                            direction = (0, -1);
+                            break;
+                    }
+                    map[lastRoomPos.Item1 + direction.Item1, lastRoomPos.Item2 + direction.Item2] = exit.Value.ShortDescription;
+                    break;
+                }
+            }
+
+
+            //just print map
+            Console.WriteLine("Current map:");
+            for(int i = 0; i < 11; i++){
+                for(int j = 0; j < 11; j++){
+                        Console.Write((map[i, j]??"").PadLeft(8));
+                        Console.Write(",");
+                }
+                Console.WriteLine();
+            }
+
+        }
+
+
 /// <summary>
 ///     Prints all strings in text[], each in color from colors[] in the same line
 /// </summary>

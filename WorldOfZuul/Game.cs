@@ -22,14 +22,13 @@ namespace FiveCountries
             Parser parser = new();
             CustomFunctions customFunctions = new();
             List<Minigame> minigames = CreateGames();
-
+            customFunctions.PrintMap2(currentCountry, currentCountry?.currentRoom?.ShortDescription);//print map of the current room - only for testing
+            return;//remove this line when you want to play the game
             PrintWelcome();
             PrintHelp();
 
             bool continuePlaying = true;
             while (continuePlaying)
-
-
             // note below
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -90,6 +89,7 @@ namespace FiveCountries
                         break;
                     case "map":
                         customFunctions.PrintMap(currentCountry?.currentRoom?.ShortDescription);
+                        customFunctions.PrintMap2(currentCountry, currentCountry?.currentRoom?.ShortDescription);
                         break;
                     case "play":
                         customFunctions.PlayGame(currentCountry, currentCountry.currentRoom, minigames, int.Parse(command?.SecondWord ?? "0"));
