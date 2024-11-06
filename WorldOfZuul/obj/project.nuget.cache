@@ -1,10 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tgIOAfiQrLuQofzyJTNUF9uZTKgyHzFSP2FT3vLx+RYdlqXjVYuI9RjPojOxkT19xAsfasBMiUJ0UipxwybP4w==",
-  "dgSpecHash": "InvLgWyVsXg=",
+  "dgSpecHash": "gnOJncbvMHc=",
   "success": true,
-  "projectFilePath": "/home/kikosolovic/Desktop/SCHOOL/OOP/WorldOfZul2/Five-countries/WorldOfZuul/WorldOfZuul.csproj",
-  "projectFilePath": "C:\\Users\\Acer\\Desktop\\5counriess\\Five-countries\\WorldOfZuul\\WorldOfZuul.csproj",
+  "projectFilePath": "c:\\Users\\Acer\\Desktop\\5counriess\\Five-countries\\WorldOfZuul\\WorldOfZuul.csproj",
   "expectedPackageFiles": [],
   "logs": []
-}git config pull.rebase false
+}

@@ -13,14 +13,24 @@ namespace FiveCountries
             List<Country> Countries = new List<Country>();
             Country? Haiti = new("Haiti", "Wouldn't you know, Haiti is located in the Caribbean");
             Countries.Add(Haiti);
-            Country? India = new("India", "Wouldn't you know, India is located in South Asia");
+            Country? India = new("India", "Your objectives in India revolve around Goal 6 - Clean water and sanitation.\n \n"
+            + "Due to the overprivatization of underground springs, there aren't enough left to support the country's crop fields.\n"
+            + "This leads to overreliance on seasonal rains and ultimately - in a poor yield.\nOne of your objectives is to find an underground water source.\n"
+            + "We believe that one such source of substantial quantity is located somewhere in the area that you find yourself in.\n"
+            + "You need to find it and use it to install an irrigation system for one of the major crop fields in the region of Allahabad.\n \n"
+            + "Due to waste, both industrial and human, India's rivers are contaminated and the water is unfit to drink.\n"
+            + "This results in the consumption of polluted water and subsequently, morbidity and mortality increases.\n"
+            + "There is an abandoned building in the village of Kaithi that is a perfect fit for our goals.\n"
+            + "Your other objective is to go there and turn in it into a sewage treatment plant.\n"
+            + "This will go a long way to help decrease the flow of waste going into the Ganges river.");
+
             Countries.Add(India);
             Country? Brazil = new("Brazil", "Wouldn't you know, Brazil is located in South America");
             Countries.Add(Brazil);
             Country? Mozambique = new("Mozambique", "Wouldn't you know, Mozambique is located in Africa");
             Countries.Add(Mozambique);
             Country? USA = new("USA", "Wouldn't you know, USA is located in North America");
-            Countries.Add(Mozambique);
+            Countries.Add(USA);
 
             Haiti.SetExits(Haiti, India, Brazil, Mozambique, USA);
             India.SetExits(Haiti, India, Brazil, Mozambique, USA);
@@ -57,11 +67,11 @@ namespace FiveCountries
 
             // //initialize rooms to India
             India.InitRoom("UN Outpost", "You are standing between the locations of your two objectives. You can go either north or south");
-            India.InitRoom("Outside Sewage Treatment Plant", "You find yourself outside an abandoned sewage treatment plant. It's your job to restore it to working condition. The entrance to the lobby is to the north.");
+            India.InitRoom("Outside Abandoned Building", "You find yourself outside the abandoned building mentioned in the briefing. The entrance to the lobby is to the north.");
             India.InitRoom("Lobby", "You're inside the lobby of the plant. There is a storage room to the east and the tank room is to the west.");
-            India.InitRoom("Tank Room", "You're inside the tank room. This is where the water gets recycled.");
+            India.InitRoom("Tank Room", "You're inside what will become the tank room.");
             India.InitRoom("Storage Room", "You're in a storage room.");
-            India.InitRoom("Field", "You're at a field that's in dire need of some fluids.");
+            India.InitRoom("Crop Field", "You're at the crop field specified in the briefing. It is in dire need of some fluids.");
             India.InitRoom("Eastern Shed", "You're in a shed.");
             India.InitRoom("Western Shed", "You're in a shed.");
             
