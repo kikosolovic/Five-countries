@@ -21,6 +21,7 @@ namespace FiveCountries
         {
             Parser parser = new();
             CustomFunctions customFunctions = new();
+            MinigameCode minigamesCode = new();
             List<Minigame> minigames = CreateGames();
             
             PrintWelcome();

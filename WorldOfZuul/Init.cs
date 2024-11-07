@@ -8,6 +8,7 @@ namespace FiveCountries
     public class Init
     {
 
+
         public List<Country> CreateCountries()
         {
             List<Country> Countries = new List<Country>();
@@ -64,7 +65,7 @@ namespace FiveCountries
         {
             List<Minigame> minigames = new List<Minigame>();
             Minigame[] Games = {
-                new("Haiti", "Lab", "This is 1 game.", 11),
+                new("Haiti", "Lab", "This is 1 game.", 11, // work here mini.minigame11),
                 new("Haiti", "Lab", "This is 2 game.", 12),
                 new("Haiti", "Lab", "This is 3 game.", 13),
                 new("Haiti", "Lab", "This is 4 game.", 14),

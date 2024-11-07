@@ -14,11 +14,13 @@ namespace FiveCountries
         public string description {get; set;}
         public int id {get; set;}
 
-        public Minigame(string country2, string room2, string description2, int id2){
+        public Func<string> game;
+        public Minigame(string country2, string room2, string description2, int id2, Func<string> game2){
             country = country2;
             room = room2;
             description = description2;
             id = id2;
+            game = game2;
         }
 
     }
