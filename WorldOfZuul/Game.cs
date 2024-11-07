@@ -8,12 +8,15 @@ namespace FiveCountries
         private Country? currentCountry;
         private Country? previousCountry; //back command for country if needed
 
+        private string currentItem = null;
+
         public Game()
         {
             //initialize the game
             List<Country> Countries = CreateCountries();
             this.currentCountry = Countries[0];
             CreateRooms(Countries);
+
             // QuickAssign(Rooms, Countries);
         }
 
@@ -22,6 +25,7 @@ namespace FiveCountries
             Parser parser = new();
             CustomFunctions customFunctions = new();
             List<Minigame> minigames = CreateGames();
+            int score = 0;
 
             PrintWelcome();
             PrintHelp();
@@ -79,9 +83,11 @@ namespace FiveCountries
                             Console.WriteLine("Travel where?");
                             break;
                         }
+                        customFunctions.loading();
                         Travel(command.SecondWord);
                         Console.WriteLine(currentCountry?.LongDescription);
                         break;
+
                     case "north":
                     case "south":
                     case "east":
@@ -92,9 +98,11 @@ namespace FiveCountries
                         customFunctions.PrintMap(currentCountry?.currentRoom?.ShortDescription);
                         break;
                     case "play":
-                        customFunctions.PlayGame(currentCountry, currentCountry.currentRoom, minigames, int.Parse(command?.SecondWord ?? "0"));
+                        score += customFunctions.PlayGame(currentCountry, currentCountry.currentRoom, minigames, int.Parse(command?.SecondWord ?? "0"));
                         break;
-
+                    case "score":
+                        Console.WriteLine($"Your score is: {score}");
+                        break;
                     case "quit":
                         continuePlaying = false;
                         break;
