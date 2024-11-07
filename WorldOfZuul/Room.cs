@@ -4,7 +4,7 @@
     {
         public string ShortDescription { get; private set; }
         public string LongDescription { get; private set; }
-
+        public void Quest() { }
         public Dictionary<string, Room> Exits { get; private set; } = new();
 
         public Room(string shortDesc, string longDesc)
