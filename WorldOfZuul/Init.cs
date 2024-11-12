@@ -46,6 +46,7 @@ namespace FiveCountries
         }
         public void CreateRooms(List<Country> countries)
         {
+            MinigameCode minigameFunctions = new MinigameCode();
             Country Haiti = countries[0];
             Country India = countries[1];
             Country Brazil = countries[2];
@@ -105,7 +106,7 @@ namespace FiveCountries
 
 
             //initialize rooms to Mozambique
-            Mozambique.InitRoom("Dock", "You just arrived to Mozambique. The boat dropped you off at a small dock. ");
+            Mozambique.InitRoom("Dock", "You just arrived to Mozambique. The boat dropped you off at a small dock. ", minigameFunctions.Dock);
             Mozambique.InitRoom("Village", "You find yourself inside a large lecture theatre. Rows of seats ascend up to the back, and there's a podium at the front. It's quite dark and quiet.");
             Mozambique.InitRoom("Hill", "You've entered the campus pub. It's a cosy place, with a few students chatting over drinks. There's a bar near you and some pool tables at the far end.");
             Mozambique.InitRoom("Lab", "You're in a computing lab. Desks with computers line the walls, and there's an office to the east. The hum of machines fills the room.");

@@ -37,11 +37,8 @@ namespace FiveCountries
             // note below
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(currentCountry?.ShortDescription);
-
+                Console.WriteLine(currentCountry?.ShortDescription + " " + currentCountry?.currentRoom?.ShortDescription + " >");
                 Console.ResetColor();
-                Console.WriteLine(currentCountry?.currentRoom?.ShortDescription);
-                Console.Write("> ");
 
                 string? input = Console.ReadLine();
 
@@ -86,6 +83,10 @@ namespace FiveCountries
                         customFunctions.loading();
                         Travel(command.SecondWord);
                         Console.WriteLine(currentCountry?.LongDescription);
+                        if (this.currentCountry?.currentRoom?.minigame != null)
+                        {
+                            this.currentCountry.currentRoom.ExecuteMinigame();
+                        }
                         break;
 
                     case "north":
@@ -93,6 +94,10 @@ namespace FiveCountries
                     case "east":
                     case "west":
                         Move(command.Name);
+                        if (this.currentCountry?.currentRoom?.minigame != null)
+                        {
+                            this.currentCountry.currentRoom.ExecuteMinigame();
+                        }
                         break;
                     case "map":
                         customFunctions.PrintMap(currentCountry?.currentRoom?.ShortDescription);
@@ -109,6 +114,9 @@ namespace FiveCountries
 
                     case "help":
                         PrintHelp();
+                        break;
+                    case "startminigame":
+                        this.currentCountry?.currentRoom?.ExecuteMinigame();
                         break;
 
                     default:

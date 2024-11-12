@@ -33,9 +33,9 @@ namespace FiveCountries
         }
 
 
-        public void InitRoom(string ShortDescription, string LongDescription)
+        public void InitRoom(string ShortDescription, string LongDescription, MinigameDelegate? minigame = null)
         {
-            Room room = new Room(ShortDescription, LongDescription);
+            Room room = new Room(ShortDescription, LongDescription, minigame);
             this.Rooms.Add(room);
             if (this.Rooms.Count == 1)
             {

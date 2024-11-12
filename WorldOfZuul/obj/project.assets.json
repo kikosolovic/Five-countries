@@ -8,7 +8,6 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Acer\\.nuget\\packages\\": {}
     "/home/kikosolovic/.nuget/packages/": {}
   },
   "project": {
@@ -25,8 +24,6 @@
       "outputPath": "/home/kikosolovic/Desktop/SCHOOL/OOP/FIveCountries/Five-countries/WorldOfZuul/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         "/home/kikosolovic/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
@@ -71,7 +68,6 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
         "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.110/PortableRuntimeIdentifierGraph.json"
       }
     }
