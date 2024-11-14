@@ -185,8 +185,71 @@ namespace FiveCountries
             Console.Write(new string(' ', 10));
             Console.SetCursorPosition(0, Console.CursorTop);
 
+    
         }
+        public void UNAmbassadorDialogue()
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+
+            // Array of lines for the dialogue
+            string[] dialogueLines = {
+                "UN Ambassador: Welcome to New York City, we are pleased that you have accepted our invitation.",
+                "Our mission is to help resolve critical waste management issues, and we believe you are the right person for this job.",
+                "Are you the right one for the job? (yes/no)"
+            };
+
+            // Type out each line with delay
+            foreach (string line in dialogueLines)
+            {
+                TypeLine(line);
+                Console.WriteLine();  // New line after each sentence
+            }
+
+            Console.ResetColor();
+
+            // Get player's response
+            string? response = Console.ReadLine();
+
+            // Handle the player's response
+            if (response != null)
+            {
+                switch (response.ToLower())
+                {
+                    case "yes":
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        TypeLine("UN Ambassador: Excellent! We're glad to have you on board. Let's get started.");
+                        Console.WriteLine();
+                        break;
+                    case "no":
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        TypeLine("UN Ambassador: Well, we don't have much choice. The world needs your help. Let's proceed anyway.");
+                        Console.WriteLine();
+                        break;
+                    default:
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        TypeLine("UN Ambassador: I need a clear answer: yes or no.");
+                        Console.WriteLine();
+                        UNAmbassadorDialogue(); // Ask the question again if the response is invalid
+                        return;
+                }
+            }
+            Console.ResetColor();
+        }
+
+        // Helper method to type out a line character by character
+        private void TypeLine(string line)
+        {
+            foreach (char c in line)
+            {
+                Console.Write(c);
+                System.Threading.Thread.Sleep(50); // 50 milliseconds delay between characters
+            }
+        }
+
+
+
     }
+
 
 
 }

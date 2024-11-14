@@ -155,6 +155,19 @@ namespace FiveCountries
             {
                 Console.WriteLine($"You can't go to {country} yet!");
             }
+            // Print the description of the new location (current room)
+            Console.WriteLine(currentCountry?.currentRoom?.LongDescription);
+
+            // Trigger the NPC dialogue if arriving in New York City (NYC)
+            if (currentCountry?.ShortDescription == "USA" && currentCountry?.currentRoom?.ShortDescription == "NYC")
+            {
+                
+                Console.WriteLine("You've arrived here on the invitation of a UN ambassador. He's expecting your arrival!");
+
+                // Trigger the NPC dialogue
+                CustomFunctions customFunctions = new CustomFunctions();
+                customFunctions.UNAmbassadorDialogue();
+            }
         }
 
 
