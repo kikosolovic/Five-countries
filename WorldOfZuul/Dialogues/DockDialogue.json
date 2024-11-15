@@ -1,0 +1,30 @@
+{
+"text": "After a long journey you finally arrived in a small coastal village of Macuse. The guide got sick during the journney and left you at a small dock. There are only few old boats and a couple of local fisherman fishing.  ",        
+"options":"What do you want to do? 1.Talk 2.Continue",
+    "opt1":{
+            "text":"You panicked and said hello fish to the locals.",
+            "response":"What did you just say to me you little bitch",
+
+            "options":"WHat do you want to do? Walk/n",
+                "opt1" :{
+                        "text":"You walk away from the locals",
+                        "response":"bye bye ",
+
+                        "options" :"What do you want to do? travel/Continue",
+                                "opt1":{
+                                        "text":"You walk away from the locals",
+                                        "response":"bye bye",
+                                                "options" :"",
+                                "opt2":{
+                                    "text":"Be on your way",
+                                    "response":"bye bye",
+                                                "options" :""
+
+                            }
+                    }
+            }
+    },
+    "opt2":{
+            "text":"Be on your way"
+    }
+}
