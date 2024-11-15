@@ -239,53 +239,99 @@ namespace FiveCountries
             Console.ResetColor();
         }
 
-        public void UNAmbassadorDialogue()
+        public void UNAmbassadorDialogue(Room currentRoom)
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
 
-            // Array of lines for the dialogue
-            string[] dialogueLines = {
+            // Define dialogues for each room
+            Dictionary<string, string[]> dialogues = new Dictionary<string, string[]>
+    {
+        {
+            "New York City", new string[]
+            {
                 "UN Ambassador: Welcome to New York City, we are pleased that you have accepted our invitation.",
                 "Our mission is to help resolve critical waste management issues, and we believe you are the right person for this job.",
                 "Are you the right one for the job? (yes/no)"
-            };
-
-            // Type out each line with delay
-            foreach (string line in dialogueLines)
-            {
-                TypeLine(line);
-                Console.WriteLine();  // New line after each sentence
             }
-
-            Console.ResetColor();
-
-            // Get player's response
-            string? response = Console.ReadLine();
-
-            // Handle the player's response
-            if (response != null)
+        },
+        {
+            "Los Angeles", new string[]
             {
-                switch (response.ToLower())
+                "UN Ambassador: Welcome to Los Angeles. The city has been struggling with its waste management system.",
+                "We need to take some effective measures to address the issue of plastic waste in the oceans.",
+                "Are you ready to assist? (yes/no)"
+            }
+        },
+        {
+            "Chicago", new string[]
+            {
+                "UN Ambassador: You've made it to Chicago! Here, we face major issues with electronic waste.",
+                "We need to find a way to manage and recycle this waste responsibly. Are you up for it? (yes/no)"
+            }
+        },
+        {
+            "Houston", new string[]
+            {
+                "UN Ambassador: Welcome to Houston! This city has been dealing with hazardous waste problems.",
+                "We need your expertise to tackle this issue head-on. Can we count on you? (yes/no)"
+            }
+        },
+        {
+            "Miami", new string[]
+            {
+                "UN Ambassador: Miami has been facing difficulties managing organic waste.",
+                "Your task will be to create an efficient composting program. Are you prepared to do so? (yes/no)"
+            }
+        }
+    };
+
+            // Check if dialogue exists for the current room
+            if (dialogues.ContainsKey(currentRoom.ShortDescription))
+            {
+                // Get the dialogue for the current room
+                string[] dialogueLines = dialogues[currentRoom.ShortDescription];
+
+                // Type out each line with delay
+                foreach (string line in dialogueLines)
                 {
-                    case "yes":
-                        Console.ForegroundColor = ConsoleColor.Cyan;
-                        TypeLine("UN Ambassador: Excellent! We're glad to have you on board. Let's get started.");
-                        Console.WriteLine();
-                        break;
-                    case "no":
-                        Console.ForegroundColor = ConsoleColor.Cyan;
-                        TypeLine("UN Ambassador: Well, we don't have much choice. The world needs your help. Let's proceed anyway.");
-                        Console.WriteLine();
-                        break;
-                    default:
-                        Console.ForegroundColor = ConsoleColor.Cyan;
-                        TypeLine("UN Ambassador: I need a clear answer: yes or no.");
-                        Console.WriteLine();
-                        UNAmbassadorDialogue(); // Ask the question again if the response is invalid
-                        return;
+                    TypeLine(line);
+                    Console.WriteLine();  // New line after each sentence
                 }
+
+                Console.ResetColor();
+
+                // Get player's response
+                string? response = Console.ReadLine();
+
+                // Handle the player's response
+                if (response != null)
+                {
+                    switch (response.ToLower())
+                    {
+                        case "yes":
+                            Console.ForegroundColor = ConsoleColor.Cyan;
+                            TypeLine("UN Ambassador: Excellent! We're glad to have you on board. Let's get started.");
+                            Console.WriteLine();
+                            break;
+                        case "no":
+                            Console.ForegroundColor = ConsoleColor.Cyan;
+                            TypeLine("UN Ambassador: Well, we don't have much choice. The world needs your help. Let's proceed anyway.");
+                            Console.WriteLine();
+                            break;
+                        default:
+                            Console.ForegroundColor = ConsoleColor.Cyan;
+                            TypeLine("UN Ambassador: I need a clear answer: yes or no.");
+                            Console.WriteLine();
+                            UNAmbassadorDialogue(currentRoom); // Ask the question again if the response is invalid
+                            return;
+                    }
+                }
+                Console.ResetColor();
             }
-            Console.ResetColor();
+            else
+            {
+                Console.WriteLine("No dialogue available for this room.");
+            }
         }
 
         // Helper method to type out a line character by character
