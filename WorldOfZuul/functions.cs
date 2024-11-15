@@ -187,6 +187,58 @@ namespace FiveCountries
 
     
         }
+        public void UNAmbassadorPreMinigameDialogue(string minigame)
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+
+            switch (minigame)
+            {
+                case "RecyclingSorting":
+                    TypeLine("UN Ambassador: Before you proceed, let me remind you of the importance of proper recycling.");
+                    Console.WriteLine();
+                    TypeLine("New York City produces vast amounts of waste every day. Properly sorting recyclables helps us reduce the burden on our landfills and makes our city cleaner.");
+                    Console.WriteLine();
+                    TypeLine("I hope you’re ready for the recycling sorting challenge. Do your best!");
+                    Console.WriteLine();
+                    break;
+
+                case "PlasticReduction":
+                    TypeLine("UN Ambassador: Plastic pollution is a major issue, especially in cities like Los Angeles.");
+                    Console.WriteLine();
+                    TypeLine("We need to make critical choices to reduce single-use plastics. Let's see if you can help make the best decisions.");
+                    Console.WriteLine();
+                    break;
+
+                case "Composting":
+                    TypeLine("UN Ambassador: San Francisco aims to achieve zero waste. Composting is one of the biggest initiatives to achieve that goal.");
+                    Console.WriteLine();
+                    TypeLine("I need you to help manage the compost and keep it balanced. Are you ready?");
+                    Console.WriteLine();
+                    break;
+
+                case "HazardousWaste":
+                    TypeLine("UN Ambassador: Houston's industrial growth comes with the challenge of hazardous waste.");
+                    Console.WriteLine();
+                    TypeLine("It's important to manage this waste safely. This minigame will put your skills to the test.");
+                    Console.WriteLine();
+                    break;
+
+                case "Ewaste":
+                    TypeLine("UN Ambassador: Chicago faces a big challenge in managing electronic waste effectively.");
+                    Console.WriteLine();
+                    TypeLine("Sorting and recycling e-waste is crucial to minimize the impact on our environment. Let’s see if you’re up for the task!");
+                    Console.WriteLine();
+                    break;
+
+                default:
+                    TypeLine("UN Ambassador: It's time for a challenge that will help us make a difference!");
+                    Console.WriteLine();
+                    break;
+            }
+
+            Console.ResetColor();
+        }
+
         public void UNAmbassadorDialogue()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -242,7 +294,7 @@ namespace FiveCountries
             foreach (char c in line)
             {
                 Console.Write(c);
-                System.Threading.Thread.Sleep(50); // 50 milliseconds delay between characters
+                System.Threading.Thread.Sleep(35); // 35 milliseconds delay between characters
             }
         }
 
