@@ -1,4 +1,5 @@
 ﻿using System.Security.Cryptography.X509Certificates;
+using WorldOfZuul;
 
 namespace FiveCountries
 {
@@ -36,8 +37,8 @@ namespace FiveCountries
 
             // note below
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(currentCountry?.ShortDescription + " " + currentCountry?.currentRoom?.ShortDescription + " >");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                helper.WriteWithDelay(currentCountry?.ShortDescription + " " + currentCountry?.currentRoom?.ShortDescription + " >");
                 Console.ResetColor();
 
                 string? input = Console.ReadLine();

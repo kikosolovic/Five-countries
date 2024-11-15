@@ -61,7 +61,10 @@ namespace FiveCountries
             while (true)
             {
                 //spravit cely class na interface a styl s podmienkou aby to fungovalo
-                if (st.idiotCount == 0) { say(st.text, st.response, st.options); }
+                if (st.idiotCount == 0)
+                {
+                    say(st.text, st.response, st.options); if (st.options == null) { break; }
+                }
                 else { say(null, null, st.options); }
 
 
@@ -79,7 +82,6 @@ namespace FiveCountries
 
 
             }
-
         }
 
         public void testMinigameDelegate()
@@ -129,6 +131,7 @@ namespace FiveCountries
 
                 Console.ResetColor();
             }
+
             {
                 if (response != null)
                 {

@@ -33,6 +33,7 @@ namespace WorldOfZuul
         {
 
             this.idiotCount = 0;
+
             switch (choice)
             {
 
@@ -62,11 +63,18 @@ namespace WorldOfZuul
                     break;
             }
 
-            this.options = this.story.options;
-            this.text = this.story.text;
-            this.response = this.story.response;
+            try
+            {
+                this.options = this.story.options;
+                this.text = this.story.text;
+                this.response = this.story.response;
+            }
 
-
+            catch
+            {
+                Console.WriteLine("You have finished all of it");//pozret sa na t0, implement what happens at the ennd of scritp
+                this.options = null;
+            }
 
         }
         public string? tryRead(string subpena)
