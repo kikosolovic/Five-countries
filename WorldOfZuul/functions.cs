@@ -86,9 +86,8 @@ namespace FiveCountries
 
 
         }
-
-        public int PlayGame(Country country, Room room, List<Minigame> minigames, int gameNumber = 0)
-        {
+        
+        public (int, int) PlayGame(Country country, Room room, List<Minigame> minigames, int gameNumber = 0){
             int counter = 1;
             List<Minigame> gamesForHere = new List<Minigame>();
 
@@ -104,14 +103,12 @@ namespace FiveCountries
                 if (gamesForHere.Count == 0)
                 {
                     Console.WriteLine("Sorry, there are no games available in this room.");
-                    return 0;
-                }
-                else
-                {
+                    return (0,0);
+                }else{
                     Console.WriteLine("Here you can choose from the following games:");
                     foreach (var minigame in gamesForHere)
                     {
-                        Console.WriteLine($"{counter}.{minigame.description}");
+                        Console.WriteLine($"{counter}.{minigame.description}, score available: {minigame.score}");
                         counter++;
                     }
                 }
@@ -123,50 +120,14 @@ namespace FiveCountries
             if (gameNumber > gamesForHere.Count || gameNumber < 1)
             {
                 Console.WriteLine("Invalid game number.");
-                return 0;
+                return (0,0);
             }
 
+            //int gameid = gamesForHere[gameNumber-1].id;
 
-            int maxScore = gamesForHere[gameNumber - 1].maxScore;
-            int scoreEarned = 0;
-            //here add a call to the game
-            switch (gamesForHere[gameNumber - 1].id)
-            {
-                case 11:
-                    scoreEarned = minigamesCode.minigame11();
-                    break;
-                case 12:
-                    scoreEarned = minigamesCode.minigame12();
-                    break;
-                case 13:
-                    scoreEarned = minigamesCode.minigame13();
-                    break;
-                case 14:
-                    scoreEarned = minigamesCode.minigame14();
-                    break;
-                default:
-                    Console.WriteLine("Invalid game number.");
-                    break;
-            }
-            int finalScore = 0;
-            if (scoreEarned > maxScore)
-            {
-                finalScore = maxScore;
-                gamesForHere[gameNumber - 1].maxScore = 0;
-                // minigames[].maxScore = 0;
-
-            }
-            else
-            {
-                finalScore = scoreEarned;
-                gamesForHere[gameNumber - 1].maxScore -= scoreEarned;
-            }
-            return scoreEarned;
+            return (gamesForHere[gameNumber-1].game(), gamesForHere[gameNumber-1].id);
 
         }
-
-
-
 
 
         public void loading()
@@ -189,6 +150,4 @@ namespace FiveCountries
         }
 
     }
-
-
 }

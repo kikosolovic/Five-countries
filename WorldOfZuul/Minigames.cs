@@ -9,20 +9,20 @@ namespace FiveCountries
 {
     public class Minigame
     {
-        public string country { get; set; }
-        public string room { get; set; }
-        public string description { get; set; }
-        public int id { get; set; }
+        public string country {get; set;}
+        public string room {get; set;}
+        public string description {get; set;}
+        public int id {get; set;}
+        public int score {get; set;}
 
-        public int maxScore { get; set; }
-
-        public Minigame(string country2, string room2, string description2, int id2, int score2)
-        {
+        public Func<int> game;
+        public Minigame(string country2, string room2, string description2, int id2, Func<int> game2, int score2){
             country = country2;
             room = room2;
             description = description2;
             id = id2;
-            score2 = score2;
+            game = game2;
+            score = score2;
         }
 
     }

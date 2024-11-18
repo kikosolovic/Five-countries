@@ -25,6 +25,7 @@ namespace FiveCountries
         {
             Parser parser = new();
             CustomFunctions customFunctions = new();
+            MinigameCode minigamesCode = new();
             List<Minigame> minigames = CreateGames();
             int score = 0;
 
@@ -104,7 +105,25 @@ namespace FiveCountries
                         customFunctions.PrintMap(currentCountry?.currentRoom?.ShortDescription);
                         break;
                     case "play":
-                        score += customFunctions.PlayGame(currentCountry, currentCountry.currentRoom, minigames, int.Parse(command?.SecondWord ?? "0"));
+                        int scoreGot = 0;
+                        int gameId = 0;
+                        (scoreGot, gameId) = customFunctions.PlayGame(currentCountry, currentCountry.currentRoom, minigames, int.Parse(command?.SecondWord ?? "0"));
+                        foreach (var minigame in minigames)
+                        {
+                            if (minigame.id == gameId)
+                            {
+                                if (minigame.score - scoreGot > 0){
+                                    score += scoreGot;
+                                    minigame.score -= scoreGot;
+                                }else{
+                                    score += minigame.score;
+                                    minigame.score = 0;
+                                    
+                                }
+                                break;
+                            }
+                        }
+                        
                         break;
                     case "score":
                         Console.WriteLine($"Your score is: {score}");

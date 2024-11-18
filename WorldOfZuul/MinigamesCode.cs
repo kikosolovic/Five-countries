@@ -102,6 +102,9 @@ namespace FiveCountries
             int score = 0;
             Console.WriteLine("Welcome to the second minigame in Haitis' Lab");
             Console.WriteLine("You will have to help with designing a new Photovoltaic power plant");
+            Console.WriteLine("How many points:");
+            score = int.Parse(Console.ReadLine()?? "0");
+            return score;
             score += 2;
             return score;
         }
@@ -110,6 +113,7 @@ namespace FiveCountries
             int score = 0;
             Console.WriteLine("Welcome to the third minigame in Haitis' Lab");
             Console.WriteLine("You will have to help with designing a new Wind power plant");
+            return score;
             return score;
         }
 

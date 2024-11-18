@@ -7,6 +7,7 @@ namespace FiveCountries
 {
     public class Init
     {
+        MinigameCode minigamesCode = new();
 
         public List<Country> CreateCountries()
         {
@@ -141,11 +142,12 @@ namespace FiveCountries
         {
             List<Minigame> minigames = new List<Minigame>();
             Minigame[] Games = {
-                new("Haiti", "Lab", "This is 1 game.", 11, 5),
-                new("Haiti", "Lab", "This is 2 game.", 12, 5),
-                new("Haiti", "Lab", "This is 3 game.", 13, 5),
-                new("Haiti", "Lab", "This is 4 game.", 14, 5),
-
+                // Country, Room, Description, unique ID, Function, maximum Score
+                new("Haiti", "Lab", "This is 1 game", 11, minigamesCode.minigame11, 2),
+                new("Haiti", "Lab", "This is 2 game", 12, minigamesCode.minigame12, 4),
+                new("Haiti", "Lab", "This is 3 game", 13, minigamesCode.minigame13, 1),
+                new("Haiti", "Lab", "This is 4 game", 14, minigamesCode.minigame14, 2),
+            
             };
             foreach (Minigame minigame in Games)
             {
