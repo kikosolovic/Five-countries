@@ -21,18 +21,26 @@ namespace FiveCountries{
             Console.WriteLine("Your task is to find best spots for Photovoltaic power plants");
             return score;
         }
-        public void minigame12(){
+        public int minigame12(){
+            int score = 0;
             Console.WriteLine("Welcome to the second minigame in Haitis' Lab");
             Console.WriteLine("You will have to help with designing a new Photovoltaic power plant");
+            Console.WriteLine("How many points:");
+            score = int.Parse(Console.ReadLine()?? "0");
+            return score;
         }
-        public void minigame13(){
+        public int minigame13(){
+            int score = 0;
             Console.WriteLine("Welcome to the third minigame in Haitis' Lab");
             Console.WriteLine("You will have to help with designing a new Wind power plant");
+            return score;
         }
         
-        public void minigame14(){
+        public int minigame14(){
+            int score = 0;
             Console.WriteLine("Welcome to the fourth minigame in Haitis' Lab");
             Console.WriteLine("Calculate how big photovoltaic power station is needed for The Farm");
+            return score;
         }
     }
 
