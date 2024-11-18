@@ -15,9 +15,11 @@ namespace FiveCountries{
 
 
         // change void to int if we want to make scoring system
-        public void minigame11(){
+        public int minigame11(){
+            int score = 0;
             Console.WriteLine("Welcome to the first minigame in Haitis' Lab");
             Console.WriteLine("Your task is to find best spots for Photovoltaic power plants");
+            return score;
         }
         public void minigame12(){
             Console.WriteLine("Welcome to the second minigame in Haitis' Lab");
