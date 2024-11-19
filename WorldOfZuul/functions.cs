@@ -149,6 +149,165 @@ namespace FiveCountries
         }
 
 
+        public void PrintMap3(Country Country, string room){
+            static void smallPrintMap(List<List<string>> map){
+                Console.WriteLine("----Current map:----");
+                foreach (var row in map){
+                    foreach (var room in row){
+                        Console.Write(room.PadLeft(8));
+                        Console.Write(",");
+                    }
+                    Console.WriteLine();
+                }
+                Console.WriteLine("--------------------");
+            }
+
+            static (int, int) getPos(List<List<string>> map, string room){
+                for(int i = 0; i < map.Count; i++){
+                    for(int j = 0; j < map[i].Count; j++){
+                        if (map[i][j] == room){
+                            return (i, j);
+                        }
+                    }
+                }
+                return (-1, -1);
+            }
+
+            static (int, int) getDimensions(List<List<string>> map){
+                return (map.Count, map.Max(x => x.Count));
+            }
+            static void addRoom(ref List<List<string>> map, string room, string exit, string nextRoom){
+                (int, int) roomPos = getPos(map, room);
+                (int, int) direction = (0, 0);
+                switch(exit){
+                    case "north":
+                        direction = (-1, 0);
+                        break;
+                    case "south":
+                        direction = (1, 0);
+                        break;
+                    case "east":
+                        direction = (0, 1);
+                        break;
+                    case "west":
+                        direction = (0, -1);
+                        break;
+                }
+                //check it it gets out of bounds
+                (int, int) pos = (roomPos.Item1 + direction.Item1, roomPos.Item2 + direction.Item2);
+                if (pos.Item1 < 0){
+                    (int, int) size = getDimensions(map);
+                    map.Insert(0, Enumerable.Repeat("", size.Item1+1).ToList());
+                }
+                if(pos.Item2 < 0){
+                    foreach (var row in map){
+                        row.Insert(0, "");
+                    }
+                }
+                if(pos.Item1 >= map.Count){
+                    (int, int) size = getDimensions(map);
+                    map.Add(Enumerable.Repeat("", size.Item1+1).ToList());
+                }
+                if(pos.Item2 >= map[pos.Item1].Count){
+                    foreach (var row in map){
+                        row.Add("");
+                    }
+                }
+
+                roomPos = getPos(map, room);
+                map[roomPos.Item1+direction.Item1][roomPos.Item2+direction.Item2] = nextRoom;
+            }
+
+            List<List<string>> map = new List<List<string>>();
+            List<string> alreadyAdded = [Country.Rooms[0].ShortDescription];
+            List<(string, string, string)> notAddedRooms = new List<(string, string, string)>();
+            map.Add(new List<string>{Country.Rooms[0].ShortDescription});
+            foreach(Room room2 in Country.Rooms){
+                Console.WriteLine("===== Working on =======");
+                Console.WriteLine(room2.ShortDescription);
+                foreach(var exit in room2.Exits){
+
+                    if (alreadyAdded.Contains(exit.Value.ShortDescription)){
+                        if(alreadyAdded.Contains(room2.ShortDescription)){
+                            continue;
+                            //add here later
+                            //code for adding "doors"
+                        }else{
+                            alreadyAdded.Add(room2.ShortDescription);
+                            addRoom(ref map, exit.Value.ShortDescription, exit.Key, room2.ShortDescription);
+                            smallPrintMap(map);
+                        }
+
+                    }else{
+                        if(alreadyAdded.Contains(room2.ShortDescription)){
+                            alreadyAdded.Add(exit.Value.ShortDescription);
+                            addRoom(ref map, room2.ShortDescription, exit.Key, exit.Value.ShortDescription);
+                            smallPrintMap(map);
+                        }else{
+                        notAddedRooms.Add((room2.ShortDescription, exit.Key, exit.Value.ShortDescription));
+                        }
+                    }
+                    //Console.WriteLine(room2.ShortDescription+" "+exit.Key+" "+exit.Value.ShortDescription);
+                }
+                smallPrintMap(map);
+            }
+            int counter = 0;
+            int lastCountOfNotAdded = notAddedRooms.Count;
+            foreach(var roomNot in notAddedRooms){
+                alreadyAdded.Add(roomNot.Item1);//not sure if its Item1, to CHECK
+                addRoom(ref map, roomNot.Item1, roomNot.Item2, roomNot.Item3);
+                smallPrintMap(map);
+            }
+
+            Console.WriteLine($"Not added rooms:{notAddedRooms.Count}");
+            foreach (var roomNot in notAddedRooms){
+                Console.WriteLine(roomNot);
+            }
+            
+        }
+
+        public void PrintMap4(Country Country, string room){
+            static void smallPrintMap(List<List<string>> map){
+                Console.WriteLine("----Current map:----");
+                foreach (var row in map){
+                    foreach (var room in row){
+                        Console.Write(room.PadLeft(8));
+                        Console.Write(",");
+                    }
+                    Console.WriteLine();
+                }
+                Console.WriteLine("--------------------");
+            }
+
+            static (int, int) getPos(List<List<string>> map, string room){
+                for(int i = 0; i < map.Count; i++){
+                    for(int j = 0; j < map[i].Count; j++){
+                        if (map[i][j] == room){
+                            return (i, j);
+                        }
+                    }
+                }
+                return (-1, -1);
+            }
+
+            static (int, int) getDimensions(List<List<string>> map){
+                return (map.Count, map.Max(x => x.Count));
+            }
+
+            List<List<string>> map = new List<List<string>>();
+            List<string> alreadyAdded = [Country.Rooms[0].ShortDescription];
+            List<(string, string, string)> notAddedRooms = new List<(string, string, string)>();
+
+        }
+
+
+
+
+
+
+
+
+
 /// <summary>
 ///     Prints all strings in text[], each in color from colors[] in the same line
 /// </summary>
@@ -221,11 +380,6 @@ namespace FiveCountries
 
 
         }
-
-
-
-
-
 
 
     }
