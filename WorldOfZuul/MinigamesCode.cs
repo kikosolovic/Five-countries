@@ -152,6 +152,8 @@ namespace FiveCountries
                     }
 
                 }
+            }
+        }
         public void RecyclingSortingMinigameNYC()
         {
             // Trigger the NPC dialogue before the minigame
@@ -335,8 +337,4 @@ namespace FiveCountries
     }
 
 
-
-
-}
-    }
 }
