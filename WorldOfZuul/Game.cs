@@ -22,10 +22,10 @@ namespace FiveCountries
             Parser parser = new();
             CustomFunctions customFunctions = new();
             List<Minigame> minigames = CreateGames();
-            customFunctions.PrintMap(currentCountry?.currentRoom.ShortDescription);//print map of the current room - only for testing
+            //customFunctions.PrintMap(currentCountry?.currentRoom.ShortDescription);//print map of the current room - only for testing
             //customFunctions.PrintMap3(currentCountry, currentCountry?.currentRoom?.ShortDescription);//print map of the current room - only for testing
-            customFunctions.PrintMap4(currentCountry, currentCountry?.currentRoom?.ShortDescription);//print map of the current room - only for testing
-            return;//remove this line when you want to play the game
+            //customFunctions.PrintMap4(currentCountry, currentCountry?.currentRoom?.ShortDescription);//print map of the current room - only for testing
+            //return;//remove this line when you want to play the game
             PrintWelcome();
             PrintHelp();
 
@@ -90,8 +90,9 @@ namespace FiveCountries
                         Move(command.Name);
                         break;
                     case "map":
-                        customFunctions.PrintMap(currentCountry?.currentRoom?.ShortDescription);
-                        customFunctions.PrintMap2(currentCountry, currentCountry?.currentRoom?.ShortDescription);
+                        //customFunctions.PrintMap(currentCountry?.currentRoom?.ShortDescription);
+                        //customFunctions.PrintMap2(currentCountry, currentCountry?.currentRoom?.ShortDescription);
+                        customFunctions.PrintMap4(currentCountry, currentCountry?.currentRoom?.ShortDescription);
                         break;
                     case "play":
                         customFunctions.PlayGame(currentCountry, currentCountry.currentRoom, minigames, int.Parse(command?.SecondWord ?? "0"));

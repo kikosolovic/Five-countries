@@ -343,13 +343,13 @@ namespace FiveCountries
             map.Add(new List<string>{Country.Rooms[0].ShortDescription});//addidng the first room to the map
 
             foreach(Room roomCurrent in Country.Rooms){//run for every room in the country
-                Console.WriteLine($"\n\n===== Working on {roomCurrent.ShortDescription}");
+                //Console.WriteLine($"\n\n===== Working on {roomCurrent.ShortDescription}");
                 foreach(var exit in roomCurrent.Exits){//run  for every exit of the room
                     string currentRoom = roomCurrent.ShortDescription;
                     string exitDirection = exit.Key;
                     string nextRoom = exit.Value.ShortDescription;
 
-                    Console.WriteLine(exitDirection+" "+nextRoom);
+                    //Console.WriteLine(exitDirection+" "+nextRoom);
 
                     //check if the current room is already added
                     if (alreadyAdded.Contains(currentRoom)){
@@ -360,13 +360,13 @@ namespace FiveCountries
                         }else{
                             alreadyAdded.Add(nextRoom);
                             addRoom(ref map, currentRoom, exitDirection, nextRoom);
-                            smallPrintMap(map);
+                            //smallPrintMap(map);
                         }
                     }else{
                         if(alreadyAdded.Contains(nextRoom)){
                             alreadyAdded.Add(currentRoom);
                             addRoom(ref map, nextRoom, exitDirection, currentRoom);
-                            smallPrintMap(map);
+                            //smallPrintMap(map);
                         }else{
                             notAddedRooms.Add((currentRoom, exitDirection, nextRoom));
                         }
@@ -388,14 +388,14 @@ namespace FiveCountries
                         }else{
                             alreadyAdded.Add(roomCurrent.Item3);
                             addRoom(ref map, roomCurrent.Item1, roomCurrent.Item2, roomCurrent.Item3);
-                            smallPrintMap(map);
+                            //smallPrintMap(map);
                             notAddedRooms.Remove(roomCurrent);
                         }
                     }else{
                         if(alreadyAdded.Contains(roomCurrent.Item3)){
                             alreadyAdded.Add(roomCurrent.Item1);
                             addRoom(ref map, roomCurrent.Item3, roomCurrent.Item2, roomCurrent.Item1);
-                            smallPrintMap(map);
+                            //smallPrintMap(map);
                             notAddedRooms.Remove(roomCurrent);
                         }
                     }
@@ -405,6 +405,7 @@ namespace FiveCountries
                     break;
                 }
             }
+            smallPrintMap(map);
         }
 
 /// <summary>
