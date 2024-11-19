@@ -2,24 +2,34 @@
   "format": 1,
   "restore": {
     "/home/kikosolovic/Desktop/SCHOOL/OOP/FIveCountries/Five-countries/WorldOfZuul/WorldOfZuul.csproj": {}
+    "C:\\Users\\lamak\\Desktop\\work\\WorldOfZuul\\WorldOfZuul.csproj": {}
   },
   "projects": {
     "/home/kikosolovic/Desktop/SCHOOL/OOP/FIveCountries/Five-countries/WorldOfZuul/WorldOfZuul.csproj": {
+    "C:\\Users\\lamak\\Desktop\\work\\WorldOfZuul\\WorldOfZuul.csproj": {
       "version": "1.0.0",
       "restore": {
         "projectUniqueName": "/home/kikosolovic/Desktop/SCHOOL/OOP/FIveCountries/Five-countries/WorldOfZuul/WorldOfZuul.csproj",
+        "projectUniqueName": "C:\\Users\\lamak\\Desktop\\work\\WorldOfZuul\\WorldOfZuul.csproj",
         "projectName": "WorldOfZuul",
         "projectPath": "/home/kikosolovic/Desktop/SCHOOL/OOP/FIveCountries/Five-countries/WorldOfZuul/WorldOfZuul.csproj",
         "packagesPath": "/home/kikosolovic/.nuget/packages/",
         "outputPath": "/home/kikosolovic/Desktop/SCHOOL/OOP/FIveCountries/Five-countries/WorldOfZuul/obj/",
+        "projectPath": "C:\\Users\\lamak\\Desktop\\work\\WorldOfZuul\\WorldOfZuul.csproj",
+        "packagesPath": "C:\\Users\\lamak\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\lamak\\Desktop\\work\\WorldOfZuul\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/kikosolovic/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\lamak\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -60,6 +70,7 @@
             }
           },
           "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.110/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -123,18 +123,18 @@ namespace FiveCountries
 
 
             // //initialize rooms to USA
-            USA.InitRoom("Outside", "You are standing outside the main entrance of the university. To the east is a large building, to the south is a computing lab, and to the west is the campus pub.");
-            USA.InitRoom("Theatre", "You find yourself inside a large lecture theatre. Rows of seats ascend up to the back, and there's a podium at the front. It's quite dark and quiet.");
-            USA.InitRoom("Pub", "You've entered the campus pub. It's a cosy place, with a few students chatting over drinks. There's a bar near you and some pool tables at the far end.");
-            USA.InitRoom("Lab", "You're in a computing lab. Desks with computers line the walls, and there's an office to the east. The hum of machines fills the room.");
-            USA.InitRoom("Office", "You've entered what seems to be an administration office. There's a large desk with a computer on it, and some bookshelves lining one wall.");
+            USA.InitRoom("New York City", "You are in New York City, where waste management and recycling initiatives are critical to reducing urban waste.", minigameFunctions.RecyclingSortingMinigameNYC);
+            USA.InitRoom("Los Angeles", "You are in Los Angeles, dealing with challenges related to plastic waste and sustainable disposal methods..");
+            USA.InitRoom("San Francisco", "You are in San Francisco, known for its zero-waste goals and composting initiatives.");
+            USA.InitRoom("Houston", "You are in Houston, where industrial waste and hazardous waste management are major concerns.");
+            USA.InitRoom("Chicago", "You are in Chicago, focusing on electronic waste recycling and management.");
 
 
-            USA.addExit("Outside", new List<string> { "east", "south", "west" }, new List<string> { "Theatre", "Lab", "Pub" });
-            USA.addExit("Theatre", new List<string> { "west" }, new List<string> { "Outside" });
-            USA.addExit("Pub", new List<string> { "east" }, new List<string> { "Outside" });
-            USA.addExit("Lab", new List<string> { "north", "east" }, new List<string> { "Outside", "Office" });
-            USA.addExit("Office", new List<string> { "west" }, new List<string> { "Lab" });
+            USA.addExit("New York City", new List<string> { "east", "south", "west" }, new List<string> { "Los Angeles", "Houston", "San Francisco" });
+            USA.addExit("Los Angeles", new List<string> { "west" }, new List<string> { "New York City" });
+            USA.addExit("San Francisco", new List<string> { "east" }, new List<string> { "New York City" });
+            USA.addExit("Houston", new List<string> { "north", "east" }, new List<string> { "New York City", "Chicago" });
+            USA.addExit("Chicago", new List<string> { "west" }, new List<string> { "Houston" });
 
         }
 

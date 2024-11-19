@@ -155,7 +155,11 @@ namespace FiveCountries
                 // previousRoom = currentRoom;
                 // currentRoom = currentRoom?.Exits[direction];
                 currentCountry.setRoom(currentCountry.currentRoom?.Exits[direction], currentCountry.currentRoom);
-
+                if (currentCountry.ShortDescription == "USA")
+                {
+                    CustomFunctions customFunctions = new CustomFunctions();
+                    customFunctions.UNAmbassadorDialogue(currentCountry.currentRoom);
+                }
             }
             else
             {
@@ -175,6 +179,19 @@ namespace FiveCountries
             {
                 Console.WriteLine($"You can't go to {country} yet!");
             }
+            // Print the description of the new location (current room)
+            Console.WriteLine(currentCountry?.currentRoom?.LongDescription);
+
+            // Trigger the NPC dialogue if arriving in a room in the USA
+            if (currentCountry?.ShortDescription == "USA" && currentCountry?.currentRoom != null)
+            {
+                Console.WriteLine("You've arrived here on the invitation of a UN ambassador. He's expecting your arrival!");
+
+                // Trigger the NPC dialogue
+                CustomFunctions customFunctions = new CustomFunctions();
+                customFunctions.UNAmbassadorDialogue(currentCountry.currentRoom);
+            }
+
         }
 
 
