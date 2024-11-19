@@ -1,48 +1,46 @@
-﻿namespace WorldOfZuul
+﻿using System.Security.Cryptography.X509Certificates;
+using WorldOfZuul;
+
+namespace FiveCountries
 {
-    public class Game
+    public class Game : Init
     {
-        private Room? currentRoom;
-        private Room? previousRoom;
+
+        private Country? currentCountry;
+        private Country? previousCountry; //back command for country if needed
+
+        private string currentItem = null;
 
         public Game()
         {
-            CreateRooms();
-        }
+            //initialize the game
+            List<Country> Countries = CreateCountries();
+            this.currentCountry = Countries[0];
+            CreateRooms(Countries);
 
-        private void CreateRooms()
-        {
-  
-            Room? outside = new("Outside", "You are standing outside the main entrance of the university. To the east is a large building, to the south is a computing lab, and to the west is the campus pub.");
-            Room? theatre = new("Theatre", "You find yourself inside a large lecture theatre. Rows of seats ascend up to the back, and there's a podium at the front. It's quite dark and quiet.");
-            Room? pub = new("Pub", "You've entered the campus pub. It's a cozy place, with a few students chatting over drinks. There's a bar near you and some pool tables at the far end.");
-            Room? lab = new("Lab", "You're in a computing lab. Desks with computers line the walls, and there's an office to the east. The hum of machines fills the room.");
-            Room? office = new("Office", "You've entered what seems to be an administration office. There's a large desk with a computer on it, and some bookshelves lining one wall.");
-
-            outside.SetExits(null, theatre, lab, pub); // North, East, South, West
-
-            theatre.SetExit("west", outside);
-
-            pub.SetExit("east", outside);
-
-            lab.SetExits(outside, office, null, null);
-
-            office.SetExit("west", lab);
-
-            currentRoom = outside;
+            // QuickAssign(Rooms, Countries);
         }
 
         public void Play()
         {
             Parser parser = new();
+            CustomFunctions customFunctions = new();
+            MinigameCode minigamesCode = new();
+            List<Minigame> minigames = CreateGames();
+            int score = 0;
 
             PrintWelcome();
+            PrintHelp();
 
             bool continuePlaying = true;
             while (continuePlaying)
+
+
+            // note below
             {
-                Console.WriteLine(currentRoom?.ShortDescription);
-                Console.Write("> ");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                helper.WriteWithDelay(currentCountry?.ShortDescription + " " + currentCountry?.currentRoom?.ShortDescription + " >");
+                Console.ResetColor();
 
                 string? input = Console.ReadLine();
 
@@ -52,25 +50,45 @@
                     continue;
                 }
 
-                Command? command = parser.GetCommand(input);
+                Command? command = parser.GetCommand(input.ToLower());
+                // 
+
+
+                // 
 
                 if (command == null)
                 {
-                    Console.WriteLine("I don't know that command.");
+                    Console.WriteLine("I don't know that command: " + command);
                     continue;
                 }
 
-                switch(command.Name)
+                switch (command.Name)
                 {
                     case "look":
-                        Console.WriteLine(currentRoom?.LongDescription);
+                        Console.WriteLine(currentCountry?.currentRoom?.LongDescription);
+                        customFunctions.PrintMap(currentCountry?.currentRoom?.ShortDescription);
                         break;
 
                     case "back":
-                        if (previousRoom == null)
+                        if (currentCountry?.previousRoom == null)
                             Console.WriteLine("You can't go back from here!");
                         else
-                            currentRoom = previousRoom;
+                            // currentRoom = previousRoom;
+                            currentCountry.setRoom(currentCountry.previousRoom, currentCountry?.currentRoom);//can only go back once?
+                        break;
+                    case "travel":
+                        if (command.SecondWord == null || command.SecondWord == "" || command.SecondWord == " ")
+                        {
+                            Console.WriteLine("Travel where?");
+                            break;
+                        }
+                        customFunctions.loading();
+                        Travel(command.SecondWord);
+                        Console.WriteLine(currentCountry?.LongDescription);
+                        if (this.currentCountry?.currentRoom?.minigame != null)
+                        {
+                            this.currentCountry.currentRoom.ExecuteMinigame();
+                        }
                         break;
 
                     case "north":
@@ -78,8 +96,38 @@
                     case "east":
                     case "west":
                         Move(command.Name);
+                        if (this.currentCountry?.currentRoom?.minigame != null)
+                        {
+                            this.currentCountry.currentRoom.ExecuteMinigame();
+                        }
                         break;
-
+                    case "map":
+                        customFunctions.PrintMap(currentCountry?.currentRoom?.ShortDescription);
+                        break;
+                    case "play":
+                        int scoreGot = 0;
+                        int gameId = 0;
+                        (scoreGot, gameId) = customFunctions.PlayGame(currentCountry, currentCountry.currentRoom, minigames, int.Parse(command?.SecondWord ?? "0"));
+                        foreach (var minigame in minigames)
+                        {
+                            if (minigame.id == gameId)
+                            {
+                                if (minigame.score - scoreGot > 0){
+                                    score += scoreGot;
+                                    minigame.score -= scoreGot;
+                                }else{
+                                    score += minigame.score;
+                                    minigame.score = 0;
+                                    
+                                }
+                                break;
+                            }
+                        }
+                        
+                        break;
+                    case "score":
+                        Console.WriteLine($"Your score is: {score}");
+                        break;
                     case "quit":
                         continuePlaying = false;
                         break;
@@ -87,45 +135,94 @@
                     case "help":
                         PrintHelp();
                         break;
+                    case "startminigame":
+                        this.currentCountry?.currentRoom?.ExecuteMinigame();
+                        break;
 
                     default:
-                        Console.WriteLine("I don't know what command.");
+                        Console.WriteLine("I don't know what command: " + command.Name + ".");
                         break;
                 }
             }
 
-            Console.WriteLine("Thank you for playing World of Zuul!");
-        }
+            Console.WriteLine("Thank you for playing Five Countries!");
+        } // instead of all cases implement dynamic method invocation
 
         private void Move(string direction)
         {
-            if (currentRoom?.Exits.ContainsKey(direction) == true)
+            if (currentCountry?.currentRoom?.Exits.ContainsKey(direction) == true)
             {
-                previousRoom = currentRoom;
-                currentRoom = currentRoom?.Exits[direction];
+                // previousRoom = currentRoom;
+                // currentRoom = currentRoom?.Exits[direction];
+                currentCountry.setRoom(currentCountry.currentRoom?.Exits[direction], currentCountry.currentRoom);
+                if (currentCountry.ShortDescription == "USA")
+                {
+                    CustomFunctions customFunctions = new CustomFunctions();
+                    customFunctions.UNAmbassadorDialogue(currentCountry.currentRoom);
+                }
             }
             else
             {
                 Console.WriteLine($"You can't go {direction}!");
             }
         }
+        private void Travel(string country)
+
+        {
+            if (currentCountry?.Exits.ContainsKey(country) == true)
+            {
+                previousCountry = currentCountry;
+                currentCountry = currentCountry?.Exits[country];
+
+            }
+            else
+            {
+                Console.WriteLine($"You can't go to {country} yet!");
+            }
+            // Print the description of the new location (current room)
+            Console.WriteLine(currentCountry?.currentRoom?.LongDescription);
+
+            // Trigger the NPC dialogue if arriving in a room in the USA
+            if (currentCountry?.ShortDescription == "USA" && currentCountry?.currentRoom != null)
+            {
+                Console.WriteLine("You've arrived here on the invitation of a UN ambassador. He's expecting your arrival!");
+
+                // Trigger the NPC dialogue
+                CustomFunctions customFunctions = new CustomFunctions();
+                customFunctions.UNAmbassadorDialogue(currentCountry.currentRoom);
+            }
+
+        }
 
 
         private static void PrintWelcome()
         {
-            Console.WriteLine("Welcome to the World of Zuul!");
-            Console.WriteLine("World of Zuul is a new, incredibly boring adventure game.");
-            PrintHelp();
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("""
+ __      __       .__                                  __           ___________.__               _________                      __         .__              ._.
+/  \    /  \ ____ |  |   ____  ____   _____   ____   _/  |_  ____   \_   _____/|__|__  __ ____   \_   ___ \  ____  __ __  _____/  |________|__| ____   _____| |
+\   \/\/   // __ \|  | _/ ___\/  _ \ /     \_/ __ \  \   __\/  _ \   |    __)  |  \  \/ // __ \  /    \  \/ /  _ \|  |  \/    \   __\_  __ \  |/ __ \ /  ___/ |
+ \        /\  ___/|  |_\  \__(  <_> )  Y Y  \  ___/   |  | (  <_> )  |     \   |  |\   /\  ___/  \     \___(  <_> )  |  /   |  \  |  |  | \/  \  ___/ \___ \ \|
+  \__/\  /  \___  >____/\___  >____/|__|_|  /\___  >  |__|  \____/   \___  /   |__| \_/  \___  >  \______  /\____/|____/|___|  /__|  |__|  |__|\___  >____  >__
+       \/       \/          \/            \/     \/                      \/                  \/          \/                  \/                    \/     \/ \/
+""");
+            Console.ResetColor();
             Console.WriteLine();
         }
 
         private static void PrintHelp()
         {
-            Console.WriteLine("You are lost. You are alone. You wander");
-            Console.WriteLine("around the university.");
-            Console.WriteLine();
+            Console.WriteLine("You've been sent by the United Nations to complete various tasks in the following countries:");
+            Console.WriteLine("Haiti");
+            Console.WriteLine("Mozambique");
+            Console.WriteLine("India");
+            Console.WriteLine("Brazil");
+            Console.WriteLine("USA");
+            Console.WriteLine("");
             Console.WriteLine("Navigate by typing 'north', 'south', 'east', or 'west'.");
+            Console.WriteLine("Travel between countries by typing 'travel' and the name of the country. ");
             Console.WriteLine("Type 'look' for more details.");
+            Console.WriteLine("Type 'map' to see the map.");
             Console.WriteLine("Type 'back' to go to the previous room.");
             Console.WriteLine("Type 'help' to print this message again.");
             Console.WriteLine("Type 'quit' to exit the game.");
