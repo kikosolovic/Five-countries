@@ -1,30 +1,115 @@
 {
-"text": "After a long journey you finally arrived in a small coastal village of Macuse. The guide got sick during the journney and left you at a small dock. There are only few old boats and a couple of local fisherman fishing.  ",        
-"options":"What do you want to do? 1.Talk 2.Continue",
-    "opt1":{
-            "text":"You panicked and said hello fish to the locals.",
-            "response":"What did you just say to me you little bitch",
-
-            "options":"WHat do you want to do? Walk/n",
-                "opt1" :{
-                        "text":"You walk away from the locals",
-                        "response":"bye bye ",
-
-                        "options" :"What do you want to do? travel/Continue",
-                                "opt1":{
-                                        "text":"You walk away from the locals",
-                                        "response":"bye bye",
-                                                "options" :"",
-                                "opt2":{
-                                    "text":"Be on your way",
-                                    "response":"bye bye",
-                                                "options" :""
-
-                            }
+        "text": "You arrive at the dock where a fisherman is unloading his catch. You can approach him to learn about the local challenges.",
+        "options": "1. Ask about how climate change affects fishing. 2. Ask about his daily fishing routine.",
+        "opt1": {
+            "text": "The activist asks: 'How has climate change affected your fishing?'",
+            "response": "The fisherman replies: 'The waters have become unpredictable. The fish we used to catch near the shore have moved farther out, and the storms have become more frequent and dangerous.'",
+            "options": "1. Inquire about how he adapts to these changes. 2. Ask about what types of fish are disappearing.",
+            "opt1": {
+                "text": "The activist asks: 'How do you adapt to these changes?'",
+                "response": "The fisherman responds: 'We have to spend more money on fuel to go farther out to sea. Some of us are learning to farm fish, but it's hard without proper support.'",
+                "options": "1. Ask what support they need. 2. Ask about the impact on the community's income.",
+                "opt1": {
+                    "text": "The activist asks: 'What kind of support would help?'",
+                    "response": "The fisherman replies: 'Better equipment, training for fish farming, and knowledge about how to protect the waters would be a start.'",
+                    "options": "1. Offer to connect him with resources. 2. Reflect on the need for international aid.",
+                    "opt1": {
+                        "text": "You offer: 'I can help connect you with organizations that provide resources for sustainable fishing.'",
+                        "response": "The fisherman smiles: 'That would be a blessing. We need all the help we can get to keep feeding our families.'",
+                        "options": "",
+                        "opt1": {},
+                        "opt2": {}
+                    },
+                    "opt2": {
+                        "text": "You say: 'This shows how important international aid is for addressing these issues.'",
+                        "response": "The fisherman nods: 'Yes, but we also need to make sure the solutions fit our needs and traditions.'",
+                        "options": "",
+                        "opt1": {},
+                        "opt2": {}
                     }
+                },
+                "opt2": {
+                    "text": "The activist asks: 'How has this affected the community’s income?'",
+                    "response": "The fisherman replies: 'Many families are struggling. Some have had to stop fishing altogether and look for other jobs, but there aren't many options.'",
+                    "options": "1. Ask what other jobs they turn to. 2. Reflect on the long-term challenges.",
+                    "opt1": {
+                        "text": "The activist asks: 'What other jobs do people find?'",
+                        "response": "The fisherman replies: 'Some try farming, but the land isn’t always good. Others leave for the cities, hoping to find work.'",
+                        "options": "",
+                        "opt1": {},
+                        "opt2": {}
+                    },
+                    "opt2": {
+                        "text": "You say: 'This highlights the long-term challenges of climate migration and adaptation.'",
+                        "response": "The fisherman replies: 'Yes, we want to stay here, but it’s hard when the environment is changing so fast.'",
+                        "options": "",
+                        "opt1": {},
+                        "opt2": {}
+                    }
+                }
+            },
+            "opt2": {
+                "text": "The activist asks: 'What types of fish are disappearing?'",
+                "response": "The fisherman replies: 'We see fewer sardines and tuna, which used to be plenty. Now we catch more small, less valuable fish.'",
+                "options": "1. Ask why these fish are disappearing. 2. Ask how this affects their diet.",
+                "opt1": {
+                    "text": "The activist asks: 'Why are these fish disappearing?'",
+                    "response": "The fisherman responds: 'Warmer waters and overfishing are driving them away. The balance of the sea is changing.'",
+                    "options": "",
+                    "opt1": {},
+                    "opt2": {}
+                },
+                "opt2": {
+                    "text": "The activist asks: 'How does this affect your diet?'",
+                    "response": "The fisherman replies: 'We eat less fish ourselves because we sell most of what we catch. Sometimes we go hungry.'",
+                    "options": "",
+                    "opt1": {},
+                    "opt2": {}
+                }
             }
-    },
-    "opt2":{
-            "text":"Be on your way"
+        },
+        "opt2": {
+            "text": "The activist asks: 'Can you tell me about your daily fishing routine?'",
+            "response": "The fisherman replies: 'I go out early in the morning and return in the afternoon. But some days, I come back with almost nothing because the fish are harder to find.'",
+            "options": "1. Ask about the tools he uses. 2. Ask how he learned to fish.",
+            "opt1": {
+                "text": "The activist asks: 'What tools do you use for fishing?'",
+                "response": "The fisherman says: 'Mostly nets and small boats. We can't afford big trawlers or advanced equipment.'",
+                "options": "1. Ask about how they maintain their equipment. 2. Ask about their thoughts on large-scale fishing.",
+                "opt1": {
+                    "text": "The activist asks: 'How do you maintain your equipment?'",
+                    "response": "The fisherman replies: 'It’s difficult. When nets break or boats need repair, it costs more than we sometimes earn in a week.'",
+                    "options": "",
+                    "opt1": {},
+                    "opt2": {}
+                },
+                "opt2": {
+                    "text": "The activist asks: 'What do you think about large-scale fishing operations?'",
+                    "response": "The fisherman frowns: 'They take too much and leave little for us. We can’t compete with their big ships.'",
+                    "options": "",
+                    "opt1": {},
+                    "opt2": {}
+                }
+            },
+            "opt2": {
+                "text": "The activist asks: 'Who taught you how to fish?'",
+                "response": "The fisherman smiles: 'My father taught me, just like his father taught him. It’s been in our family for generations.'",
+                "options": "1. Ask how traditions are changing. 2. Ask if younger generations are continuing this.",
+                "opt1": {
+                    "text": "The activist asks: 'How are traditions changing?'",
+                    "response": "The fisherman replies: 'We’re losing some of the old ways because the sea is changing. We have to learn new methods.'",
+                    "options": "",
+                    "opt1": {},
+                    "opt2": {}
+                },
+                "opt2": {
+                    "text": "The activist asks: 'Are younger generations continuing this tradition?'",
+                    "response": "The fisherman sighs: 'Many young people don’t want to fish anymore. They see no future in it and look for other opportunities.'",
+                    "options": "",
+                    "opt1": {},
+                    "opt2": {}
+                }
+            }
+        }
     }
-}
+    

@@ -32,38 +32,15 @@ namespace FiveCountries
         }
         public void Dock()
         {
-            // Console.WriteLine("After a long journey you finally arrived in a small coastal village of Macuse. The guide got sick during the journney and left you at a small dock. There are only few old boats and a couple of local fisherman fishing.  ");
 
-            // {
-            //     Console.WriteLine("What do you want to do?");
-            //     Console.WriteLine("Talk/Continue");
-            //     var res = Console.ReadLine();
-            //     switch (res.ToLower())
-            //     {
-            //         case "talk":
-            //             Console.WriteLine("You panicked and said hello fish to the locals.");
-            //             say("What did you just say to me you little bitch");
-            //             // Console.WriteLine("What do you want to do");
-            //             // Console.WriteLine("Run?");
-
-
-            //             break;
-            //         case "continue":
-            //             Console.WriteLine("Be on your way");
-            //             break;
-            //         default:
-            //             Console.WriteLine("You have to choose one and write it correctly");
-            //             break;
-            //     }
-            // }
 
             StorylineManager st = new StorylineManager("Dialogues/DockDialogue.json");
             while (true)
             {
                 //spravit cely class na interface a styl s podmienkou aby to fungovalo
-                if (st.idiotCount == 0)
+                if (st.idiotCount == 0) //idiot count is implemented to prevent displaying the same dialogue multiple times in a row, istead just shows the options 
                 {
-                    say(st.text, st.response, st.options); if (st.options == null) { break; }
+                    say(st.text, st.response, st.options); if (st.options == null || st.options == "") { break; }
                 }
                 else { say(null, null, st.options); }
 
@@ -128,23 +105,23 @@ namespace FiveCountries
         public void say(string text, string response, string options)
         {//add pretty text, slow rolling or sometjhig
 
-            if (text != null)
+            if (text != null && text != "")
             {
-                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 helper.WriteWithDelay(">> " + text);
 
                 Console.ResetColor();
             }
 
             {
-                if (response != null)
+                if (response != null && text != "")
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                     helper.WriteWithDelay(">> " + response);
                     Console.ResetColor();
                 }
                 {
-                    if (options != null)
+                    if (options != null && text != "")
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         helper.WriteWithDelay(">> " + options);
