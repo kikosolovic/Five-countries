@@ -60,15 +60,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/kikosolovic/Desktop/SCHOOL/OOP/FIveCountries/Five-countries/WorldOfZuul/WorldOfZuul.csproj",
-      "projectUniqueName": "C:\\Users\\lamak\\Desktop\\work\\WorldOfZuul\\WorldOfZuul.csproj",
+      "projectUniqueName": "C:\\Users\\lamak\\Source\\Repos\\Five-countries\\WorldOfZuul\\WorldOfZuul.csproj",
       "projectName": "WorldOfZuul",
-      "projectPath": "/home/kikosolovic/Desktop/SCHOOL/OOP/FIveCountries/Five-countries/WorldOfZuul/WorldOfZuul.csproj",
-      "packagesPath": "/home/kikosolovic/.nuget/packages/",
-      "outputPath": "/home/kikosolovic/Desktop/SCHOOL/OOP/FIveCountries/Five-countries/WorldOfZuul/obj/",
-      "projectPath": "C:\\Users\\lamak\\Desktop\\work\\WorldOfZuul\\WorldOfZuul.csproj",
+      "projectPath": "C:\\Users\\lamak\\Source\\Repos\\Five-countries\\WorldOfZuul\\WorldOfZuul.csproj",
       "packagesPath": "C:\\Users\\lamak\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lamak\\Desktop\\work\\WorldOfZuul\\obj\\",
+      "outputPath": "C:\\Users\\lamak\\Source\\Repos\\Five-countries\\WorldOfZuul\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\lamak\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -92,6 +88,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {

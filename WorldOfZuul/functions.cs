@@ -305,7 +305,7 @@ namespace FiveCountries
             foreach (char c in line)
             {
                 Console.Write(c);
-                System.Threading.Thread.Sleep(35); // 35 milliseconds delay between characters
+                System.Threading.Thread.Sleep(5); // 5 milliseconds delay between characters
             }
         }
 
