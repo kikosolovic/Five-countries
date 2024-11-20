@@ -30,7 +30,7 @@ namespace FiveCountries
 
             return score;//return score
         }
-        public void Dock()
+        public void Dock(ref int score)
         {
 
 
@@ -61,7 +61,7 @@ namespace FiveCountries
             }
         }
 
-        public void testMinigameDelegate()
+        public void testMinigameDelegate(ref int score)
         {
             Console.WriteLine("succesfuly ran a fucntion passed as argument");
         }
@@ -131,14 +131,193 @@ namespace FiveCountries
                 }
             }
         }
-        public void RecyclingSortingMinigameNYC()
+        public void EcoFriendlyHomeMakeover(ref int score)
+        {
+            CustomFunctions customFunctions = new CustomFunctions();
+            customFunctions.UNAmbassadorPreMinigameDialogue("EcoFriendlyHomeMakeover");
+
+            int minigameScore = 0;
+            int questionNumber = 1;
+
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("\nWelcome to Eco-Friendly Home Makeover in Los Angeles!");
+            Console.WriteLine("Make sustainable choices to upgrade your home and reduce your environmental footprint.\n");
+            Console.ResetColor();
+
+            // List of questions
+            List<Question> questions = new List<Question>
+{
+    new Question
+    {
+        Text = "You need a new refrigerator. Which option is the most eco-friendly choice?",
+        Options = new Dictionary<char, string>
+        {
+            { 'A', "A standard refrigerator with a low upfront cost." },
+            { 'B', "An ENERGY STAR-certified refrigerator." },
+            { 'C', "A second-hand refrigerator from a friend." },
+            { 'D', "The largest refrigerator available for more storage." }
+        },
+        CorrectOption = 'B',
+        Explanation = "ENERGY STAR-certified appliances use less energy, saving you money and reducing environmental impact."
+    },
+    new Question
+    {
+        Text = "You're redesigning your garden. What should you plant to conserve water?",
+        Options = new Dictionary<char, string>
+        {
+            { 'A', "A lawn with exotic flowers." },
+            { 'B', "Native drought-resistant plants." },
+            { 'C', "A tropical fruit garden." },
+            { 'D', "Water-intensive grass turf." }
+        },
+        CorrectOption = 'B',
+        Explanation = "Native drought-resistant plants require less water and are well-suited to LA's climate."
+    },
+    new Question
+    {
+        Text = "How can you best reduce household waste?",
+        Options = new Dictionary<char, string>
+        {
+            { 'A', "Use disposable plates and utensils to avoid washing dishes." },
+            { 'B', "Implement a composting system for organic waste." },
+            { 'C', "Throw all waste into the general trash bin." },
+            { 'D', "Burn waste in the backyard." }
+        },
+        CorrectOption = 'B',
+        Explanation = "Composting reduces landfill waste and provides nutrient-rich soil for gardening."
+    },
+    new Question
+    {
+        Text = "Which lighting option is the most energy-efficient for your home?",
+        Options = new Dictionary<char, string>
+        {
+            { 'A', "Incandescent bulbs." },
+            { 'B', "Halogen bulbs." },
+            { 'C', "Compact Fluorescent Lamps (CFLs)." },
+            { 'D', "Light Emitting Diode (LED) bulbs." }
+        },
+        CorrectOption = 'D',
+        Explanation = "LED bulbs are the most energy-efficient and have a longer lifespan than other bulbs."
+    },
+    new Question
+    {
+        Text = "To conserve water during showers, you should:",
+        Options = new Dictionary<char, string>
+        {
+            { 'A', "Take longer showers to relax." },
+            { 'B', "Install a low-flow showerhead." },
+            { 'C', "Keep the water running while not in use." },
+            { 'D', "Shower multiple times a day." }
+        },
+        CorrectOption = 'B',
+        Explanation = "Low-flow showerheads reduce water usage without compromising the shower experience."
+    }
+};
+
+            foreach (var question in questions)
+            {
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine($"Question {questionNumber}: {question.Text}\n");
+                Console.ResetColor();
+
+                foreach (var option in question.Options)
+                {
+                    Console.Write($"{option.Key}. ");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine($"{option.Value}");
+                    Console.ResetColor();
+                }
+
+                Console.Write("\nType A, B, C, or D: ");
+                char playerChoice = GetValidOption();
+
+                if (char.ToUpper(playerChoice) == question.CorrectOption)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("\nCorrect! " + question.Explanation);
+                    score += 1;
+                    minigameScore += 1;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\nIncorrect.");
+                    Console.WriteLine("Correct Answer: " + question.CorrectOption + ". " + question.Options[question.CorrectOption]);
+                    Console.WriteLine(question.Explanation);
+                }
+
+                Console.ResetColor();
+                Console.WriteLine("\nPress Enter to continue...");
+                Console.ReadLine();
+                questionNumber++;
+            }
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("\nUN Ambassador: Let's see how you did.");
+            Console.WriteLine($"Your score is: {minigameScore} out of {questions.Count * 10} points.");
+
+            if (score == questions.Count * 10)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Outstanding work! Your choices demonstrate excellent knowledge of sustainable practices.");
+                Console.WriteLine("You've set a great example for others to follow in making eco-friendly decisions.");
+            }
+            else if (score >= (questions.Count * 8))
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Great job! You've made significant eco-friendly improvements to your home.");
+                Console.WriteLine("With a bit more effort, you can achieve even greater sustainability.");
+            }
+            else if (score >= (questions.Count * 5))
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Good effort! Consider exploring more sustainable options to further reduce your environmental impact.");
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("It looks like there are many opportunities for improvement.");
+                Console.WriteLine("Remember, every small change can contribute to a healthier planet.");
+            }
+
+            Console.ResetColor();
+            
+
+        }
+
+        // Class to represent each question
+        public class Question
+        {
+            public string Text { get; set; }
+            public Dictionary<char, string> Options { get; set; }
+            public char CorrectOption { get; set; }
+            public string Explanation { get; set; }
+        }
+
+        // Method to get a valid option from the player
+        private char GetValidOption()
+        {
+            while (true)
+            {
+                string? input = Console.ReadLine();
+                if (!string.IsNullOrEmpty(input) && input.Length == 1)
+                {
+                    char option = char.ToUpper(input[0]);
+                    if (option >= 'A' && option <= 'D')
+                    {
+                        return option;
+                    }
+                }
+                Console.Write("Invalid input. Please enter A, B, C, or D: ");
+            }
+        }
+        public void RecyclingSortingMinigameNYC(ref int score)
         {
             // Trigger the NPC dialogue before the minigame
             CustomFunctions customFunctions = new CustomFunctions();
             customFunctions.UNAmbassadorPreMinigameDialogue("RecyclingSorting");
 
             // Minigame starts after NPC dialogue
-            int score = 0;
+            
             int timeLimit = 30; // Time limit in seconds
             DateTime endTime = DateTime.Now.AddSeconds(timeLimit);
 
@@ -301,6 +480,7 @@ namespace FiveCountries
                 // Display the current input within brackets
                 Console.Write($"Type 'recycle', 'compost', or 'trash' [{currentInput}]: ");
             }
+
         }
 
 

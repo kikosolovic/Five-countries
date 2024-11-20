@@ -5,7 +5,7 @@ namespace FiveCountries
 {
     public class Game : Init
     {
-
+        
         private Country? currentCountry;
         private Country? previousCountry; //back command for country if needed
 
@@ -87,7 +87,7 @@ namespace FiveCountries
                         Console.WriteLine(currentCountry?.LongDescription);
                         if (this.currentCountry?.currentRoom?.minigame != null)
                         {
-                            this.currentCountry.currentRoom.ExecuteMinigame();
+                            this.currentCountry.currentRoom.ExecuteMinigame(ref score);
                         }
                         break;
 
@@ -98,7 +98,7 @@ namespace FiveCountries
                         Move(command.Name);
                         if (this.currentCountry?.currentRoom?.minigame != null)
                         {
-                            this.currentCountry.currentRoom.ExecuteMinigame();
+                            this.currentCountry.currentRoom.ExecuteMinigame(ref score);
                         }
                         break;
                     case "map":
@@ -136,7 +136,7 @@ namespace FiveCountries
                         PrintHelp();
                         break;
                     case "startminigame":
-                        this.currentCountry?.currentRoom?.ExecuteMinigame();
+                        this.currentCountry?.currentRoom?.ExecuteMinigame(ref score);
                         break;
 
                     default:
