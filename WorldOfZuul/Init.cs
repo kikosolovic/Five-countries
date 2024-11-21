@@ -11,16 +11,17 @@ namespace FiveCountries
         public List<Country> CreateCountries()
         {
             List<Country> Countries = new List<Country>();
-            Country? Haiti = new("Haiti", "Wouldn't you know, Haiti is located in the Caribbean");
-            Countries.Add(Haiti);
             Country? India = new("India", "Wouldn't you know, India is located in South Asia");
             Countries.Add(India);
+            Country? Haiti = new("Haiti", "Wouldn't you know, Haiti is located in the Caribbean");
+            Countries.Add(Haiti);
+            
             Country? Brazil = new("Brazil", "Wouldn't you know, Brazil is located in South America");
             Countries.Add(Brazil);
             Country? Mozambique = new("Mozambique", "Wouldn't you know, Mozambique is located in Africa");
             Countries.Add(Mozambique);
             Country? USA = new("USA", "Wouldn't you know, USA is located in North America");
-            Countries.Add(Mozambique);
+            Countries.Add(USA);
 
             Haiti.SetExits(Haiti, India, Brazil, Mozambique, USA);
             India.SetExits(Haiti, India, Brazil, Mozambique, USA);
@@ -34,8 +35,8 @@ namespace FiveCountries
         }
         public void CreateRooms(List<Country> countries)
         {
-            Country Haiti = countries[0];
-            Country India = countries[1];
+            Country Haiti = countries[1];
+            Country India = countries[0];
             Country Brazil = countries[2];
             Country Mozambique = countries[3];
             Country USA = countries[4];
@@ -46,13 +47,17 @@ namespace FiveCountries
             Haiti.InitRoom("Pub", "You've entered the campus pub. It's a cosy place, with a few students chatting over drinks. There's a bar near you and some pool tables at the far end.");
             Haiti.InitRoom("Lab", "You're in a computing lab. Desks with computers line the walls, and there's an office to the east. The hum of machines fills the room.");
             Haiti.InitRoom("Office", "You've entered what seems to be an administration office. There's a large desk with a computer on it, and some bookshelves lining one wall.");
+            Haiti.InitRoom("BlaBla", "You've entered what seems to be an administration office. There's a large desk with a computer on it, and some bookshelves lining one wall.");
+            Haiti.InitRoom("BlaBla2", "You've entered what seems to be an administration office. There's a large desk with a computer on it, and some bookshelves lining one wall.");
 
 
-            Haiti.addExit("Outside", new List<string> { "east", "south", "west" }, new List<string> { "Theatre", "Lab", "Pub" });
+            Haiti.addExit("Outside", new List<string> { "east", "south", "west", "north"}, new List<string> { "Theatre", "Lab", "Pub","BlaBla" });
             Haiti.addExit("Theatre", new List<string> { "west" }, new List<string> { "Outside" });
             Haiti.addExit("Pub", new List<string> { "east" }, new List<string> { "Outside" });
             Haiti.addExit("Lab", new List<string> { "north", "east" }, new List<string> { "Outside", "Office" });
             Haiti.addExit("Office", new List<string> { "west" }, new List<string> { "Lab" });
+            Haiti.addExit("BlaBla", new List<string> { "south", "north" }, new List<string> { "Outside","BlaBla2" });
+            Haiti.addExit("BlaBla2", new List<string> { "south" }, new List<string> { "BlaBla" });
 
 
             // //initialize rooms to India
@@ -103,7 +108,7 @@ namespace FiveCountries
             Mozambique.addExit("Dock", new List<string> { "west" }, new List<string> { "Village" });
             Mozambique.addExit("Village", new List<string> { "north", "east" }, new List<string> { "Hill", "Dock" });
             Mozambique.addExit("Hill", new List<string> { "south" }, new List<string> { "village" });
-            Mozambique.addExit("Lab", new List<string> { "north", "east" }, new List<string> { "Outside", "Office" });
+            Mozambique.addExit("Lab", new List<string> {"east" }, new List<string> {"Office" });
             Mozambique.addExit("Office", new List<string> { "west" }, new List<string> { "Lab" });
 
 

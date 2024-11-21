@@ -329,11 +329,11 @@ namespace FiveCountries
                 }
                 return (-1, -1);
             }
-
+            /*
             static (int, int) getDimensions(List<List<string>> map){
                 return (map.Count, map.Max(x => x.Count));
             }
-
+            */
             static void addRoom(ref List<List<string>> map, string room, string exit, string nextRoom){
                 (int, int) roomPos = getPos(map, room);
                 (int, int) direction = (0, 0);
@@ -354,8 +354,7 @@ namespace FiveCountries
                 //check it it gets out of bounds
                 (int, int) posNewRoom = (roomPos.Item1 + direction.Item1, roomPos.Item2 + direction.Item2);
                 if (posNewRoom.Item1 < 0){
-                    (int, int) size = getDimensions(map);
-                    map.Insert(0, Enumerable.Repeat("", size.Item1+1).ToList());
+                    map.Insert(0, Enumerable.Repeat("", map[0].Count).ToList());
                     posNewRoom.Item1 = 0;
                 }
                 if(posNewRoom.Item2 < 0){
@@ -365,8 +364,7 @@ namespace FiveCountries
                     posNewRoom.Item2 = 0;
                 }
                 if(posNewRoom.Item1 >= map.Count){
-                    (int, int) size = getDimensions(map);
-                    map.Add(Enumerable.Repeat("", size.Item1+1).ToList());
+                    map.Add(Enumerable.Repeat("", map[0].Count).ToList());
                 }
                 if(posNewRoom.Item2 >= map[posNewRoom.Item1].Count){
                     foreach (var row in map){
@@ -471,19 +469,19 @@ namespace FiveCountries
                             }
                         }else{
                             if(maxLenght%2 == 0){
-                                for(int j = 0; j < (maxLenght/2)+2; j++){
+                                for(int j = 0; j < (maxLenght/2)+1; j++){
                                     horizontalLineWExits += "-";
                                 }
-                                horizontalLineWExits += " ";
-                                for(int j = 0; j < (maxLenght/2)+2; j++){
+                                horizontalLineWExits += "   ";
+                                for(int j = 0; j < (maxLenght/2)+0; j++){
                                     horizontalLineWExits += "-";
                                 }
                             }else{
-                                for(int j = 0; j < (maxLenght/2)+2; j++){
+                                for(int j = 0; j < (maxLenght/2)+1; j++){
                                     horizontalLineWExits += "-";
                                 }
-                                horizontalLineWExits += " ";
-                                for(int j = 0; j < (maxLenght/2)+2; j++){
+                                horizontalLineWExits += "   ";
+                                for(int j = 0; j < (maxLenght/2)+1; j++){
                                     horizontalLineWExits += "-";
                                 }
                             }
@@ -521,8 +519,6 @@ namespace FiveCountries
                     if (alreadyAdded.Contains(currentRoom)){
                         if(alreadyAdded.Contains(nextRoom)){
                             continue;
-                            //check for the doors
-                            //TODO:
                         }else{
                             alreadyAdded.Add(nextRoom);
                             addRoom(ref map, currentRoom, exitDirection, nextRoom);
@@ -548,8 +544,6 @@ namespace FiveCountries
                 foreach((string, string, string) roomCurrent in notAddedRooms){
                     if (alreadyAdded.Contains(roomCurrent.Item1)){
                         if(alreadyAdded.Contains(roomCurrent.Item3)){
-                            //check for the doors
-                            //TODO:
                             notAddedRooms.Remove(roomCurrent);
                         }else{
                             alreadyAdded.Add(roomCurrent.Item3);
@@ -576,41 +570,8 @@ namespace FiveCountries
                     throw new Exception("Map generation failed. Room(s) not connected. Check the room(s):\n"+notAddedRoomsString);
                 }
             }
-            //add exit markers
-            //directions of exits
-            // north(+) and west(-) before the name of the room
-            // south(+) and east(-) after the name of the room
 
-            smallPrintMap(map);
-
-            //old not working code
-            // foreach(Room roomCurrent in Country.Rooms){
-            //     foreach(var exit in roomCurrent.Exits){
-            //         Console.WriteLine(roomCurrent.ShortDescription+" "+exit.Key+" "+exit.Value.ShortDescription);
-            //         //string roomNameWOexits = String.Join("", roomCurrent.ShortDescription.Split('+','-'));//weird way to remove exits but works
-            //         (int, int) roomPos = getPos(map2, roomCurrent.ShortDescription);
-            //         string exitNW = "";
-            //         string exitSE = "";
-            //         switch(exit.Key){
-            //             case "north":
-            //                 exitNW = "+";
-            //                 break;
-            //             case "south":
-            //                 exitSE = "+";
-            //                 break;
-            //             case "east":
-            //                 exitSE = "-";
-            //                 break;
-            //             case "west":
-            //                 exitNW = "-";
-            //                 break;
-            //         }
-            //         map2[roomPos.Item1][roomPos.Item2] = exitNW+roomCurrent.ShortDescription+exitSE;
-
-            //     }
-            // }
-            
-            
+            //smallPrintMap(map);
             
             //just rewrite the array to the new one
             List<List<(List<string>, string)>> map2 = new List<List<(List<string>, string)>>();
@@ -650,10 +611,10 @@ namespace FiveCountries
 
 
 
-            smallPrintMap2(map2);
+            //smallPrintMap2(map2);
 
             //smallPrintMap(map);
-            drawMap(map, alreadyAdded, room);
+            //drawMap(map, alreadyAdded, room);
             drawMap2(map2, alreadyAdded, room);
         }
 
