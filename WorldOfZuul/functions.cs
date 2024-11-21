@@ -269,18 +269,7 @@ namespace FiveCountries
 
         public void PrintMap4(Country Country, string room){
             //only for develompent smallPrintMap s
-            static void smallPrintMap(List<List<string>> map){
-                Console.WriteLine("----Current map:----");
-                foreach (var row in map){
-                    foreach (var room in row){
-                        Console.Write(room.PadLeft(8));
-                        Console.Write(",");
-                    }
-                    Console.WriteLine();
-                }
-                Console.WriteLine("--------------------");
-            }
-            static void smallPrintMap2(List<List<(List<string>,string)>> map){
+            static void smallPrintMap(List<List<(List<string>,string)>> map){
                 Console.WriteLine("----Current map2:----");
                 Console.WriteLine("----map:----");
                 foreach (var row in map){
@@ -305,19 +294,7 @@ namespace FiveCountries
                 Console.WriteLine("--------------------");
             }
 
-            static (int, int) getPos(List<List<string>> map, string room){
-                for(int i = 0; i < map.Count; i++){
-                    for(int j = 0; j < map[i].Count; j++){
-                        //string roomNameWOexits = String.Join("", room.Split('+','-'));//weird way to remove exits
-                        //if (roomNameWOexits == room){
-                        if (map[i][j] == room){
-                            return (i, j);
-                        }
-                    }
-                }
-                return (-1, -1);
-            }
-            static (int, int) getPos2(List<List<(List<string>,string)>> map, string room){
+            static (int, int) getPos(List<List<(List<string>,string)>> map, string room){
                 for(int i = 0; i < map.Count; i++){
                     for(int j = 0; j < map[i].Count; j++){
                         //string roomNameWOexits = String.Join("", room.Split('+','-'));//weird way to remove exits
@@ -329,13 +306,8 @@ namespace FiveCountries
                 }
                 return (-1, -1);
             }
-            /*
-            static (int, int) getDimensions(List<List<string>> map){
-                return (map.Count, map.Max(x => x.Count));
-            }
-            */
             static void addRoom(ref List<List<(List<string>,string)>> map, string room, string exit, string nextRoom){
-                (int, int) roomPos = getPos2(map, room);
+                (int, int) roomPos = getPos(map, room);
                 (int, int) direction = (0, 0);
                 switch(exit){
                     case "north":
@@ -384,52 +356,7 @@ namespace FiveCountries
 
             }
 
-            static void drawMap(List<List<string>> map, List<string> alreadyAdded, string roomToHighlight){
-                CustomFunctions customFunctions = new CustomFunctions();
-                int maxLenght = alreadyAdded.Max(x => x.Length);
-                if(maxLenght > 12){
-                    maxLenght = 12;
-                }
-
-                Console.WriteLine("----Current map:----");
-
-                //Draw horizontal lines
-                string horizontalLine = "";
-                string horizontalLineBlank = "";
-                for(int i = 0; i < map[0].Count; i++){
-                    horizontalLine += "+";
-                    horizontalLineBlank += "|";
-                    for(int j = 0; j < maxLenght+4; j++){
-                        horizontalLine += "-";
-                        horizontalLineBlank += " ";
-                    }
-                    
-                }
-                horizontalLine += "+";
-                horizontalLineBlank += "|";
-                Console.WriteLine(horizontalLine);
-
-                foreach(var row in map){
-                    string line = "";
-                    foreach(var room in row){
-                        line += "|";
-                        line += PaddingCenter(room.Substring(0, Math.Min(maxLenght, room.Length)),maxLenght+4);
-                    }
-                    line += "|";
-                    string[] finalLine = line.Split(roomToHighlight);
-                    Console.WriteLine(horizontalLineBlank);
-
-                    //Console.WriteLine(line);
-                    if(finalLine.Length == 1){
-                        Console.WriteLine(line);
-                    }else{
-                        customFunctions.PrintStringColorful(new string[]{finalLine[0], roomToHighlight, finalLine[1]}, new ConsoleColor[]{ConsoleColor.White, ConsoleColor.Green, ConsoleColor.White});
-                    }
-                    Console.WriteLine(horizontalLineBlank);
-                    Console.WriteLine(horizontalLine);
-                }
-            }
-            static void drawMap2(List<List<(List<string>,string)>> map, List<string> alreadyAdded, string roomToHighlight){
+            static void drawMap(List<List<(List<string>,string)>> map, List<string> alreadyAdded, string roomToHighlight){
                 CustomFunctions customFunctions = new CustomFunctions();
                 int maxLenght = alreadyAdded.Max(x => x.Length);
                 if(maxLenght > 14){
@@ -581,7 +508,7 @@ namespace FiveCountries
                 foreach(var exit in roomCurrent.Exits){
                     //Console.WriteLine(roomCurrent.ShortDescription+" "+exit.Key+" "+exit.Value.ShortDescription);
                     //string roomNameWOexits = String.Join("", roomCurrent.ShortDescription.Split('+','-'));//weird way to remove exits but works
-                    (int, int) roomPos = getPos2(map2, roomCurrent.ShortDescription);
+                    (int, int) roomPos = getPos(map2, roomCurrent.ShortDescription);
                     string exitThis = "";
                     switch(exit.Key){
                         case "north":
@@ -604,7 +531,7 @@ namespace FiveCountries
                 }
             }
 
-            drawMap2(map, alreadyAdded, room);
+            drawMap(map2, alreadyAdded, room);
         }
 
 /// <summary>
