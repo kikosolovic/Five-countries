@@ -34,8 +34,6 @@ namespace FiveCountries
 
             bool continuePlaying = true;
             while (continuePlaying)
-
-
             // note below
             {
                 Console.ForegroundColor = ConsoleColor.Blue;
@@ -102,7 +100,9 @@ namespace FiveCountries
                         }
                         break;
                     case "map":
-                        customFunctions.PrintMap(currentCountry?.currentRoom?.ShortDescription);
+                        //customFunctions.PrintMap(currentCountry?.currentRoom?.ShortDescription);
+                        //customFunctions.PrintMap2(currentCountry, currentCountry?.currentRoom?.ShortDescription);
+                        customFunctions.PrintMap4(currentCountry, currentCountry?.currentRoom?.ShortDescription);
                         break;
                     case "play":
                         int scoreGot = 0;
