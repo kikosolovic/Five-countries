@@ -57,7 +57,7 @@ namespace FiveCountries
 
             // //initialize rooms to India
             India.InitRoom("UN Outpost", "You are just outside of a UN outpost located between your two objectives. You can go either north or south.");
-            India.InitRoom("Outside Sewage Treatment Plant", "You find yourself outside the abandoned plant mentioned in your report. The entrance to the lobby is to the north.");
+            India.InitRoom("O.S.T.P.", "You find yourself outside the abandoned plant mentioned in your report. The entrance to the lobby is to the north.");
             India.InitRoom("Lobby", "You're inside the lobby of the plant. There is a storage room to the east and the tank room is to the west.");
             India.InitRoom("Tank Room", "You're inside the tank room. You ascertain that the tanks are rusty and full of holes and that the pipes need replacing. You should maybe check the storage room to see if you can't find spare ones.");
             India.InitRoom("Storage Room", "You're in a storage room. You look around and find the pipes you need.");
@@ -65,10 +65,10 @@ namespace FiveCountries
             India.InitRoom("Eastern Shed", "You're in a shed. You look around and you find a box with emitters in it. Just the ones you need.");
             India.InitRoom("Western Shed", "You're in a shed. You look around and spot drip tubes on one of the shelves. Jackpot!");
 
-
-            India.addExit("UN Outpost", new List<string> { "north", "south" }, new List<string> { "Outside Sewage Treatment Plant", "Crop Field" });
-            India.addExit("Outside Sewage Treatment Plant", new List<string> { "south", "north" }, new List<string> { "UN Outpost", "Lobby" });
-            India.addExit("Lobby", new List<string> { "south", "west", "east" }, new List<string> { "Outside Sewage Treatment Plant", "Storage Room", "Tank Room" });
+            //Outside Sewage Treatment Plant-> O.S.T.P.
+            India.addExit("UN Outpost", new List<string> { "north", "south" }, new List<string> { "O.S.T.P.", "Crop Field" });
+            India.addExit("O.S.T.P.", new List<string> { "south", "north" }, new List<string> { "UN Outpost", "Lobby" });
+            India.addExit("Lobby", new List<string> { "south", "west", "east" }, new List<string> { "O.S.T.P.", "Storage Room", "Tank Room" });
             India.addExit("Tank Room", new List<string> { "west" }, new List<string> { "Lobby" });
             India.addExit("Storage Room", new List<string> { "east" }, new List<string> { "Lobby" });
             India.addExit("Crop Field", new List<string> { "north", "east", "west" }, new List<string> { "UN Outpost", "Eastern Shed", "Western Shed" });
