@@ -283,6 +283,8 @@ namespace FiveCountries
             static (int, int) getPos(List<List<string>> map, string room){
                 for(int i = 0; i < map.Count; i++){
                     for(int j = 0; j < map[i].Count; j++){
+                        //string roomNameWOexits = String.Join("", room.Split('+','-'));//weird way to remove exits
+                        //if (roomNameWOexits == room){
                         if (map[i][j] == room){
                             return (i, j);
                         }
@@ -335,7 +337,62 @@ namespace FiveCountries
                     }
                 }
                 map[posNewRoom.Item1][posNewRoom.Item2] = nextRoom;
+                
             }
+
+            static string PaddingCenter(string source, int length){
+                int spaces = length - source.Length;
+                int padLeft = spaces/2 + source.Length;
+                return source.PadLeft(padLeft).PadRight(length);
+
+            }
+
+            static void drawMap(List<List<string>> map, List<string> alreadyAdded, string roomToHighlight){
+                CustomFunctions customFunctions = new CustomFunctions();
+                int maxLenght = alreadyAdded.Max(x => x.Length);
+                if(maxLenght > 12){
+                    maxLenght = 12;
+                }
+
+                Console.WriteLine("----Current map:----");
+
+                //Draw horizontal lines
+                string horizontalLine = "";
+                string horizontalLineBlank = "";
+                for(int i = 0; i < map[0].Count; i++){
+                    horizontalLine += "+";
+                    horizontalLineBlank += "|";
+                    for(int j = 0; j < maxLenght+4; j++){
+                        horizontalLine += "-";
+                        horizontalLineBlank += " ";
+                    }
+                    
+                }
+                horizontalLine += "+";
+                horizontalLineBlank += "|";
+                Console.WriteLine(horizontalLine);
+
+                foreach(var row in map){
+                    string line = "";
+                    foreach(var room in row){
+                        line += "|";
+                        line += PaddingCenter(room.Substring(0, Math.Min(maxLenght, room.Length)),maxLenght+4);
+                    }
+                    line += "|";
+                    string[] finalLine = line.Split(roomToHighlight);
+                    Console.WriteLine(horizontalLineBlank);
+
+                    //Console.WriteLine(line);
+                    if(finalLine.Length == 1){
+                        Console.WriteLine(line);
+                    }else{
+                        customFunctions.PrintStringColorful(new string[]{finalLine[0], roomToHighlight, finalLine[1]}, new ConsoleColor[]{ConsoleColor.White, ConsoleColor.Green, ConsoleColor.White});
+                    }
+                    Console.WriteLine(horizontalLineBlank);
+                    Console.WriteLine(horizontalLine);
+                }
+            }
+            
             
             List<List<string>> map = new List<List<string>>();//map of the rooms
             List<string> alreadyAdded = [Country.Rooms[0].ShortDescription];//list of rooms that are already added to the map
@@ -343,13 +400,10 @@ namespace FiveCountries
             map.Add(new List<string>{Country.Rooms[0].ShortDescription});//addidng the first room to the map
 
             foreach(Room roomCurrent in Country.Rooms){//run for every room in the country
-                //Console.WriteLine($"\n\n===== Working on {roomCurrent.ShortDescription}");
                 foreach(var exit in roomCurrent.Exits){//run  for every exit of the room
                     string currentRoom = roomCurrent.ShortDescription;
                     string exitDirection = exit.Key;
                     string nextRoom = exit.Value.ShortDescription;
-
-                    //Console.WriteLine(exitDirection+" "+nextRoom);
 
                     //check if the current room is already added
                     if (alreadyAdded.Contains(currentRoom)){
@@ -403,9 +457,49 @@ namespace FiveCountries
                 counter++;
                 if (lastCountOfNotAdded == notAddedRooms.Count){
                     break;
+                    string notAddedRoomsString = "";
+                    foreach(var room3 in notAddedRooms){
+                        notAddedRoomsString += room3.Item1+" "+room3.Item2+" "+room3.Item3+"\n";
+                    }
+                    throw new Exception("Map generation failed. Room(s) not connected. Check the room(s):\n"+notAddedRoomsString);
                 }
             }
+            //add exit markers
+            //directions of exits
+            // north(+) and west(-) before the name of the room
+            // south(+) and east(-) after the name of the room
+
             smallPrintMap(map);
+
+            // foreach(Room roomCurrent in Country.Rooms){
+            //     foreach(var exit in roomCurrent.Exits){
+            //         Console.WriteLine(roomCurrent.ShortDescription+" "+exit.Key+" "+exit.Value.ShortDescription);
+            //         string roomNameWOexits = String.Join("", roomCurrent.ShortDescription.Split('+','-'));//weird way to remove exits but works
+            //         (int, int) roomPos = getPos(map, roomNameWOexits);
+            //         string exitNW = "";
+            //         string exitSE = "";
+            //         switch(exit.Key){
+            //             case "north":
+            //                 exitNW = "+";
+            //                 break;
+            //             case "south":
+            //                 exitSE = "+";
+            //                 break;
+            //             case "east":
+            //                 exitSE = "-";
+            //                 break;
+            //             case "west":
+            //                 exitNW = "-";
+            //                 break;
+            //         }
+            //         map[roomPos.Item1][roomPos.Item2] = exitNW+roomCurrent.ShortDescription+exitSE;
+
+            //     }
+            // }
+            //smallPrintMap(map);
+
+            //smallPrintMap(map);
+            drawMap(map, alreadyAdded, room);
         }
 
 /// <summary>
