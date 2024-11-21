@@ -1,5 +1,6 @@
 {
         "text": "You arrive at the dock where a fisherman is unloading his catch. You can approach him to learn about the local challenges.",
+        "response": "",
         "options": "1. Ask about how climate change affects fishing. 2. Ask about his daily fishing routine.",
         "opt1": {
             "text": "The activist asks: 'How has climate change affected your fishing?'",

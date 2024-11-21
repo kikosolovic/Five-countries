@@ -5,7 +5,7 @@ namespace FiveCountries
 {
     public class Game : Init
     {
-        
+
         private Country? currentCountry;
         private Country? previousCountry; //back command for country if needed
 
@@ -112,18 +112,21 @@ namespace FiveCountries
                         {
                             if (minigame.id == gameId)
                             {
-                                if (minigame.score - scoreGot > 0){
+                                if (minigame.score - scoreGot > 0)
+                                {
                                     score += scoreGot;
                                     minigame.score -= scoreGot;
-                                }else{
+                                }
+                                else
+                                {
                                     score += minigame.score;
                                     minigame.score = 0;
-                                    
+
                                 }
                                 break;
                             }
                         }
-                        
+
                         break;
                     case "score":
                         Console.WriteLine($"Your score is: {score}");
@@ -148,7 +151,7 @@ namespace FiveCountries
             Console.WriteLine("Thank you for playing Five Countries!");
         } // instead of all cases implement dynamic method invocation
 
-        private void Move(string direction)
+        public void Move(string direction)
         {
             if (currentCountry?.currentRoom?.Exits.ContainsKey(direction) == true)
             {
@@ -166,7 +169,7 @@ namespace FiveCountries
                 Console.WriteLine($"You can't go {direction}!");
             }
         }
-        private void Travel(string country)
+        public void Travel(string country)
 
         {
             if (currentCountry?.Exits.ContainsKey(country) == true)

@@ -4,12 +4,16 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using WorldOfZuul;
+using FiveCountries;
+
 
 // all minigames/quests should be created here, and referenced in Init.cs
 namespace FiveCountries
 {
+
     class MinigameCode
     {
+
 
 
         // put your code for the minigame here
@@ -33,31 +37,81 @@ namespace FiveCountries
         public void Dock(ref int score)
         {
 
-
             StorylineManager st = new StorylineManager("Dialogues/DockDialogue.json");
-            while (true)
+            while (!WeatherControl._10toSweep)
             {
                 //spravit cely class na interface a styl s podmienkou aby to fungovalo
                 if (st.idiotCount == 0) //idiot count is implemented to prevent displaying the same dialogue multiple times in a row, istead just shows the options 
                 {
-                    say(st.text, st.response, st.options); if (st.options == null || st.options == "") { break; }
+                    helper.say(st.text, st.response, st.options); if (st.options == null || st.options == "") { break; }
                 }
-                else { say(null, null, st.options); }
+                else { helper.say(options: st.options); }
 
 
                 //since the readline is happenign here this function runs after the dialogue part is over and also the Game object can be passed here if needed
                 var choice = Console.ReadLine();
-                switch (choice)
+                if (!WeatherControl._10toSweep)
                 {
-                    case "break": break;
-                    default:
-                        st.NextLevel(choice);
-                        break;
+
+                    switch (choice)
+                    {
+                        case "stop": break;
+                        default:
+                            st.NextLevel(choice);
+                            break;
+                    }
+
+
                 }
+            }
+            st = new StorylineManager("Dialogues/CarRide.json");
+            while (!WeatherControl._10toSweep)
+            {
+                //spravit cely class na interface a styl s podmienkou aby to fungovalo
+                if (st.idiotCount == 0) //idiot count is implemented to prevent displaying the same dialogue multiple times in a row, istead just shows the options 
+                {
+                    helper.say(st.text, st.response, st.options);
+                }
+                else { helper.say(options: st.options); }
 
 
+                //since the readline is happenign here this function runs after the dialogue part is over and also the Game object can be passed here if needed
+                var choice = Console.ReadLine();
+                if (!WeatherControl._10toSweep)
+                {
+
+                    switch (choice)
+                    {
+                        case "stop": break;
+                        default:
+                            st.NextLevel();
+                            break;
+                    }
 
 
+                }
+            }
+            Program._game.Move("west");
+
+        }
+        public void Village(ref int score)
+        {
+            WeatherControl.StartWeather();
+            StorylineManager st = new StorylineManager("Dialogues/OldLady.json");
+            while (!WeatherControl._10toSweep)
+            {
+                helper.say(st.text, st.response, st.options);
+                var choice = Console.ReadLine();
+                if (!WeatherControl._10toSweep)
+                {
+                    switch (choice)
+                    {
+                        case "stop": break;
+                        default:
+                            st.NextLevel(choice);
+                            break;
+                    }
+                }
             }
         }
 
@@ -102,35 +156,7 @@ namespace FiveCountries
             return score;
         }
         //quick response function, makes the text yellow, meaning that somebody said that
-        public void say(string text, string response, string options)
-        {//add pretty text, slow rolling or sometjhig
 
-            if (text != null && text != "")
-            {
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                helper.WriteWithDelay(">> " + text);
-
-                Console.ResetColor();
-            }
-
-            {
-                if (response != null && text != "")
-                {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    helper.WriteWithDelay(">> " + response);
-                    Console.ResetColor();
-                }
-                {
-                    if (options != null && text != "")
-                    {
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        helper.WriteWithDelay(">> " + options);
-                        Console.ResetColor();
-                    }
-
-                }
-            }
-        }
         public void EcoFriendlyHomeMakeover(ref int score)
         {
             CustomFunctions customFunctions = new CustomFunctions();
@@ -280,7 +306,7 @@ namespace FiveCountries
             }
 
             Console.ResetColor();
-            
+
 
         }
 
@@ -317,7 +343,7 @@ namespace FiveCountries
             customFunctions.UNAmbassadorPreMinigameDialogue("RecyclingSorting");
 
             // Minigame starts after NPC dialogue
-            
+
             int timeLimit = 30; // Time limit in seconds
             DateTime endTime = DateTime.Now.AddSeconds(timeLimit);
 

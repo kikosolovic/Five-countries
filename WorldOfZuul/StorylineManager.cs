@@ -10,7 +10,7 @@ using System.Collections;
 
 
 
-namespace WorldOfZuul
+namespace FiveCountries
 {
     public class StorylineManager
     {
@@ -29,7 +29,7 @@ namespace WorldOfZuul
             this.NextLevel("init");
 
         }
-        public void NextLevel(string choice)
+        public void NextLevel(string choice = null)
         {
 
             this.idiotCount = 0;
@@ -37,7 +37,7 @@ namespace WorldOfZuul
             switch (choice)
             {
 
-                case "1":
+                case "1" or null or "":
                     this.story = this.story.opt1;
                     break;
                 case "2":
@@ -55,6 +55,7 @@ namespace WorldOfZuul
                     break;
                 case "init":
                     break;
+
                 default:
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("You have to choose one or two and also write it correctly withou a dot");
