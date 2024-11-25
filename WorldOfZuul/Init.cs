@@ -55,18 +55,27 @@ namespace FiveCountries
             Country USA = countries[4];
 
             // //initialize rooms to Haiti
-            Haiti.InitRoom("Outside", "You are standing outside the main entrance of the university. To the east is a large building, to the south is a computing lab, and to the west is the campus pub.");
-            Haiti.InitRoom("Theatre", "You find yourself inside a large lecture theatre. Rows of seats ascend up to the back, and there's a podium at the front. It's quite dark and quiet.");
-            Haiti.InitRoom("Pub", "You've entered the campus pub. It's a cosy place, with a few students chatting over drinks. There's a bar near you and some pool tables at the far end.");
-            Haiti.InitRoom("Lab", "You're in a computing lab. Desks with computers line the walls, and there's an office to the east. The hum of machines fills the room.");
-            Haiti.InitRoom("Office", "You've entered what seems to be an administration office. There's a large desk with a computer on it, and some bookshelves lining one wall.");
+            Haiti.InitRoom("Outside", "The beutiful park in the middle of the complex.");
+            Haiti.InitRoom("Lobby", "Main hall of the complex.");
+            Haiti.InitRoom("Corridor", "Short corridor to other rooms");
+            Haiti.InitRoom("PV Lab", "It's pretty dark here. You are in the PV Lab. \n We often test solar panels here, so we need to keep it dark. \n You can see a lot of solar panels and inverters around you. \n This is the place where we design and plan future solar panels.");
+            Haiti.InitRoom("Wind Lab", "It's windy here! You are in the Wind Lab. You can see a lot of wind turbines and anemometers around you.\nThere are also countless TVs with real-world and simulation data around wind power plants.\nThis is the place where we design and plan future wind turbines.");
+            Haiti.InitRoom("Energy Storage Lab", "This is the Energy Storage Lab. You can see a lot of batteries and capacitors around you.\nThis is the place where we design and plan future enegry storeges.");
+            Haiti.InitRoom("Closet", "Pssst! Nothing here other than old broom, mop and tons of dust.");
+            Haiti.InitRoom("Infrostructure Building", "Building of the Infrostructure Department");
+            Haiti.InitRoom("Server Building", "Building of the Computational Department");
 
 
-            Haiti.addExit("Outside", new List<string> { "east", "south", "west" }, new List<string> { "Theatre", "Lab", "Pub" });
-            Haiti.addExit("Theatre", new List<string> { "west" }, new List<string> { "Outside" });
-            Haiti.addExit("Pub", new List<string> { "east" }, new List<string> { "Outside" });
-            Haiti.addExit("Lab", new List<string> { "north", "east" }, new List<string> { "Outside", "Office" });
-            Haiti.addExit("Office", new List<string> { "west" }, new List<string> { "Lab" });
+            Haiti.addExit("Outside", new List<string> {"south","north", "west" }, new List<string> { "Lobby", "Infrostructure Building", "Server Building" });
+            Haiti.addExit("Lobby", new List<string> { "south", "north", "west", "east" }, new List<string> { "Corridor", "Outside", "Wind Lab", "PV Lab" });
+            Haiti.addExit("Corridor", new List<string> {"north", "west", "east" }, new List<string> { "Lobby", "Energy Storage Lab", "Closet", });
+            Haiti.addExit("PV Lab", new List<string> { "west" }, new List<string> { "Lobby"});
+            Haiti.addExit("Wind Lab", new List<string> { "east" }, new List<string> { "Lobby" });
+            Haiti.addExit("Energy Storage Lab", new List<string> { "east" }, new List<string> { "Corridor" });
+            Haiti.addExit("Closet", new List<string> { "west" }, new List<string> { "Corridor" });
+            Haiti.addExit("Infrostructure Building", new List<string> { "south" }, new List<string> { "Outside" });
+            Haiti.addExit("Server Building", new List<string> { "east" }, new List<string> { "Outside" });
+
 
 
             // //initialize rooms to India
@@ -143,8 +152,8 @@ namespace FiveCountries
             List<Minigame> minigames = new List<Minigame>();
             Minigame[] Games = {
                 // Country, Room, Description, unique ID, Function, maximum Score
-                new("Haiti", "Lab", "This is 1 game", 11, minigamesCode.minigame11, 2),
-                new("Haiti", "Lab", "This is 2 game", 12, minigamesCode.minigame12, 4),
+                new("Haiti", "PV Lab", "Planning PV's instalations", 11, minigamesCode.photovoltaicMinigame, 6),
+                new("Haiti", "PV Lab", "This is 2 game", 12, minigamesCode.minigame12, 6),
                 new("Haiti", "Lab", "This is 3 game", 13, minigamesCode.minigame13, 1),
                 new("Haiti", "Lab", "This is 4 game", 14, minigamesCode.minigame14, 2),
             

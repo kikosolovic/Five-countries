@@ -89,12 +89,109 @@ namespace FiveCountries
             Console.WriteLine("succesfuly ran a fucntion passed as argument");
         }
 
-        public int minigame11()
+        public int photovoltaicMinigame()
         {
             int score = 0;
-            Console.WriteLine("Welcome to the first minigame in Haitis' Lab");
-            Console.WriteLine("Your task is to find best spots for Photovoltaic power plants");
-            score += 1;
+            Console.WriteLine(@"
+Welcome to the first minigame in Haitis' Lab
+OBJECTIVE: Choose the best location for a photovoltaic power plant in Haiti.
+Your task is to find best spots for Photovoltaic(PV) power plants You will be shown a map of Haiti and you will have to choose the best location for 3 new Photovoltaic power plants.
+");
+            
+            string haitiMapPV = @"
+================================================= MAP OF HAITI =================================================
+
+                                                    ██████                                          
+                                                   ██▓▓███████           ~SEA~                           
+                                              Port-de-Paix ███                                      
+                                            ███▓▓██▓▓▓███*▒▒▒█▒                             _______
+                                       ██████████████████▒▒▒▒▒▒█▒▒                        _/       \___
+                                      ██████▒▒▒▒▒▒█▒▒▒██████▒▒▒▒▒▒▒███   ██ Cap-Haitien  |
+                                     ███▒█████████████▒████████▒▒▒▒▒██████▓*▓████▓▓██    |               
+                                     ███████▓▓▓▓▓▓▓▓████████████▒▒▒▒▒▒▒████████▓▓▓▓█▒████|           
+                                       ███▓██▓██▓▓▓▓▓▓▓█████████▒▒▒▒▒▒▒▒▒▒▒██████████████|           
+                                                    █▓▓▓▓████▓████▒▒▒▒▒▒▒▒▒▒██▒▒▒▒██████*| Ouanaminthe    
+                                               Gonaives █*██▓▓▓████████▒▒▒▒▒████▒▒▒▒▒▒▒▒██|          
+                                                         ███▓▓▓███▒██████▓██████▒▒▒▒▒▒▒█▒█|          
+                ~SEA~                                    ▓█▓█▓▓█████████▓▓▓▓▓█████████████|          
+                                                         ███▓▓▓▓▓▓▓▓████▓▓▓▓▓▓██████████|           
+                                                         ▓▓▓▓▓▓▓▓▓▓███████▓▓▓▓▓████████████|         
+                                                        ▓▓▓▓▓▓▓▓▓▓▓███████████*█▓▓▓██▓▓▓████| <- Hinche
+                                                          ▓▓▓▓▓▓▓▓▓████▒▒███████▓▓▓▓▓▓▓▓▓███        
+                                                        █████████▓▓▓███▒▒█████▓▓▓▓▓▓▓▓▓▓▓█|          
+                                                        █▓▓█▒▒█████▓▓███████▓▓▓▓▓▓▓▓▓▓██|            
+                                          █▓█▓▓           █▓███▒▒███▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█▓▓█|            
+                                          ▓▓██▓▓▓▓▓▓         ████████████▓▓▓▓▓▓███▓▓▓▓▓██|           
+                                           █▓▓▓▓██▓▓▓▓▓█      █▓▓▓██████▓▓▓▓▓▓▓▓█████████|           
+                                                ██▓▓▓▓▓▓▓       ▓▓▓█████▓▓▓▓▓▓▓████████▒▒|           
+                                                  ██▓▓▓█ Arcahaie *▓▓▓▓▓▓▓▓▓▓███████▒▒▒▒█|           
+          ▒▒▒▒██▒* Jeremie                                            █▓▓▓▓▓▓▓▓█▓█▓████|             
+         ▒▒▒▒▒▒▒▒████████  ████  █                  Port-au-prince v █▓▓▓▓▓▓▓▓█▒██|                  
+        ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒██████▒             Carrefour -> ▓▓▓*▒▒▒*███▓▓▓▓▓▓███▒██|                
+       ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒███▒▒▒██*Miragoane   ████▒▒▒▒▒▒▒▒██▓█████████|                
+       ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒███▒▒▒▒▒▒▒▒██████████▓▓█████▒▒▒▒▒▒▒▒▒████▒▒▒▒▒▒▒▒▒|              
+        ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▒▒▒▒▒████▒██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█|          
+         ▒████▒▒▒▒▒▒▒▒▒▒▒▒▒▒█████▒▒▒▒▒▒▒██▒█▒▒▒█████▒▒▒▒▒▒▒▒██████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒|          
+                 ██▒▒▒▒▒▒█████▓███████████▓▓▓███████████████████▓██*████████████████▒▒▒▒▒|           
+                    ▒████████* Les Cayes      ███▓█▓▓▓▓█▓▓▓▓███▓█   Jacmel       ███████|            
+                      █████                                                         █▓███|           
+                       █████  ██▓▓▓                                                  █▓▓█|           
+                                                                                         |           
+                                                ~SEA~                                     \
+                                                                                           |         
+                                                                                            \ 
+================================================================================================================
+            Legend:                                          
+            ▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓██████████                      * - city             
+               1200      1500      1800   kWh/kWp/year          | - border with Dominican Republic
+
+            Data from: https://globalsolaratlas.info/download/haiti @ 25.11.2024";
+            Console.WriteLine(haitiMapPV);
+            Console.WriteLine(@"
+            On the map you can see the predicted solar yield in kWh/kWp/year for different regions in Haiti.
+            The higher the number, the more solar energy can be produced in that region.
+            A bit more knowledge about units here:
+                kWh is a unit of how much energy is produced
+                kWp is a unit of how much power is teoreticaly produced by the solar panels
+
+            so if we have an PV instalation of 1kWp in a region with 1800kWh/kWp/year, it will produce 1800kWh of energy in a year.
+            ");
+            Console.WriteLine(@"
+            Places to choose from:
+            1. Port-de-Paix
+            2. Cap-Haitien
+            3. Ouanaminthe
+            4. Hinche
+            5. Arcahaie
+            6. Carrefour
+            7. Miragoane
+            8. Les Cayes
+            9. Jacmel
+            10. Port-au-prince
+            11. Gonaives
+            12. Jeremie
+            ");
+
+            Console.WriteLine("Choose the best locations for the photovoltaic power plants (type 3 numbers spaced by space '') :");
+            string[] answers = Console.ReadLine().Split(' ');
+            while( answers.Length != 3){
+                answers = Console.ReadLine().Split(' ');
+            }
+            int[] optimalAnswers = {8, 9, 3, 11, 2, 4};
+            
+            for(int i =0; i<answers.Length; i++){
+                if(optimalAnswers.Contains(Int32.Parse(answers[i]))){
+                    score += 1;
+                }
+            }
+            if(score ==3){
+                Console.WriteLine("Congrats! You have choosen ones of the best cities available for our new investments!");
+            }else if(score > 0){
+                Console.WriteLine("Good job! You have choosen some of the best cities available for our new investments!");
+            }else{
+                Console.WriteLine("You have not choosen the best cities available for our new investments!");
+            }
+            Console.WriteLine("You have scored: " + score + " points");
             return score;
         }
         public int minigame12()

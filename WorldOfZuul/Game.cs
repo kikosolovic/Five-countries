@@ -33,14 +33,38 @@ namespace FiveCountries
             PrintHelp();
 
             bool continuePlaying = true;
+
+            //JUST FOR TESTING
+            //you can write a list of commands to automate the testing
+            List<List<String>> automateTesting = new List<List<string>>{ new List<string>{"south"},new List<string>{"east"}, new List<string>{"play", "1"}};
+            bool automateTestingBool = false;
+
             while (continuePlaying)
             // note below
             {
                 Console.ForegroundColor = ConsoleColor.Blue;
                 helper.WriteWithDelay(currentCountry?.ShortDescription + " " + currentCountry?.currentRoom?.ShortDescription + " >");
                 Console.ResetColor();
-
-                string? input = Console.ReadLine();
+                
+                //string? input = Console.ReadLine();
+                string input = "";
+                //JUST FOR TESTING
+                if (automateTestingBool)
+                {
+                    if (automateTesting.Count > 0)
+                    {
+                        input = string.Join(" ", automateTesting[0]);
+                        Console.WriteLine($"Runned automated test command: {input}");
+                        automateTesting.RemoveAt(0);
+                    }
+                    else
+                    {
+                        automateTestingBool = false;
+                        input = Console.ReadLine();
+                    }
+                }else{
+                    input = Console.ReadLine();
+                }
 
                 if (string.IsNullOrEmpty(input))
                 {
@@ -64,7 +88,7 @@ namespace FiveCountries
                 {
                     case "look":
                         Console.WriteLine(currentCountry?.currentRoom?.LongDescription);
-                        customFunctions.PrintMap(currentCountry?.currentRoom?.ShortDescription);
+                        customFunctions.PrintMap4(currentCountry, currentCountry?.currentRoom?.ShortDescription);
                         break;
 
                     case "back":
