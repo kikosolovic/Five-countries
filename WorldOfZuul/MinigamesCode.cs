@@ -84,7 +84,7 @@ namespace FiveCountries
                     {
                         case "stop": break;
                         default:
-                            st.NextLevel();
+                            st.NextLevel(choice);
                             break;
                     }
 
@@ -117,7 +117,7 @@ namespace FiveCountries
 
         public void testMinigameDelegate(ref int score)
         {
-            Console.WriteLine("succesfuly ran a fucntion passed as argument");
+            Console.WriteLine("succesfuly ran a function passed as argument");
         }
 
         public int minigame11()

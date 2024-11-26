@@ -30,19 +30,19 @@
                     }
                 },
                 "opt2": {
-                    "text": "The activist asks: 'How has this affected the community’s income?'",
+                    "text": "The activist asks: 'How has this affected the community's income?'",
                     "response": "The fisherman replies: 'Many families are struggling. Some have had to stop fishing altogether and look for other jobs, but there aren't many options.'",
                     "options": "1. Ask what other jobs they turn to. 2. Reflect on the long-term challenges.",
                     "opt1": {
                         "text": "The activist asks: 'What other jobs do people find?'",
-                        "response": "The fisherman replies: 'Some try farming, but the land isn’t always good. Others leave for the cities, hoping to find work.'",
+                        "response": "The fisherman replies: 'Some try farming, but the land isn't always good. Others leave for the cities, hoping to find work.'",
                         "options": "",
                         "opt1": {},
                         "opt2": {}
                     },
                     "opt2": {
                         "text": "You say: 'This highlights the long-term challenges of climate migration and adaptation.'",
-                        "response": "The fisherman replies: 'Yes, we want to stay here, but it’s hard when the environment is changing so fast.'",
+                        "response": "The fisherman replies: 'Yes, we want to stay here, but it's hard when the environment is changing so fast.'",
                         "options": "",
                         "opt1": {},
                         "opt2": {}
@@ -79,14 +79,14 @@
                 "options": "1. Ask about how they maintain their equipment. 2. Ask about their thoughts on large-scale fishing.",
                 "opt1": {
                     "text": "The activist asks: 'How do you maintain your equipment?'",
-                    "response": "The fisherman replies: 'It’s difficult. When nets break or boats need repair, it costs more than we sometimes earn in a week.'",
+                    "response": "The fisherman replies: 'It's difficult. When nets break or boats need repair, it costs more than we sometimes earn in a week.'",
                     "options": "",
                     "opt1": {},
                     "opt2": {}
                 },
                 "opt2": {
                     "text": "The activist asks: 'What do you think about large-scale fishing operations?'",
-                    "response": "The fisherman frowns: 'They take too much and leave little for us. We can’t compete with their big ships.'",
+                    "response": "The fisherman frowns: 'They take too much and leave little for us. We can't compete with their big ships.'",
                     "options": "",
                     "opt1": {},
                     "opt2": {}
@@ -94,18 +94,18 @@
             },
             "opt2": {
                 "text": "The activist asks: 'Who taught you how to fish?'",
-                "response": "The fisherman smiles: 'My father taught me, just like his father taught him. It’s been in our family for generations.'",
+                "response": "The fisherman smiles: 'My father taught me, just like his father taught him. It's been in our family for generations.'",
                 "options": "1. Ask how traditions are changing. 2. Ask if younger generations are continuing this.",
                 "opt1": {
                     "text": "The activist asks: 'How are traditions changing?'",
-                    "response": "The fisherman replies: 'We’re losing some of the old ways because the sea is changing. We have to learn new methods.'",
+                    "response": "The fisherman replies: 'We're losing some of the old ways because the sea is changing. We have to learn new methods.'",
                     "options": "",
                     "opt1": {},
                     "opt2": {}
                 },
                 "opt2": {
                     "text": "The activist asks: 'Are younger generations continuing this tradition?'",
-                    "response": "The fisherman sighs: 'Many young people don’t want to fish anymore. They see no future in it and look for other opportunities.'",
+                    "response": "The fisherman sighs: 'Many young people don't want to fish anymore. They see no future in it and look for other opportunities.'",
                     "options": "",
                     "opt1": {},
                     "opt2": {}

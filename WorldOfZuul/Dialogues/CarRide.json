@@ -1,10 +1,10 @@
 {
     "text":"",
-    "response":"The fisherman smiles: I appriciate you talking to me, I see youre on your way to the village. Let me give you a ride.",
+    "response":"The fisherman smiles: I appreciate you talking to me, I see you're on your way to the village. Let me give you a ride.",
     "options" :"",
     "opt1" :{
         "text":"You get into an old jeep car and drive off with the fisherman",
-        "response":"You know the village life is not what it  used to be, but it is better than nothing. We live in peace, its hard living, but its the only thing we've got.",
+        "response":"You know the village life is not what it used to be, but it is better than nothing. We live in peace, its hard to get by, but it's the only thing we've got.",
         "options" :"",
         "opt1" :{
             "text":"The road is bumpy and the car is slow, but the fisherman is happily going his way. Tropic scenery all around, sun is shining, you are enjoying the ride.",
@@ -16,7 +16,7 @@
                 "options" :"",
                 "opt1" :{
                     "text":"",
-                    "response":"What you saw on the hill was an old  weather station, thats supposed to predict and warn us of the weather. It worked well for a time, but now it is useless.",
+                    "response":"What you saw on the hill was an old  weather station, that's supposed to predict and warn us of the weather. It worked well for a time, but now it is useless.",
                     "options" :"",
                     "opt1" :{
                         "text":"",
