@@ -552,25 +552,6 @@ Your task is to find best spots for Photovoltaic(PV) power plants You will be sh
             }
         }
         public void RecyclingSortingMinigameNYC(ref int score)
-
-        // Method to get a valid option from the player
-        private char GetValidOption()
-        {
-            while (true)
-            {
-                string? input = Console.ReadLine();
-                if (!string.IsNullOrEmpty(input) && input.Length == 1)
-                {
-                    char option = char.ToUpper(input[0]);
-                    if (option >= 'A' && option <= 'D')
-                    {
-                        return option;
-                    }
-                }
-                Console.Write("Invalid input. Please enter A, B, C, or D: ");
-            }
-        }
-        public void RecyclingSortingMinigameNYC(ref int score)
         {
             // Trigger the NPC dialogue before the minigame
             CustomFunctions customFunctions = new CustomFunctions();

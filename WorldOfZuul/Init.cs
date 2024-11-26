@@ -16,6 +16,7 @@ namespace FiveCountries
             Countries.Add(Haiti);
 
             Country? India = new("India", "Your objectives in India revolve around Goal 6 - Clean water and sanitation. \n \n");
+            Countries.Add(India);
 
             Country? Brazil = new("Brazil", "Your objectives in Brazil revolve around Goal 15 - Life on land. \n \n");
             Countries.Add(Brazil);
