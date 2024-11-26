@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WorldOfZuul;
 using FiveCountries;
+using System.Collections.ObjectModel;
 
 
 // all minigames/quests should be created here, and referenced in Init.cs
@@ -49,7 +50,7 @@ namespace FiveCountries
 
 
                 //since the readline is happenign here this function runs after the dialogue part is over and also the Game object can be passed here if needed
-                var choice = Console.ReadLine();
+                var choice = helper.parseinput(Console.ReadLine());
                 if (!WeatherControl._10toSweep)
                 {
 
@@ -70,19 +71,19 @@ namespace FiveCountries
                 //spravit cely class na interface a styl s podmienkou aby to fungovalo
                 if (st.idiotCount == 0) //idiot count is implemented to prevent displaying the same dialogue multiple times in a row, istead just shows the options 
                 {
-                    helper.say(st.text, st.response, st.options);
+                    helper.say(st.text, st.response, st.options); if (st.options == null || st.options == "") { break; }
                 }
                 else { helper.say(options: st.options); }
 
 
                 //since the readline is happenign here this function runs after the dialogue part is over and also the Game object can be passed here if needed
-                var choice = Console.ReadLine();
+                var choice = helper.parseinput(Console.ReadLine());
                 if (!WeatherControl._10toSweep)
                 {
 
                     switch (choice)
                     {
-                        case "stop": break;
+                        case "stoptalking": break;
                         default:
                             st.NextLevel(choice);
                             break;
@@ -91,28 +92,91 @@ namespace FiveCountries
 
                 }
             }
-            Program._game.Move("west");
+            Program._game.Move("north");
+            Program._game.currentCountry.currentRoom.ExecuteMinigame(ref score);
 
         }
         public void Village(ref int score)
         {
-            WeatherControl.StartWeather();
+            // WeatherControl.StartWeather(); neskor
             StorylineManager st = new StorylineManager("Dialogues/OldLady.json");
+            var count = -1; //configure so it fits with the dialogue
+
             while (!WeatherControl._10toSweep)
             {
-                helper.say(st.text, st.response, st.options);
-                var choice = Console.ReadLine();
+                if (st.idiotCount == 0) //idiot count is implemented to prevent displaying the same dialogue multiple times in a row, istead just shows the options 
+                {
+                    helper.say(st.text, st.response, st.options); if (st.options == null || st.options == "") { break; }
+                }
+                else { helper.say(options: st.options); }
+
+                var choice = helper.parseinput(Console.ReadLine());
                 if (!WeatherControl._10toSweep)
                 {
                     switch (choice)
                     {
-                        case "stop": break;
+                        case "stoptalking": break;
+                        default:
+                            st.NextLevel(choice);
+                            count += 1;
+                            if (count < 3) { WeatherControl.tutorialNext(count); }
+                            break;
+                    }
+                }
+            }
+            WeatherControl.StartWeather();
+
+        }
+        public void Shelter(ref int score)
+        {
+            StorylineManager st = new StorylineManager("Dialogues/Shelter.json");
+            while (!WeatherControl._10toSweep)
+            {
+                if (st.idiotCount == 0) //idiot count is implemented to prevent displaying the same dialogue multiple times in a row, istead just shows the options 
+                {
+                    helper.say(st.text, st.response, st.options); if (st.options == null || st.options == "") { break; }
+                }
+                else { helper.say(options: st.options); }
+
+                var choice = helper.parseinput(Console.ReadLine());
+                if (!WeatherControl._10toSweep)
+                {
+                    switch (choice)
+                    {
+                        case "stoptalking": break;
+                        default:
+                            st.NextLevel(choice);
+                            break;
+
+                    }
+                }
+            }
+        }
+
+        public void Hill(ref int score)
+        {
+            StorylineManager st = new StorylineManager("Dialogues/Hill.json");
+            while (!WeatherControl._10toSweep)
+            {
+                if (st.idiotCount == 0) //idiot count is implemented to prevent displaying the same dialogue multiple times in a row, istead just shows the options 
+                {
+                    helper.say(st.text, st.response, st.options); if (st.options == null || st.options == "") { break; }
+                }
+                else { helper.say(options: st.options); }
+
+                var choice = helper.parseinput(Console.ReadLine());
+                if (!WeatherControl._10toSweep)
+                {
+                    switch (choice)
+                    {
+                        case "stoptalking": break;
                         default:
                             st.NextLevel(choice);
                             break;
                     }
                 }
             }
+
         }
 
         public void testMinigameDelegate(ref int score)
