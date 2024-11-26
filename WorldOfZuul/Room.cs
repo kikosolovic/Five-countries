@@ -1,14 +1,17 @@
 ﻿using System.Dynamic;
 using static System.Formats.Asn1.AsnWriter;
 
+
 namespace FiveCountries
 {
     //creates a delegate for minigames so that they can be passed as arguments in Init.cs
     public delegate void MinigameDelegate(ref int score);
+
     public class Room
     {
         public string ShortDescription { get; private set; }
         public string LongDescription { get; private set; }
+        public bool mminigamePlayed = false;
 
         public MinigameDelegate? minigame { get; set; } = null;
         public Dictionary<string, Room> Exits { get; private set; } = new();
@@ -30,15 +33,20 @@ namespace FiveCountries
         // player cannot play it multiple times, (might not be the best solution if he fails he has to restart game to play again)
         public void ExecuteMinigame(ref int score)
         {
-            if (minigame != null)
+            if (minigame != null && !mminigamePlayed)
             {
                 minigame(ref score);  // Pass the score by reference
-                this.minigame = null;  // Reset the minigame so it can't be played again
+                this.mminigamePlayed = true;  // Reset the minigame so it can't be played again
             }
-            else
-            {
-                Console.WriteLine("There is no minigame in this room, or you have already played it.");
-            }
+            // else
+            // {
+            //     Console.WriteLine("There is no minigame in this room, or you have already played it.");
+            // }
+        }
+        public void playAgain()
+        {
+            this.mminigamePlayed = false;
+            //possible score to get * .5
         }
 
 

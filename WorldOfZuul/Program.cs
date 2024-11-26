@@ -76,13 +76,18 @@ to maintain modularity, extensibility, and maintainability.
 */
 
 
+using WorldOfZuul;
+
 namespace FiveCountries
 {
-    public class Program
+    public static class Program
     {
+        public static Game _game;
+
         public static void Main()
         {
             Game game = new();
+            _game = game;
             game.Play();
         }
     }

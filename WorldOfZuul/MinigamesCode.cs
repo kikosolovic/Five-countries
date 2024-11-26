@@ -4,12 +4,17 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using WorldOfZuul;
+using FiveCountries;
+using System.Collections.ObjectModel;
+
 
 // all minigames/quests should be created here, and referenced in Init.cs
 namespace FiveCountries
 {
+
     class MinigameCode
     {
+
 
 
         // put your code for the minigame here
@@ -32,61 +37,177 @@ namespace FiveCountries
         }
         public void Dock(ref int score)
         {
-            // Console.WriteLine("After a long journey you finally arrived in a small coastal village of Macuse. The guide got sick during the journney and left you at a small dock. There are only few old boats and a couple of local fisherman fishing.  ");
-
-            // {
-            //     Console.WriteLine("What do you want to do?");
-            //     Console.WriteLine("Talk/Continue");
-            //     var res = Console.ReadLine();
-            //     switch (res.ToLower())
-            //     {
-            //         case "talk":
-            //             Console.WriteLine("You panicked and said hello fish to the locals.");
-            //             say("What did you just say to me you little bitch");
-            //             // Console.WriteLine("What do you want to do");
-            //             // Console.WriteLine("Run?");
-
-
-            //             break;
-            //         case "continue":
-            //             Console.WriteLine("Be on your way");
-            //             break;
-            //         default:
-            //             Console.WriteLine("You have to choose one and write it correctly");
-            //             break;
-            //     }
-            // }
 
             StorylineManager st = new StorylineManager("Dialogues/DockDialogue.json");
-            while (true)
+            while (!WeatherControl._10toSweep)
             {
                 //spravit cely class na interface a styl s podmienkou aby to fungovalo
-                if (st.idiotCount == 0)
+                if (st.idiotCount == 0) //idiot count is implemented to prevent displaying the same dialogue multiple times in a row, istead just shows the options 
                 {
-                    say(st.text, st.response, st.options); if (st.options == null) { break; }
+                    helper.say(st.text, st.response, st.options); if (st.options == null || st.options == "") { break; }
                 }
-                else { say(null, null, st.options); }
+                else { helper.say(options: st.options); }
 
 
                 //since the readline is happenign here this function runs after the dialogue part is over and also the Game object can be passed here if needed
-                var choice = Console.ReadLine();
-                switch (choice)
+                var choice = helper.parseinput(Console.ReadLine());
+                if (!WeatherControl._10toSweep)
                 {
-                    case "break": break;
-                    default:
-                        st.NextLevel(choice);
-                        break;
+
+                    switch (choice)
+                    {
+                        case "stop": break;
+                        default:
+                            st.NextLevel(choice);
+                            break;
+                    }
+
+
                 }
+            }
+            st = new StorylineManager("Dialogues/CarRide.json");
+            while (!WeatherControl._10toSweep)
+            {
+                //spravit cely class na interface a styl s podmienkou aby to fungovalo
+                if (st.idiotCount == 0) //idiot count is implemented to prevent displaying the same dialogue multiple times in a row, istead just shows the options 
+                {
+                    helper.say(st.text, st.response, st.options); if (st.options == null || st.options == "") { break; }
+                }
+                else { helper.say(options: st.options); }
 
 
+                //since the readline is happenign here this function runs after the dialogue part is over and also the Game object can be passed here if needed
+                var choice = helper.parseinput(Console.ReadLine());
+                if (!WeatherControl._10toSweep)
+                {
+
+                    switch (choice)
+                    {
+                        case "stoptalking": break;
+                        default:
+                            st.NextLevel(choice);
+                            break;
+                    }
 
 
+                }
+            }
+            Program._game.Move("north");
+            Program._game.currentCountry.currentRoom.ExecuteMinigame(ref score);
+
+        }
+        public void Village(ref int score)
+        {
+            // WeatherControl.StartWeather(); neskor
+            StorylineManager st = new StorylineManager("Dialogues/OldLady.json");
+            var count = -1; //configure so it fits with the dialogue
+
+            while (!WeatherControl._10toSweep)
+            {
+                if (st.idiotCount == 0) //idiot count is implemented to prevent displaying the same dialogue multiple times in a row, istead just shows the options 
+                {
+                    helper.say(st.text, st.response, st.options); if (st.options == null || st.options == "") { break; }
+                }
+                else { helper.say(options: st.options); }
+
+                var choice = helper.parseinput(Console.ReadLine());
+                if (!WeatherControl._10toSweep)
+                {
+                    switch (choice)
+                    {
+                        case "stoptalking": break;
+                        default:
+                            st.NextLevel(choice);
+                            count += 1;
+                            if (count < 3) { WeatherControl.tutorialNext(count); }
+                            break;
+                    }
+                }
+            }
+            WeatherControl.StartWeather();
+
+        }
+        public void Shelter(ref int score)
+        {
+            StorylineManager st = new StorylineManager("Dialogues/Shelter.json");
+            while (!WeatherControl._10toSweep)
+            {
+                if (st.idiotCount == 0) //idiot count is implemented to prevent displaying the same dialogue multiple times in a row, istead just shows the options 
+                {
+                    helper.say(st.text, st.response, st.options); if (st.options == null || st.options == "") { break; }
+                }
+                else { helper.say(options: st.options); }
+
+                var choice = helper.parseinput(Console.ReadLine());
+                if (!WeatherControl._10toSweep)
+                {
+                    switch (choice)
+                    {
+                        case "stoptalking": break;
+                        default:
+                            st.NextLevel(choice);
+                            break;
+
+                    }
+                }
+            }
+        }
+
+        public void Hill(ref int score)
+        {
+            StorylineManager st = new StorylineManager("Dialogues/Hill.json");
+            while (!WeatherControl._10toSweep)
+            {
+                if (st.idiotCount == 0) //idiot count is implemented to prevent displaying the same dialogue multiple times in a row, istead just shows the options 
+                {
+                    helper.say(st.text, st.response, st.options); if (st.options == null || st.options == "") { break; }
+                }
+                else { helper.say(options: st.options); }
+
+                var choice = helper.parseinput(Console.ReadLine());
+                if (!WeatherControl._10toSweep)
+                {
+                    switch (choice)
+                    {
+                        case "stoptalking": break;
+                        default:
+                            st.NextLevel(choice);
+                            break;
+                    }
+                }
+            }
+
+        }
+
+        public void UNOutpost(ref int score)
+        {
+             StorylineManager st = new StorylineManager("Dialogues/IndiaIntro.json");
+            while (true)
+            {
+                if (st.idiotCount == 0)
+                {
+                    helper.say(st.text, st.response, st.options); if (st.options == null || st.options == "") { break; }
+                }
+                else { helper.say(options: st.options); }
+
+                var choice = helper.parseinput(Console.ReadLine());
+                
+                {
+                    switch (choice)
+                    {
+                        case "stoptalking": break;
+                        default:
+                            st.NextLevel(choice);
+                            break;
+
+                    }
+                }
             }
         }
 
         public void testMinigameDelegate(ref int score)
         {
-            Console.WriteLine("succesfuly ran a fucntion passed as argument");
+            Console.WriteLine("succesfuly ran a function passed as argument");
         }
 
         public int photovoltaicMinigame()
@@ -431,13 +552,32 @@ Your task is to find best spots for Photovoltaic(PV) power plants You will be sh
             }
         }
         public void RecyclingSortingMinigameNYC(ref int score)
+
+        // Method to get a valid option from the player
+        private char GetValidOption()
+        {
+            while (true)
+            {
+                string? input = Console.ReadLine();
+                if (!string.IsNullOrEmpty(input) && input.Length == 1)
+                {
+                    char option = char.ToUpper(input[0]);
+                    if (option >= 'A' && option <= 'D')
+                    {
+                        return option;
+                    }
+                }
+                Console.Write("Invalid input. Please enter A, B, C, or D: ");
+            }
+        }
+        public void RecyclingSortingMinigameNYC(ref int score)
         {
             // Trigger the NPC dialogue before the minigame
             CustomFunctions customFunctions = new CustomFunctions();
             customFunctions.UNAmbassadorPreMinigameDialogue("RecyclingSorting");
 
             // Minigame starts after NPC dialogue
-            
+
             int timeLimit = 30; // Time limit in seconds
             DateTime endTime = DateTime.Now.AddSeconds(timeLimit);
 
@@ -600,6 +740,7 @@ Your task is to find best spots for Photovoltaic(PV) power plants You will be sh
                 // Display the current input within brackets
                 Console.Write($"Type 'recycle', 'compost', or 'trash' [{currentInput}]: ");
             }
+
 
         }
 

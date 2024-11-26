@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorldOfZuul", "WorldOfZuul.csproj", "{F085CE89-6F92-4DE3-A955-94134D6A50B4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F085CE89-6F92-4DE3-A955-94134D6A50B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F085CE89-6F92-4DE3-A955-94134D6A50B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F085CE89-6F92-4DE3-A955-94134D6A50B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F085CE89-6F92-4DE3-A955-94134D6A50B4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D1142F38-EB65-4814-9582-C4203A922162}
+	EndGlobalSection
+EndGlobal
