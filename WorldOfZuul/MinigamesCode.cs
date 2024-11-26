@@ -179,6 +179,32 @@ namespace FiveCountries
 
         }
 
+        public void UNOutpost(ref int score)
+        {
+             StorylineManager st = new StorylineManager("Dialogues/IndiaIntro.json");
+            while (true)
+            {
+                if (st.idiotCount == 0)
+                {
+                    helper.say(st.text, st.response, st.options); if (st.options == null || st.options == "") { break; }
+                }
+                else { helper.say(options: st.options); }
+
+                var choice = helper.parseinput(Console.ReadLine());
+                
+                {
+                    switch (choice)
+                    {
+                        case "stoptalking": break;
+                        default:
+                            st.NextLevel(choice);
+                            break;
+
+                    }
+                }
+            }
+        }
+
         public void testMinigameDelegate(ref int score)
         {
             Console.WriteLine("succesfuly ran a function passed as argument");
