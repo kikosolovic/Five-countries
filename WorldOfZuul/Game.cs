@@ -6,10 +6,10 @@ namespace FiveCountries
     public class Game : Init
     {
 
-        private Country? currentCountry;
+        public Country? currentCountry;
         private Country? previousCountry; //back command for country if needed
 
-        private string currentItem = null;
+        private string currentItem { get; set; }
 
         public Game()
         {
@@ -38,9 +38,9 @@ namespace FiveCountries
 
             // note below
             {
-                Console.ForegroundColor = ConsoleColor.Blue;
-                helper.WriteWithDelay(currentCountry?.ShortDescription + " " + currentCountry?.currentRoom?.ShortDescription + " >");
-                Console.ResetColor();
+
+                helper.say(location: currentCountry?.ShortDescription + " " + currentCountry?.currentRoom?.ShortDescription + " >");
+
 
                 string? input = Console.ReadLine();
 
@@ -50,7 +50,7 @@ namespace FiveCountries
                     continue;
                 }
 
-                Command? command = parser.GetCommand(input.ToLower());
+                Command? command = parser.GetCommand(input.ToLower().Trim());
                 // 
 
 
@@ -82,9 +82,8 @@ namespace FiveCountries
                             Console.WriteLine("Travel where?");
                             break;
                         }
-                        customFunctions.loading();
+
                         Travel(command.SecondWord);
-                        Console.WriteLine(currentCountry?.LongDescription);
                         if (this.currentCountry?.currentRoom?.minigame != null)
                         {
                             this.currentCountry.currentRoom.ExecuteMinigame(ref score);
@@ -128,6 +127,55 @@ namespace FiveCountries
                         }
 
                         break;
+                    case "playagain":
+                        this.currentCountry?.currentRoom?.playAgain();
+                        this.currentCountry?.currentRoom?.ExecuteMinigame(ref score);
+                        break;
+                    case "pick":
+                        if (command.SecondWord == null || command.SecondWord == "" || command.SecondWord == " ")
+                        {
+                            helper.say("Pick what?");
+                            break;
+                        }
+                        else
+                        {
+                            currentItem = command.SecondWord;
+                            Console.WriteLine($"You picked {currentItem}");
+                            //probably can pick up whatever 
+                        }
+                        break;
+                    case "analyze":
+                        if (command.SecondWord == null || command.SecondWord == "" || command.SecondWord == " ")
+                        {
+                            helper.say("Analyze what?");
+                            break;
+                        }
+                        else
+                        {
+                            helper.analyze(command.SecondWord);
+                            break;
+                        }
+                    case "configure":
+                        if (command.SecondWord == null || command.SecondWord == "" || command.SecondWord == " ")
+                        {
+                            WeatherControl.stationGame();
+                            break;
+                        }
+                        else
+                        {
+                            WeatherControl.configure(command.SecondWord);
+                            break;
+                        }
+                    case "weather":
+                        if (this.currentCountry?.ShortDescription == "Mozambique")
+
+                        {
+                            WeatherControl.GetWeather();
+
+                        }
+                        break;
+
+
                     case "score":
                         Console.WriteLine($"Your score is: {score}");
                         break;
@@ -174,8 +222,11 @@ namespace FiveCountries
         {
             if (currentCountry?.Exits.ContainsKey(country) == true)
             {
+                helper.loading();
+
                 previousCountry = currentCountry;
                 currentCountry = currentCountry?.Exits[country];
+                helper.say(write: currentCountry?.LongDescription);
 
             }
             else
@@ -229,6 +280,8 @@ namespace FiveCountries
             Console.WriteLine("Type 'back' to go to the previous room.");
             Console.WriteLine("Type 'help' to print this message again.");
             Console.WriteLine("Type 'quit' to exit the game.");
+            Console.WriteLine("Type 'playagain' to repeat the quest.");
+            Console.WriteLine("Type 'stoptalking' to stop ongoing conversation.");
         }
     }
 }

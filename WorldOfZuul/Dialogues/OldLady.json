@@ -1,65 +1,59 @@
 {
-    "text": "You arrive in Macuse, a small fishing village nestled on the shores of Mozambique. The sun is setting over the ocean, casting a golden glow across the water. The village is quiet, with simple houses made from local materials. A few fishermen are unloading their catch at the dock, and the scent of the sea mixes with the earthy aroma of rice fields in the distance. The air is warm and humid as you step out of the car, greeted by an elderly woman who lives in the village. She smiles as she approaches, leaning on a walking stick.",
-    "response": "Welcome to Macuse, young one. It's been a long time since we've had visitors. This village has stood the test of time, just like the people who live here. We grow rice and fish in these waters, the rhythm of life has always been the same. But things have changed, just a little. I'll tell you all about it.",
-    "options": "1. Ask about the weather station. 2. Ask about where to take shelter in case of a storm.",
+    "text": "The activist steps out of the fisherman’s car and takes in his surroundings. The village is serene, with palm trees swaying gently and rows of small huts made from local materials. In the distance, the blue waters of the Indian Ocean glimmer under the sun. A few villagers are tending to rice fields that stretch towards the horizon. Suddenly, an old lady hurries toward them with a concerned expression.",
+    "response": "Oh, my boy! I’m so glad you’re back. I always worry when you’re out on the sea, especially during the monsoon season. And who’s this young man you’ve brought with you?",
+    "options": "1. Introduce yourself. 2. Ask about the village.",
     "opt1": {
-        "text": "You ask about the weather station and how it has affected the village.",
-        "response": "Ah, the weather station? Well, it broke a long time ago. It's been a challenge for us, especially with the storms that come from the ocean. We used to have warnings, but now we have to rely on the signs from nature. The villagers have lived here for generations, so we know when a storm is coming by the way the wind shifts or the sky darkens.",
-        "options": "1. Ask how the villagers deal with the storms now. 2. Ask if the villagers have any new ways to cope with climate change.",
+        "text": "You introduce yourself to the old lady.",
+        "response": "Ah, welcome! You’ve come to a beautiful, but sometimes unforgiving place. Let me show you around the village.",
+        "options": "1. Thank her and ask about the village. 2. Comment on how beautiful the village looks.",
         "opt1": {
-            "text": "You ask how the villagers manage without the weather station.",
-            "response": "We know the land and the sea. When the wind changes, we can feel it. If the sky gets too dark, we gather everyone in the small room by the square. It's the only place we can trust to keep us safe. If you ever feel the storm coming, go there and stay with the others. It’s not much, but it keeps us safe.",
-            "options": "1. Thank the lady and ask if she needs help. 2. Ask about the rice fields and how they manage agriculture.",
+            "text": "You thank her and ask about the village.",
+            "response": "This is Macuse, our little piece of paradise. We’ve lived here for generations, fishing and growing rice. Life is simple but beautiful. Look around—the fields feed us, the ocean provides, and the people here are like family.",
+            "options": "1. Ask about challenges they face. 2. Ask about the monsoon season.",
             "opt1": {
-                "text": "You thank her and ask if she needs help.",
-                "response": "You’re kind. If you don't mind, I could use help in the rice field. It's not much, just a little work to tend to the crop. The rice grows well here, but it takes a lot of effort. I'll show you the way.",
-                "options": "1. Agree to help her in the rice field. 2. Politely decline and ask more about the fishing.",
+                "text": "You ask about challenges they face.",
+                "response": "Well, these days, the weather is our biggest challenge. The monsoon season is dangerous, and the storms seem stronger than before. We used to predict the weather just by the feel of the air and the winds, but now it’s impossible to know what’s coming.",
+                "options": "1. Ask what they do during storms. 2. Express concern for their safety.",
                 "opt1": {
-                    "text": "You agree to help her in the rice field.",
-                    "response": "Ah, thank you, my friend. Let’s go, it’s not too far. The field has been growing well this season, but we need to watch for any pests that might come. Come, I’ll teach you how we do things here.",
-                    "options": "1. Follow her to the rice field. 2. Ask her about the best time to plant rice.",
-                    "opt1": {
-                        "text": "You follow her to the rice field.",
-                        "response": "The field is just a short walk away. As you approach, the rich green rice plants sway gently in the wind. The sound of the rustling plants is soothing. The old lady shows you how to carefully examine the plants for any signs of pests.",
-                        "options": "1. Help her inspect the plants. 2. Ask about the challenges they face with rice farming.",
-                        "opt1": {
-                            "text": "You help her inspect the plants.",
-                            "response": "You bend down to look at the plants. The earth is soft and damp under your feet, and you notice a few signs of pests, which the lady points out. She smiles at your careful attention.",
-                            "options": "1. Continue helping her. 2. Ask her more about the storms that hit the village."
-                        },
-                        "opt2": {
-                            "text": "You ask about the challenges they face with rice farming.",
-                            "response": "The biggest challenge is the rain. Sometimes it comes too early, sometimes too late. When the storms come, it can flood the fields, but we manage. It’s just how life is here. The sea, the storms—they’re part of our rhythm.",
-                            "options": "1. Ask how they manage with the unpredictable weather. 2. Change the subject and ask more about the shelter during storms."
-                        }
-                    },
-                    "opt2": {
-                        "text": "You politely decline and ask more about the fishing.",
-                        "response": "Ah, you’re not ready for the fields yet. Well, we fish here too. The ocean gives us what we need, but it’s not always kind. The fish are getting harder to find, and the storms make it worse. You’ll see the fishermen at the dock soon, maybe you’ll learn from them.",
-                        "options": "1. Ask the lady to tell you more about the fishing life. 2. Go and meet the fishermen at the dock."
-                    }
+                    "text": "You ask what they do during storms.",
+                    "response": "We’re lucky to have a cyclone shelter to the north. When a big storm comes, the whole village takes shelter there. It’s saved our lives many times.",
+                    "options": "1. Ask how they know when to go to the shelter. 2. Offer to help if needed.",
+                    "opt1":{},
+                    "opt2":{}
                 },
                 "opt2": {
-                    "text": "You ask more about the rice fields and how they manage agriculture.",
-                    "response": "We’ve been growing rice here for a long time. The land is good, and we know how to work with it. But sometimes, when the rains come too much, it floods the fields. Other times, it doesn’t rain enough. We’ve learned to adjust. It’s a life of waiting for the right signs.",
-                    "options": "1. Ask about the best season for planting rice. 2. Ask if there are any other crops they grow."
+                    "text": "You express concern for their safety.",
+                    "response": "Thank you, young man. We do our best, but without the weather station working properly, it’s hard. Sometimes it gives false alarms, and sometimes it doesn’t work at all.",
+                    "options": "1. Offer to take a look at the weather station. 2. Ask how they managed before the station was built.",
+                    "opt1":{},
+                    "opt2":{}
                 }
             },
             "opt2": {
-                "text": "You ask if the villagers have any new ways to cope with climate change.",
-                "response": "Climate change is something we feel. The storms are getting worse, and the seasons don’t behave like they used to. We rely on the old ways, but sometimes it’s not enough. We need help from people like you, maybe, to fix our weather station or bring new ideas.",
-                "options": "1. Offer to help fix the weather station. 2. Ask how they feel about the changing weather patterns."
+                "text": "You ask about the monsoon season.",
+                "response": "The monsoon season is the most dangerous time of the year. Strong winds and heavy rains can destroy homes and take lives. That’s why we have the shelter to the north. But I’m always worried for my son out on the sea, especially with the weather station being so unreliable.",
+                "options": "1. Ask more about the shelter. 2. Offer to take a look at the weather station."
             }
         },
         "opt2": {
-            "text": "You ask about where to take shelter in case of a storm.",
-            "response": "Ah, good question. The storm shelter is in the square, a small room built many years ago by the community. When the wind picks up, everyone goes there. It’s always better to be safe. The villagers know the signs, but it’s always good to have a place to hide just in case.",
-            "options": "1. Thank her for the information. 2. Ask more about the shelter and how often it’s used."
+            "text": "You comment on how beautiful the village looks.",
+            "response": "It is beautiful, isn’t it? But beauty can be deceiving. During the monsoon season, this peaceful place can turn dangerous in an instant. That’s why we always stay prepared.",
+            "options": "1. Ask how they prepare for storms. 2. Comment on how hard it must be to live here."
         }
     },
     "opt2": {
-        "text": "You ask about her life and how she has lived here for so long.",
-        "response": "I’ve lived here all my life. My family has been here for generations. We’ve seen many changes, but the village stays the same. Life here is simple, but it’s also hard. The storms, the floods, they are things we face together. We support each other, that’s how we survive.",
-        "options": "1. Ask her if she ever plans to leave the village. 2. Ask how the village stays connected despite the challenges."
+        "text": "You ask about the village.",
+        "response": "This is Macuse. Our lives revolve around the ocean and the rice fields. We have little, but we make do. The scenery is beautiful, but the monsoon season tests our resolve every year.",
+        "options": "1. Ask how they handle storms. 2. Ask what makes the village special.",
+        "opt1": {
+            "text": "You ask how they handle storms.",
+            "response": "When the weather gets bad, we head to the cyclone shelter to the north. It’s saved us more times than I can count. But I worry for my son and others who can’t make it back in time.",
+            "options": "1. Offer to help if needed. 2. Ask more about the shelter."
+        },
+        "opt2": {
+            "text": "You ask what makes the village special.",
+            "response": "It’s the people and our connection to this land. Everything we do—fishing, farming, celebrating—is tied to the sea and the fields. Even with all the hardships, there’s nowhere else we’d rather be.",
+            "options": "1. Comment on their resilience. 2. Ask about the challenges they face."
+        }
     }
 }

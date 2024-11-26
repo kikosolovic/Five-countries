@@ -1,0 +1,37 @@
+{
+    "text": "You sit with the villagers inside the cyclone shelter. The air is tense, but the old lady’s voice cuts through the murmurs as she addresses you with a disapproving tone.",
+    "response": "Young man, you must pay more attention! The shelter is to the north, as I told you before. Cyclone shelters are our lifelines. They’re sturdy buildings made to protect us from the worst storms. This one has saved us more times than I can count.",
+    "options": "1. Apologize for forgetting the direction. 2. Ask more about the cyclone shelters.",
+    "opt1": {
+        "text": "You apologize for forgetting the direction.",
+        "response": "It’s alright, but you must remember next time. When the storm comes, there’s no time to waste. Knowing where to go can save your life.",
+        "options": "1. Ask how the shelter was built. 2. Ask how often they’ve used the shelter.",
+        "opt1": {
+            "text": "You ask how the shelter was built.",
+            "response": "It was built years ago with the help of some government workers and donations. We all pitched in to make sure it was strong enough to withstand the storms. Without it, we’d have nowhere to hide when the winds come.",
+            "options": "1. Thank her for explaining. 2. Ask if they’ve had to rebuild it before.",
+            "opt1":{},
+            "opt2":{}
+        },
+        "opt2": {
+            "text": "You ask how often they’ve used the shelter.",
+            "response": "More times than I’d like to remember. When the monsoon comes, we practically live here. It’s not comfortable, but it’s safe. That’s what matters.",
+            "options": "1. Ask what they do while waiting out storms. 2. Ask how they keep the shelter maintained."
+        }
+    },
+    "opt2": {
+        "text": "You ask more about the cyclone shelters.",
+        "response": "These shelters are our only hope during the big storms. They’re built with thick walls and a sturdy roof to protect us from the winds and rain. Everyone in the village knows to run here when the alarm sounds.",
+        "options": "1. Ask if the shelter has ever failed. 2. Ask if they’ve faced worse storms in the past.",
+        "opt1": {
+            "text": "You ask if the shelter has ever failed.",
+            "response": "Thankfully, no. This shelter has stood strong through every storm we’ve faced. But we always pray it stays that way.",
+            "options": "1. Thank her for explaining. 2. Offer to help inspect the shelter’s structure."
+        },
+        "opt2": {
+            "text": "You ask if they’ve faced worse storms in the past.",
+            "response": "Oh, yes. Some storms were so fierce they left the village in ruins. But as long as we were in the shelter, we were safe. That’s why it’s so important to have a working weather station—to give us enough time to prepare.",
+            "options": "1. Offer to help fix the weather station. 2. Ask how the weather station broke."
+        }
+    }
+}

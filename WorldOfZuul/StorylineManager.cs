@@ -73,8 +73,8 @@ namespace FiveCountries
 
             catch
             {
-                Console.WriteLine("You have finished all of it");//pozret sa na t0, implement what happens at the ennd of scritp
-                this.options = null;
+
+
             }
 
         }
