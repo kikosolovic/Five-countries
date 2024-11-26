@@ -247,6 +247,8 @@ namespace FiveCountries
             Console.WriteLine("Travel between countries by typing 'travel' and the name of the country. ");
             Console.WriteLine("Type 'look' for more details.");
             Console.WriteLine("Type 'map' to see the map.");
+            Console.WriteLine("Type 'score' to see your current score.");
+            Console.WriteLine("Type 'play' to play a minigame.");
             Console.WriteLine("Type 'back' to go to the previous room.");
             Console.WriteLine("Type 'help' to print this message again.");
             Console.WriteLine("Type 'quit' to exit the game.");
