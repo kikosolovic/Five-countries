@@ -637,7 +637,7 @@ Your task is to find best spots for Photovoltaic(PV) power plants You will be sh
     };
 
             Random random = new Random();
-            int timeLimit = 40;
+            int timeLimit = 15;
             DateTime endTime = DateTime.Now.AddSeconds(timeLimit);
 
             while (DateTime.Now < endTime)
