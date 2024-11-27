@@ -1,0 +1,75 @@
+{
+  "text": "You arrive in New York City, greeted by the sound of bustling traffic and towering skyscrapers. The UN Ambassador approaches you.",
+  "response": "Welcome! New York generates over 12,000 tons of waste every day. We're on the brink of a crisis. Can you help us?",
+  "options": "1. Yes, I’m ready to help. 2. What exactly is the problem?",
+  "opt1": {
+    "text": "You nod confidently, ready to take on the challenge.",
+    "response": "Fantastic! Let’s focus on sorting recyclables, compostables, and trash correctly to reduce contamination.",
+    "options": "1. What’s my role? 2. Let’s get started.",
+    "opt1": {
+      "text": "You ask about your role in this mission.",
+      "response": "You’ll be sorting items at the recycling center. It’s a hands-on task, but it’s critical to our success.",
+      "options": "1. Got it. Let’s go. 2. Do I need training for this?",
+      "opt1": {
+        "text": "You acknowledge your role and agree to get started.",
+        "response": "The ambassador nods. 'Let’s head to the recycling center. Every moment counts.'",
+        "options": null
+      },
+      "opt2": {
+        "text": "You ask if training is required for the task.",
+        "response": "Not at all. The team will guide you through the process once you’re at the center.",
+        "options": "1. Got it. Let’s go.",
+        "opt1": {
+          "text": "You agree to get started.",
+          "response": "Fantastic! The team is waiting for you.",
+          "options": null
+        }
+      }
+    },
+    "opt2": {
+      "text": "You agree to get started immediately.",
+      "response": "Fantastic! The team at the recycling center is ready for you.",
+      "options": null
+    }
+  },
+  "opt2": {
+    "text": "You ask for more details about the problem.",
+    "response": "Improper waste sorting leads to contamination. Even small mistakes, like greasy pizza boxes in recycling bins, can ruin entire batches.",
+    "options": "1. How can I help? 2. That sounds overwhelming.",
+    "opt1": {
+      "text": "You ask how you can make a difference.",
+      "response": "Your job is to lead by example at the recycling center. Show others the correct way to sort waste.",
+      "options": "1. Sounds good. Let’s go. 2. What happens if I mess up?",
+      "opt1": {
+        "text": "You decide to take action.",
+        "response": "The ambassador smiles. 'That’s the attitude we need! Let’s get started.'",
+        "options": null
+      },
+      "opt2": {
+        "text": "You express concern about making mistakes.",
+        "response": "Mistakes happen, but don’t worry. The team will be there to guide you.",
+        "options": "1. Thanks for the reassurance. Let’s go.",
+        "opt1": {
+          "text": "You feel reassured and ready to begin.",
+          "response": "The ambassador leads the way. 'The recycling center is ready for you.'",
+          "options": null
+        }
+      }
+    },
+    "opt2": {
+      "text": "You express doubt about managing such a big challenge.",
+      "response": "Don’t worry! You’ll have support at the recycling center. We’ll guide you every step of the way.",
+      "options": "1. Okay, I’m in. 2. I hope I don’t mess up.",
+      "opt1": {
+        "text": "You decide to give it your best shot.",
+        "response": "The ambassador smiles. 'That’s the attitude we need! The recycling center is ready for you.'",
+        "options": null
+      },
+      "opt2": {
+        "text": "You nervously agree to help.",
+        "response": "The ambassador nods. 'Even small actions make a big difference. Let’s get started.'",
+        "options": null
+      }
+    }
+  }
+}

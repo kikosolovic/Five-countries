@@ -1,0 +1,25 @@
+{
+  "text": "The composting team applauds your efforts as you step outside the bustling composting center. A local leader named Alex approaches you with a broad smile.",
+  "response": "Alex: 'What an amazing job! Composting is vital to our community, and your example inspires us all to do better.'",
+  "options": "1. Thank Alex for their kind words. 2. Ask how the community can improve further.",
+  "opt1": {
+    "text": "You thank Alex for their encouragement.",
+    "response": "Alex: 'We all play a role in creating a sustainable future. Keep up the great work!'",
+    "options": null
+  },
+  "opt2": {
+    "text": "You ask about further improvements.",
+    "response": "Alex: 'Education is key. The more people understand composting, the more we can reduce waste and build healthier communities.'",
+    "options": "1. Agree with Alex. 2. Share your experience from today.",
+    "opt1": {
+      "text": "You agree wholeheartedly.",
+      "response": "Alex smiles. 'Together, we can make San Francisco even greener!'",
+      "options": null
+    },
+    "opt2": {
+      "text": "You share your thoughts.",
+      "response": "Alex nods. 'Your experience is invaluable. Thank you for leading the way!'",
+      "options": null
+    }
+  }
+}

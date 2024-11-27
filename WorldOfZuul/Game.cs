@@ -230,11 +230,7 @@ namespace FiveCountries
                 // previousRoom = currentRoom;
                 // currentRoom = currentRoom?.Exits[direction];
                 currentCountry.setRoom(currentCountry.currentRoom?.Exits[direction], currentCountry.currentRoom);
-                if (currentCountry.ShortDescription == "USA")
-                {
-                    CustomFunctions customFunctions = new CustomFunctions();
-                    customFunctions.UNAmbassadorDialogue(currentCountry.currentRoom);
-                }
+                
             }
             else
             {
@@ -263,11 +259,30 @@ namespace FiveCountries
             // Trigger the NPC dialogue if arriving in a room in the USA
             if (currentCountry?.ShortDescription == "USA" && currentCountry?.currentRoom != null)
             {
-                Console.WriteLine("You've arrived here on the invitation of a UN ambassador. He's expecting your arrival!");
+                // Check for specific room and display unique dialogues
+                switch (currentCountry.currentRoom.ShortDescription)
+                {
+                    case "NYC": // New York City
+                        Console.WriteLine("You've arrived here on the invitation of a UN ambassador. He's expecting your arrival!");
+                        break;
+                    case "LA": // Los Angeles
+                        Console.WriteLine("Welcome to Los Angeles! The city of stars is facing its own waste management crisis.");
+                        break;
+                    case "SF": // San Francisco
+                        Console.WriteLine("Hello from San Francisco! We need your help to tackle our food waste and composting issues.");
+                        break;
+                    case "HOU": // Houston
+                        Console.WriteLine("Welcome to Houston! The Gulf's oil spill problem requires urgent attention, and you're here to help.");
+                        break;
+                    case "CHI": // Chicago
+                        Console.WriteLine("Welcome to Chicago! We need your expertise to combat urban air pollution and emissions.");
+                        break;
+                    default:
+                        Console.WriteLine("Welcome! Your environmental mission begins here.");
+                        break;
+                }
 
-                // Trigger the NPC dialogue
-                CustomFunctions customFunctions = new CustomFunctions();
-                customFunctions.UNAmbassadorDialogue(currentCountry.currentRoom);
+               
             }
 
         }

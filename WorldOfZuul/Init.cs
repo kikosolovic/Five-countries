@@ -58,10 +58,10 @@ namespace FiveCountries
             Haiti.InitRoom("Server Building", "Building of the Computational Department");
 
 
-            Haiti.addExit("Outside", new List<string> {"south","north", "west" }, new List<string> { "Lobby", "Infrostructure Building", "Server Building" });
+            Haiti.addExit("Outside", new List<string> { "south", "north", "west" }, new List<string> { "Lobby", "Infrostructure Building", "Server Building" });
             Haiti.addExit("Lobby", new List<string> { "south", "north", "west", "east" }, new List<string> { "Corridor", "Outside", "Wind Lab", "PV Lab" });
-            Haiti.addExit("Corridor", new List<string> {"north", "west", "east" }, new List<string> { "Lobby", "Energy Storage Lab", "Closet", });
-            Haiti.addExit("PV Lab", new List<string> { "west" }, new List<string> { "Lobby"});
+            Haiti.addExit("Corridor", new List<string> { "north", "west", "east" }, new List<string> { "Lobby", "Energy Storage Lab", "Closet", });
+            Haiti.addExit("PV Lab", new List<string> { "west" }, new List<string> { "Lobby" });
             Haiti.addExit("Wind Lab", new List<string> { "east" }, new List<string> { "Lobby" });
             Haiti.addExit("Energy Storage Lab", new List<string> { "east" }, new List<string> { "Corridor" });
             Haiti.addExit("Closet", new List<string> { "west" }, new List<string> { "Corridor" });
@@ -120,9 +120,9 @@ namespace FiveCountries
 
 
             // //initialize rooms to USA
-            USA.InitRoom("New York City", "You are in New York City, where waste management and recycling initiatives are critical to reducing urban waste.",new MinigameDelegate(minigameFunctions.RecyclingSortingMinigameNYC));
+            USA.InitRoom("New York City", "You are in New York City, where waste management and recycling initiatives are critical to reducing urban waste.", new MinigameDelegate(minigameFunctions.RecyclingSortingMinigameNYC));
             USA.InitRoom("Los Angeles", "You are in Los Angeles, dealing with challenges related to plastic waste and sustainable disposal methods..", new MinigameDelegate(minigameFunctions.EcoFriendlyHomeMakeover));
-            USA.InitRoom("San Francisco", "You are in San Francisco, known for its zero-waste goals and composting initiatives.");
+            USA.InitRoom("San Francisco", "You are in San Francisco, known for its zero-waste goals and composting initiatives.", new MinigameDelegate(minigameFunctions.CompostingPuzzleMinigameSFA));
             USA.InitRoom("Houston", "You are in Houston, where industrial waste and hazardous waste management are major concerns.");
             USA.InitRoom("Chicago", "You are in Chicago, focusing on electronic waste recycling and management.");
 

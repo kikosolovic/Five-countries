@@ -374,116 +374,137 @@ Your task is to find best spots for Photovoltaic(PV) power plants You will be sh
         }
         public void EcoFriendlyHomeMakeover(ref int score)
         {
-            CustomFunctions customFunctions = new CustomFunctions();
-            customFunctions.UNAmbassadorPreMinigameDialogue("EcoFriendlyHomeMakeover");
+            // Pre-game Dialogue
+            StorylineManager preGameDialogue = new StorylineManager("Dialogues/laDialogue.json");
+
+            while (true)
+            {
+                helper.say(preGameDialogue.text, preGameDialogue.response, preGameDialogue.options);
+
+                if (string.IsNullOrEmpty(preGameDialogue.options)) break;
+
+                var choice = helper.parseinput(Console.ReadLine());
+
+                try
+                {
+                    preGameDialogue.NextLevel(choice);
+                }
+                catch (Exception)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Invalid choice. Please select a valid option.");
+                    Console.ResetColor();
+                }
+            }
+
+            // Contextual Minigame Introduction
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            helper.WriteWithDelay("\nThe UN Ambassador leads you to a suburban neighborhood in Los Angeles.");
+            helper.WriteWithDelay("\n'This city is working hard to make its homes more eco-friendly,' the ambassador explains.");
+            helper.WriteWithDelay("\n'Your mission is to help by making sustainable choices in this eco-friendly home makeover challenge.'");
+            Console.ResetColor();
+
+            // Questions for the Minigame
+            List<Question> questions = new List<Question>
+    {
+        new Question
+        {
+            Text = "You need a new refrigerator. Which option is the most eco-friendly choice?",
+            Options = new Dictionary<char, string>
+            {
+                { 'A', "A standard refrigerator with a low upfront cost." },
+                { 'B', "An ENERGY STAR-certified refrigerator." },
+                { 'C', "A second-hand refrigerator from a friend." },
+                { 'D', "The largest refrigerator available for more storage." }
+            },
+            CorrectOption = 'B',
+            Explanation = "ENERGY STAR-certified appliances use less energy, saving you money and reducing environmental impact."
+        },
+        new Question
+        {
+            Text = "You're redesigning your garden. What should you plant to conserve water?",
+            Options = new Dictionary<char, string>
+            {
+                { 'A', "A lawn with exotic flowers." },
+                { 'B', "Native drought-resistant plants." },
+                { 'C', "A tropical fruit garden." },
+                { 'D', "Water-intensive grass turf." }
+            },
+            CorrectOption = 'B',
+            Explanation = "Native drought-resistant plants require less water and are well-suited to LA's climate."
+        },
+        new Question
+        {
+            Text = "How can you best reduce household waste?",
+            Options = new Dictionary<char, string>
+            {
+                { 'A', "Use disposable plates and utensils to avoid washing dishes." },
+                { 'B', "Implement a composting system for organic waste." },
+                { 'C', "Throw all waste into the general trash bin." },
+                { 'D', "Burn waste in the backyard." }
+            },
+            CorrectOption = 'B',
+            Explanation = "Composting reduces landfill waste and provides nutrient-rich soil for gardening."
+        },
+        new Question
+        {
+            Text = "Which lighting option is the most energy-efficient for your home?",
+            Options = new Dictionary<char, string>
+            {
+                { 'A', "Incandescent bulbs." },
+                { 'B', "Halogen bulbs." },
+                { 'C', "Compact Fluorescent Lamps (CFLs)." },
+                { 'D', "Light Emitting Diode (LED) bulbs." }
+            },
+            CorrectOption = 'D',
+            Explanation = "LED bulbs are the most energy-efficient and have a longer lifespan than other bulbs."
+        },
+        new Question
+        {
+            Text = "To conserve water during showers, you should:",
+            Options = new Dictionary<char, string>
+            {
+                { 'A', "Take longer showers to relax." },
+                { 'B', "Install a low-flow showerhead." },
+                { 'C', "Keep the water running while not in use." },
+                { 'D', "Shower multiple times a day." }
+            },
+            CorrectOption = 'B',
+            Explanation = "Low-flow showerheads reduce water usage without compromising the shower experience."
+        }
+    };
 
             int minigameScore = 0;
             int questionNumber = 1;
 
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("\nWelcome to Eco-Friendly Home Makeover in Los Angeles!");
-            Console.WriteLine("Make sustainable choices to upgrade your home and reduce your environmental footprint.\n");
-            Console.ResetColor();
-
-            // List of questions
-            List<Question> questions = new List<Question>
-{
-    new Question
-    {
-        Text = "You need a new refrigerator. Which option is the most eco-friendly choice?",
-        Options = new Dictionary<char, string>
-        {
-            { 'A', "A standard refrigerator with a low upfront cost." },
-            { 'B', "An ENERGY STAR-certified refrigerator." },
-            { 'C', "A second-hand refrigerator from a friend." },
-            { 'D', "The largest refrigerator available for more storage." }
-        },
-        CorrectOption = 'B',
-        Explanation = "ENERGY STAR-certified appliances use less energy, saving you money and reducing environmental impact."
-    },
-    new Question
-    {
-        Text = "You're redesigning your garden. What should you plant to conserve water?",
-        Options = new Dictionary<char, string>
-        {
-            { 'A', "A lawn with exotic flowers." },
-            { 'B', "Native drought-resistant plants." },
-            { 'C', "A tropical fruit garden." },
-            { 'D', "Water-intensive grass turf." }
-        },
-        CorrectOption = 'B',
-        Explanation = "Native drought-resistant plants require less water and are well-suited to LA's climate."
-    },
-    new Question
-    {
-        Text = "How can you best reduce household waste?",
-        Options = new Dictionary<char, string>
-        {
-            { 'A', "Use disposable plates and utensils to avoid washing dishes." },
-            { 'B', "Implement a composting system for organic waste." },
-            { 'C', "Throw all waste into the general trash bin." },
-            { 'D', "Burn waste in the backyard." }
-        },
-        CorrectOption = 'B',
-        Explanation = "Composting reduces landfill waste and provides nutrient-rich soil for gardening."
-    },
-    new Question
-    {
-        Text = "Which lighting option is the most energy-efficient for your home?",
-        Options = new Dictionary<char, string>
-        {
-            { 'A', "Incandescent bulbs." },
-            { 'B', "Halogen bulbs." },
-            { 'C', "Compact Fluorescent Lamps (CFLs)." },
-            { 'D', "Light Emitting Diode (LED) bulbs." }
-        },
-        CorrectOption = 'D',
-        Explanation = "LED bulbs are the most energy-efficient and have a longer lifespan than other bulbs."
-    },
-    new Question
-    {
-        Text = "To conserve water during showers, you should:",
-        Options = new Dictionary<char, string>
-        {
-            { 'A', "Take longer showers to relax." },
-            { 'B', "Install a low-flow showerhead." },
-            { 'C', "Keep the water running while not in use." },
-            { 'D', "Shower multiple times a day." }
-        },
-        CorrectOption = 'B',
-        Explanation = "Low-flow showerheads reduce water usage without compromising the shower experience."
-    }
-};
-
             foreach (var question in questions)
             {
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine($"Question {questionNumber}: {question.Text}\n");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                helper.WriteWithDelay($"Question {questionNumber}: {question.Text}");
                 Console.ResetColor();
 
                 foreach (var option in question.Options)
                 {
                     Console.Write($"{option.Key}. ");
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine($"{option.Value}");
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine(option.Value);
                     Console.ResetColor();
                 }
 
-                Console.Write("\nType A, B, C, or D: ");
+                Console.Write("\nEnter your choice (A, B, C, or D): ");
                 char playerChoice = GetValidOption();
 
                 if (char.ToUpper(playerChoice) == question.CorrectOption)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("\nCorrect! " + question.Explanation);
-                    score += 1;
-                    minigameScore += 1;
+                    Console.WriteLine("Correct! " + question.Explanation);
+                    score++;
+                    minigameScore++;
                 }
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("\nIncorrect.");
-                    Console.WriteLine("Correct Answer: " + question.CorrectOption + ". " + question.Options[question.CorrectOption]);
+                    Console.WriteLine($"Incorrect. Correct Answer: {question.CorrectOption}. {question.Options[question.CorrectOption]}");
                     Console.WriteLine(question.Explanation);
                 }
 
@@ -492,40 +513,51 @@ Your task is to find best spots for Photovoltaic(PV) power plants You will be sh
                 Console.ReadLine();
                 questionNumber++;
             }
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("\nUN Ambassador: Let's see how you did.");
-            Console.WriteLine($"Your score is: {minigameScore} out of {questions.Count * 10} points.");
 
-            if (score == questions.Count * 10)
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Outstanding work! Your choices demonstrate excellent knowledge of sustainable practices.");
-                Console.WriteLine("You've set a great example for others to follow in making eco-friendly decisions.");
-            }
-            else if (score >= (questions.Count * 8))
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Great job! You've made significant eco-friendly improvements to your home.");
-                Console.WriteLine("With a bit more effort, you can achieve even greater sustainability.");
-            }
-            else if (score >= (questions.Count * 5))
-            {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("Good effort! Consider exploring more sustainable options to further reduce your environmental impact.");
-            }
+            // Final Minigame Results
+            Console.ForegroundColor = ConsoleColor.Blue;
+            helper.WriteWithDelay($"\nGame Over! You scored {score}/{questions.Count}.");
+            if (score == questions.Count)
+                helper.WriteWithDelay("Outstanding work! Your decisions showcase the best of sustainable practices.");
+            else if (score >= questions.Count / 2)
+                helper.WriteWithDelay("Good job! Your efforts show promise, but there’s always room for improvement.");
             else
+                helper.WriteWithDelay("There’s a lot to learn about sustainability. Keep trying, and you'll get there!");
+            Console.ResetColor();
+
+            // Post-game Dialogue
+            StorylineManager postGameDialogue = new StorylineManager("Dialogues/postGameLA.json");
+
+            while (true)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("It looks like there are many opportunities for improvement.");
-                Console.WriteLine("Remember, every small change can contribute to a healthier planet.");
+                helper.say(postGameDialogue.text, postGameDialogue.response, postGameDialogue.options);
+
+                if (string.IsNullOrEmpty(postGameDialogue.options)) break;
+
+                var choice = helper.parseinput(Console.ReadLine());
+
+                try
+                {
+                    postGameDialogue.NextLevel(choice);
+                }
+                catch (Exception)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Invalid choice. Please select a valid option.");
+                    Console.ResetColor();
+                }
             }
 
+            // Final Dialogue Finisher
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            helper.WriteWithDelay("\nUN Ambassador: 'Your eco-friendly choices have inspired this city to push even further for sustainability.'");
+            helper.WriteWithDelay("A local eco-enthusiast named Mia steps forward. 'Thanks to you, people are already adopting these practices in their homes.'");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            helper.WriteWithDelay("\nThe ambassador adds, 'Let’s move on to our next destination. There's still work to be done.'");
             Console.ResetColor();
-            
-
         }
 
-        // Class to represent each question
+        // Question Class for Minigames
         public class Question
         {
             public string Text { get; set; }
@@ -548,182 +580,292 @@ Your task is to find best spots for Photovoltaic(PV) power plants You will be sh
                         return option;
                     }
                 }
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.Write("Invalid input. Please enter A, B, C, or D: ");
+                Console.ResetColor();
             }
         }
+
+
+
+
+
+
+
         public void RecyclingSortingMinigameNYC(ref int score)
         {
-            // Trigger the NPC dialogue before the minigame
-            CustomFunctions customFunctions = new CustomFunctions();
-            customFunctions.UNAmbassadorPreMinigameDialogue("RecyclingSorting");
-
-            // Minigame starts after NPC dialogue
-
-            int timeLimit = 30; // Time limit in seconds
-            DateTime endTime = DateTime.Now.AddSeconds(timeLimit);
-
-            Console.WriteLine("\nWelcome to the NYC Recycling Sorting Minigame!");
-            Console.WriteLine("You have 30 seconds to sort as many items correctly as you can!");
-            Console.WriteLine("Type 'recycle', 'compost', or 'trash' for each item.\n");
-
-            string[] items = {
-        "plastic bottle", "banana peel", "glass jar", "pizza box with grease",
-        "electronics", "paper", "food scraps", "plastic bag", "tin can"
-    };
-
-            Random random = new Random();
-            int previousInterval = timeLimit; // The previous countdown interval displayed
-            string currentInput = string.Empty; // To store the user's current input
-            string currentItem = items[random.Next(items.Length)];
-
-            // Initial prompt
-            DisplayPrompt(currentItem, currentInput);
+            StorylineManager preGameDialogue = new StorylineManager("Dialogues/nycDialogue.json");
 
             while (true)
             {
-                // Calculate remaining total seconds
-                int remainingSeconds = (int)(endTime - DateTime.Now).TotalSeconds;
+                helper.say(preGameDialogue.text, preGameDialogue.response, preGameDialogue.options);
 
-                // Check if time is up
-                if (remainingSeconds <= 0)
+                if (string.IsNullOrEmpty(preGameDialogue.options)) break;
+
+                var choice = helper.parseinput(Console.ReadLine());
+
+                try
                 {
-                    break;
+                    preGameDialogue.NextLevel(choice);
                 }
-
-                // Display countdown at every 5-second decrement
-                if (remainingSeconds % 5 == 0 && remainingSeconds < previousInterval)
+                catch (Exception)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine($"\nYou have {remainingSeconds} seconds remaining.");
+                    Console.WriteLine("Invalid choice. Please select a valid option.");
                     Console.ResetColor();
-
-                    // Re-display the prompt for clarity
-                    DisplayPrompt(currentItem, currentInput);
-
-                    previousInterval = remainingSeconds;
                 }
+            }
 
-                // Check for user input (non-blocking)
-                if (Console.KeyAvailable)
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\nThe ambassador leads you to a large warehouse filled with bins labeled 'Recycle', 'Compost', and 'Trash'.");
+            Console.WriteLine("He turns to you with a determined expression. 'This is where it all starts. Sorting these items correctly can make a huge impact.'");
+            Console.WriteLine("'Your task is simple,' he continues. 'Identify each item and decide where it belongs—recycle, compost, or trash.'");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("\nHow it works:");
+            Console.WriteLine("- You’ll be presented with an item.");
+            Console.WriteLine("- Type 'recycle', 'compost', or 'trash' to decide where it goes.");
+            Console.WriteLine("- Let’s do this and show the team what proper sorting looks like!\n");
+            Console.ResetColor();
+
+            string[] items = {
+        "plastic bottle", "banana peel", "glass jar", "pizza box with grease",
+        "electronics", "paper", "food scraps", "plastic bag", "tin can",
+        "aluminum foil", "egg shells", "styrofoam cup", "cardboard box",
+        "used tissue", "coffee grounds", "cereal box", "broken toy"
+    };
+
+            Random random = new Random();
+            int timeLimit = 40;
+            DateTime endTime = DateTime.Now.AddSeconds(timeLimit);
+
+            while (DateTime.Now < endTime)
+            {
+                string item = items[random.Next(items.Length)];
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.Write($"Item: {item} - Where does it go? (recycle/compost/trash): ");
+                Console.ResetColor();
+
+                string response = Console.ReadLine()?.Trim().ToLower();
+
+                if ((item == "plastic bottle" || item == "glass jar" || item == "tin can" ||
+                     item == "aluminum foil" || item == "cereal box") && response == "recycle")
                 {
-                    ConsoleKeyInfo keyInfo = Console.ReadKey(intercept: true);
-
-                    if (keyInfo.Key == ConsoleKey.Enter)
-                    {
-                        string response = currentInput.Trim();
-                        // Process the player's response
-                        ProcessPlayerResponse(currentItem, response, ref score);
-
-                        // Clear the current input
-                        currentInput = string.Empty;
-
-                        // Generate a new item
-                        currentItem = items[random.Next(items.Length)];
-
-                        DisplayPrompt(currentItem, currentInput);
-                    }
-                    else if (keyInfo.Key == ConsoleKey.Backspace)
-                    {
-                        if (currentInput.Length > 0)
-                        {
-                            currentInput = currentInput.Substring(0, currentInput.Length - 1);
-                            Console.Write("\b \b"); // Move cursor back, replace character with space, move cursor back
-                        }
-                    }
-                    else
-                    {
-                        currentInput += keyInfo.KeyChar;
-                        Console.Write(keyInfo.KeyChar);
-                    }
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("Correct! This item belongs in recycling.");
+                    score++;
+                }
+                else if ((item == "banana peel" || item == "food scraps" || item == "egg shells" ||
+                          item == "coffee grounds") && response == "compost")
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("Correct! This item should go to compost.");
+                    score++;
+                }
+                else if ((item == "pizza box with grease" || item == "electronics" ||
+                          item == "plastic bag" || item == "styrofoam cup" ||
+                          item == "used tissue" || item == "broken toy") && response == "trash")
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("Correct! This item belongs in the trash.");
+                    score++;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Incorrect! Try to sort more carefully.");
                 }
 
-                // Short delay to avoid high CPU usage
-                System.Threading.Thread.Sleep(50);
+                Console.ResetColor();
             }
 
-            Console.WriteLine($"\nTime's up! You scored {score} points.");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine($"\nTime's up! You sorted {score} items correctly.");
+            Console.WriteLine("The ambassador smiles. 'You’ve done well. Every properly sorted item is one less going to waste.'");
+            Console.WriteLine("The recycling team applauds your effort, inspired by your work.");
+            Console.ResetColor();
+
+            StorylineManager postGameDialogue = new StorylineManager("Dialogues/postGameNYC.json");
+
+            while (true)
+            {
+                helper.say(postGameDialogue.text, postGameDialogue.response, postGameDialogue.options);
+
+                if (string.IsNullOrEmpty(postGameDialogue.options)) break;
+
+                var choice = helper.parseinput(Console.ReadLine());
+
+                try
+                {
+                    postGameDialogue.NextLevel(choice);
+                }
+                catch (Exception)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Invalid choice. Please select a valid option.");
+                    Console.ResetColor();
+                }
+        
+            }
+            string finalText = "The UN Ambassador steps forward and gives you a friendly pat on the back.";
+            helper.say(finalText, "UN Ambassador: 'Your hard work has made a real difference here today. But remember, there’s still more work to do. We’ll need you in the next city to help tackle even bigger challenges.'", null);
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("\nYou prepare to move on to the next city, ready to take on new challenges.");
+            Console.ResetColor();
         }
 
-        // Separate method to process player's response to keep the code organized
-        private void ProcessPlayerResponse(string item, string response, ref int score)
+
+
+
+
+
+
+
+        public void CompostingPuzzleMinigameSFA(ref int score)
         {
-            switch (item)
+            // Pre-game Dialogue
+            StorylineManager preGameDialogue = new StorylineManager("Dialogues/sfaDialogue.json");
+
+            while (true)
             {
-                case "plastic bottle":
-                case "glass jar":
-                case "tin can":
-                    if (response.ToLower() == "recycle")
-                    {
-                        Console.WriteLine("\nCorrect! This item is recyclable.");
-                        score++;
-                    }
-                    else
-                    {
-                        Console.WriteLine("\nIncorrect. This item should be recycled.");
-                    }
-                    break;
+                helper.say(preGameDialogue.text, preGameDialogue.response, preGameDialogue.options);
 
-                case "banana peel":
-                case "food scraps":
-                    if (response.ToLower() == "compost")
-                    {
-                        Console.WriteLine("\nCorrect! This item should be composted.");
-                        score++;
-                    }
-                    else
-                    {
-                        Console.WriteLine("\nIncorrect. This item should be composted.");
-                    }
-                    break;
+                if (string.IsNullOrEmpty(preGameDialogue.options)) break;
 
-                case "pizza box with grease":
-                case "plastic bag":
-                case "electronics":
-                    if (response.ToLower() == "trash")
-                    {
-                        Console.WriteLine("\nCorrect! This item belongs in the trash.");
-                        score++;
-                    }
-                    else
-                    {
-                        Console.WriteLine("\nIncorrect. This item should be trashed.");
-                    }
-                    break;
+                var choice = helper.parseinput(Console.ReadLine());
 
-                case "paper":
-                    if (response.ToLower() == "recycle")
-                    {
-                        Console.WriteLine("\nCorrect! Paper can be recycled.");
-                        score++;
-                    }
-                    else
-                    {
-                        Console.WriteLine("\nIncorrect. Paper should be recycled.");
-                    }
-                    break;
-
-                default:
-                    Console.WriteLine("\nInvalid item.");
-                    break;
+                try
+                {
+                    preGameDialogue.NextLevel(choice);
+                }
+                catch (Exception)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Invalid choice. Please select a valid option.");
+                    Console.ResetColor();
+                }
             }
-        }
 
-        // Method to display the prompt with conditional brackets around current input
-        private void DisplayPrompt(string currentItem, string currentInput)
-        {
-            Console.WriteLine($"\nItem: {currentItem}");
-            if (string.IsNullOrEmpty(currentInput))
+            // Contextual Minigame Introduction
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            helper.WriteWithDelay("\nThe UN Ambassador leads you to a bustling composting site in San Francisco, a city known for its dedication to sustainability.");
+            helper.WriteWithDelay("\n'This city has set an example for others to follow in composting and waste management,' the ambassador explains.");
+            helper.WriteWithDelay("\n'Your task is to sort compostable items into the correct bins. Each item must be categorized into Food Scraps, Garden Waste, or Paper Products.'");
+            Console.ResetColor();
+
+            // Define Items and Bin Mapping
+            string[] items = {
+        "apple core", "banana peel", "grass clippings", "dead leaves", "pizza box",
+        "coffee grounds", "tree branches", "paper napkins", "rotten vegetables", "newspaper"
+    };
+
+            Dictionary<string, string> binMapping = new Dictionary<string, string>
+    {
+        { "apple core", "Food Scraps" },
+        { "banana peel", "Food Scraps" },
+        { "grass clippings", "Garden Waste" },
+        { "dead leaves", "Garden Waste" },
+        { "pizza box", "Paper Products" },
+        { "coffee grounds", "Food Scraps" },
+        { "tree branches", "Garden Waste" },
+        { "paper napkins", "Paper Products" },
+        { "rotten vegetables", "Food Scraps" },
+        { "newspaper", "Paper Products" }
+    };
+
+            // Number of items to sort in this round
+            int totalItems = 7;
+            Random random = new Random();
+
+            int minigameScore = 0;
+            for (int i = 0; i < totalItems; i++)
             {
-                Console.Write("Type 'recycle', 'compost', or 'trash': ");
+                // Pick a random item
+                var item = items[random.Next(items.Length)];
+
+                // Ask the player to sort the item
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                helper.WriteWithDelay($"Item {i + 1}: {item}");
+                Console.ResetColor();
+                Console.Write("Which bin does this belong to? (Type: Food Scraps, Garden Waste, Paper Products): ");
+                string response = Console.ReadLine()?.Trim();
+
+                // Check the player's response
+                if (binMapping.TryGetValue(item, out string correctBin))
+                {
+                    if (string.Equals(response, correctBin, StringComparison.OrdinalIgnoreCase))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("Correct! You placed it in the right bin.");
+                        score++;
+                        minigameScore++;
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine($"Incorrect. The correct bin for {item} is {correctBin}.");
+                    }
+
+                    Console.WriteLine($"Explanation: {correctBin} is the proper category for {item} to ensure effective composting.");
+                    Console.ResetColor();
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Invalid item. Skipping...");
+                    Console.ResetColor();
+                }
+
+                Console.WriteLine(); // Add spacing between rounds
             }
+
+            // Display the final score
+            Console.ForegroundColor = ConsoleColor.Blue;
+            helper.WriteWithDelay($"\nGame Over! You sorted {score}/{totalItems} items correctly.");
+            if (score == totalItems)
+                helper.WriteWithDelay("Excellent! You’re a composting champion!");
+            else if (score >= totalItems / 2)
+                helper.WriteWithDelay("Good job! A bit more practice, and you'll master composting.");
             else
+                helper.WriteWithDelay("Keep practicing to improve your composting skills.");
+            Console.ResetColor();
+
+            // Post-game Dialogue
+            StorylineManager postGameDialogue = new StorylineManager("Dialogues/postGameSFA.json");
+
+            while (true)
             {
-                // Display the current input within brackets
-                Console.Write($"Type 'recycle', 'compost', or 'trash' [{currentInput}]: ");
+                helper.say(postGameDialogue.text, postGameDialogue.response, postGameDialogue.options);
+
+                if (string.IsNullOrEmpty(postGameDialogue.options)) break;
+
+                var choice = helper.parseinput(Console.ReadLine());
+
+                try
+                {
+                    postGameDialogue.NextLevel(choice);
+                }
+                catch (Exception)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Invalid choice. Please select a valid option.");
+                    Console.ResetColor();
+                }
             }
 
-
+            // Final Dialogue Finisher
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            helper.WriteWithDelay("\nUN Ambassador: 'You’ve done an amazing job here in San Francisco. Your dedication to sustainability is inspiring.'");
+            helper.WriteWithDelay("A local community leader adds: 'Thanks to your efforts, more people understand the value of composting. We’re ready to make an even bigger impact!'");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            helper.WriteWithDelay("\nThe ambassador smiles warmly: 'Well done! Now, let’s move on to the next city and continue making a difference.'");
+            Console.ResetColor();
         }
+
+
+
 
 
 
