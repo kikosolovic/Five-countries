@@ -71,7 +71,7 @@ namespace FiveCountries
 
 
             // //initialize rooms to India
-            India.InitRoom("UN Outpost", "You are just outside of a UN outpost located between your two objectives. You can go either north or south.");
+            India.InitRoom("UN Outpost", "You are just outside of a UN outpost located between your two objectives. You can go either north or south.", new MinigameDelegate(minigameFunctions.UNOutpost));
             India.InitRoom("Outside Sewage Treatment Plant", "You find yourself outside the abandoned plant mentioned in your report. The entrance to the lobby is to the north.");
             India.InitRoom("Lobby", "You're inside the lobby of the plant. There is a storage room to the east and the tank room is to the west.");
             India.InitRoom("Tank Room", "You're inside the tank room. You ascertain that the tanks are rusty and full of holes and that the pipes need replacing. You should maybe check the storage room to see if you can't find spare ones.");
@@ -141,7 +141,7 @@ namespace FiveCountries
             Minigame[] Games = {
                 // Country, Room, Description, unique ID, Function, maximum Score
                 new("Haiti", "PV Lab", "Planning PV's instalations", 11, minigamesCode.photovoltaicMinigame, 6),
-                new("Haiti", "PV Lab", "This is 2 game", 12, minigamesCode.minigame12, 6),
+                new("Haiti", "Wind Lab", "Planning Wind Power plants", 12, minigamesCode.windpowerMinigame, 2),
                 new("Haiti", "Lab", "This is 3 game", 13, minigamesCode.minigame13, 1),
                 new("Haiti", "Lab", "This is 4 game", 14, minigamesCode.minigame14, 2),
 

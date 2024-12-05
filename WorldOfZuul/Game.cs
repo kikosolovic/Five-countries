@@ -36,8 +36,8 @@ namespace FiveCountries
 
             //JUST FOR TESTING
             //you can write a list of commands to automate the testing
-            List<List<String>> automateTesting = new List<List<string>>{ new List<string>{"south"},new List<string>{"east"}, new List<string>{"play", "1"}};
-            bool automateTestingBool = false;
+            List<List<String>> automateTesting = new List<List<string>>{ new List<string>{"south"},new List<string>{"west"}, new List<string>{"play", "1"}};
+            bool automateTestingBool = true;
 
             while (continuePlaying)
             // note below

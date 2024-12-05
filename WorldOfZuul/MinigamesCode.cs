@@ -238,7 +238,7 @@ Your task is to find best spots for Photovoltaic(PV) power plants You will be sh
                                                          ███▓▓▓▓▓▓▓▓████▓▓▓▓▓▓██████████|           
                                                          ▓▓▓▓▓▓▓▓▓▓███████▓▓▓▓▓████████████|         
                                                         ▓▓▓▓▓▓▓▓▓▓▓███████████*█▓▓▓██▓▓▓████| <- Hinche
-                                                          ▓▓▓▓▓▓▓▓▓████▒▒███████▓▓▓▓▓▓▓▓▓███        
+                                                          ▓▓▓▓▓▓▓▓▓████▒▒███████▓▓▓▓▓▓▓▓▓███|        
                                                         █████████▓▓▓███▒▒█████▓▓▓▓▓▓▓▓▓▓▓█|          
                                                         █▓▓█▒▒█████▓▓███████▓▓▓▓▓▓▓▓▓▓██|            
                                           █▓█▓▓           █▓███▒▒███▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█▓▓█|            
@@ -266,7 +266,9 @@ Your task is to find best spots for Photovoltaic(PV) power plants You will be sh
             ▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓██████████                      * - city             
                1200      1500      1800   kWh/kWp/year          | - border with Dominican Republic
 
-            Data from: https://globalsolaratlas.info/download/haiti @ 25.11.2024";
+            Data from: https://globalsolaratlas.info/download/haiti @ 25.11.2024
+            Disclaimer: The data might not be 100% accurate, because of many technical factors like resolution, available color depth etc.,
+                but it is a good estimation.";
             Console.WriteLine(haitiMapPV);
             Console.WriteLine(@"
             On the map you can see the predicted solar yield in kWh/kWp/year for different regions in Haiti.
@@ -276,6 +278,9 @@ Your task is to find best spots for Photovoltaic(PV) power plants You will be sh
                 kWp is a unit of how much power is teoreticaly produced by the solar panels
 
             so if we have an PV instalation of 1kWp in a region with 1800kWh/kWp/year, it will produce 1800kWh of energy in a year.
+            
+            Solar energy is a great source of renewable and clean energy, since during the operation it doesn't produce any emmisions or pollution.
+            The downside to solar energy is that it is not always available, since it depends on the weather and the time of the day.
             ");
             Console.WriteLine(@"
             Places to choose from:
@@ -300,7 +305,7 @@ Your task is to find best spots for Photovoltaic(PV) power plants You will be sh
             }
             int[] optimalAnswers = {8, 9, 3, 11, 2, 4};
             
-            for(int i =0; i<answers.Length; i++){
+            for(int i = 0; i<answers.Length; i++){
                 if(optimalAnswers.Contains(Int32.Parse(answers[i]))){
                     score += 1;
                 }
@@ -311,6 +316,116 @@ Your task is to find best spots for Photovoltaic(PV) power plants You will be sh
                 Console.WriteLine("Good job! You have choosen some of the best cities available for our new investments!");
             }else{
                 Console.WriteLine("You have not choosen the best cities available for our new investments!");
+            }
+            Console.WriteLine("You have scored: " + score + " points");
+            return score;
+        }
+        public int windpowerMinigame(){
+            int score = 0;
+            string haitiWindMAp = @"
+================================================= MAP OF HAITI =================================================
+                    ▓▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+                  ▓▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+          ▓▓▓▓▓  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓      ▓▓▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+▒░▒▒▒▓▓▓▓▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓    ▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓       ▓▓▒░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓           *      ░░▒░░░░░░░░░░▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓_______
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓           Port-de-Paix        ▒░░░░░░░░▒▒▒▒▒▒▓▓▓▓▓▓▓▓ /       \___
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▓                                 ▓▒▒▒▓▓▒▒▒▒▒▒▒▒▒▒▒▒▓  _|   
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒                                       *      ▓▓▓▓▒▒▒▓|   
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒░░░▓                                 Cap-Haitien         |   
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░░▒▓▓▓▓▓▒▒▓▓▓▓                                         |   
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░▒▓▓                                     |    
+▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒░░░░                                   |    
+▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓* Gonaives                       |   
+▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓                                |   
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▓▓▓▓▓▓▓▓▓▓▒▒░▓                                _|   
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▓▓▓▓▓▓▓▓░░░▒                               |__   
+▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒                                   |_ 
+▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▓                                   | 
+▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▓                                 | 
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒                                   _|  
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▓                                |    
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒░▒▒▓   ▓▒▒░░░░░▒▒▒▒▓                                |_   
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▓        ▓▒▒▒▒▒▒▒▒▒▓▓                             |   
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▓          ▓▓▒▒▒▒▒▒▓                            |   
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▓        ▓▒░░░▒▒▒▓                          |   
+░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▓▓▓▓  ▓▒░▒▒▒▓▓▓▓▓▓* Arcahaie            _|   
+░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓              ____|     
+░░░░░░░░░░░░░         *░░░░░▒▒▓   ▓▒▒▒░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓             |___       
+░░░░░░░░░░░░    Jeremie               ▓▒▒▒░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒░▒▒▒▓▓▓▓▓▓▓▓▓               _|       
+░░░░░░░░░░░                                  ▒▒▒▒    *▒▒▒▒▒▒▒▒▒▒▒▒▒   *     *               |_       
+░░░░░░▒▒▒▒                                   Miragoane      ▓  Carrefour    Port-au-prince    |____  
+░░░░░░░░░░░                                                                                       |  
+░░░░░░░░░░░░                                                                                     _|  
+░░░░░░░░░░░░░░░░░░░░                                               Jacmel                       _|   
+▒▒▒░░░░░░░░░░░░░░░░▒▒▓     Les Cayes    ░░   ░░                      *     ░        ░Belle Anse |_   
+▒▒▒░░░░░░░░░░░░░░░░░░░░░▒      *░░░▒▒▒▒▒▒▒▒▒░░░░░░░▒▒▒░░░░       ░░░░░░░░░░░░░░░░░░░░░░░░░░*     |   
+▒▒▒░░░░░░░░░░░░░░░░░░░░░░░▓   ░░░░░▒▒▒▒▒▒░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░    |   
+▒▒░░░░░░░░░░░░░░░░░░░░░░░░░▒    ▒░▒░░░▒▒░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░░   |   
+▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓ \  
+▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒ | 
+▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓ \
+▒▒▒▒▒▒░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ |
+================================================================================================================
+            Legend:                                          
+            ▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓██████████                      * - city             
+            0         3         7        10    m/s              | - border with Dominican Republic
+                                                                ' ' - land
+            
+            Data from: https://globalwindatlas.info/en/area/Haiti @ 04.12.2024
+            Disclaimer: The data might not be 100% accurate, because of many technical factors like resolution, available color depth etc.,
+                but it is a good estimation.";
+            Console.WriteLine(@"
+Welcome to another minigame in Haitis' Lab
+OBJECTIVE: Choose the best location for a wind power plant on Haiti's shore.
+Your task is to find best spots for wind power plants, You will be shown a map of Haiti's waters and averege wind speed.
+");
+            Console.WriteLine(haitiWindMAp);
+            Console.WriteLine(@"\n\n
+            This time, we will be working with wind power plants.
+            The map shows the average wind speed in m/s for different regions in Haiti.
+            The advantage of wind power is that it is more predictable than solar power, especially in regions placed near seas and oceans,
+            where wind is usually much more stable and comes from the same direction.
+            Another good thing about wind power is that it can be produced during the night, when solar power is not available.
+            Wind power is also very clean, since the pollution is not produced during the production of electricity.
+
+            In real world Haiti might not be the best place to build big wind power plants since its a region that is often hit by hurricanes.
+            But for purpose of the game we omitted this fact.");
+
+            Console.WriteLine(@"
+            Choose at least 2 good locations for offshore wind power plants (type 2 numbers spaced by space ''):
+            Regions to choose from:
+            1.North of Port-de-Paix
+            2.West of Port-de-Paix
+            3.Jeremie
+            4.Les Cayes
+            5.Miragoane
+            5.Gonaives
+            6.Arcahaie
+            7.Jacmel
+            8.Cap-Haitien
+            9.Carrefour
+            10.Belle Anse
+            11.Port-au-prince
+            12.North-East of Cap-Haitien
+            ");
+            string[] answers = Console.ReadLine().Split(' ');
+            while( answers.Length < 2){
+                answers = Console.ReadLine().Split(' ');
+            }
+            int[] optimalAnswers = {1,2, 5, 6, 9, 11, 12};
+            for(int i = 0; i<answers.Length; i++){
+                if(optimalAnswers.Contains(Int32.Parse(answers[i])) && score <2){
+                    score += 1;
+                }
+            }
+            if(score ==2){
+                Console.WriteLine("Congrats! You have choosen ones of the best available places for our new investments!");
+            }else if(score > 0){
+                Console.WriteLine("Good job! You have choosen some of the best places available for our new investments!");
+            }else{
+                Console.WriteLine("You have not choosen the best places available for our new investments!");
             }
             Console.WriteLine("You have scored: " + score + " points");
             return score;
