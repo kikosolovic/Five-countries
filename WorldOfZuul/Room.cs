@@ -4,7 +4,7 @@ using static System.Formats.Asn1.AsnWriter;
 namespace FiveCountries
 {
     //creates a delegate for minigames so that they can be passed as arguments in Init.cs
-    public delegate void MinigameDelegate(ref int score);
+    public delegate void MinigameDelegate();
     public class Room
     {
         public string ShortDescription { get; private set; }
@@ -29,11 +29,11 @@ namespace FiveCountries
 
         // runs the minigame that is assigned to the room in Init.cs, if there isnt one > null, after the minigame is played it is deleted so
         // player cannot play it multiple times, (might not be the best solution if he fails he has to restart game to play again)
-        public void ExecuteMinigame(ref int score)
+        public void ExecuteMinigame(int score = 0)
         {
             if (minigame != null && !mminigamePlayed)
             {
-                minigame(ref score);  // Pass the score by reference
+                minigame();  // Pass the score by reference
                 this.mminigamePlayed = true;  // Reset the minigame so it can't be played again
             }
             // else

@@ -35,7 +35,7 @@ namespace FiveCountries
 
             return score;//return score
         }
-        public void Dock(ref int score)
+        public void Dock()
         {
 
             StorylineManager st = new StorylineManager("Dialogues/DockDialogue.json");
@@ -93,10 +93,10 @@ namespace FiveCountries
                 }
             }
             Program._game.Move("north");
-            Program._game.currentCountry.currentRoom.ExecuteMinigame(ref score);
+            Program._game.currentCountry.currentRoom.ExecuteMinigame();
 
         }
-        public void Village(ref int score)
+        public void Village()
         {
             // WeatherControl.StartWeather(); neskor
             StorylineManager st = new StorylineManager("Dialogues/OldLady.json");
@@ -127,7 +127,7 @@ namespace FiveCountries
             WeatherControl.StartWeather();
 
         }
-        public void Shelter(ref int score)
+        public void Shelter()
         {
             StorylineManager st = new StorylineManager("Dialogues/Shelter.json");
             while (!WeatherControl._10toSweep)
@@ -153,7 +153,7 @@ namespace FiveCountries
             }
         }
 
-        public void Hill(ref int score)
+        public void Hill()
         {
             StorylineManager st = new StorylineManager("Dialogues/Hill.json");
             while (!WeatherControl._10toSweep)
@@ -179,9 +179,9 @@ namespace FiveCountries
 
         }
 
-        public void UNOutpost(ref int score)
+        public void UNOutpost()
         {
-             StorylineManager st = new StorylineManager("Dialogues/IndiaIntro.json");
+            StorylineManager st = new StorylineManager("Dialogues/IndiaIntro.json");
             while (true)
             {
                 if (st.idiotCount == 0)
@@ -191,7 +191,7 @@ namespace FiveCountries
                 else { helper.say(options: st.options); }
 
                 var choice = helper.parseinput(Console.ReadLine());
-                
+
                 {
                     switch (choice)
                     {
@@ -205,7 +205,7 @@ namespace FiveCountries
             }
         }
 
-        public void testMinigameDelegate(ref int score)
+        public void testMinigameDelegate()
         {
             Console.WriteLine("succesfuly ran a function passed as argument");
         }
@@ -247,7 +247,7 @@ namespace FiveCountries
         }
         //quick response function, makes the text yellow, meaning that somebody said that
 
-        public void EcoFriendlyHomeMakeover(ref int score)
+        public void EcoFriendlyHomeMakeover()
         {
             CustomFunctions customFunctions = new CustomFunctions();
             customFunctions.UNAmbassadorPreMinigameDialogue("EcoFriendlyHomeMakeover");
@@ -351,7 +351,7 @@ namespace FiveCountries
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("\nCorrect! " + question.Explanation);
-                    score += 1;
+                    helper.incrementScore(1);
                     minigameScore += 1;
                 }
                 else
@@ -371,19 +371,19 @@ namespace FiveCountries
             Console.WriteLine("\nUN Ambassador: Let's see how you did.");
             Console.WriteLine($"Your score is: {minigameScore} out of {questions.Count * 10} points.");
 
-            if (score == questions.Count * 10)
+            if (helper.getScore() == questions.Count * 10)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Outstanding work! Your choices demonstrate excellent knowledge of sustainable practices.");
                 Console.WriteLine("You've set a great example for others to follow in making eco-friendly decisions.");
             }
-            else if (score >= (questions.Count * 8))
+            else if (helper.getScore() >= (questions.Count * 8))
             {
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Great job! You've made significant eco-friendly improvements to your home.");
                 Console.WriteLine("With a bit more effort, you can achieve even greater sustainability.");
             }
-            else if (score >= (questions.Count * 5))
+            else if (helper.getScore() >= (questions.Count * 5))
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Good effort! Consider exploring more sustainable options to further reduce your environmental impact.");
@@ -426,7 +426,7 @@ namespace FiveCountries
                 Console.Write("Invalid input. Please enter A, B, C, or D: ");
             }
         }
-        public void RecyclingSortingMinigameNYC(ref int score)
+        public void RecyclingSortingMinigameNYC()
         {
             // Trigger the NPC dialogue before the minigame
             CustomFunctions customFunctions = new CustomFunctions();
@@ -487,7 +487,7 @@ namespace FiveCountries
                     {
                         string response = currentInput.Trim();
                         // Process the player's response
-                        ProcessPlayerResponse(currentItem, response, ref score);
+                        ProcessPlayerResponse(currentItem, response);
 
                         // Clear the current input
                         currentInput = string.Empty;
@@ -516,11 +516,11 @@ namespace FiveCountries
                 System.Threading.Thread.Sleep(50);
             }
 
-            Console.WriteLine($"\nTime's up! You scored {score} points.");
+            Console.WriteLine($"\nTime's up! You scored {helper.getScore()} points.");
         }
 
         // Separate method to process player's response to keep the code organized
-        private void ProcessPlayerResponse(string item, string response, ref int score)
+        private void ProcessPlayerResponse(string item, string response)
         {
             switch (item)
             {
@@ -530,7 +530,7 @@ namespace FiveCountries
                     if (response.ToLower() == "recycle")
                     {
                         Console.WriteLine("\nCorrect! This item is recyclable.");
-                        score++;
+                        helper.incrementScore(1);
                     }
                     else
                     {
@@ -543,7 +543,7 @@ namespace FiveCountries
                     if (response.ToLower() == "compost")
                     {
                         Console.WriteLine("\nCorrect! This item should be composted.");
-                        score++;
+                        helper.incrementScore(1);
                     }
                     else
                     {
@@ -557,7 +557,7 @@ namespace FiveCountries
                     if (response.ToLower() == "trash")
                     {
                         Console.WriteLine("\nCorrect! This item belongs in the trash.");
-                        score++;
+                        helper.incrementScore(1);
                     }
                     else
                     {
@@ -569,7 +569,7 @@ namespace FiveCountries
                     if (response.ToLower() == "recycle")
                     {
                         Console.WriteLine("\nCorrect! Paper can be recycled.");
-                        score++;
+                        helper.incrementScore(1);
                     }
                     else
                     {

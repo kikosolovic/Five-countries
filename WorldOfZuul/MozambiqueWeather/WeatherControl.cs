@@ -9,7 +9,6 @@ using System.Transactions;
 using FiveCountries;
 
 
-
 namespace WorldOfZuul
 {
     public static class WeatherControl
@@ -51,11 +50,10 @@ namespace WorldOfZuul
                         if (Program._game.currentCountry.currentRoom.ShortDescription != "Shelter")
                         {
 
-                            helper.say(write: "\nYou are lucky, somebody pulled you into the shelter right before the storm hit.");
+                            helper.say(write: "\nYou are lucky, somebody pulled you into the shelter right before the storm hit. Press enter.");
                             Program._game.Move("north");
+                            // Console.WriteLine(Program._game.currentCountry?.ShortDescription + " " + Program._game.currentCountry?.currentRoom?.ShortDescription + " >");
                             Thread.Sleep(1000);
-                            Console.WriteLine(Program._game.currentCountry?.ShortDescription + " " + Program._game.currentCountry?.currentRoom?.ShortDescription + " >");
-                            helper.say(write: "you are here");
                         }
                         _tutorial = false;
 
@@ -89,7 +87,7 @@ namespace WorldOfZuul
                         if (Program._game.currentCountry.currentRoom.ShortDescription == "Hill")
                         {
 
-                            Thread.Sleep(10 * 1000);
+                            Thread.Sleep(10 * 100);
                         }
                         else
                         {
@@ -167,7 +165,7 @@ namespace WorldOfZuul
                     }
                     else
                     {
-                        helper.say(write: "You have already configured this weather");
+                        helper.say(write: "This weeather is already configured");
                     }
                 }
                 else
@@ -180,7 +178,7 @@ namespace WorldOfZuul
                 helper.say(write: "You can only configure the weather station on the Hill");
             }
         }
-        private static void sweep()
+        public static void sweep()
 
         {
 
@@ -189,7 +187,8 @@ namespace WorldOfZuul
                 if (_stationFixed)
                 {
                     Console.Clear();
-                    helper.say(write: "You have been swept, press enter to stand up");
+                    helper.say(write: "You have been swept.");
+                    Thread.Sleep(1000);
                     Program._game.Travel("india");
                     StopWeather();
                     _swept = true;
@@ -200,10 +199,12 @@ namespace WorldOfZuul
                 }
                 else
                 {
-                    if (_random.Next(3) == 0)
+                    if (_random.Next(1) == 0)
                     {
                         Console.Clear();
-                        helper.say(write: "You have been swept, press enter to stand up");
+
+                        helper.say(write: "You have been swept.");
+                        Thread.Sleep(1000);
                         Program._game.Travel("india");
                         StopWeather();
                         _swept = true;

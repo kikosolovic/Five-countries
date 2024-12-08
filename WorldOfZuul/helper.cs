@@ -10,7 +10,53 @@ namespace FiveCountries
     {
         public static Game _game;
         private static readonly object ConsoleLock = new object();
+        static CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
 
+
+
+        public static void incrementScore(int score)
+        {
+            _game.score += score;
+        }
+
+        public static int getScore()
+        {
+            return _game.score;
+        }
+
+        /// <summary>
+        /// Reads a line of text from the console and returns it. The user can cancel the input by pressing Ctrl+C.
+        /// </summary>
+        // public static string forfeitableReadline()
+        // {
+
+        //     // Wait for input, but check the cancellation token to see if we should stop
+        //     string input = null;
+        //     while (string.IsNullOrEmpty(input) && !cancellationTokenSource.Token.IsCancellationRequested)
+        //     {
+        //         input = Console.ReadLine();
+        //     }
+
+        //     if (!cancellationTokenSource.Token.IsCancellationRequested)
+        //     {
+        //         return input;
+        //     }
+        //     else
+        //     {
+        //         return "error";
+        //     }
+
+
+
+        // }
+        // public static void forfeitReadline()
+        // {
+        //     cancellationTokenSource.Cancel();
+        //     Thread.Sleep(1000);
+        //     cancellationTokenSource.Dispose();
+        //     cancellationTokenSource = new CancellationTokenSource();
+
+        // }
         public static void WriteWithDelay(string text)
 
         {
