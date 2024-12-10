@@ -71,18 +71,17 @@ namespace FiveCountries
 
 
             // //initialize rooms to India
-            India.InitRoom("UN Outpost", "You are just outside of a UN outpost located between your two objectives. You can go either north or south.", new MinigameDelegate(minigameFunctions.UNOutpost));
-            India.InitRoom("Outside Sewage Treatment Plant", "You find yourself outside the abandoned plant mentioned in your report. The entrance to the lobby is to the north.");
-            India.InitRoom("Lobby", "You're inside the lobby of the plant. There is a storage room to the east and the tank room is to the west.");
-            India.InitRoom("Tank Room", "You're inside the tank room. You ascertain that the tanks are rusty and full of holes and that the pipes need replacing. You should maybe check the storage room to see if you can't find spare ones.");
-            India.InitRoom("Crop Field", "You're at the crop field mentioned in the report. You will need drip tubes and emitters to be able to install the irrigation system. There's two sheds to the west and east. You should check what's inside them.");
+            India.InitRoom("UN Outpost", "You are just outside of a UN outpost located between your two objectives.", new MinigameDelegate(minigameFunctions.UNOutpost));
+            India.InitRoom("Outside Sewage Treatment Plant", "You find yourself outside the abandoned plant. The entrance to the lobby is to the north.");
+            India.InitRoom("Lobby", "You're inside the lobby of the plant. The tank room is to the east.");
+            India.InitRoom("Tank Room", "You're inside the tank room. The tanks are rusty, full of holes and the pipes need replacing.");
+            India.InitRoom("Crop Field", "You're in front of the crop field. The underground spring has to be under it somewhere.");
 
 
             India.addExit("UN Outpost", new List<string> { "north", "south" }, new List<string> { "Outside Sewage Treatment Plant", "Crop Field" });
             India.addExit("Outside Sewage Treatment Plant", new List<string> { "south", "north" }, new List<string> { "UN Outpost", "Lobby" });
             India.addExit("Lobby", new List<string> { "south", "east" }, new List<string> { "Outside Sewage Treatment Plant", "Tank Room" });
             India.addExit("Tank Room", new List<string> { "west" }, new List<string> { "Lobby" });
-            India.addExit("Storage Room", new List<string> { "east" }, new List<string> { "Lobby" });
             India.addExit("Crop Field", new List<string> { "north" }, new List<string> { "UN Outpost" });
 
 
@@ -106,7 +105,7 @@ namespace FiveCountries
             Mozambique.InitRoom("Dock", "You just arrived to Mozambique. The boat dropped you off at a small dock. ", new MinigameDelegate(minigameFunctions.Dock));
             Mozambique.InitRoom("Boat", "You find yourself on a small fishing boat in the middle of the ocean. There is nowhere to hide.");
             Mozambique.InitRoom("Village", "You find yourself in a small village. People are walking around. ", new MinigameDelegate(minigameFunctions.Village));
-            Mozambique.InitRoom("Field", "You are in a rice field. There are paths in between the individual rice plants. Locals are caring for  the rice, this harvest is going to be plentiful.");
+            Mozambique.InitRoom("Field", "You are in a rice field. There are paths in between the individual rice plants. Locals are caring of the rice, this harvest is going to be plentiful.");
             Mozambique.InitRoom("Hill", "You have a view of the whole village and the oocean behind it.", new MinigameDelegate(minigameFunctions.Hill));
             Mozambique.InitRoom("Shelter", "You are inside a cycloon shelter. The harsh weather can't get to you, or so they say.", new MinigameDelegate(minigameFunctions.Shelter));
 

@@ -310,12 +310,12 @@ Your task is to find best spots for Photovoltaic(PV) power plants You will be sh
                     score += 1;
                 }
             }
-            if(score ==3){
-                Console.WriteLine("Congrats! You have choosen ones of the best cities available for our new investments!");
+            if(score == 3){
+                Console.WriteLine("Congrats! You have chosen ones of the best cities available for our new investments!");
             }else if(score > 0){
-                Console.WriteLine("Good job! You have choosen some of the best cities available for our new investments!");
+                Console.WriteLine("Good job! You have chosen some of the best cities available for our new investments!");
             }else{
-                Console.WriteLine("You have not choosen the best cities available for our new investments!");
+                Console.WriteLine("You have not chosen the best cities available for our new investments!");
             }
             Console.WriteLine("You have scored: " + score + " points");
             return score;
@@ -421,11 +421,11 @@ Your task is to find best spots for wind power plants, You will be shown a map o
                 }
             }
             if(score ==2){
-                Console.WriteLine("Congrats! You have choosen ones of the best available places for our new investments!");
+                Console.WriteLine("Congrats! You have chosen ones of the best available places for our new investments!");
             }else if(score > 0){
-                Console.WriteLine("Good job! You have choosen some of the best places available for our new investments!");
+                Console.WriteLine("Good job! You have chosen some of the best places available for our new investments!");
             }else{
-                Console.WriteLine("You have not choosen the best places available for our new investments!");
+                Console.WriteLine("You have not chosen the best places available for our new investments!");
             }
             Console.WriteLine("You have scored: " + score + " points");
             return score;
