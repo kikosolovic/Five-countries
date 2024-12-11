@@ -248,7 +248,8 @@ namespace FiveCountries
         //quick response function, makes the text yellow, meaning that somebody said that
 
          
-         
+         public class theHangman
+         {
         public static void tribeHangman(int wrong)
         {
            
@@ -415,7 +416,7 @@ namespace FiveCountries
                 }
             }
             Console.WriteLine("\r\nGame is over! Thank you for playing :)");
-        
+        }   
     }
 
             
