@@ -84,12 +84,7 @@ namespace FiveCountries
     {
         public static Game _game;
 
-        public static void Main()
-        {
-            Game game = new();
-            _game = game;
-            game.Play();
-        }
+      
     }
 }
 

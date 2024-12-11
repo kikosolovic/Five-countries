@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "kB0kde9v9ROiPj3ORiJPqmd0tZXZ6J+Wv/8WP1nvtPgKKtoKM2J2Lqmq6k4MG1SEyCQNYWTwhjbWbnTePciuOg==",
+  "dgSpecHash": "0Fa1E4SSRy0=",
   "success": true,
-  "projectFilePath": "/home/kikosolovic/Desktop/SCHOOL/OOP/FIveCountries/Five-countries/WorldOfZuul/WorldOfZuul.csproj",
+  "projectFilePath": "C:\\Users\\rafae\\OneDrive\\Ambiente de Trabalho\\fc5\\Five-countries\\WorldOfZuul\\WorldOfZuul.csproj",
   "expectedPackageFiles": [
-    "/home/kikosolovic/.nuget/packages/inputsimulator/1.0.4/inputsimulator.1.0.4.nupkg.sha512",
-    "/home/kikosolovic/.nuget/packages/inputsimulatorplus/1.0.4/inputsimulatorplus.1.0.4.nupkg.sha512",
-    "/home/kikosolovic/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512"
+    "C:\\Users\\rafae\\.nuget\\packages\\inputsimulator\\1.0.4\\inputsimulator.1.0.4.nupkg.sha512",
+    "C:\\Users\\rafae\\.nuget\\packages\\inputsimulatorplus\\1.0.4\\inputsimulatorplus.1.0.4.nupkg.sha512",
+    "C:\\Users\\rafae\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
   ],
   "logs": [
     {
