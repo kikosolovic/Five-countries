@@ -635,9 +635,9 @@ Your task is to find best spots for wind power plants, You will be shown a map o
             if (score == questions.Count)
                 helper.WriteWithDelay("Outstanding work! Your decisions showcase the best of sustainable practices.");
             else if (score >= questions.Count / 2)
-                helper.WriteWithDelay("Good job! Your efforts show promise, but there’s always room for improvement.");
+                helper.WriteWithDelay("Good job! Your efforts show promise, but there's always room for improvement.");
             else
-                helper.WriteWithDelay("There’s a lot to learn about sustainability. Keep trying, and you'll get there!");
+                helper.WriteWithDelay("There's a lot to learn about sustainability. Keep trying and you'll get there!");
             Console.ResetColor();
 
             // Post-game Dialogue
@@ -668,7 +668,7 @@ Your task is to find best spots for wind power plants, You will be shown a map o
             helper.WriteWithDelay("\nUN Ambassador: 'Your eco-friendly choices have inspired this city to push even further for sustainability.'");
             helper.WriteWithDelay("A local eco-enthusiast named Mia steps forward. 'Thanks to you, people are already adopting these practices in their homes.'");
             Console.ForegroundColor = ConsoleColor.Cyan;
-            helper.WriteWithDelay("\nThe ambassador adds, 'Let’s move on to our next destination. There's still work to be done.'");
+            helper.WriteWithDelay("\nThe ambassador adds, 'Let's move on to our next destination. There's still work to be done.'");
             Console.ResetColor();
         }
 
@@ -797,7 +797,7 @@ Your task is to find best spots for wind power plants, You will be shown a map o
 
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine($"\nTime's up! You sorted {score} items correctly.");
-            Console.WriteLine("The ambassador smiles. 'You’ve done well. Every properly sorted item is one less going to waste.'");
+            Console.WriteLine("The ambassador smiles. 'You've done well. Every properly sorted item is one less going to waste.'");
             Console.WriteLine("The recycling team applauds your effort, inspired by your work.");
             Console.ResetColor();
 
@@ -824,7 +824,7 @@ Your task is to find best spots for wind power plants, You will be shown a map o
         
             }
             string finalText = "The UN Ambassador steps forward and gives you a friendly pat on the back.";
-            helper.say(finalText, "UN Ambassador: 'Your hard work has made a real difference here today. But remember, there’s still more work to do. We’ll need you in the next city to help tackle even bigger challenges.'", null);
+            helper.say(finalText, "UN Ambassador: 'Your hard work has made a real difference here today. But remember, there's still more work to do. We'll need you in the next city to help tackle even bigger challenges.'", null);
 
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("\nYou prepare to move on to the next city, ready to take on new challenges.");
@@ -940,7 +940,7 @@ Your task is to find best spots for wind power plants, You will be shown a map o
             Console.ForegroundColor = ConsoleColor.Blue;
             helper.WriteWithDelay($"\nGame Over! You sorted {score}/{totalItems} items correctly.");
             if (score == totalItems)
-                helper.WriteWithDelay("Excellent! You’re a composting champion!");
+                helper.WriteWithDelay("Excellent! You're a composting champion!");
             else if (score >= totalItems / 2)
                 helper.WriteWithDelay("Good job! A bit more practice, and you'll master composting.");
             else
@@ -972,10 +972,10 @@ Your task is to find best spots for wind power plants, You will be shown a map o
 
             // Final Dialogue Finisher
             Console.ForegroundColor = ConsoleColor.Yellow;
-            helper.WriteWithDelay("\nUN Ambassador: 'You’ve done an amazing job here in San Francisco. Your dedication to sustainability is inspiring.'");
-            helper.WriteWithDelay("A local community leader adds: 'Thanks to your efforts, more people understand the value of composting. We’re ready to make an even bigger impact!'");
+            helper.WriteWithDelay("\nUN Ambassador: 'You've done an amazing job here in San Francisco. Your dedication to sustainability is inspiring.'");
+            helper.WriteWithDelay("A local community leader adds: 'Thanks to your efforts, more people understand the value of composting. We're ready to make an even bigger impact!'");
             Console.ForegroundColor = ConsoleColor.Cyan;
-            helper.WriteWithDelay("\nThe ambassador smiles warmly: 'Well done! Now, let’s move on to the next city and continue making a difference.'");
+            helper.WriteWithDelay("\nThe ambassador smiles warmly: 'Well done! Now, let's move on to the next city and continue making a difference.'");
             Console.ResetColor();
         }
 

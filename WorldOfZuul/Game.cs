@@ -88,7 +88,6 @@ namespace FiveCountries
                 {
                     case "look":
                         Console.WriteLine(currentCountry?.currentRoom?.LongDescription);
-                        customFunctions.PrintMap4(currentCountry, currentCountry?.currentRoom?.ShortDescription);
                         break;
 
                     case "back":
@@ -313,7 +312,7 @@ namespace FiveCountries
             Console.WriteLine("USA");
             Console.WriteLine("");
             Console.WriteLine("Navigate by typing 'north', 'south', 'east', or 'west'.");
-            Console.WriteLine("Travel between countries by typing 'travel' and the name of the country. ");
+            Console.WriteLine("Travel between countries by typing 'travel' and the name of the country.");
             Console.WriteLine("Type 'look' for more details.");
             Console.WriteLine("Type 'map' to see the map.");
             Console.WriteLine("Type 'score' to see your current score.");
@@ -322,7 +321,7 @@ namespace FiveCountries
             Console.WriteLine("Type 'help' to print this message again.");
             Console.WriteLine("Type 'quit' to exit the game.");
             Console.WriteLine("Type 'playagain' to repeat the quest.");
-            Console.WriteLine("Type 'stoptalking' to stop ongoing conversation.");
+            Console.WriteLine("Type 'stoptalking' to stop an ongoing conversation.");
         }
     }
 }
