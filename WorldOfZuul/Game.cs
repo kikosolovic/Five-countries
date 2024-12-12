@@ -20,16 +20,14 @@ namespace FiveCountries
             this.currentCountry = Countries[0];
             CreateRooms(Countries);
 
-            // QuickAssign(Rooms, Countries);
         }
 
         public void Play()
         {
             Parser parser = new();
             CustomFunctions customFunctions = new();
-            MinigameCode minigamesCode = new();
             List<Minigame> minigames = CreateGames();
-            int score = 0;
+
 
             PrintWelcome();
             PrintHelp();
@@ -190,6 +188,25 @@ namespace FiveCountries
                     case "startminigame":
                         this.currentCountry?.currentRoom?.ExecuteMinigame();
                         break;
+                    case "plant":
+                        if (command.SecondWord == null || command.SecondWord == "" || command.SecondWord == " ")
+                        {
+                            FieldControl.printMap();
+                            helper.say(write: "Plant where?");
+                            break;
+                        }
+                        FieldControl.plantMangroves(command.SecondWord);
+                        break;
+                    case "unplant":
+                        if (command.SecondWord == null || command.SecondWord == "" || command.SecondWord == " ")
+                        {
+                            FieldControl.printMap();
+                            helper.say(write: "Unplant which?");
+
+                            break;
+                        }
+                        FieldControl.removeMangroves(command.SecondWord);
+                        break;
                     case "error":
                         break;
 
@@ -251,6 +268,19 @@ namespace FiveCountries
                 // Trigger the NPC dialogue
                 CustomFunctions customFunctions = new CustomFunctions();
                 customFunctions.UNAmbassadorDialogue(currentCountry.currentRoom);
+            }
+
+        }
+        public void ExplicitMove(string room)
+        {
+
+            // previousRoom = currentRoom;
+            // currentRoom = currentRoom?.Exits[direction];
+            currentCountry.setRoom(currentCountry.Rooms.Where(r => r.ShortDescription == room).First(), currentCountry.currentRoom);
+            if (this.currentCountry?.currentRoom?.minigame != null)
+            {
+                this.currentCountry.currentRoom.ExecuteMinigame();
+
             }
 
         }

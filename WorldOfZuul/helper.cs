@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using WorldOfZuul;
 
@@ -8,59 +9,25 @@ namespace FiveCountries
 {
     public static class helper
     {
-        public static Game _game;
         private static readonly object ConsoleLock = new object();
         static CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
 
 
+        //Score
 
         public static void incrementScore(int score)
         {
-            _game.score += score;
+            Program._game.score += score;
         }
 
         public static int getScore()
         {
-            return _game.score;
+            return Program._game.score;
         }
 
-        /// <summary>
-        /// Reads a line of text from the console and returns it. The user can cancel the input by pressing Ctrl+C.
-        /// </summary>
-        // public static string forfeitableReadline()
-        // {
-
-        //     // Wait for input, but check the cancellation token to see if we should stop
-        //     string input = null;
-        //     while (string.IsNullOrEmpty(input) && !cancellationTokenSource.Token.IsCancellationRequested)
-        //     {
-        //         input = Console.ReadLine();
-        //     }
-
-        //     if (!cancellationTokenSource.Token.IsCancellationRequested)
-        //     {
-        //         return input;
-        //     }
-        //     else
-        //     {
-        //         return "error";
-        //     }
-
-
-
-        // }
-        // public static void forfeitReadline()
-        // {
-        //     cancellationTokenSource.Cancel();
-        //     Thread.Sleep(1000);
-        //     cancellationTokenSource.Dispose();
-        //     cancellationTokenSource = new CancellationTokenSource();
-
-        // }
+        //Text
         public static void WriteWithDelay(string text)
-
         {
-
             var i = (text.Length > 70) ? 10 : 30;
             foreach (var ch in text)
             {
@@ -75,8 +42,6 @@ namespace FiveCountries
             }
             Console.WriteLine("\n");
         }
-
-
 
         public static void say(string text = null, string response = null, string options = null, string error = null, string location = null, string write = null)
         {//this is important because of the lock, so that only one thread can write at a time
@@ -127,31 +92,6 @@ namespace FiveCountries
             }
 
         }
-        public static void analyze(string item)
-        {
-
-            item = item.ToLower();
-            switch (item)
-            {
-                case "hammer":
-                    helper.say(write: "Perfect! A hammer is a great tool to smash the weather station with. ");
-                    break;
-                case "screwdriver":
-                    helper.say(write: "Screwdriver");
-                    break;
-                default:
-
-                    helper.say(write: "Probably can't use that in this situation.");
-                    break;
-
-
-            }
-
-        }
-        public static void getGame(Game game)
-        {
-            _game = game;
-        }
         public static void loading()
         {
             string loadingText = "traveling ";
@@ -171,14 +111,61 @@ namespace FiveCountries
 
 
         }
+
+        public static void printForStory(string path)
+        {
+            StorylineManager st = new StorylineManager(path);
+            while (!WeatherControl._10toSweep)
+            {
+                if (st.repetition == 0)
+                {
+                    helper.say(st.text, st.response, st.options); if (st.options == null || st.options == "") { break; }
+                }
+                else { helper.say(options: st.options); }
+
+                var choice = helper.parseinput(Console.ReadLine());
+                if (!WeatherControl._10toSweep)
+                {
+                    switch (choice)
+                    {
+                        case "stoptalking": break;
+                        default:
+                            st.NextLevel(choice);
+                            break;
+                    }
+                }
+            }
+        }
+
         public static string parseinput(string input)
         {
             return input.ToLower().Trim();
         }
+        //??
+        public static void analyze(string item)
+        {
+
+            item = item.ToLower();
+            switch (item)
+            {
+                case "hammer":
+                    helper.say(write: "Perfect! A hammer is a great tool to smash the weather station with. ");
+                    break;
+                case "screwdriver":
+                    helper.say(write: "Screwdriver");
+                    break;
+                default:
+
+                    helper.say(write: "Probably can't use that in this situation.");
+                    break;
+            }
+
+        }
+
 
     }
-
-
-
-
 }
+
+
+
+

@@ -38,73 +38,20 @@ namespace FiveCountries
         public void Dock()
         {
 
-            StorylineManager st = new StorylineManager("Dialogues/DockDialogue.json");
-            while (!WeatherControl._10toSweep)
-            {
-                //spravit cely class na interface a styl s podmienkou aby to fungovalo
-                if (st.idiotCount == 0) //idiot count is implemented to prevent displaying the same dialogue multiple times in a row, istead just shows the options 
-                {
-                    helper.say(st.text, st.response, st.options); if (st.options == null || st.options == "") { break; }
-                }
-                else { helper.say(options: st.options); }
-
-
-                //since the readline is happenign here this function runs after the dialogue part is over and also the Game object can be passed here if needed
-                var choice = helper.parseinput(Console.ReadLine());
-                if (!WeatherControl._10toSweep)
-                {
-
-                    switch (choice)
-                    {
-                        case "stop": break;
-                        default:
-                            st.NextLevel(choice);
-                            break;
-                    }
-
-
-                }
-            }
-            st = new StorylineManager("Dialogues/CarRide.json");
-            while (!WeatherControl._10toSweep)
-            {
-                //spravit cely class na interface a styl s podmienkou aby to fungovalo
-                if (st.idiotCount == 0) //idiot count is implemented to prevent displaying the same dialogue multiple times in a row, istead just shows the options 
-                {
-                    helper.say(st.text, st.response, st.options); if (st.options == null || st.options == "") { break; }
-                }
-                else { helper.say(options: st.options); }
-
-
-                //since the readline is happenign here this function runs after the dialogue part is over and also the Game object can be passed here if needed
-                var choice = helper.parseinput(Console.ReadLine());
-                if (!WeatherControl._10toSweep)
-                {
-
-                    switch (choice)
-                    {
-                        case "stoptalking": break;
-                        default:
-                            st.NextLevel(choice);
-                            break;
-                    }
-
-
-                }
-            }
+            helper.printForStory("Dialogues/Mozambique/Dock.json");
+            helper.printForStory("Dialogues/Mozambique/CarRide.json");
             Program._game.Move("north");
             Program._game.currentCountry.currentRoom.ExecuteMinigame();
 
         }
         public void Village()
         {
-            // WeatherControl.StartWeather(); neskor
-            StorylineManager st = new StorylineManager("Dialogues/OldLady.json");
+            StorylineManager st = new StorylineManager("Dialogues/Mozambique/Village.json");
             var count = -1; //configure so it fits with the dialogue
 
             while (!WeatherControl._10toSweep)
             {
-                if (st.idiotCount == 0) //idiot count is implemented to prevent displaying the same dialogue multiple times in a row, istead just shows the options 
+                if (st.repetition == 0)
                 {
                     helper.say(st.text, st.response, st.options); if (st.options == null || st.options == "") { break; }
                 }
@@ -124,58 +71,36 @@ namespace FiveCountries
                     }
                 }
             }
+            helper.say(write: "All of a sudden you see a big wawe heading straight towards the village. You estimate that it will take you in about 3 seconds.");
+            Thread.Sleep(4000);
+            helper.say(write: "3");
+            Thread.Sleep(1000);
+            helper.say(write: "2");
+            Thread.Sleep(1000);
+            helper.say(write: "1");
+            Thread.Sleep(2000);
+
+
+
+            helper.say(write: "\nYou are lucky, somebody pulled you into the shelter right before the storm hit.");
+            Thread.Sleep(1000);
+            Program._game.ExplicitMove("Shelter");
             WeatherControl.StartWeather();
 
         }
         public void Shelter()
         {
-            StorylineManager st = new StorylineManager("Dialogues/Shelter.json");
-            while (!WeatherControl._10toSweep)
-            {
-                if (st.idiotCount == 0) //idiot count is implemented to prevent displaying the same dialogue multiple times in a row, istead just shows the options 
-                {
-                    helper.say(st.text, st.response, st.options); if (st.options == null || st.options == "") { break; }
-                }
-                else { helper.say(options: st.options); }
-
-                var choice = helper.parseinput(Console.ReadLine());
-                if (!WeatherControl._10toSweep)
-                {
-                    switch (choice)
-                    {
-                        case "stoptalking": break;
-                        default:
-                            st.NextLevel(choice);
-                            break;
-
-                    }
-                }
-            }
+            helper.printForStory("Dialogues/Mozambique/Shelter.json");
         }
 
         public void Hill()
         {
-            StorylineManager st = new StorylineManager("Dialogues/Hill.json");
-            while (!WeatherControl._10toSweep)
-            {
-                if (st.idiotCount == 0) //idiot count is implemented to prevent displaying the same dialogue multiple times in a row, istead just shows the options 
-                {
-                    helper.say(st.text, st.response, st.options); if (st.options == null || st.options == "") { break; }
-                }
-                else { helper.say(options: st.options); }
+            helper.printForStory("Dialogues/Mozambique/Hill.json");
 
-                var choice = helper.parseinput(Console.ReadLine());
-                if (!WeatherControl._10toSweep)
-                {
-                    switch (choice)
-                    {
-                        case "stoptalking": break;
-                        default:
-                            st.NextLevel(choice);
-                            break;
-                    }
-                }
-            }
+        }
+        public void Field()
+        {
+            helper.printForStory("Dialogues/Mozambique/Field.json");
 
         }
 
@@ -184,7 +109,7 @@ namespace FiveCountries
             StorylineManager st = new StorylineManager("Dialogues/IndiaIntro.json");
             while (true)
             {
-                if (st.idiotCount == 0)
+                if (st.repetition == 0)
                 {
                     helper.say(st.text, st.response, st.options); if (st.options == null || st.options == "") { break; }
                 }
