@@ -1,18 +1,18 @@
-{
-    "text": "You arrive at a UN outpost in the Indian state of Uttar Pradesh. A UN ambassador approaches you.",
-    "response": "Welcome to India, sir. It's good that you've finally arrived. As you know, you have two objectives in the region. One is located to the north of us and the other - to the south.Let me tell you about them.",
-    "options": "1. Ask about the mission to the north. 2. Ask about the mission to the south",
+{   
+    "text": "You are in front of the sewage treatment plant. You see an Indian villager next to the building and approach him.",
+    "response": "Are you the activist from the UN? Finally, you're here. I don't think my village would have lasted much more without clean water.",
+    "options": "1. Assure him that everything will be fine. 2. Ask about the mission to the south",
     "opt1": {
-        "text": "What's to the north?",
+        "text": "Don't worry, I'll fix it.",
         "response": "The village of Kaithi. The locals there are struggling because of the non-functional sewage treatment plant. You see, when the waste water does not get processed and filtered, it gets sent to the river of Ganges polluted. Therefore the industrial and human waste that gets leaked into the river leads to the population getting sick or dying due to the lack of clean water and sanitation.",
         "options": "1. Ask how the locals are handling the situation. 2. Tell him to get to the point.",
         "opt1": {
             "text": "Have the locals found an alternative way to acquire clean water?",
-            "response": "Not at all. Their only choices are to drink contaminated water or die of thirst. There is another option - drinking from underground springs. However, it is not applicable in this village.",
+            "response": "Not at all. Their only choices are to drink contaminated water or die of thirst. Actually, there is a third option. Underground springs. But they wouldn't work in this case.",
             "options": " 1. Ask him why the third option wouldn't work. 2. Ask him what you need to do.",
             "opt1": {
                 "text": "Why's that?",
-                "response": "Because there is no groundwater in the area. Nowadays the clean water that the Indians have access to usually comes from underground and the ones who don't have such sources are left with the filth from the rivers.",
+                "response": "Because they are few and far between. And If they have not been occupied by the upper class, then they are used for irrigating the crop fields.",
                 "options": "1. Ask him what you need to do.",
                 "opt1": {
                     "text": "What's my objective?",

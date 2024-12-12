@@ -214,7 +214,7 @@ namespace FiveCountries
         {
             int score = 0;
             Console.WriteLine(@"
-Welcome to the first minigame in Haitis' Lab
+Welcome to the first minigame in Haiti's Lab
 OBJECTIVE: Choose the best location for a photovoltaic power plant in Haiti.
 Your task is to find best spots for Photovoltaic(PV) power plants You will be shown a map of Haiti and you will have to choose the best location for 3 new Photovoltaic power plants.
 ");
@@ -433,8 +433,8 @@ Your task is to find best spots for wind power plants, You will be shown a map o
         public int minigame12()
         {
             int score = 0;
-            Console.WriteLine("Welcome to the second minigame in Haitis' Lab");
-            Console.WriteLine("You will have to help with designing a new Photovoltaic power plant");
+            Console.WriteLine("Welcome to the second minigame in Haiti's Lab!");
+            Console.WriteLine("You will have to help with designing a new Photovoltaic power plant.");
             Console.WriteLine("How many points:");
             score = int.Parse(Console.ReadLine() ?? "0");
             return score;
@@ -444,8 +444,8 @@ Your task is to find best spots for wind power plants, You will be shown a map o
         public int minigame13()
         {
             int score = 0;
-            Console.WriteLine("Welcome to the third minigame in Haitis' Lab");
-            Console.WriteLine("You will have to help with designing a new Wind power plant");
+            Console.WriteLine("Welcome to the third minigame in Haiti's Lab!");
+            Console.WriteLine("You will have to help with designing a new Wind power plant.");
             return score;
             return score;
         }
@@ -453,8 +453,8 @@ Your task is to find best spots for wind power plants, You will be shown a map o
         public int minigame14()
         {
             int score = 0;
-            Console.WriteLine("Welcome to the fourth minigame in Haitis' Lab");
-            Console.WriteLine("Calculate how big photovoltaic power station is needed for The Farm");
+            Console.WriteLine("Welcome to the fourth minigame in Haiti's Lab!");
+            Console.WriteLine("Calculate how big photovoltaic power station is needed for The Farm.");
             return score;
         }
         //quick response function, makes the text yellow, meaning that somebody said that
