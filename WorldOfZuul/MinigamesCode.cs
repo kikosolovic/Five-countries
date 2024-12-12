@@ -981,13 +981,268 @@ Your task is to find best spots for wind power plants, You will be shown a map o
 
 
 
+private char GetValidOptionIndia()
+        {
+            while (true)
+            {
+                string? input = Console.ReadLine();
+                if (!string.IsNullOrEmpty(input) && input.Length == 1)
+                {
+                    char option = char.ToUpper(input[0]);
+                    if (option >= 'A' && option <= 'D')
+                    {
+                        return option;
+                    }
+                }
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write("Invalid input. ");
+                Console.ResetColor();
+            }
+        }
 
 
 
+public void SewagePlantQuiz(ref int score)
+        {
+            // Contextual Minigame Introduction
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            helper.WriteWithDelay("\nYou go inside the tank room and inspect the damage.");
+            helper.WriteWithDelay("\nThe pipes are clogged. There are pumps, valves and sensors that are in need of replacement. At least the tanks themselves are intact. It would have been a lot worse had you needed to replace them too.");
+            helper.WriteWithDelay("\nIt looks like you have your work cut out for you.");
+            Console.ResetColor();
+
+            // Questions for the Minigame
+            List<Question> questions = new List<Question>
+    {
+        new Question
+        {
+            Text = "What is the primary purpose of a sewage treatment plant?",
+            Options = new Dictionary<char, string>
+            {
+                { 'A', "To generate electricity." },
+                { 'B', "To treat wastewater and remove contaminants." },
+                { 'C', " To provide drinking water." },
+                { 'D', "To manage stormwater." }
+            },
+            CorrectOption = 'B',
+            Explanation = "The main goal of a sewage treatment plant is to eliminate pollutants from wastewater, resulting in clean, safe water for discharge or reuse."
+        },
+        new Question
+        {
+            Text = "True or False: Proper sewage treatment can help prevent waterborne diseases.",
+            Options = new Dictionary<char, string>
+            {
+                { 'A', "True." },
+                { 'B', "False." },
+            },
+            CorrectOption = 'A',
+            Explanation = "Waterborne diseases are caused by the viruses and bacteria in dirty water. The more people consume the filtered water that has gone through sewage treatment, the more the percentage of them will get sick."
+        },
+        new Question
+        {
+            Text = "Which of the following is a key indicator for measuring progress towards SDG Goal 6?",
+            Options = new Dictionary<char, string>
+            {
+                { 'A', "Percentage of population using clean water." },
+                { 'B', "Number of new dams constructed." },
+                { 'C', "Amount of water used per capita." },
+                { 'D', "Total length of rivers in a country." }
+            },
+            CorrectOption = 'A',
+            Explanation = "With the increase of locals using safe and clean water, we're getting closer to the completion of our goal in India."
+        },
+        new Question
+        {
+            Text = "Which of the following is a major challenge for water management in India?",
+            Options = new Dictionary<char, string>
+            {
+                { 'A', "Over-extraction of groundwater." },
+                { 'B', "Pollution of water bodies." },
+                { 'C', "Inefficient water use in agriculture." },
+                { 'D', "All of the above." }
+            },
+            CorrectOption = 'D',
+            Explanation = "All three of the aforementioned are the reason why India has a severe lack of clean water."
+        },
+    };
+
+            int minigameScoreSewage = 0;
+            int questionNumber = 1;
+
+            foreach (var question in questions)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                helper.WriteWithDelay($"Question {questionNumber}: {question.Text}");
+                Console.ResetColor();
+
+                foreach (var option in question.Options)
+                {
+                    Console.Write($"{option.Key}. ");
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine(option.Value);
+                    Console.ResetColor();
+                }
+
+                Console.Write("\nEnter your choice: ");
+                char playerChoice = GetValidOptionIndia();
+
+                if (char.ToUpper(playerChoice) == question.CorrectOption)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("Correct! " + question.Explanation);
+                    score++;
+                    minigameScoreSewage++;
+                    // I changed it from minigameScore to minigameScoreSewage because the code somehow confuses minigameScore with score and the wrong result appears when you finish the quiz
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"Incorrect. Correct Answer: {question.CorrectOption}. {question.Options[question.CorrectOption]}");
+                    Console.WriteLine(question.Explanation);
+                }
+
+                Console.ResetColor();
+                Console.WriteLine("\nPress Enter to continue...");
+                Console.ReadLine();
+                questionNumber++;
+            }
+
+            // Final Minigame Results
+            Console.ForegroundColor = ConsoleColor.Blue;
+            helper.WriteWithDelay($"\nGame Over! You scored {minigameScoreSewage}/{questions.Count}.");
+            if (minigameScoreSewage == questions.Count)
+                helper.WriteWithDelay("You found all the tools that you'd need. Then you fixed or replaced all of the valves," +
+                " pipes and sensors. Afterwards you managed to unclog the pipes and finally did a systems check to see if everything is operational once more. And it is, thanks to you.");
+            else if (minigameScoreSewage < questions.Count)
+                helper.WriteWithDelay("You found all the tools that you'd need. You managed to unclog the pipes but just barely and you couldn't do anything with the valves, pipes and sensors." +
+                "Perhaps it's better if you refresh your memory and then try again.");
+            else if (minigameScoreSewage == 0)
+                helper.WriteWithDelay("There's a lot that you haven't learned yet. Come back again.");
+            Console.ResetColor();
+
+        }
 
 
+public void CropFieldQuiz(ref int score)
+        {
+            // Contextual Minigame Introduction
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            helper.WriteWithDelay("\nYou go to the field.");
+            helper.WriteWithDelay("\nYou need to locate the groundwater source, connect the pipes to it and install the irrigation system.");
+            helper.WriteWithDelay("\nTime to get to work.");
+            Console.ResetColor();
 
+            // Questions for the Minigame
+            List<Question> questions = new List<Question>
+    {
+        new Question
+        {
+            Text = "Which irrigation method involves delivering water directly to the roots of plants through a network of tubes or pipes?",
+            Options = new Dictionary<char, string>
+            {
+                { 'A', "Flood irrigation." },
+                { 'B', "Sprinkler irrigation." },
+                { 'C', "Drip irrigation." },
+                { 'D', "Surface irrigation." }
+            },
+            CorrectOption = 'C',
+            Explanation = "Drip irrigation delivers water directly to the roots."
+        },
+        new Question
+        {
+            Text = "What is the main advantage of using drip irrigation over traditional flood irrigation?",
+            Options = new Dictionary<char, string>
+            {
+                { 'A', "It is cheaper to install" },
+                { 'B', "It uses less water and reduces evaporation." },
+                { 'C', "It requires less maintenance." },
+                { 'D', "It is suitable for all types of crops." }
+            },
+            CorrectOption = 'B',
+            Explanation = "Drip irrigation uses less water, thus optimizing its usage. This is especially useful in India."
+        },
+        new Question
+        {
+            Text = "What percentage of India's population lacks access to safely managed drinking water services?",
+            Options = new Dictionary<char, string>
+            {
+                { 'A', "10%" },
+                { 'B', "40%" },
+                { 'C', "70%" },
+                { 'D', "90%" }
+            },
+            CorrectOption = 'B',
+            Explanation = "40 percent of the Indian population lacks access to clean water. That's a little bit over 570 million people."
+        },
+        new Question
+        {
+            Text = "Approximately how many Indians get sick from waterborne diseases every year?",
+            Options = new Dictionary<char, string>
+            {
+                { 'A', "7.2 million" },
+                { 'B', "641 thousand" },
+                { 'C', "37.7 million" },
+                { 'D', "50.1 million" }
+            },
+            CorrectOption = 'C',
+            Explanation = "37.7 million get sick every year due to lack of clean water and sanitation."
+        },
+    };
 
+            int minigameScoreField = 0;
+            int questionNumber = 1;
+
+            foreach (var question in questions)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                helper.WriteWithDelay($"Question {questionNumber}: {question.Text}");
+                Console.ResetColor();
+
+                foreach (var option in question.Options)
+                {
+                    Console.Write($"{option.Key}. ");
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine(option.Value);
+                    Console.ResetColor();
+                }
+
+                Console.Write("\nEnter your choice: ");
+                char playerChoice = GetValidOption();
+
+                if (char.ToUpper(playerChoice) == question.CorrectOption)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("Correct! " + question.Explanation);
+                    score++;
+                    minigameScoreField++;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"Incorrect. Correct Answer: {question.CorrectOption}. {question.Options[question.CorrectOption]}");
+                    Console.WriteLine(question.Explanation);
+                }
+
+                Console.ResetColor();
+                Console.WriteLine("\nPress Enter to continue...");
+                Console.ReadLine();
+                questionNumber++;
+            }
+
+            // Final Minigame Results
+            Console.ForegroundColor = ConsoleColor.Blue;
+            helper.WriteWithDelay($"\nGame Over! You scored {minigameScoreField}/{questions.Count}.");
+            if (minigameScoreField == questions.Count)
+                helper.WriteWithDelay("You successfully located the underground water source. You connected the tubes to the water and installed the system. " +
+                "When you were done, you checked if the water is properly irrigating the soil. And it is, due to your valiant efforts.");
+            else if (minigameScoreField < questions.Count)
+                helper.WriteWithDelay("You successfully located the underground water source. You connected the tubes to the water and installed the system." +
+                "When you were done, you checked if the water is properly irrigating the soil. But it's not, the water is not leaking out of the tubes. You better try again.");
+            else if (minigameScoreField == 0)
+                helper.WriteWithDelay("There's a lot that you haven't learned yet. Come back again.");
+            Console.ResetColor();
+
+        }
 
 
     }

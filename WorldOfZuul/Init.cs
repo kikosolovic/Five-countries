@@ -75,8 +75,7 @@ namespace FiveCountries
             India.InitRoom("Outside Sewage Treatment Plant", "You find yourself outside the abandoned plant. The entrance to the lobby is to the north.");
             India.InitRoom("Lobby", "You're inside the lobby of the plant. The tank room is to the east.");
             India.InitRoom("Tank Room", "You're inside the tank room. The tanks are rusty, full of holes and the pipes need replacing.", new MinigameDelegate(minigameFunctions.SewagePlantQuiz));
-            India.InitRoom("Crop Field", "You're in front of the crop field. The underground spring has to be under it somewhere.");
-
+            India.InitRoom("Crop Field", "You're in front of the crop field. The underground spring has to be under it somewhere.", new  MinigameDelegate(minigameFunctions.CropFieldQuiz));
 
             India.addExit("UN Outpost", new List<string> { "north", "south" }, new List<string> { "Outside Sewage Treatment Plant", "Crop Field" });
             India.addExit("Outside Sewage Treatment Plant", new List<string> { "south", "north" }, new List<string> { "UN Outpost", "Lobby" });
