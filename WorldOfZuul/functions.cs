@@ -11,7 +11,7 @@ namespace FiveCountries
 {
     public class CustomFunctions
     {
-        MinigameCode minigamesCode = new();
+        private MinigameCode minigamesCode = new();
 
 
         public void PrintMap(string room)

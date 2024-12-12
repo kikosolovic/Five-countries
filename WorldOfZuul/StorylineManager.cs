@@ -18,7 +18,7 @@ namespace FiveCountries
         public string? text = null;
         public string? response = null;
         public string? dynamicPath = "";
-        dynamic story;
+        private dynamic story;
         public int idiotCount = 0;
 
 

@@ -7,7 +7,7 @@ namespace FiveCountries
 {
     public class Init
     {
-        MinigameCode minigamesCode = new();
+        private MinigameCode minigamesCode = new();
 
         public List<Country> CreateCountries()
         {
@@ -130,7 +130,9 @@ namespace FiveCountries
                 new("Haiti", "Lab", "This is 2 game", 12, minigamesCode.minigame12, 4),
                 new("Haiti", "Lab", "This is 3 game", 13, minigamesCode.minigame13, 1),
                 new("Haiti", "Lab", "This is 4 game", 14, minigamesCode.minigame14, 2),
-                new("Brazil", "Tribe", "This is 4 game", 14, minigamesCode.minigame14, 2)
+                new("Brazil", "Tribe", "This is the Tribe Hangman", 22, minigamesCode.tribeHangman, 2),
+                new("Brazil", "Mining Zone", "This is the Beat the Miners", 23 ,minigamesCode.beatMiners, 10),
+                new("Brazil", "Deforestated Area", "This is the Guess the N of trees", 24, minigamesCode.guessTree, 20)
 
         
              

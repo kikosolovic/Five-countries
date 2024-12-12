@@ -10,7 +10,7 @@ namespace FiveCountries
     {
         public static Game _game;
         private static readonly object ConsoleLock = new object();
-        static CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+        private static CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
 
 
 
