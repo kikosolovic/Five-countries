@@ -18,10 +18,9 @@ namespace FiveCountries
             var i = (text.Length > 70) ? 10 : 30;
             foreach (var ch in text)
             {
-                if (Console.KeyAvailable)
+                if (!Console.IsInputRedirected && Console.KeyAvailable)
                 {
                     Console.Write(text.Substring(text.IndexOf(ch)));
-
                     break;
                 }
                 Console.Write(ch);
