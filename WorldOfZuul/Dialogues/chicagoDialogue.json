@@ -1,0 +1,75 @@
+{
+  "text": "You arrive in Chicago, greeted by the hum of city life and the buzzing of tech industries. The Environmental Officer approaches you.",
+  "response": "Welcome! Chicago is facing a growing challenge with electronic waste. We're aiming to lead the nation in e-waste recycling, but we need your help. Are you up for the challenge?",
+  "options": "1. Yes, I’m ready to help. 2. What’s the issue with e-waste?",
+  "opt1": {
+    "text": "You nod confidently, eager to assist.",
+    "response": "Great! Our first task is to help sort out e-waste at a recycling facility. Many people don’t know how to properly dispose of their old electronics. Let’s make sure we get it right.",
+    "options": "1. What’s my role in this? 2. Let’s get started.",
+    "opt1": {
+      "text": "You ask about your role in e-waste recycling.",
+      "response": "You’ll be sorting electronics like old phones, computers, and televisions. Proper sorting ensures that valuable parts are recycled while toxic materials are handled safely.",
+      "options": "1. Got it. Let’s go. 2. Do I need special training?",
+      "opt1": {
+        "text": "You confirm you’re ready and want to get started.",
+        "response": "Perfect! The team is waiting for you at the facility. Time to make a difference!",
+        "options": null
+      },
+      "opt2": {
+        "text": "You ask if training is necessary for the task.",
+        "response": "Not at all. The team will give you all the guidance you need when you arrive at the facility.",
+        "options": "1. Got it. Let’s go.",
+        "opt1": {
+          "text": "You agree to proceed.",
+          "response": "Fantastic! Let's head out.",
+          "options": null
+        }
+      }
+    },
+    "opt2": {
+      "text": "You agree to start immediately.",
+      "response": "Great! The e-waste recycling center is expecting you. Let’s make sure we dispose of e-waste properly!",
+      "options": null
+    }
+  },
+  "opt2": {
+    "text": "You ask for more details about the e-waste issue.",
+    "response": "E-waste is growing rapidly. Improper disposal can cause serious environmental harm due to the toxic materials inside, like lead, mercury, and cadmium. It’s up to us to ensure these electronics are properly recycled.",
+    "options": "1. How can I make a difference? 2. That sounds like a big challenge.",
+    "opt1": {
+      "text": "You ask how you can help with the situation.",
+      "response": "You can help by properly sorting the electronics at the recycling center. Lead by example, and teach others the right way to dispose of their old gadgets.",
+      "options": "1. Sounds good. Let’s go. 2. What if I make a mistake?",
+      "opt1": {
+        "text": "You decide to take charge and lead the way.",
+        "response": "That’s the spirit! The team will be there to help guide you, but we’re confident you’ll do great!",
+        "options": null
+      },
+      "opt2": {
+        "text": "You express concern about making errors.",
+        "response": "Mistakes are part of the process. Don’t worry, the team will assist you along the way.",
+        "options": "1. Thanks for the reassurance. Let’s get started.",
+        "opt1": {
+          "text": "You feel reassured and ready to proceed.",
+          "response": "Let's head to the recycling center and get started with the task!",
+          "options": null
+        }
+      }
+    },
+    "opt2": {
+      "text": "You express doubt about handling such a complex issue.",
+      "response": "Don’t worry! You’ll have support every step of the way at the recycling center. We can’t do it alone, but together we’ll make a big difference.",
+      "options": "1. Okay, I’ll try my best. 2. I’m worried I won’t get it right.",
+      "opt1": {
+        "text": "You decide to give it your best shot.",
+        "response": "That’s the attitude we need! The recycling center is ready for you. Let’s do this!",
+        "options": null
+      },
+      "opt2": {
+        "text": "You nervously agree to help.",
+        "response": "No worries, even small efforts make a big impact. The team will guide you all the way.",
+        "options": null
+      }
+    }
+  }
+}

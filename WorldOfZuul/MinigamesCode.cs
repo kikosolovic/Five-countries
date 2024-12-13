@@ -978,6 +978,196 @@ Your task is to find best spots for wind power plants, You will be shown a map o
             helper.WriteWithDelay("\nThe ambassador smiles warmly: 'Well done! Now, let’s move on to the next city and continue making a difference.'");
             Console.ResetColor();
         }
+        public void ElectronicRepairChallenge(ref int score)
+        {
+            StorylineManager preGameDialogue = new StorylineManager("Dialogues/chicagoDialogue.json");
+
+            while (true)
+            {
+                helper.say(preGameDialogue.text, preGameDialogue.response, preGameDialogue.options);
+
+                if (string.IsNullOrEmpty(preGameDialogue.options)) break;
+
+                var choice = helper.parseinput(Console.ReadLine());
+
+                try
+                {
+                    preGameDialogue.NextLevel(choice);
+                }
+                catch (Exception)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Invalid choice. Please select a valid option.");
+                    Console.ResetColor();
+                }
+
+            }
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Welcome to the Advanced Electronic Repair Challenge!");
+            Console.ResetColor();
+
+            Console.WriteLine("You are tasked with repairing various electronic devices.");
+
+            string[] devices = new string[] { "Smartphone", "Laptop", "Old Television", "Gaming Console", "MP3 Player" };
+            string[][] deviceParts = {
+        new string[] { "Screen", "Battery", "Charging Port", "Motherboard" },
+        new string[] { "Keyboard", "Hard Drive", "Battery", "Display", "Fans" },
+        new string[] { "Screen", "Speakers", "Power Supply", "Motherboard" },
+        new string[] { "Controller Port", "Power Button", "Fan", "Power Supply" },
+        new string[] { "Battery", "Headphone Jack", "Buttons", "Screen" }
+    };
+
+            string[] tools = { "Screwdriver", "Spudger", "Soldering Iron", "Multimeter", "Heat Gun", "Hammer", "Plastic Pry Tool" };
+
+            int timeLimit = 120;
+            DateTime startTime = DateTime.Now;
+
+            Random rand = new Random();
+            string currentDevice = devices[rand.Next(devices.Length)];
+            string[] currentParts = deviceParts[Array.IndexOf(devices, currentDevice)];
+
+            int repairStage = 1;
+            int mistakes = 0;
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"You are tasked with repairing a {currentDevice}.");
+            Console.ResetColor();
+            Console.WriteLine($"You can repair the following parts:");
+
+            foreach (var part in currentParts)
+            {
+                Console.WriteLine($"- {part}");
+            }
+
+            while ((DateTime.Now - startTime).TotalSeconds < timeLimit && repairStage <= currentParts.Length)
+            {
+                string partToRepair = currentParts[rand.Next(currentParts.Length)];
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine($"\nStage {repairStage}: You need to repair: {partToRepair}");
+                Console.ResetColor();
+
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Select an action:");
+                Console.WriteLine("1. Use Screwdriver\n2. Use Spudger\n3. Use Soldering Iron\n4. Use Multimeter\n5. Use Heat Gun\n6. Use Hammer\n7. Use Plastic Pry Tool");
+                Console.ResetColor();
+
+                string action = Console.ReadLine();
+
+                if ((action == "1" && partToRepair == "Battery") ||
+                    (action == "2" && partToRepair == "Charging Port"))
+                {
+                    score += 15;
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($"Great! You successfully repaired the {partToRepair}.");
+                    Console.ResetColor();
+                }
+                else if (action == "3" && (partToRepair == "Motherboard" || partToRepair == "Power Supply"))
+                {
+                    score += 20;
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($"Nice job! You used the soldering iron correctly on the {partToRepair}.");
+                    Console.ResetColor();
+                }
+                else if (action == "4" && (partToRepair == "Hard Drive" || partToRepair == "Screen"))
+                {
+                    score += 10;
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($"The multimeter helped you diagnose the problem with the {partToRepair}.");
+                    Console.ResetColor();
+                }
+                else if (action == "5" && partToRepair == "Battery")
+                {
+                    score += 25;
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($"You successfully recalibrated the battery with the heat gun.");
+                    Console.ResetColor();
+                }
+                else if (action == "6" && (partToRepair == "Screen" || partToRepair == "Battery"))
+                {
+                    mistakes += 1;
+                    score -= 10;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"Oops! The hammer broke the part. Avoid using the hammer on fragile components!");
+                    Console.ResetColor();
+                }
+                else if (action == "7" && partToRepair == "Controller Port")
+                {
+                    score += 15;
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($"You successfully removed the controller port using the pry tool.");
+                    Console.ResetColor();
+                }
+                else
+                {
+                    mistakes += 1;
+                    score -= 5;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"Incorrect tool choice. Be more careful next time!");
+                    Console.ResetColor();
+                }
+
+                repairStage++;
+
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine($"Your current score is: {score}");
+                Console.ResetColor();
+
+                if ((DateTime.Now - startTime).TotalSeconds >= timeLimit)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"Time's up! You repaired the device with a final score of {score}.");
+                    Console.ResetColor();
+                    break;
+                }
+            }
+
+            if (repairStage > currentParts.Length)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"Congratulations! You've repaired the device.");
+                Console.ResetColor();
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"You didn't complete the repairs in time. Try again!");
+                Console.ResetColor();
+            }
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"You had {mistakes} mistakes. Better luck next time!");
+            Console.ResetColor();
+            
+            StorylineManager postGameDialogue = new StorylineManager("Dialogues/postGameChicago.json");
+
+            while (true)
+            {
+                helper.say(postGameDialogue.text, postGameDialogue.response, postGameDialogue.options);
+
+                if (string.IsNullOrEmpty(postGameDialogue.options)) break;
+
+                var choice = helper.parseinput(Console.ReadLine());
+
+                try
+                {
+                    postGameDialogue.NextLevel(choice);
+                }
+                catch (Exception)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Invalid choice. Please select a valid option.");
+                    Console.ResetColor();
+                }
+            }
+
+
+        }
+
+
+
+
+
 
 
 

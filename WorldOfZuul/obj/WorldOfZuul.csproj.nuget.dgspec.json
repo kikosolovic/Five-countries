@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lamak\\Source\\Repos\\Five-countries\\WorldOfZuul\\WorldOfZuul.csproj": {}
+    "C:\\Users\\lamak\\source\\repos\\Five-countries\\WorldOfZuul\\WorldOfZuul.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lamak\\Source\\Repos\\Five-countries\\WorldOfZuul\\WorldOfZuul.csproj": {
+    "C:\\Users\\lamak\\source\\repos\\Five-countries\\WorldOfZuul\\WorldOfZuul.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lamak\\Source\\Repos\\Five-countries\\WorldOfZuul\\WorldOfZuul.csproj",
+        "projectUniqueName": "C:\\Users\\lamak\\source\\repos\\Five-countries\\WorldOfZuul\\WorldOfZuul.csproj",
         "projectName": "WorldOfZuul",
-        "projectPath": "C:\\Users\\lamak\\Source\\Repos\\Five-countries\\WorldOfZuul\\WorldOfZuul.csproj",
+        "projectPath": "C:\\Users\\lamak\\source\\repos\\Five-countries\\WorldOfZuul\\WorldOfZuul.csproj",
         "packagesPath": "C:\\Users\\lamak\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lamak\\Source\\Repos\\Five-countries\\WorldOfZuul\\obj\\",
+        "outputPath": "C:\\Users\\lamak\\source\\repos\\Five-countries\\WorldOfZuul\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lamak\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -22,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -34,16 +35,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         },
         "restoreAuditProperties": {
           "enableAudit": "true",
