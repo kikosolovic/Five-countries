@@ -36,7 +36,7 @@ namespace FiveCountries
 
             //JUST FOR TESTING
             //you can write a list of commands to automate the testing
-            List<List<String>> automateTesting = new List<List<string>>{ new List<string>{"south"},new List<string>{"west"}, new List<string>{"play", "1"}};
+            //List<List<String>> automateTesting = new List<List<string>>{ new List<string>{"south"},new List<string>{"west"}, new List<string>{"play", "1"}};
             bool automateTestingBool = true;
 
             while (continuePlaying)
@@ -49,20 +49,22 @@ namespace FiveCountries
                 //string? input = Console.ReadLine();
                 string input = "";
                 //JUST FOR TESTING
-                if (automateTestingBool)
+                // if (automateTestingBool)
+                // {
+                //     if (automateTesting.Count > 0)
+                //     {
+                //         input = string.Join(" ", automateTesting[0]);
+                //         Console.WriteLine($"Runned automated test command: {input}");
+                //         automateTesting.RemoveAt(0);
+                //     }
+                //     else
+                //     {
+                //         automateTestingBool = false;
+                //         input = Console.ReadLine();
+                //     }
+                //}
+                //else
                 {
-                    if (automateTesting.Count > 0)
-                    {
-                        input = string.Join(" ", automateTesting[0]);
-                        Console.WriteLine($"Runned automated test command: {input}");
-                        automateTesting.RemoveAt(0);
-                    }
-                    else
-                    {
-                        automateTestingBool = false;
-                        input = Console.ReadLine();
-                    }
-                }else{
                     input = Console.ReadLine();
                 }
 
@@ -88,7 +90,6 @@ namespace FiveCountries
                 {
                     case "look":
                         Console.WriteLine(currentCountry?.currentRoom?.LongDescription);
-                        customFunctions.PrintMap4(currentCountry, currentCountry?.currentRoom?.ShortDescription);
                         break;
 
                     case "back":
@@ -313,7 +314,7 @@ namespace FiveCountries
             Console.WriteLine("USA");
             Console.WriteLine("");
             Console.WriteLine("Navigate by typing 'north', 'south', 'east', or 'west'.");
-            Console.WriteLine("Travel between countries by typing 'travel' and the name of the country. ");
+            Console.WriteLine("Travel between countries by typing 'travel' and the name of the country.");
             Console.WriteLine("Type 'look' for more details.");
             Console.WriteLine("Type 'map' to see the map.");
             Console.WriteLine("Type 'score' to see your current score.");
@@ -322,7 +323,7 @@ namespace FiveCountries
             Console.WriteLine("Type 'help' to print this message again.");
             Console.WriteLine("Type 'quit' to exit the game.");
             Console.WriteLine("Type 'playagain' to repeat the quest.");
-            Console.WriteLine("Type 'stoptalking' to stop ongoing conversation.");
+            Console.WriteLine("Type 'stoptalking' to stop an ongoing conversation.");
         }
     }
 }

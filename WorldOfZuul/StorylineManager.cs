@@ -58,7 +58,7 @@ namespace FiveCountries
 
                 default:
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("You have to choose one or two and also write it correctly withou a dot");
+                    Console.WriteLine("You have to choose one or two and write it without the dot.");
                     Console.ResetColor();
                     this.idiotCount += 1;
                     break;
