@@ -60,11 +60,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lamak\\source\\repos\\Five-countries\\WorldOfZuul\\WorldOfZuul.csproj",
+      "projectUniqueName": "C:\\Uni\\5C 7.11\\Five-countries\\WorldOfZuul\\WorldOfZuul.csproj",
       "projectName": "WorldOfZuul",
-      "projectPath": "C:\\Users\\lamak\\source\\repos\\Five-countries\\WorldOfZuul\\WorldOfZuul.csproj",
-      "packagesPath": "C:\\Users\\lamak\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lamak\\source\\repos\\Five-countries\\WorldOfZuul\\obj\\",
+      "projectPath": "C:\\Uni\\5C 7.11\\Five-countries\\WorldOfZuul\\WorldOfZuul.csproj",
+      "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
+      "outputPath": "C:\\Uni\\5C 7.11\\Five-countries\\WorldOfZuul\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -75,7 +75,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -124,4 +123,4 @@
       }
     }
   }
-  }
+}
