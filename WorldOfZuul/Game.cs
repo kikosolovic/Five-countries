@@ -36,7 +36,7 @@ namespace FiveCountries
 
             //JUST FOR TESTING
             //you can write a list of commands to automate the testing
-            List<List<String>> automateTesting = new List<List<string>>{ new List<string>{"south"},new List<string>{"west"}, new List<string>{"play", "1"}};
+            //List<List<String>> automateTesting = new List<List<string>>{ new List<string>{"south"},new List<string>{"west"}, new List<string>{"play", "1"}};
             bool automateTestingBool = true;
 
             while (continuePlaying)
@@ -49,20 +49,22 @@ namespace FiveCountries
                 //string? input = Console.ReadLine();
                 string input = "";
                 //JUST FOR TESTING
-                if (automateTestingBool)
+                // if (automateTestingBool)
+                // {
+                //     if (automateTesting.Count > 0)
+                //     {
+                //         input = string.Join(" ", automateTesting[0]);
+                //         Console.WriteLine($"Runned automated test command: {input}");
+                //         automateTesting.RemoveAt(0);
+                //     }
+                //     else
+                //     {
+                //         automateTestingBool = false;
+                //         input = Console.ReadLine();
+                //     }
+                //}
+                //else
                 {
-                    if (automateTesting.Count > 0)
-                    {
-                        input = string.Join(" ", automateTesting[0]);
-                        Console.WriteLine($"Runned automated test command: {input}");
-                        automateTesting.RemoveAt(0);
-                    }
-                    else
-                    {
-                        automateTestingBool = false;
-                        input = Console.ReadLine();
-                    }
-                }else{
                     input = Console.ReadLine();
                 }
 
