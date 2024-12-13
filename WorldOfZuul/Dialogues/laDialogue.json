@@ -1,38 +1,38 @@
 {
   "text": "You arrive in Los Angeles, a vibrant city known for its innovation and commitment to sustainability. The bustling streets are lined with towering palm trees, and the ocean breeze carries the sounds of a community eager for change. As you step out of the car, the UN Ambassador approaches you with a smile and a notebook in hand.",
   "response": "Welcome to Los Angeles! We're excited to have you here. This city is on the path to becoming a model for eco-friendly living, but we need your help to tackle some crucial challenges. Are you ready to make a difference?",
-  "options": "1. Yes, I’m ready to help. 2. What exactly are we working on today?",
+  "options": "1. Yes, I'm ready to help. 2. What exactly are we working on today?",
   "opt1": {
     "text": "You nod confidently, ready to take on the challenge.",
     "response": "Fantastic! Today, you'll be participating in an eco-friendly home makeover. We're focusing on energy efficiency, water conservation, and sustainable upgrades. This will set an example for others in the community.",
     "options": "1. How will this makeover help? 2. What's my role in this mission?",
     "opt1": {
       "text": "You ask how this makeover will help the community.",
-      "response": "Great question! By transforming this home into a model of sustainability, we’ll show others how small changes can make a big impact. Each decision you make will inspire others to follow.",
-      "options": "1. Sounds good. Let’s get started. 2. What exactly will I be doing in the makeover?",
+      "response": "Great question! By transforming this home into a model of sustainability, we'll show others how small changes can make a big impact. Each decision you make will inspire others to follow.",
+      "options": "1. Sounds good. Let's get started. 2. What exactly will I be doing in the makeover?",
       "opt1": {
-        "text": "You’re eager to get started and agree to help.",
-        "response": "The ambassador smiles. 'Let’s head to the house. The team is waiting for us.'",
+        "text": "You're eager to get started and agree to help.",
+        "response": "The ambassador smiles. 'Let's head to the house. The team is waiting for us.'",
         "options": null
       },
       "opt2": {
         "text": "You ask for details about your role.",
         "response": "Your job is to make sustainable choices for the home. From energy-efficient appliances to water-saving systems, every decision will make a difference.",
-        "options": "1. Got it. Let’s go.",
+        "options": "1. Got it. Let's go.",
         "opt1": {
           "text": "You acknowledge your role and agree to begin.",
-          "response": "Fantastic! Let’s meet the team and start the makeover.",
+          "response": "Fantastic! Let's meet the team and start the makeover.",
           "options": null
         }
       }
     },
     "opt2": {
       "text": "You ask about your role in the mission.",
-      "response": "Your role is critical! You’ll decide on upgrades that will improve energy efficiency, conserve water, and reduce the home’s environmental footprint.",
-      "options": "1. Got it. Let’s get started.",
+      "response": "Your role is critical! You'll decide on upgrades that will improve energy efficiency, conserve water, and reduce the home's environmental footprint.",
+      "options": "1. Got it. Let's get started.",
       "opt1": {
         "text": "You agree to start the project.",
-        "response": "Excellent! Let’s head to the house and meet the team.",
+        "response": "Excellent! Let's head to the house and meet the team.",
         "options": null
       }
     }

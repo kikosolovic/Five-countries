@@ -8,15 +8,15 @@
         "options": "1. Ask how the villagers deal with the storms now. 2. Ask if the villagers have any new ways to cope with climate change.",
         "opt1": {
             "text": "You ask how the villagers manage without the weather station.",
-            "response": "We know the land and the sea. When the wind changes, we can feel it. If the sky gets too dark, we gather everyone in the small room by the square. It's the only place we can trust to keep us safe. If you ever feel the storm coming, go there and stay with the others. It’s not much, but it keeps us safe.",
+            "response": "We know the land and the sea. When the wind changes, we can feel it. If the sky gets too dark, we gather everyone in the small room by the square. It's the only place we can trust to keep us safe. If you ever feel the storm coming, go there and stay with the others. It's not much, but it keeps us safe.",
             "options": "1. Thank the lady and ask if she needs help. 2. Ask about the rice fields and how they manage agriculture.",
             "opt1": {
                 "text": "You thank her and ask if she needs help.",
-                "response": "You’re kind. If you don't mind, I could use help in the rice field. It's not much, just a little work to tend to the crop. The rice grows well here, but it takes a lot of effort. I'll show you the way.",
+                "response": "You're kind. If you don't mind, I could use help in the rice field. It's not much, just a little work to tend to the crop. The rice grows well here, but it takes a lot of effort. I'll show you the way.",
                 "options": "1. Agree to help her in the rice field. 2. Politely decline and ask more about the fishing.",
                 "opt1": {
                     "text": "You agree to help her in the rice field.",
-                    "response": "Ah, thank you, my friend. Let’s go, it’s not too far. The field has been growing well this season, but we need to watch for any pests that might come. Come, I’ll teach you how we do things here.",
+                    "response": "Ah, thank you, my friend. Let's go, it's not too far. The field has been growing well this season, but we need to watch for any pests that might come. Come, I'll teach you how we do things here.",
                     "options": "1. Follow her to the rice field. 2. Ask her about the best time to plant rice.",
                     "opt1": {
                         "text": "You follow her to the rice field.",
@@ -29,37 +29,37 @@
                         },
                         "opt2": {
                             "text": "You ask about the challenges they face with rice farming.",
-                            "response": "The biggest challenge is the rain. Sometimes it comes too early, sometimes too late. When the storms come, it can flood the fields, but we manage. It’s just how life is here. The sea, the storms—they’re part of our rhythm.",
+                            "response": "The biggest challenge is the rain. Sometimes it comes too early, sometimes too late. When the storms come, it can flood the fields, but we manage. It's just how life is here. The sea, the storms—they're part of our rhythm.",
                             "options": "1. Ask how they manage with the unpredictable weather. 2. Change the subject and ask more about the shelter during storms."
                         }
                     },
                     "opt2": {
                         "text": "You politely decline and ask more about the fishing.",
-                        "response": "Ah, you’re not ready for the fields yet. Well, we fish here too. The ocean gives us what we need, but it’s not always kind. The fish are getting harder to find, and the storms make it worse. You’ll see the fishermen at the dock soon, maybe you’ll learn from them.",
+                        "response": "Ah, you're not ready for the fields yet. Well, we fish here too. The ocean gives us what we need, but it's not always kind. The fish are getting harder to find, and the storms make it worse. You'll see the fishermen at the dock soon, maybe you'll learn from them.",
                         "options": "1. Ask the lady to tell you more about the fishing life. 2. Go and meet the fishermen at the dock."
                     }
                 },
                 "opt2": {
                     "text": "You ask more about the rice fields and how they manage agriculture.",
-                    "response": "We’ve been growing rice here for a long time. The land is good, and we know how to work with it. But sometimes, when the rains come too much, it floods the fields. Other times, it doesn’t rain enough. We’ve learned to adjust. It’s a life of waiting for the right signs.",
+                    "response": "We've been growing rice here for a long time. The land is good, and we know how to work with it. But sometimes, when the rains come too much, it floods the fields. Other times, it doesn't rain enough. We've learned to adjust. It's a life of waiting for the right signs.",
                     "options": "1. Ask about the best season for planting rice. 2. Ask if there are any other crops they grow."
                 }
             },
             "opt2": {
                 "text": "You ask if the villagers have any new ways to cope with climate change.",
-                "response": "Climate change is something we feel. The storms are getting worse, and the seasons don’t behave like they used to. We rely on the old ways, but sometimes it’s not enough. We need help from people like you, maybe, to fix our weather station or bring new ideas.",
+                "response": "Climate change is something we feel. The storms are getting worse, and the seasons don't behave like they used to. We rely on the old ways, but sometimes it's not enough. We need help from people like you, maybe, to fix our weather station or bring new ideas.",
                 "options": "1. Offer to help fix the weather station. 2. Ask how they feel about the changing weather patterns."
             }
         },
         "opt2": {
             "text": "You ask about where to take shelter in case of a storm.",
-            "response": "Ah, good question. The storm shelter is in the square, a small room built many years ago by the community. When the wind picks up, everyone goes there. It’s always better to be safe. The villagers know the signs, but it’s always good to have a place to hide just in case.",
-            "options": "1. Thank her for the information. 2. Ask more about the shelter and how often it’s used."
+            "response": "Ah, good question. The storm shelter is in the square, a small room built many years ago by the community. When the wind picks up, everyone goes there. It's always better to be safe. The villagers know the signs, but it's always good to have a place to hide just in case.",
+            "options": "1. Thank her for the information. 2. Ask more about the shelter and how often it's used."
         }
     },
     "opt2": {
         "text": "You ask about her life and how she has lived here for so long.",
-        "response": "I’ve lived here all my life. My family has been here for generations. We’ve seen many changes, but the village stays the same. Life here is simple, but it’s also hard. The storms, the floods, they are things we face together. We support each other, that’s how we survive.",
+        "response": "I've lived here all my life. My family has been here for generations. We've seen many changes, but the village stays the same. Life here is simple, but it's also hard. The storms, the floods, they are things we face together. We support each other, that's how we survive.",
         "options": "1. Ask her if she ever plans to leave the village. 2. Ask how the village stays connected despite the challenges."
     }
 }

@@ -139,7 +139,7 @@ namespace WorldOfZuul
             if (Program._game.currentCountry.currentRoom.ShortDescription == "Hill")
             {
 
-                helper.say(write: "Weather station needs to be configured.");
+                helper.say(write: "The weather station needs to be configured.");
                 helper.say(write: "Since you are not an expert, you can only configure based on the current weather. Write the command configure [weather] with sunny/rainy/stormy depending on what you can see from the hill. Use command weather to get updated on what you see.");
 
             }

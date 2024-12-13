@@ -1,40 +1,40 @@
 {
   "text": "As you step outside the clean-up site, the Mayor of Chicago greets you with a warm handshake. Jamal, a local entrepreneur, is also there, holding a bag of composting materials.",
-  "response": "Mayor: 'You’ve done an outstanding job today. The whole city has taken notice of your efforts, and Jamal looks like he’s ready to start a composting program himself.'",
+  "response": "Mayor: 'You've done an outstanding job today. The whole city has taken notice of your efforts, and Jamal looks like he's ready to start a composting program himself.'",
   "options": "1. Thank the Mayor. 2. Ask Jamal how he feels about the project now.",
   "opt1": {
     "text": "You thank the Mayor for his support and the opportunity to help.",
-    "response": "Mayor: 'The city owes you a great debt. Your actions today have sparked a movement that will keep growing. I’m proud to have you here.'",
+    "response": "Mayor: 'The city owes you a great debt. Your actions today have sparked a movement that will keep growing. I'm proud to have you here.'",
     "options": "1. Ask about future projects. 2. Comment on the importance of community engagement.",
     "opt1": {
       "text": "You ask about upcoming environmental projects in Chicago.",
-      "response": "Mayor: 'There are always new challenges. We’re looking at expanding the green spaces and improving waste diversion across the city. It’s a huge task, but with people like you leading the way, I’m confident we can do it.'",
+      "response": "Mayor: 'There are always new challenges. We're looking at expanding the green spaces and improving waste diversion across the city. It's a huge task, but with people like you leading the way, I'm confident we can do it.'",
       "options": null
     },
     "opt2": {
       "text": "You comment on how vital it is for the community to be involved in these projects.",
-      "response": "Mayor: 'I couldn’t agree more. Change only happens when we all work together. You’ve set an incredible example today.'",
+      "response": "Mayor: 'I couldn't agree more. Change only happens when we all work together. You've set an incredible example today.'",
       "options": null
     }
   },
   "opt2": {
     "text": "You ask Jamal how he feels about the composting project now.",
-    "response": "Jamal: 'It’s honestly been eye-opening. I never realized how much waste we could divert just by changing our habits. I’m excited to get my business involved in composting and spread the word!'",
-    "options": "1. Encourage Jamal to share what he’s learned with others. 2. Ask Jamal about his future plans for sustainability.",
+    "response": "Jamal: 'It's honestly been eye-opening. I never realized how much waste we could divert just by changing our habits. I'm excited to get my business involved in composting and spread the word!'",
+    "options": "1. Encourage Jamal to share what he's learned with others. 2. Ask Jamal about his future plans for sustainability.",
     "opt1": {
       "text": "You encourage Jamal to become an advocate for composting.",
-      "response": "Jamal: 'That’s the plan! I’m already looking into some local initiatives, and I want to host a workshop to teach others what I’ve learned.'",
+      "response": "Jamal: 'That's the plan! I'm already looking into some local initiatives, and I want to host a workshop to teach others what I've learned.'",
       "options": null
     },
     "opt2": {
       "text": "You ask Jamal about his plans for expanding his sustainability efforts.",
-      "response": "Jamal: 'I’m thinking about partnering with local farmers to create a sustainable cycle. It’s all about keeping it local and making an impact that people can see and feel.'",
+      "response": "Jamal: 'I'm thinking about partnering with local farmers to create a sustainable cycle. It's all about keeping it local and making an impact that people can see and feel.'",
       "options": null
     }
   },
   "finalText": {
     "text": "The Mayor nods and Jamal waves goodbye as you prepare to leave.",
-    "response": "Mayor: 'You’ve done more than just help clean up today—you’ve sparked a movement. The future of Chicago looks a little greener thanks to your efforts. Let’s keep this momentum going, and take it to the next city.'",
+    "response": "Mayor: 'You've done more than just help clean up today—you've sparked a movement. The future of Chicago looks a little greener thanks to your efforts. Let's keep this momentum going, and take it to the next city.'",
     "options": null
   }
 }

@@ -1,18 +1,18 @@
 {
-  "text": "As the Eco-Friendly Home Makeover comes to an end, the UN Ambassador leads you outside to reflect on the day’s achievements. A local environmentalist named Maya approaches with a bright smile.",
-  "response": "UN Ambassador: 'That was an outstanding effort. You’ve shown how simple choices can have a significant impact on sustainability.'",
+  "text": "As the Eco-Friendly Home Makeover comes to an end, the UN Ambassador leads you outside to reflect on the day's achievements. A local environmentalist named Maya approaches with a bright smile.",
+  "response": "UN Ambassador: 'That was an outstanding effort. You've shown how simple choices can have a significant impact on sustainability.'",
   "options": "1. Thank the Ambassador. 2. Ask Maya about her environmental work.",
   "opt1": {
     "text": "You thank the UN Ambassador for the opportunity to make a difference.",
-    "response": "UN Ambassador: 'The pleasure is all ours. You’ve set a fantastic example for the residents of Los Angeles.'",
+    "response": "UN Ambassador: 'The pleasure is all ours. You've set a fantastic example for the residents of Los Angeles.'",
     "options": "1. Continue speaking with Maya.",
     "opt1": {
       "text": "You turn to Maya and ask about her work in the community.",
-      "response": "Maya: 'I lead workshops on energy efficiency and waste reduction here in LA. It’s inspiring to see someone like you leading by example. What inspired you to get involved in sustainability?'",
+      "response": "Maya: 'I lead workshops on energy efficiency and waste reduction here in LA. It's inspiring to see someone like you leading by example. What inspired you to get involved in sustainability?'",
       "options": "1. Share your motivations. 2. Ask Maya how others can get involved.",
       "opt1": {
         "text": "You share your motivations for joining the mission.",
-        "response": "Maya nods thoughtfully. 'That’s incredible. Your passion is exactly what we need to tackle the challenges ahead.'",
+        "response": "Maya nods thoughtfully. 'That's incredible. Your passion is exactly what we need to tackle the challenges ahead.'",
         "options": null
       },
       "opt2": {
@@ -24,11 +24,11 @@
   },
   "opt2": {
     "text": "You ask Maya about her environmental work.",
-    "response": "Maya: 'I run community programs on sustainable living. It’s rewarding to see people embracing change, even small steps like switching to LED bulbs or composting.'",
+    "response": "Maya: 'I run community programs on sustainable living. It's rewarding to see people embracing change, even small steps like switching to LED bulbs or composting.'",
     "options": "1. Ask Maya for advice on starting similar programs. 2. Thank Maya for her efforts.",
     "opt1": {
       "text": "You ask Maya how to start similar programs in other cities.",
-      "response": "Maya: 'It all starts with education and outreach. Partner with local leaders and inspire others through action. You’d be surprised how quickly people follow when they see the impact.'",
+      "response": "Maya: 'It all starts with education and outreach. Partner with local leaders and inspire others through action. You'd be surprised how quickly people follow when they see the impact.'",
       "options": null
     },
     "opt2": {

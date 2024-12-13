@@ -1,26 +1,26 @@
 {
   "text": "As you step outside the recycling center, the UN Ambassador greets you with a proud smile. Sarah, a local resident, is also there, holding a reusable shopping bag.",
-  "response": "UN Ambassador: 'You’ve done an incredible job today. The team inside is inspired, and it looks like you’ve made an impression on Sarah as well.'",
+  "response": "UN Ambassador: 'You've done an incredible job today. The team inside is inspired, and it looks like you've made an impression on Sarah as well.'",
   "options": "1. Thank the Ambassador. 2. Ask Sarah what she thinks about recycling now.",
   "opt1": {
     "text": "You thank the Ambassador for his kind words.",
-    "response": "UN Ambassador: 'The pleasure is mine. It’s rare to see someone with such dedication. Your efforts here have set an example for the community.'",
+    "response": "UN Ambassador: 'The pleasure is mine. It's rare to see someone with such dedication. Your efforts here have set an example for the community.'",
     "options": "1. Ask about the next steps. 2. Comment on the importance of teamwork.",
     "opt1": {
       "text": "You ask about the next steps in your mission.",
-      "response": "UN Ambassador: 'There are other cities waiting for your expertise. Each one has unique challenges, but I’m confident you’ll handle them with the same dedication you’ve shown here.'",
+      "response": "UN Ambassador: 'There are other cities waiting for your expertise. Each one has unique challenges, but I'm confident you'll handle them with the same dedication you've shown here.'",
       "options": null
     },
     "opt2": {
       "text": "You comment on the importance of teamwork.",
-      "response": "UN Ambassador: 'Absolutely. This mission is about bringing people together to solve problems. And today, you’ve shown exactly how that’s done.'",
+      "response": "UN Ambassador: 'Absolutely. This mission is about bringing people together to solve problems. And today, you've shown exactly how that's done.'",
       "options": null
     }
   },
   "opt2": {
     "text": "You ask Sarah how she feels about recycling now.",
-    "response": "Sarah: 'I’ve learned so much today. It’s amazing to see how small changes can make such a big difference. I’m definitely going to be more mindful moving forward!'",
-    "options": "1. Encourage Sarah to share what she’s learned. 2. Ask Sarah about her biggest takeaway from today.",
+    "response": "Sarah: 'I've learned so much today. It's amazing to see how small changes can make such a big difference. I'm definitely going to be more mindful moving forward!'",
+    "options": "1. Encourage Sarah to share what she's learned. 2. Ask Sarah about her biggest takeaway from today.",
     "opt1": {
       "text": "You encourage Sarah to share her newfound knowledge.",
       "response": "Sarah: 'Oh, I will! My family and friends are going to hear all about it. Change starts small, right?'",
@@ -28,13 +28,13 @@
     },
     "opt2": {
       "text": "You ask Sarah what she found most impactful.",
-      "response": "Sarah: 'I think it’s realizing how contamination affects recycling. It’s such a small thing to avoid, but it makes such a huge difference!'",
+      "response": "Sarah: 'I think it's realizing how contamination affects recycling. It's such a small thing to avoid, but it makes such a huge difference!'",
       "options": null
     }
   },
   "finalText": {
     "text": "The UN Ambassador steps forward as Sarah waves goodbye.",
-    "response": "UN Ambassador: 'Your work here has been exceptional, but the journey isn’t over yet. Let’s move on to the next city and tackle new challenges together. The world is counting on us.'",
+    "response": "UN Ambassador: 'Your work here has been exceptional, but the journey isn't over yet. Let's move on to the next city and tackle new challenges together. The world is counting on us.'",
     "options": null
   }
 }

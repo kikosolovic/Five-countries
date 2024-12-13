@@ -1,11 +1,11 @@
 {
   "text": "You arrive in San Francisco, a city renowned for its composting and sustainability efforts. The UN Ambassador greets you with a sense of pride and urgency.",
-  "response": "Welcome! San Francisco is a leader in composting, but there’s still much work to be done. Can we count on you to help?",
-  "options": "1. Yes, I'm ready to help. 2. What’s the task?",
+  "response": "Welcome! San Francisco is a leader in composting, but there's still much work to be done. Can we count on you to help?",
+  "options": "1. Yes, I'm ready to help. 2. What's the task?",
   "opt1": {
     "text": "You nod confidently, ready to take on the challenge.",
-    "response": "Great! Today, we’ll focus on sorting compostable materials properly to reduce contamination.",
-    "options": "1. Let’s get started! 2. Tell me more about composting.",
+    "response": "Great! Today, we'll focus on sorting compostable materials properly to reduce contamination.",
+    "options": "1. Let's get started! 2. Tell me more about composting.",
     "opt1": {
       "text": "You express enthusiasm to start immediately.",
       "response": "The ambassador smiles. 'Follow me to the composting center. Time is of the essence!'",
@@ -14,30 +14,30 @@
     "opt2": {
       "text": "You ask for more details about composting.",
       "response": "Composting diverts organic waste from landfills, turning it into valuable nutrients for the soil. Proper sorting is critical.",
-      "options": "1. Got it. Let’s go.",
+      "options": "1. Got it. Let's go.",
       "opt1": {
         "text": "You indicate your readiness to start.",
-        "response": "The ambassador nods approvingly. 'Let’s get to work. Every bit counts!'",
+        "response": "The ambassador nods approvingly. 'Let's get to work. Every bit counts!'",
         "options": null
       }
     }
   },
   "opt2": {
     "text": "You ask about the task ahead.",
-    "response": "You’ll sort compostable items into bins: Food Scraps, Garden Waste, and Paper Products. It’s a simple but impactful task.",
-    "options": "1. Sounds good. Let’s go. 2. What happens if I make a mistake?",
+    "response": "You'll sort compostable items into bins: Food Scraps, Garden Waste, and Paper Products. It's a simple but impactful task.",
+    "options": "1. Sounds good. Let's go. 2. What happens if I make a mistake?",
     "opt1": {
       "text": "You express confidence to get started.",
-      "response": "Fantastic! Let’s head to the composting center. We’ll guide you every step of the way.",
+      "response": "Fantastic! Let's head to the composting center. We'll guide you every step of the way.",
       "options": null
     },
     "opt2": {
       "text": "You express concern about making mistakes.",
-      "response": "No worries! Mistakes are part of learning, and we’ll correct them together.",
-      "options": "1. Thanks for the support. Let’s go.",
+      "response": "No worries! Mistakes are part of learning, and we'll correct them together.",
+      "options": "1. Thanks for the support. Let's go.",
       "opt1": {
         "text": "You feel reassured and ready to begin.",
-        "response": "The ambassador smiles warmly. 'Let’s make an impact together!'",
+        "response": "The ambassador smiles warmly. 'Let's make an impact together!'",
         "options": null
       }
     }

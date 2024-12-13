@@ -48,14 +48,14 @@ namespace FiveCountries
             Country USA = countries[4];
 
             // //initialize rooms to Haiti
-            Haiti.InitRoom("Outside", "The beutiful park in the middle of the complex.");
-            Haiti.InitRoom("Lobby", "Main hall of the complex.");
-            Haiti.InitRoom("Corridor", "Short corridor to other rooms");
+            Haiti.InitRoom("Outside", "You're at the beautiful park in the middle of the complex.");
+            Haiti.InitRoom("Lobby", "You're inside the main hall of the complex.");
+            Haiti.InitRoom("Corridor", "This corridor leads to the other rooms.");
             Haiti.InitRoom("PV Lab", "It's pretty dark here. You are in the PV Lab. \n We often test solar panels here, so we need to keep it dark. \n You can see a lot of solar panels and inverters around you. \n This is the place where we design and plan future solar panels.");
-            Haiti.InitRoom("Wind Lab", "It's windy here! You are in the Wind Lab. You can see a lot of wind turbines and anemometers around you.\nThere are also countless TVs with real-world and simulation data around wind power plants.\nThis is the place where we design and plan future wind turbines.");
+            Haiti.InitRoom("Wind Lab", "It's windy here! You are in the Wind Lab. You can see a lot of wind turbines and anemometers around you.\nThere are also countless TVs with real-world and simulation data about wind power plants.\nThis is the place where we design and plan future wind turbines.");
             Haiti.InitRoom("Energy Storage Lab", "This is the Energy Storage Lab. You can see a lot of batteries and capacitors around you.\nThis is the place where we design and plan future enegry storeges.");
             Haiti.InitRoom("Closet", "It's silent here, and also nothing intresting, just some old brooms, mops and tons of dust.");
-            Haiti.InitRoom("Infrostructure Building", "Building of the Infrostructure Department");
+            Haiti.InitRoom("Infrastructure Building", "Building of the Infrastructure Department");
             //Haiti.InitRoom("Server Building", "Building of the Computational Department");
 
 
@@ -73,14 +73,16 @@ namespace FiveCountries
 
             // //initialize rooms to India
             India.InitRoom("UN Outpost", "You are just outside of a UN outpost located between your two objectives.", new MinigameDelegate(minigameFunctions.UNOutpost));
-            India.InitRoom("Outside Sewage Treatment Plant", "You find yourself outside the abandoned plant. The entrance to the lobby is to the north.");
-            India.InitRoom("Lobby", "You're inside the lobby of the plant. The tank room is to the east.");
-            India.InitRoom("Tank Room", "You're inside the tank room. The tanks are rusty, full of holes and the pipes need replacing.", new MinigameDelegate(minigameFunctions.SewagePlantQuiz));
-            India.InitRoom("Crop Field", "You're in front of the crop field. The underground spring has to be under it somewhere.", new  MinigameDelegate(minigameFunctions.CropFieldQuiz));
+            India.InitRoom("Outside Sewage Treatment Plant", "You find yourself outside the abandoned plant. It looks dilapidated and dirty. The entrance to the lobby is to the north.");
+            India.InitRoom("Lobby", "You're inside the lobby of the plant. There's trash on the ground everywhere. The tank room is to the east.");
+            India.InitRoom("Storage Room", "There's nothing to see here that's of importance.");
+            India.InitRoom("Tank Room", "You're inside the tank room.", new MinigameDelegate(minigameFunctions.SewagePlantQuiz));
+            India.InitRoom("Crop Field", "You're in front of the crop field.", new  MinigameDelegate(minigameFunctions.CropFieldQuiz));
 
             India.addExit("UN Outpost", new List<string> { "north", "south" }, new List<string> { "Outside Sewage Treatment Plant", "Crop Field" });
             India.addExit("Outside Sewage Treatment Plant", new List<string> { "south", "north" }, new List<string> { "UN Outpost", "Lobby" });
-            India.addExit("Lobby", new List<string> { "south", "east" }, new List<string> { "Outside Sewage Treatment Plant", "Tank Room" });
+            India.addExit("Lobby", new List<string> { "south", "east", "west" }, new List<string> { "Outside Sewage Treatment Plant", "Tank Room", "Storage Room" });
+            India.addExit("Storage Room", new List<string> { "east" }, new List<string> { "Lobby" });
             India.addExit("Tank Room", new List<string> { "west" }, new List<string> { "Lobby" });
             India.addExit("Crop Field", new List<string> { "north" }, new List<string> { "UN Outpost" });
 
@@ -102,11 +104,11 @@ namespace FiveCountries
 
 
             //initialize rooms to Mozambique
-            Mozambique.InitRoom("Dock", "You just arrived to Mozambique. The boat dropped you off at a small dock. ", new MinigameDelegate(minigameFunctions.Dock));
+            Mozambique.InitRoom("Dock", "You just arrived to Mozambique. The boat dropped you off at a small dock.", new MinigameDelegate(minigameFunctions.Dock));
             Mozambique.InitRoom("Boat", "You find yourself on a small fishing boat in the middle of the ocean. There is nowhere to hide.");
-            Mozambique.InitRoom("Village", "You find yourself in a small village. People are walking around. ", new MinigameDelegate(minigameFunctions.Village));
-            Mozambique.InitRoom("Field", "You are in a rice field. There are paths in between the individual rice plants. Locals are caring of the rice, this harvest is going to be plentiful.");
-            Mozambique.InitRoom("Hill", "You have a view of the whole village and the oocean behind it.", new MinigameDelegate(minigameFunctions.Hill));
+            Mozambique.InitRoom("Village", "You find yourself in a small village. People are walking around.", new MinigameDelegate(minigameFunctions.Village));
+            Mozambique.InitRoom("Field", "You are in a rice field. There are paths in between the individual rice plants. Locals are taking care of the rice, this harvest is going to be plentiful.");
+            Mozambique.InitRoom("Hill", "You have a view of the whole village and the ocean behind it.", new MinigameDelegate(minigameFunctions.Hill));
             Mozambique.InitRoom("Shelter", "You are inside a cycloon shelter. The harsh weather can't get to you, or so they say.", new MinigameDelegate(minigameFunctions.Shelter));
 
             Mozambique.addExit("Dock", new List<string> { "north", "south" }, new List<string> { "Village", "Boat" });
@@ -122,7 +124,7 @@ namespace FiveCountries
             USA.InitRoom("New York City", "You are in New York City, where waste management and recycling initiatives are critical to reducing urban waste.", new MinigameDelegate(minigameFunctions.RecyclingSortingMinigameNYC));
             USA.InitRoom("Chicago", "You are in Chicago, focusing on electronic waste recycling and management.", new MinigameDelegate(minigameFunctions.ElectronicRepairChallenge));
             USA.InitRoom("Houston", "You are in Houston, where industrial waste and hazardous waste management are major concerns.");
-            USA.InitRoom("Los Angeles", "You are in Los Angeles, dealing with challenges related to plastic waste and sustainable disposal methods..", new MinigameDelegate(minigameFunctions.EcoFriendlyHomeMakeover));
+            USA.InitRoom("Los Angeles", "You are in Los Angeles, dealing with challenges related to plastic waste and sustainable disposal methods.", new MinigameDelegate(minigameFunctions.EcoFriendlyHomeMakeover));
             USA.InitRoom("San Francisco", "You are in San Francisco, known for its zero-waste goals and composting initiatives.", new MinigameDelegate(minigameFunctions.CompostingPuzzleMinigameSFA));
 
             USA.addExit("New York City", new List<string> { "south" }, new List<string> { "Chicago" });  

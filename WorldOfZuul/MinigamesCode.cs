@@ -214,9 +214,9 @@ namespace FiveCountries
         {
             int score = 0;
             Console.WriteLine(@"
-Welcome to the first minigame in Haiti's Lab
-OBJECTIVE: Choose the best location for a photovoltaic power plant in Haiti.
-Your task is to find best spots for Photovoltaic(PV) power plants You will be shown a map of Haiti and you will have to choose the best location for 3 new Photovoltaic power plants.
+Welcome to the first minigame in Haiti's Lab!
+OBJECTIVE: Choose the best locations for photovoltaic power plants in Haiti.
+Your task is to find the best spots for Photovoltaic(PV) power plants. You will be shown a map of Haiti and you will have to choose the best locations for 3 new Photovoltaic power plants.
 ");
             
             string haitiMapPV = @"
@@ -274,13 +274,13 @@ Your task is to find best spots for Photovoltaic(PV) power plants You will be sh
             On the map you can see the predicted solar yield in kWh/kWp/year for different regions in Haiti.
             The higher the number, the more solar energy can be produced in that region.
             A bit more knowledge about units here:
-                kWh is a unit of how much energy is produced
-                kWp is a unit of how much power is teoreticaly produced by the solar panels
+                kWh is a unit of how much energy is produced.
+                kWp is a unit of how much power is theoreticaly produced by the solar panels.
 
-            so if we have an PV instalation of 1kWp in a region with 1800kWh/kWp/year, it will produce 1800kWh of energy in a year.
+            So if we have a PV instalation of 1kWp in a region with 1800kWh/kWp/year, it will produce 1800kWh of energy in a year.
             
             Solar energy is a great source of renewable and clean energy, since during the operation it doesn't produce any emmisions or pollution.
-            The downside to solar energy is that it is not always available, since it depends on the weather and the time of the day.
+            The downside to solar energy is that it is not always available, since it depends on the weather and the time of day.
             ");
             Console.WriteLine(@"
             Places to choose from:
@@ -310,12 +310,21 @@ Your task is to find best spots for Photovoltaic(PV) power plants You will be sh
                     score += 1;
                 }
             }
-            if(score == 3){
-                Console.WriteLine("Congrats! You have chosen ones of the best cities available for our new investments!");
-            }else if(score > 0){
+            if(score == 3)
+            {
+                Console.WriteLine("Congrats! You have chosen the best cities available for our new investments!");
+            }
+            else if(score == 2) 
+            {
                 Console.WriteLine("Good job! You have chosen some of the best cities available for our new investments!");
-            }else{
-                Console.WriteLine("You have not chosen the best cities available for our new investments!");
+            }
+            else if (score == 1)
+            {
+                Console.WriteLine("Good! You have chosen one of the best cities available for our new investments!");
+            }
+            else 
+            {
+                Console.WriteLine("You have not chosen any of the best cities available for our new investments!");
             }
             Console.WriteLine("You have scored: " + score + " points");
             return score;
@@ -377,9 +386,9 @@ Your task is to find best spots for Photovoltaic(PV) power plants You will be sh
             Disclaimer: The data might not be 100% accurate, because of many technical factors like resolution, available color depth etc.,
                 but it is a good estimation.";
             Console.WriteLine(@"
-Welcome to another minigame in Haitis' Lab
+Welcome to another minigame in Haiti's Lab!
 OBJECTIVE: Choose the best location for a wind power plant on Haiti's shore.
-Your task is to find best spots for wind power plants, You will be shown a map of Haiti's waters and averege wind speed.
+Your task is to find the best spots for wind power plants. You will be shown a map of Haiti's waters and averege wind speed.
 ");
             Console.WriteLine(haitiWindMAp);
             Console.WriteLine(@"\n\n
@@ -420,12 +429,17 @@ Your task is to find best spots for wind power plants, You will be shown a map o
                     score += 1;
                 }
             }
-            if(score ==2){
-                Console.WriteLine("Congrats! You have chosen ones of the best available places for our new investments!");
-            }else if(score > 0){
-                Console.WriteLine("Good job! You have chosen some of the best places available for our new investments!");
-            }else{
-                Console.WriteLine("You have not chosen the best places available for our new investments!");
+            if(score == 2)
+            {
+                Console.WriteLine("Congrats! You have chosen both of the best available places for our new investments!");
+            }
+            else if (score == 1)
+            {
+                Console.WriteLine("Good job! You have chosen one of the best places available for our new investments!");
+            
+            }else
+            {
+                Console.WriteLine("You have not chosen any of the best places available for our new investments!");
             }
             Console.WriteLine("You have scored: " + score + " points");
             return score;
@@ -454,7 +468,7 @@ Your task is to find best spots for wind power plants, You will be shown a map o
         {
             int score = 0;
             Console.WriteLine("Welcome to the fourth minigame in Haiti's Lab!");
-            Console.WriteLine("Calculate how big photovoltaic power station is needed for The Farm.");
+            Console.WriteLine("Calculate how big of a photovoltaic power station is needed for the Farm.");
             return score;
         }
         //quick response function, makes the text yellow, meaning that somebody said that
@@ -1166,38 +1180,12 @@ Your task is to find best spots for wind power plants, You will be shown a map o
 
 
 
-
-
-
-
-
-private char GetValidOptionIndia()
-        {
-            while (true)
-            {
-                string? input = Console.ReadLine();
-                if (!string.IsNullOrEmpty(input) && input.Length == 1)
-                {
-                    char option = char.ToUpper(input[0]);
-                    if (option >= 'A' && option <= 'D')
-                    {
-                        return option;
-                    }
-                }
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.Write("Invalid input. ");
-                Console.ResetColor();
-            }
-        }
-
-
-
 public void SewagePlantQuiz(ref int score)
         {
             // Contextual Minigame Introduction
             Console.ForegroundColor = ConsoleColor.Cyan;
             helper.WriteWithDelay("\nYou go inside the tank room and inspect the damage.");
-            helper.WriteWithDelay("\nThe pipes are clogged. There are pumps, valves and sensors that are in need of replacement. At least the tanks themselves are intact. It would have been a lot worse had you needed to replace them too.");
+            helper.WriteWithDelay("\nThe pipes are clogged. There are pumps, valves and sensors that are in need of replacement.\nAt least the tanks themselves are intact. It would have been a lot worse had you needed to replace them too.");
             helper.WriteWithDelay("\nIt looks like you have your work cut out for you.");
             Console.ResetColor();
 
@@ -1219,13 +1207,16 @@ public void SewagePlantQuiz(ref int score)
         },
         new Question
         {
-            Text = "True or False: Proper sewage treatment can help prevent waterborne diseases.",
+            Text = "Proper sewage treatment can help prevent waterborne diseases.",
             Options = new Dictionary<char, string>
             {
-                { 'A', "True." },
-                { 'B', "False." },
+                { 'A', "Airborne diseases." },
+                { 'B', "Waterborne diseases." },
+                { 'C', "Foodborne diseases." },
+                { 'D', "All of the above." },
+
             },
-            CorrectOption = 'A',
+            CorrectOption = 'B',
             Explanation = "Waterborne diseases are caused by the viruses and bacteria in dirty water. The more people consume the filtered water that has gone through sewage treatment, the more the percentage of them will get sick."
         },
         new Question
@@ -1274,7 +1265,7 @@ public void SewagePlantQuiz(ref int score)
                 }
 
                 Console.Write("\nEnter your choice: ");
-                char playerChoice = GetValidOptionIndia();
+                char playerChoice = GetValidOption();
 
                 if (char.ToUpper(playerChoice) == question.CorrectOption)
                 {
@@ -1302,9 +1293,9 @@ public void SewagePlantQuiz(ref int score)
             helper.WriteWithDelay($"\nGame Over! You scored {minigameScoreSewage}/{questions.Count}.");
             if (minigameScoreSewage == questions.Count)
                 helper.WriteWithDelay("You found all the tools that you'd need. Then you fixed or replaced all of the valves," +
-                " pipes and sensors. Afterwards you managed to unclog the pipes and finally did a systems check to see if everything is operational once more. And it is, thanks to you.");
+                " pipes and sensors. Afterwards you managed to unclog the pipes\nand finally did a systems check to see if everything is operational once more. And it is, thanks to you.");
             else if (minigameScoreSewage < questions.Count)
-                helper.WriteWithDelay("You found all the tools that you'd need. You managed to unclog the pipes but just barely and you couldn't do anything with the valves, pipes and sensors." +
+                helper.WriteWithDelay("You found all the tools that you'd need. You managed to unclog the pipes but just barely and you couldn't do\nanything with the valves, pipes and sensors." +
                 "Perhaps it's better if you refresh your memory and then try again.");
             else if (minigameScoreSewage == 0)
                 helper.WriteWithDelay("There's a lot that you haven't learned yet. Come back again.");
@@ -1315,14 +1306,10 @@ public void SewagePlantQuiz(ref int score)
 
 public void CropFieldQuiz(ref int score)
         {
-            // Contextual Minigame Introduction
             Console.ForegroundColor = ConsoleColor.Cyan;
-            helper.WriteWithDelay("\nYou go to the field.");
-            helper.WriteWithDelay("\nYou need to locate the groundwater source, connect the pipes to it and install the irrigation system.");
-            helper.WriteWithDelay("\nTime to get to work.");
+            helper.WriteWithDelay("\nYou go to the field. You need to locate the groundwater source,\nconnect the pipes to it and install the irrigation system.\nTime to get to work.");
             Console.ResetColor();
 
-            // Questions for the Minigame
             List<Question> questions = new List<Question>
     {
         new Question
@@ -1419,15 +1406,14 @@ public void CropFieldQuiz(ref int score)
                 questionNumber++;
             }
 
-            // Final Minigame Results
             Console.ForegroundColor = ConsoleColor.Blue;
             helper.WriteWithDelay($"\nGame Over! You scored {minigameScoreField}/{questions.Count}.");
             if (minigameScoreField == questions.Count)
                 helper.WriteWithDelay("You successfully located the underground water source. You connected the tubes to the water and installed the system. " +
-                "When you were done, you checked if the water is properly irrigating the soil. And it is, due to your valiant efforts.");
+                "\nWhen you were done, you checked if the water is properly irrigating the soil. And it is, due to your valiant efforts.");
             else if (minigameScoreField < questions.Count)
                 helper.WriteWithDelay("You successfully located the underground water source. You connected the tubes to the water and installed the system." +
-                "When you were done, you checked if the water is properly irrigating the soil. But it's not, the water is not leaking out of the tubes. You better try again.");
+                "\nWhen you were done, you checked if the water is properly irrigating the soil. But it's not, the water is not leaking out of the tubes. You better try again.");
             else if (minigameScoreField == 0)
                 helper.WriteWithDelay("There's a lot that you haven't learned yet. Come back again.");
             Console.ResetColor();
