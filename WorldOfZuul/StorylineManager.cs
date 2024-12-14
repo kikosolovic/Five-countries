@@ -24,7 +24,10 @@ namespace FiveCountries
 
         public StorylineManager(string path)
         {
-            this.story = JsonConvert.DeserializeObject(File.ReadAllText(path));
+            string projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string filePath = Path.Combine(projectDirectory, "..", "..", "..", path);
+            string fullPath = Path.GetFullPath(filePath);
+            this.story = JsonConvert.DeserializeObject(File.ReadAllText(fullPath));
 
             this.NextLevel("init");
 
