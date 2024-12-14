@@ -18,6 +18,7 @@ namespace FiveCountries
 
             Country? India = new("India", "Your objectives in India revolve around Goal 6 - Clean water and sanitation. \n \n");
             Countries.Add(India);
+            Countries.Add(India);
 
             Country? Brazil = new("Brazil", "Your objectives in Brazil revolve around Goal 15 - Life on land. \n \n");
             Countries.Add(Brazil);
@@ -77,7 +78,7 @@ namespace FiveCountries
             India.InitRoom("Lobby", "You're inside the lobby of the plant. There's trash on the ground everywhere. The tank room is to the east.");
             India.InitRoom("Storage Room", "There's nothing to see here that's of importance.");
             India.InitRoom("Tank Room", "You're inside the tank room.", new MinigameDelegate(minigameFunctions.SewagePlantQuiz));
-            India.InitRoom("Crop Field", "You're in front of the crop field.", new  MinigameDelegate(minigameFunctions.CropFieldQuiz));
+            India.InitRoom("Crop Field", "You're in front of the crop field.", new MinigameDelegate(minigameFunctions.CropFieldQuiz));
 
             India.addExit("UN Outpost", new List<string> { "north", "south" }, new List<string> { "Outside Sewage Treatment Plant", "Crop Field" });
             India.addExit("Outside Sewage Treatment Plant", new List<string> { "south", "north" }, new List<string> { "UN Outpost", "Lobby" });
@@ -104,18 +105,16 @@ namespace FiveCountries
 
 
             //initialize rooms to Mozambique
-            Mozambique.InitRoom("Dock", "You just arrived to Mozambique. The boat dropped you off at a small dock.", new MinigameDelegate(minigameFunctions.Dock));
-            Mozambique.InitRoom("Boat", "You find yourself on a small fishing boat in the middle of the ocean. There is nowhere to hide.");
-            Mozambique.InitRoom("Village", "You find yourself in a small village. People are walking around.", new MinigameDelegate(minigameFunctions.Village));
-            Mozambique.InitRoom("Field", "You are in a rice field. There are paths in between the individual rice plants. Locals are taking care of the rice, this harvest is going to be plentiful.");
-            Mozambique.InitRoom("Hill", "You have a view of the whole village and the ocean behind it.", new MinigameDelegate(minigameFunctions.Hill));
+            Mozambique.InitRoom("Dock", "You just arrived to Mozambique. The boat dropped you off at a small dock. ", new MinigameDelegate(minigameFunctions.Dock));
+            Mozambique.InitRoom("Village", "You find yourself in a small village. People are walking around. ", new MinigameDelegate(minigameFunctions.Village));
+            Mozambique.InitRoom("Field", "You are in a rice field. There are paths in between the individual rice plants. Locals are caring for  the rice, this harvest is going to be plentiful.", new MinigameDelegate(minigameFunctions.Field));
+            Mozambique.InitRoom("Hill", "You have a view of the whole village and the oocean behind it.", new MinigameDelegate(minigameFunctions.Hill));
             Mozambique.InitRoom("Shelter", "You are inside a cycloon shelter. The harsh weather can't get to you, or so they say.", new MinigameDelegate(minigameFunctions.Shelter));
 
             Mozambique.addExit("Dock", new List<string> { "north", "south" }, new List<string> { "Village", "Boat" });
             Mozambique.addExit("Village", new List<string> { "north", "south", "east", "west" }, new List<string> { "Shelter", "Dock", "Hill", "Field" });
-            Mozambique.addExit("Hill", new List<string> { "west" }, new List<string> { "village" });
+            Mozambique.addExit("Hill", new List<string> { "west" }, new List<string> { "Village" });
             Mozambique.addExit("Field", new List<string> { "east" }, new List<string> { "Village" });
-            Mozambique.addExit("Boat", new List<string> { "north" }, new List<string> { "Dock" });
             Mozambique.addExit("Shelter", new List<string> { "south" }, new List<string> { "Village" });
 
 
@@ -127,11 +126,11 @@ namespace FiveCountries
             USA.InitRoom("Los Angeles", "You are in Los Angeles, dealing with challenges related to plastic waste and sustainable disposal methods.", new MinigameDelegate(minigameFunctions.EcoFriendlyHomeMakeover));
             USA.InitRoom("San Francisco", "You are in San Francisco, known for its zero-waste goals and composting initiatives.", new MinigameDelegate(minigameFunctions.CompostingPuzzleMinigameSFA));
 
-            USA.addExit("New York City", new List<string> { "south" }, new List<string> { "Chicago" });  
-            USA.addExit("Chicago", new List<string> { "north", "south" }, new List<string> { "New York City", "Houston" });  
-            USA.addExit("Houston", new List<string> { "north", "south" }, new List<string> { "Chicago", "Los Angeles" });  
-            USA.addExit("Los Angeles", new List<string> { "north", "south" }, new List<string> { "Houston", "San Francisco" });  
-            USA.addExit("San Francisco", new List<string> { "north" }, new List<string> { "Los Angeles" });  
+            USA.addExit("New York City", new List<string> { "south" }, new List<string> { "Chicago" });
+            USA.addExit("Chicago", new List<string> { "north", "south" }, new List<string> { "New York City", "Houston" });
+            USA.addExit("Houston", new List<string> { "north", "south" }, new List<string> { "Chicago", "Los Angeles" });
+            USA.addExit("Los Angeles", new List<string> { "north", "south" }, new List<string> { "Houston", "San Francisco" });
+            USA.addExit("San Francisco", new List<string> { "north" }, new List<string> { "Los Angeles" });
 
 
 
