@@ -32,36 +32,44 @@ namespace FiveCountries
         }
         public static void plantMangroves(string cords)
         {
-            int x = Int32.Parse(cords[0].ToString());
-            int y = Int32.Parse(cords[1].ToString());
-
-            if (Program._game.currentCountry.currentRoom.ShortDescription == "Field")
+            try
             {
-                if (seedCount == 0)
+                int x = Int32.Parse(cords[0].ToString());
+                int y = Int32.Parse(cords[1].ToString());
+                if (Program._game.currentCountry.currentRoom.ShortDescription == "Field")
                 {
-                    helper.say(write: "You don't have any seeds."); return;
-                }
-
-
-                if (x < 8 && x > 0 && y < 8 && y > 0)
-                {
-                    fieldMap[x][y] = "#";
-                    seedCount--;
-                    foreach (var row in fieldMap)
+                    if (seedCount == 0)
                     {
-                        Console.WriteLine(string.Join("  ", row));
+                        helper.say(write: "You don't have any seeds."); return;
+                    }
+
+
+                    if (x < 8 && x > 0 && y < 8 && y > 0)
+                    {
+                        fieldMap[x][y] = "#";
+                        seedCount--;
+                        foreach (var row in fieldMap)
+                        {
+                            Console.WriteLine(string.Join("  ", row));
+                        }
+                    }
+
+                    else
+                    {
+                        helper.say(write: "Invalid coordinates. Try again.");
                     }
                 }
-
                 else
                 {
-                    helper.say(write: "Invalid coordinates. Try again.");
+                    helper.say(write: "You can only plant mangroves in the field.");
                 }
             }
-            else
+            catch
             {
-                helper.say(write: "You can only plant mangroves in the field.");
+                helper.say(write: "Invalid coordinates. Try again.");
             }
+
+
 
         }
 
