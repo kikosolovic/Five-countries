@@ -88,6 +88,7 @@ namespace FiveCountries
         {
             Game game = new();
             _game = game;
+            _game.CountryChanged += _game.CountryChangedHandler;
             game.Play();
         }
     }

@@ -6,10 +6,26 @@ namespace FiveCountries
     public class Game : Init
     {
 
-        public Country? currentCountry;
+        public event EventHandler? CountryChanged;
+        private Country? cc;
+
+        public Country? currentCountry
+        {
+            get => cc;
+            set
+            {
+                if (cc != value)
+                {
+                    cc = value;
+                    OnCountryChanged();
+                }
+            }
+        }
         private Country? previousCountry; //back command for country if needed
 
+        public int score { get; set; } = 0;
         private string currentItem { get; set; }
+
 
         public Game()
         {
@@ -18,16 +34,14 @@ namespace FiveCountries
             this.currentCountry = Countries[0];
             CreateRooms(Countries);
 
-            // QuickAssign(Rooms, Countries);
         }
 
         public void Play()
         {
             Parser parser = new();
             CustomFunctions customFunctions = new();
-            MinigameCode minigamesCode = new();
             List<Minigame> minigames = CreateGames();
-            int score = 0;
+
 
             PrintWelcome();
             PrintHelp();
@@ -45,7 +59,7 @@ namespace FiveCountries
 
                 helper.say(location: currentCountry?.ShortDescription + " " + currentCountry?.currentRoom?.ShortDescription + " >");
 
-                
+
                 //string? input = Console.ReadLine();
                 string input = "";
                 //JUST FOR TESTING
@@ -70,7 +84,6 @@ namespace FiveCountries
 
                 if (string.IsNullOrEmpty(input))
                 {
-                    Console.WriteLine("Please enter a command.");
                     continue;
                 }
 
@@ -88,6 +101,7 @@ namespace FiveCountries
 
                 switch (command.Name)
                 {
+
                     case "look":
                         Console.WriteLine(currentCountry?.currentRoom?.LongDescription);
                         break;
@@ -109,7 +123,7 @@ namespace FiveCountries
                         Travel(command.SecondWord);
                         if (this.currentCountry?.currentRoom?.minigame != null)
                         {
-                            this.currentCountry.currentRoom.ExecuteMinigame(ref score);
+                            this.currentCountry.currentRoom.ExecuteMinigame();
                         }
                         break;
 
@@ -118,15 +132,14 @@ namespace FiveCountries
                     case "east":
                     case "west":
                         Move(command.Name);
-                        if (this.currentCountry?.currentRoom?.minigame != null)
-                        {
-                            this.currentCountry.currentRoom.ExecuteMinigame(ref score);
-                        }
                         break;
                     case "map":
                         //customFunctions.PrintMap(currentCountry?.currentRoom?.ShortDescription);
                         //customFunctions.PrintMap2(currentCountry, currentCountry?.currentRoom?.ShortDescription);
                         customFunctions.PrintMap4(currentCountry, currentCountry?.currentRoom?.ShortDescription);
+                        break;
+                    case "sweep":
+                        WeatherControl.sweep();
                         break;
                     case "play":
                         int scoreGot = 0;
@@ -154,7 +167,7 @@ namespace FiveCountries
                         break;
                     case "playagain":
                         this.currentCountry?.currentRoom?.playAgain();
-                        this.currentCountry?.currentRoom?.ExecuteMinigame(ref score);
+                        this.currentCountry?.currentRoom?.ExecuteMinigame();
                         break;
                     case "pick":
                         if (command.SecondWord == null || command.SecondWord == "" || command.SecondWord == " ")
@@ -212,7 +225,28 @@ namespace FiveCountries
                         PrintHelp();
                         break;
                     case "startminigame":
-                        this.currentCountry?.currentRoom?.ExecuteMinigame(ref score);
+                        this.currentCountry?.currentRoom?.ExecuteMinigame();
+                        break;
+                    case "plant":
+                        if (command.SecondWord == null || command.SecondWord == "" || command.SecondWord == " ")
+                        {
+                            FieldControl.printMap();
+                            helper.say(write: "Plant where?");
+                            break;
+                        }
+                        FieldControl.plantMangroves(command.SecondWord);
+                        break;
+                    case "unplant":
+                        if (command.SecondWord == null || command.SecondWord == "" || command.SecondWord == " ")
+                        {
+                            FieldControl.printMap();
+                            helper.say(write: "Unplant which?");
+
+                            break;
+                        }
+                        FieldControl.removeMangroves(command.SecondWord);
+                        break;
+                    case "error":
                         break;
 
                     default:
@@ -228,10 +262,12 @@ namespace FiveCountries
         {
             if (currentCountry?.currentRoom?.Exits.ContainsKey(direction) == true)
             {
-                // previousRoom = currentRoom;
-                // currentRoom = currentRoom?.Exits[direction];
                 currentCountry.setRoom(currentCountry.currentRoom?.Exits[direction], currentCountry.currentRoom);
-                
+                if (this.currentCountry?.currentRoom?.minigame != null)
+                {
+                    this.currentCountry.currentRoom.ExecuteMinigame();
+                }
+
             }
             else
             {
@@ -283,9 +319,39 @@ namespace FiveCountries
                         break;
                 }
 
-               
+
             }
 
+        }
+        public void ExplicitMove(string room)
+        {
+
+            // previousRoom = currentRoom;
+            // currentRoom = currentRoom?.Exits[direction];
+            currentCountry.setRoom(currentCountry.Rooms.Where(r => r.ShortDescription == room).First(), currentCountry.currentRoom);
+            if (this.currentCountry?.currentRoom?.minigame != null)
+            {
+                this.currentCountry.currentRoom.ExecuteMinigame();
+
+            }
+
+        }
+
+        public void OnCountryChanged()
+        {
+            CountryChanged?.Invoke(this, EventArgs.Empty);
+
+        }
+        public void CountryChangedHandler(object sender, EventArgs e)
+        {
+            if (this.currentCountry?.ShortDescription == "Mozambique")
+            {
+                WeatherControl.StartWeather();
+            }
+            else
+            {
+                WeatherControl.StopWeather();
+            }
         }
 
 

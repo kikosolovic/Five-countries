@@ -1,0 +1,16 @@
+{
+    "text":"You look over the half destroyed field, and quickly realize what the problem is.",
+    "response":"",
+    "options" :"1",
+    "opt1" :{
+        "text":"The villagers tried to expand the field as much as they could, but while achieving that, they also destroyed the natural barrier protecting the field from high waves.",
+        "response":"",
+        "options" :"1",
+        "opt1" :{
+            "text":"Use command plant/unplant to build a new barrier protecting the field from the sea. If you don't do it thoroughly, the salty water will still get into the field",
+            "response":"",
+            "options" :""
+        }}
+    
+    
+}

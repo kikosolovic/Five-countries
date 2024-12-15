@@ -8,7 +8,7 @@ namespace FiveCountries
 {
     public class CommandWords
     {
-        public List<string> ValidCommands { get; } = new List<string> { "north", "east", "south", "west", "look", "back", "help", "quit", "travel", "map", "play", "score", "score", "haiti", "india", "brazil", "mozambique", "usa", "pick", "seeds", "pipes", "tubes", "emitters", "startminigame", "hammer", "analyze", "stoptalking", "playagain", "weather" };
+        public List<string> ValidCommands { get; } = new List<string> { "north", "east", "south", "west", "look", "back", "help", "quit", "travel", "map", "play", "score", "score", "haiti", "india", "brazil", "mozambique", "usa", "pick", "seeds", "pipes", "tubes", "emitters", "startminigame", "hammer", "analyze", "stoptalking", "playagain", "weather", "configure", "error", "sweep", "plant", "unplant" };
 
         public bool IsValidCommand(string command)
         {

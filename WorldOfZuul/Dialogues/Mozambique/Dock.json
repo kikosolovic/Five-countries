@@ -1,0 +1,38 @@
+
+
+        {
+            "text":"You arrive at the dock where a fisherman is unloading his catch. You can ask him about local challenges.",
+            "response":"",
+            "options" :"[1] Ask him what he caught. [2] Ask him how he's doing. ",
+            "opt1" :{
+                "text":"Catch anything?",
+                "response":"I did. But it isn't what it used to be. Few years ago I could catch a whole lot more.",
+                "options" :"[1] Ask him why he thinks that is. [2] Offer help. ",
+                "opt1" :{
+                    "text":"How so?",
+                    "response":"The fish have moved further out, what used to be good spots are now empty. I can't catch anything without paddling a long way into the sea and even there isn't much left after the trawler fleets. ",
+                    "options" :""
+                },
+                "opt2":{
+                    "text":"I can connect you with WWF Mozambique (World Wide Fund). Maybe they can help you.",
+                            "response":"I'm thankfull for every help I can get. But what could they possibly do? They can't stop all the trawler fleets and even if they could, it would take years to get the fish population healthy again in this climate. ",
+                    "options" :""
+            }},
+        
+        
+            "opt2":{
+                "text":"How you doin?",
+                "response":"Ah, enjoying the paradise while there is one. I can't catch anything without paddling a long way into the sea and even there isn't much left after the trawler fleets. ",
+                "options" :"[1] Ask him why he thinks that is. [2] Offer help. ",
+                "opt1" :{
+                    "text":"How so?",
+                    "response":"The fish have moved further out, what used to be good spots are now empty. I can't catch anything without paddling a long way into the sea and even there isn't much left after the trawler fleets. ",
+                    "options" :""
+                },
+                "opt2":{
+                    "text":"I can connect you with WWF Mozambique (World Wide Fund). Maybe they can help you.",
+                     "response":"I'm thankfull for every help I can get. But what could they possibly do? They can't stop all the trawler fleets and even if they could, it would take years to get the fish population healthy again in this climate. ",
+                    "options" :""}}
+            
+            
+        }

@@ -14,97 +14,24 @@ namespace FiveCountries
 
     class MinigameCode
     {
-
-
-
-        // put your code for the minigame here
-        // as a new function
-        // also add a call to the function in the functions.cs file
-
-
-        //Template for minigame
-        public int minigame()
-        {
-            int score = 0;
-
-            //here put everything that should happen in the minigame
-            //edit the 'score' variable to reflect the score of the player
-            // by using for example 'score += 1;' or 'score -= 1;'
-
-
-
-            return score;//return score
-        }
-        public void Dock(ref int score)
+        public void Dock()
         {
 
-            StorylineManager st = new StorylineManager("Dialogues/DockDialogue.json");
-            while (!WeatherControl._10toSweep)
-            {
-                //spravit cely class na interface a styl s podmienkou aby to fungovalo
-                if (st.idiotCount == 0) //idiot count is implemented to prevent displaying the same dialogue multiple times in a row, istead just shows the options 
-                {
-                    helper.say(st.text, st.response, st.options); if (st.options == null || st.options == "") { break; }
-                }
-                else { helper.say(options: st.options); }
-
-
-                //since the readline is happenign here this function runs after the dialogue part is over and also the Game object can be passed here if needed
-                var choice = helper.parseinput(Console.ReadLine());
-                if (!WeatherControl._10toSweep)
-                {
-
-                    switch (choice)
-                    {
-                        case "stop": break;
-                        default:
-                            st.NextLevel(choice);
-                            break;
-                    }
-
-
-                }
-            }
-            st = new StorylineManager("Dialogues/CarRide.json");
-            while (!WeatherControl._10toSweep)
-            {
-                //spravit cely class na interface a styl s podmienkou aby to fungovalo
-                if (st.idiotCount == 0) //idiot count is implemented to prevent displaying the same dialogue multiple times in a row, istead just shows the options 
-                {
-                    helper.say(st.text, st.response, st.options); if (st.options == null || st.options == "") { break; }
-                }
-                else { helper.say(options: st.options); }
-
-
-                //since the readline is happenign here this function runs after the dialogue part is over and also the Game object can be passed here if needed
-                var choice = helper.parseinput(Console.ReadLine());
-                if (!WeatherControl._10toSweep)
-                {
-
-                    switch (choice)
-                    {
-                        case "stoptalking": break;
-                        default:
-                            st.NextLevel(choice);
-                            break;
-                    }
-
-
-                }
-            }
+            helper.printForStory("Dialogues/Mozambique/Dock.json");
+            Thread.Sleep(500);
+            helper.printForStory("Dialogues/Mozambique/CarRide.json");
             Program._game.Move("north");
-            Program._game.currentCountry.currentRoom.ExecuteMinigame(ref score);
+            Program._game.currentCountry.currentRoom.ExecuteMinigame();
 
         }
-        public void Village(ref int score)
+        public void Village()
         {
-            // WeatherControl.StartWeather(); neskor
-            StorylineManager st = new StorylineManager("Dialogues/OldLady.json");
+            StorylineManager st = new StorylineManager("Dialogues/Mozambique/Village.json");
             var count = -1; //configure so it fits with the dialogue
 
             while (!WeatherControl._10toSweep)
             {
-                if (st.idiotCount == 0) //idiot count is implemented to prevent displaying the same dialogue multiple times in a row, istead just shows the options 
+                if (st.repetition == 0)
                 {
                     helper.say(st.text, st.response, st.options); if (st.options == null || st.options == "") { break; }
                 }
@@ -115,7 +42,7 @@ namespace FiveCountries
                 {
                     switch (choice)
                     {
-                        case "stoptalking": break;
+                        case "stoptalking": return;
                         default:
                             st.NextLevel(choice);
                             count += 1;
@@ -124,78 +51,59 @@ namespace FiveCountries
                     }
                 }
             }
+            helper.say(write: "All of a sudden you see a big wawe heading straight towards the village. You estimate that it will take you in about 3 seconds.");
+            Thread.Sleep(4000);
+            helper.say(write: "3");
+            Thread.Sleep(1000);
+            helper.say(write: "2");
+            Thread.Sleep(1000);
+            helper.say(write: "1");
+            Thread.Sleep(2000);
+
+
+            helper.say(write: "\nYou are lucky, somebody pulled you into the shelter right before the storm hit.");
+            Thread.Sleep(1000);
+            Program._game.ExplicitMove("Shelter");
             WeatherControl.StartWeather();
 
         }
-        public void Shelter(ref int score)
+        public void Shelter()
         {
-            StorylineManager st = new StorylineManager("Dialogues/Shelter.json");
-            while (!WeatherControl._10toSweep)
-            {
-                if (st.idiotCount == 0) //idiot count is implemented to prevent displaying the same dialogue multiple times in a row, istead just shows the options 
-                {
-                    helper.say(st.text, st.response, st.options); if (st.options == null || st.options == "") { break; }
-                }
-                else { helper.say(options: st.options); }
-
-                var choice = helper.parseinput(Console.ReadLine());
-                if (!WeatherControl._10toSweep)
-                {
-                    switch (choice)
-                    {
-                        case "stoptalking": break;
-                        default:
-                            st.NextLevel(choice);
-                            break;
-
-                    }
-                }
-            }
-        }
-
-        public void Hill(ref int score)
-        {
-            StorylineManager st = new StorylineManager("Dialogues/Hill.json");
-            while (!WeatherControl._10toSweep)
-            {
-                if (st.idiotCount == 0) //idiot count is implemented to prevent displaying the same dialogue multiple times in a row, istead just shows the options 
-                {
-                    helper.say(st.text, st.response, st.options); if (st.options == null || st.options == "") { break; }
-                }
-                else { helper.say(options: st.options); }
-
-                var choice = helper.parseinput(Console.ReadLine());
-                if (!WeatherControl._10toSweep)
-                {
-                    switch (choice)
-                    {
-                        case "stoptalking": break;
-                        default:
-                            st.NextLevel(choice);
-                            break;
-                    }
-                }
-            }
+            helper.say(location: "Mozambique Shelter");
+            helper.printForStory("Dialogues/Mozambique/Shelter.json");
 
         }
-
-        public void UNOutpost(ref int score)
+        public void Hill()
         {
-             StorylineManager st = new StorylineManager("Dialogues/IndiaIntro.json");
+            FieldControl.seedCount = 8;
+            helper.printForStory("Dialogues/Mozambique/Hill.json");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("+8 manngrove seeds");
+            Console.ResetColor();
+
+        }
+        public void Field()
+        {
+            helper.printForStory("Dialogues/Mozambique/Field.json");
+        }
+
+        public void UNOutpost()
+        {
+            StorylineManager st = new StorylineManager("Dialogues/IndiaIntro.json");
             while (true)
             {
-                if (st.idiotCount == 0)
+                if (st.repetition == 0)
                 {
-                    helper.say(st.text, st.response, st.options); if (st.options == null || st.options == "") { break; }
+                    helper.say(st.text, st.response, st.options); if (st.options == null || st.options == "") { return; }
                 }
                 else { helper.say(options: st.options); }
 
                 var choice = helper.parseinput(Console.ReadLine());
-                
+
                 {
                     switch (choice)
                     {
-                        case "stoptalking": break;
+                        case "stoptalking": return;
                         default:
                             st.NextLevel(choice);
                             break;
@@ -205,7 +113,7 @@ namespace FiveCountries
             }
         }
 
-        public void testMinigameDelegate(ref int score)
+        public void testMinigameDelegate()
         {
             Console.WriteLine("succesfuly ran a function passed as argument");
         }
@@ -218,7 +126,7 @@ Welcome to the first minigame in Haiti's Lab!
 OBJECTIVE: Choose the best locations for photovoltaic power plants in Haiti.
 Your task is to find the best spots for Photovoltaic(PV) power plants. You will be shown a map of Haiti and you will have to choose the best locations for 3 new Photovoltaic power plants.
 ");
-            
+
             string haitiMapPV = @"
 ================================================= MAP OF HAITI =================================================
 
@@ -300,21 +208,24 @@ Your task is to find the best spots for Photovoltaic(PV) power plants. You will 
 
             Console.WriteLine("Choose the best locations for the photovoltaic power plants (type 3 numbers spaced by space '') :");
             string[] answers = Console.ReadLine().Split(' ');
-            while( answers.Length != 3){
+            while (answers.Length != 3)
+            {
                 answers = Console.ReadLine().Split(' ');
             }
-            int[] optimalAnswers = {8, 9, 3, 11, 2, 4};
-            
-            for(int i = 0; i<answers.Length; i++){
-                if(optimalAnswers.Contains(Int32.Parse(answers[i]))){
+            int[] optimalAnswers = { 8, 9, 3, 11, 2, 4 };
+
+            for (int i = 0; i < answers.Length; i++)
+            {
+                if (optimalAnswers.Contains(Int32.Parse(answers[i])))
+                {
                     score += 1;
                 }
             }
-            if(score == 3)
+            if (score == 3)
             {
                 Console.WriteLine("Congrats! You have chosen the best cities available for our new investments!");
             }
-            else if(score == 2) 
+            else if (score == 2)
             {
                 Console.WriteLine("Good job! You have chosen some of the best cities available for our new investments!");
             }
@@ -322,14 +233,15 @@ Your task is to find the best spots for Photovoltaic(PV) power plants. You will 
             {
                 Console.WriteLine("Good! You have chosen one of the best cities available for our new investments!");
             }
-            else 
+            else
             {
                 Console.WriteLine("You have not chosen any of the best cities available for our new investments!");
             }
             Console.WriteLine("You have scored: " + score + " points");
             return score;
         }
-        public int windpowerMinigame(){
+        public int windpowerMinigame()
+        {
             int score = 0;
             string haitiWindMAp = @"
 ================================================= MAP OF HAITI =================================================
@@ -420,24 +332,28 @@ Your task is to find the best spots for wind power plants. You will be shown a m
             12.North-East of Cap-Haitien
             ");
             string[] answers = Console.ReadLine().Split(' ');
-            while( answers.Length < 2){
+            while (answers.Length < 2)
+            {
                 answers = Console.ReadLine().Split(' ');
             }
-            int[] optimalAnswers = {1,2, 5, 6, 9, 11, 12};
-            for(int i = 0; i<answers.Length; i++){
-                if(optimalAnswers.Contains(Int32.Parse(answers[i])) && score <2){
+            int[] optimalAnswers = { 1, 2, 5, 6, 9, 11, 12 };
+            for (int i = 0; i < answers.Length; i++)
+            {
+                if (optimalAnswers.Contains(Int32.Parse(answers[i])) && score < 2)
+                {
                     score += 1;
                 }
             }
-            if(score == 2)
+            if (score == 2)
             {
                 Console.WriteLine("Congrats! You have chosen both of the best available places for our new investments!");
             }
             else if (score == 1)
             {
                 Console.WriteLine("Good job! You have chosen one of the best places available for our new investments!");
-            
-            }else
+
+            }
+            else
             {
                 Console.WriteLine("You have not chosen any of the best places available for our new investments!");
             }
@@ -501,7 +417,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                 }
             }
         }
-        public void EcoFriendlyHomeMakeover(ref int score)
+        public void EcoFriendlyHomeMakeover()
         {
             // Pre-game Dialogue
             StorylineManager preGameDialogue = new StorylineManager("Dialogues/laDialogue.json");
@@ -627,8 +543,11 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Correct! " + question.Explanation);
-                    score++;
+                    helper.incrementScore(1);
                     minigameScore++;
+                    Console.WriteLine("\nCorrect! " + question.Explanation);
+                    helper.incrementScore(1);
+                    minigameScore += 1;
                 }
                 else
                 {
@@ -645,10 +564,10 @@ Your task is to find the best spots for wind power plants. You will be shown a m
 
             // Final Minigame Results
             Console.ForegroundColor = ConsoleColor.Blue;
-            helper.WriteWithDelay($"\nGame Over! You scored {score}/{questions.Count}.");
-            if (score == questions.Count)
+            helper.WriteWithDelay($"\nGame Over! You scored {helper.getScore()}/{questions.Count}.");
+            if (helper.getScore() == questions.Count)
                 helper.WriteWithDelay("Outstanding work! Your decisions showcase the best of sustainable practices.");
-            else if (score >= questions.Count / 2)
+            else if (helper.getScore() >= questions.Count / 2)
                 helper.WriteWithDelay("Good job! Your efforts show promise, but there's always room for improvement.");
             else
                 helper.WriteWithDelay("There's a lot to learn about sustainability. Keep trying and you'll get there!");
@@ -714,14 +633,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                 Console.ResetColor();
             }
         }
-
-
-
-
-
-
-
-        public void RecyclingSortingMinigameNYC(ref int score)
+        public void RecyclingSortingMinigameNYC()
         {
             StorylineManager preGameDialogue = new StorylineManager("Dialogues/nycDialogue.json");
 
@@ -783,14 +695,14 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Correct! This item belongs in recycling.");
-                    score++;
+                    helper.incrementScore(1);
                 }
                 else if ((item == "banana peel" || item == "food scraps" || item == "egg shells" ||
                           item == "coffee grounds") && response == "compost")
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Correct! This item should go to compost.");
-                    score++;
+                    helper.incrementScore(1);
                 }
                 else if ((item == "pizza box with grease" || item == "electronics" ||
                           item == "plastic bag" || item == "styrofoam cup" ||
@@ -798,7 +710,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Correct! This item belongs in the trash.");
-                    score++;
+                    helper.incrementScore(1);
                 }
                 else
                 {
@@ -810,7 +722,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
             }
 
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine($"\nTime's up! You sorted {score} items correctly.");
+            Console.WriteLine($"\nTime's up! You sorted {helper.getScore()} items correctly.");
             Console.WriteLine("The ambassador smiles. 'You've done well. Every properly sorted item is one less going to waste.'");
             Console.WriteLine("The recycling team applauds your effort, inspired by your work.");
             Console.ResetColor();
@@ -835,7 +747,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                     Console.WriteLine("Invalid choice. Please select a valid option.");
                     Console.ResetColor();
                 }
-        
+
             }
             string finalText = "The UN Ambassador steps forward and gives you a friendly pat on the back.";
             helper.say(finalText, "UN Ambassador: 'Your hard work has made a real difference here today. But remember, there's still more work to do. We'll need you in the next city to help tackle even bigger challenges.'", null);
@@ -852,7 +764,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
 
 
 
-        public void CompostingPuzzleMinigameSFA(ref int score)
+        public void CompostingPuzzleMinigameSFA()
         {
             // Pre-game Dialogue
             StorylineManager preGameDialogue = new StorylineManager("Dialogues/sfaDialogue.json");
@@ -928,7 +840,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Correct! You placed it in the right bin.");
-                        score++;
+                        helper.incrementScore(1);
                         minigameScore++;
                     }
                     else
@@ -952,10 +864,10 @@ Your task is to find the best spots for wind power plants. You will be shown a m
 
             // Display the final score
             Console.ForegroundColor = ConsoleColor.Blue;
-            helper.WriteWithDelay($"\nGame Over! You sorted {score}/{totalItems} items correctly.");
-            if (score == totalItems)
+            helper.WriteWithDelay($"\nGame Over! You sorted {helper.getScore()}/{totalItems} items correctly.");
+            if (helper.getScore() == totalItems)
                 helper.WriteWithDelay("Excellent! You're a composting champion!");
-            else if (score >= totalItems / 2)
+            else if (helper.getScore() >= totalItems / 2)
                 helper.WriteWithDelay("Good job! A bit more practice, and you'll master composting.");
             else
                 helper.WriteWithDelay("Keep practicing to improve your composting skills.");
@@ -992,7 +904,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
             helper.WriteWithDelay("\nThe ambassador smiles warmly: 'Well done! Now, let's move on to the next city and continue making a difference.'");
             Console.ResetColor();
         }
-        public void ElectronicRepairChallenge(ref int score)
+        public void ElectronicRepairChallenge()
         {
             StorylineManager preGameDialogue = new StorylineManager("Dialogues/chicagoDialogue.json");
 
@@ -1071,28 +983,28 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                 if ((action == "1" && partToRepair == "Battery") ||
                     (action == "2" && partToRepair == "Charging Port"))
                 {
-                    score += 15;
+                    helper.incrementScore(15);
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"Great! You successfully repaired the {partToRepair}.");
                     Console.ResetColor();
                 }
                 else if (action == "3" && (partToRepair == "Motherboard" || partToRepair == "Power Supply"))
                 {
-                    score += 20;
+                    helper.incrementScore(20);
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"Nice job! You used the soldering iron correctly on the {partToRepair}.");
                     Console.ResetColor();
                 }
                 else if (action == "4" && (partToRepair == "Hard Drive" || partToRepair == "Screen"))
                 {
-                    score += 10;
+                    helper.incrementScore(10);
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"The multimeter helped you diagnose the problem with the {partToRepair}.");
                     Console.ResetColor();
                 }
                 else if (action == "5" && partToRepair == "Battery")
                 {
-                    score += 25;
+                    helper.incrementScore(25);
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"You successfully recalibrated the battery with the heat gun.");
                     Console.ResetColor();
@@ -1100,14 +1012,14 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                 else if (action == "6" && (partToRepair == "Screen" || partToRepair == "Battery"))
                 {
                     mistakes += 1;
-                    score -= 10;
+                    helper.incrementScore(-10); ;
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine($"Oops! The hammer broke the part. Avoid using the hammer on fragile components!");
                     Console.ResetColor();
                 }
                 else if (action == "7" && partToRepair == "Controller Port")
                 {
-                    score += 15;
+                    helper.incrementScore(15);
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"You successfully removed the controller port using the pry tool.");
                     Console.ResetColor();
@@ -1115,7 +1027,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                 else
                 {
                     mistakes += 1;
-                    score -= 5;
+                    helper.incrementScore(-5);
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine($"Incorrect tool choice. Be more careful next time!");
                     Console.ResetColor();
@@ -1124,13 +1036,13 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                 repairStage++;
 
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine($"Your current score is: {score}");
+                Console.WriteLine($"Your current score is: {helper.getScore()}");
                 Console.ResetColor();
 
                 if ((DateTime.Now - startTime).TotalSeconds >= timeLimit)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine($"Time's up! You repaired the device with a final score of {score}.");
+                    Console.WriteLine($"Time's up! You repaired the device with a final score of {helper.getScore()}.");
                     Console.ResetColor();
                     break;
                 }
@@ -1152,7 +1064,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($"You had {mistakes} mistakes. Better luck next time!");
             Console.ResetColor();
-            
+
             StorylineManager postGameDialogue = new StorylineManager("Dialogues/postGameChicago.json");
 
             while (true)
@@ -1180,7 +1092,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
 
 
 
-public void SewagePlantQuiz(ref int score)
+        public void SewagePlantQuiz()
         {
             // Contextual Minigame Introduction
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -1271,7 +1183,7 @@ public void SewagePlantQuiz(ref int score)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Correct! " + question.Explanation);
-                    score++;
+                    helper.incrementScore(1);
                     minigameScoreSewage++;
                     // I changed it from minigameScore to minigameScoreSewage because the code somehow confuses minigameScore with score and the wrong result appears when you finish the quiz
                 }
@@ -1304,7 +1216,7 @@ public void SewagePlantQuiz(ref int score)
         }
 
 
-public void CropFieldQuiz(ref int score)
+        public void CropFieldQuiz()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
             helper.WriteWithDelay("\nYou go to the field. You need to locate the groundwater source,\nconnect the pipes to it and install the irrigation system.\nTime to get to work.");
@@ -1390,7 +1302,7 @@ public void CropFieldQuiz(ref int score)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Correct! " + question.Explanation);
-                    score++;
+                    helper.incrementScore(1);
                     minigameScoreField++;
                 }
                 else

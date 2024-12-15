@@ -19,12 +19,15 @@ namespace FiveCountries
         public string? response = null;
         public string? dynamicPath = "";
         dynamic story;
-        public int idiotCount = 0;
+        public int repetition = 0;
 
 
         public StorylineManager(string path)
         {
-            this.story = JsonConvert.DeserializeObject(File.ReadAllText(path));
+            string projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string filePath = Path.Combine(projectDirectory, "..", "..", "..", path);
+            string fullPath = Path.GetFullPath(filePath);
+            this.story = JsonConvert.DeserializeObject(File.ReadAllText(fullPath));
 
             this.NextLevel("init");
 
@@ -32,7 +35,7 @@ namespace FiveCountries
         public void NextLevel(string choice = null)
         {
 
-            this.idiotCount = 0;
+            this.repetition = 0;
 
             switch (choice)
             {
@@ -58,9 +61,9 @@ namespace FiveCountries
 
                 default:
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("You have to choose one or two and write it without the dot.");
+                    Console.WriteLine("You have to write a number.");
                     Console.ResetColor();
-                    this.idiotCount += 1;
+                    this.repetition += 1;
                     break;
             }
 
@@ -71,35 +74,10 @@ namespace FiveCountries
                 this.response = this.story.response;
             }
 
-            catch
-            {
-
-
-            }
+            // offset
+            catch { }
 
         }
-        public string? tryRead(string subpena)
-        {
-            if (dynamicPath != "")
-            {
-                try
-                {
-                    string res = this.story.dynamicPath.subpena;
-                    return res;
-                }
-                catch { return null; }
 
-            }
-            else
-            {
-                try
-                {
-                    string res = this.story.subpena;
-                    return res;
-                }
-                catch { return null; }
-            }
-
-        }
     }
 }

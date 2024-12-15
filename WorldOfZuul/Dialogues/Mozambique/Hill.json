@@ -1,0 +1,10 @@
+{
+    "text": "You finally made it to the top of the hill. There is a giant, old looking piece of weather forcasting equipment at the top. You pluck some seeds from the control panel that a strong wind must have blown up there and reveal a small screen with a small text saying configure blinking.",
+    "response":"",
+    "options" :"1",
+    "opt1": {
+        "text": "Try to figure out what it means.",
+        "response": "", 
+        "options": ""
+}        
+}
