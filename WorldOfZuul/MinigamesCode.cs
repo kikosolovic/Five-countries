@@ -14,6 +14,8 @@ namespace FiveCountries
 
     class MinigameCode
     {
+
+        
         public void Dock()
         {
 
@@ -1119,7 +1121,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
         },
         new Question
         {
-            Text = "Proper sewage treatment can help prevent what diseases.",
+            Text = "Proper sewage treatment can help prevent what diseases?",
             Options = new Dictionary<char, string>
             {
                 { 'A', "Airborne diseases." },
