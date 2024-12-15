@@ -6,7 +6,21 @@ namespace FiveCountries
     public class Game : Init
     {
 
-        public Country? currentCountry;
+        public event EventHandler? CountryChanged;
+        private Country? cc;
+
+        public Country? currentCountry
+        {
+            get => cc;
+            set
+            {
+                if (cc != value)
+                {
+                    cc = value;
+                    OnCountryChanged();
+                }
+            }
+        }
         private Country? previousCountry; //back command for country if needed
 
         public int score { get; set; } = 0;
@@ -248,9 +262,11 @@ namespace FiveCountries
         {
             if (currentCountry?.currentRoom?.Exits.ContainsKey(direction) == true)
             {
-                // previousRoom = currentRoom;
-                // currentRoom = currentRoom?.Exits[direction];
                 currentCountry.setRoom(currentCountry.currentRoom?.Exits[direction], currentCountry.currentRoom);
+                if (this.currentCountry?.currentRoom?.minigame != null)
+                {
+                    this.currentCountry.currentRoom.ExecuteMinigame();
+                }
 
             }
             else
@@ -319,6 +335,23 @@ namespace FiveCountries
 
             }
 
+        }
+
+        public void OnCountryChanged()
+        {
+            CountryChanged?.Invoke(this, EventArgs.Empty);
+
+        }
+        public void CountryChangedHandler(object sender, EventArgs e)
+        {
+            if (this.currentCountry?.ShortDescription == "Mozambique")
+            {
+                WeatherControl.StartWeather();
+            }
+            else
+            {
+                WeatherControl.StopWeather();
+            }
         }
 
 

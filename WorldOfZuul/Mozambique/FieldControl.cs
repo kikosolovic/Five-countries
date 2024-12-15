@@ -40,11 +40,11 @@ namespace FiveCountries
                 {
                     if (seedCount == 0)
                     {
-                        helper.say(write: "You don't have any seeds."); return;
+                        helper.say(write: "You don't have any seeds. Try exploring a little more or unplant other mangroves."); return;
                     }
 
 
-                    if (x < 8 && x > 0 && y < 8 && y > 0)
+                    if (x < 8 && x > -1 && y < 8 && y > -1)
                     {
                         fieldMap[x][y] = "#";
                         seedCount--;

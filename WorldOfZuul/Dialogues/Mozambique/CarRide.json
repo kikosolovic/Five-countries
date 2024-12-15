@@ -1,23 +1,23 @@
 {
     "text":"",
     "response":"I appreciate you talking to me, I see you're on your way to the village. Let me give you a ride.",
-    "options" :"",
+    "options" :"1",
     "opt1" :{
         "text":"You get into an old jeep car and drive off with the fisherman",
         "response":"You know the village life is not what it used to be, but it is better than nothing. We live in peace, its hard to get by, but it's the only thing we've got.",
-        "options" :"",
+        "options" :"1",
         "opt1" :{
             "text":"The road is bumpy and the car is slow, but the fisherman is happily going his way. Tropic scenery all around, sun is shining, you are enjoying the ride.",
             "response":"My family has been here for generations and I can tell you, this is the best place in the world. But lately we've been having some problems.",
-            "options" :"",
+            "options" :"1",
             "opt1" :{
                 "text":"You drive around a big hill, something at the top catches your eye. The fisherman notices and begins to explain.",
                 "response":"There is a price for this life you know, the weather is growing more unpredictable each day and the fish are harder to find. If we travel too far and the weather turns bad, we are gone forever.",
-                "options" :"",
+                "options" :"1",
                 "opt1" :{
                     "text":"",
                     "response":"What you saw on the hill was an old  weather station, that's supposed to predict and warn us of the weather. It worked well for a time, but now it is useless.",
-                    "options" :"",
+                    "options" :"1",
                     "opt1" :{
                         "text":"",
                         "response":"The village is close",

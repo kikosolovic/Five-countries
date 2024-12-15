@@ -14,31 +14,11 @@ namespace FiveCountries
 
     class MinigameCode
     {
-
-
-
-        // put your code for the minigame here
-        // as a new function
-        // also add a call to the function in the functions.cs file
-
-
-        //Template for minigame
-        public int minigame()
-        {
-            int score = 0;
-
-            //here put everything that should happen in the minigame
-            //edit the 'score' variable to reflect the score of the player
-            // by using for example 'score += 1;' or 'score -= 1;'
-
-
-
-            return score;//return score
-        }
         public void Dock()
         {
 
             helper.printForStory("Dialogues/Mozambique/Dock.json");
+            Thread.Sleep(500);
             helper.printForStory("Dialogues/Mozambique/CarRide.json");
             Program._game.Move("north");
             Program._game.currentCountry.currentRoom.ExecuteMinigame();
@@ -62,7 +42,7 @@ namespace FiveCountries
                 {
                     switch (choice)
                     {
-                        case "stoptalking": break;
+                        case "stoptalking": return;
                         default:
                             st.NextLevel(choice);
                             count += 1;
@@ -81,7 +61,6 @@ namespace FiveCountries
             Thread.Sleep(2000);
 
 
-
             helper.say(write: "\nYou are lucky, somebody pulled you into the shelter right before the storm hit.");
             Thread.Sleep(1000);
             Program._game.ExplicitMove("Shelter");
@@ -90,18 +69,22 @@ namespace FiveCountries
         }
         public void Shelter()
         {
+            helper.say(location: "Mozambique Shelter");
             helper.printForStory("Dialogues/Mozambique/Shelter.json");
-        }
 
+        }
         public void Hill()
         {
+            FieldControl.seedCount = 8;
             helper.printForStory("Dialogues/Mozambique/Hill.json");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("+8 manngrove seeds");
+            Console.ResetColor();
 
         }
         public void Field()
         {
             helper.printForStory("Dialogues/Mozambique/Field.json");
-
         }
 
         public void UNOutpost()
@@ -111,7 +94,7 @@ namespace FiveCountries
             {
                 if (st.repetition == 0)
                 {
-                    helper.say(st.text, st.response, st.options); if (st.options == null || st.options == "") { break; }
+                    helper.say(st.text, st.response, st.options); if (st.options == null || st.options == "") { return; }
                 }
                 else { helper.say(options: st.options); }
 
@@ -120,7 +103,7 @@ namespace FiveCountries
                 {
                     switch (choice)
                     {
-                        case "stoptalking": break;
+                        case "stoptalking": return;
                         default:
                             st.NextLevel(choice);
                             break;

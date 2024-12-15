@@ -43,7 +43,7 @@ namespace WorldOfZuul
                     if (_currentWeather == "rainy")
                     {
                         helper.say(write: "It's getting rainy outside. You should hide in case a  storm is comming");
-                        Thread.Sleep(15000);
+                        Thread.Sleep(10000);
                         _currentWeather = _random.Next(2) == 0 ? "stormy" : "rainy";
                     }
                     if (_currentWeather == "stormy")
@@ -55,7 +55,7 @@ namespace WorldOfZuul
                     }
                     if (Program._game.currentCountry.currentRoom.ShortDescription == "Hill")
                     {
-                        Thread.Sleep(10 * 100);
+                        Thread.Sleep(10 * 1000);
                     }
                     else
                     {
@@ -131,7 +131,7 @@ namespace WorldOfZuul
                         }
                         else
                         {
-                            helper.say(write: "Weather station needs to be configured for " + _toConfigure.Count + " more weathers");
+                            helper.say(write: "Nice! Weather station needs to be configured for " + _toConfigure.Count + " more weathers");
                         }
                     }
                     else
@@ -163,7 +163,7 @@ namespace WorldOfZuul
                     Program._game.Travel("india");
                     StopWeather();
                     _swept = true;
-
+                    _10toSweep = false;
                     //press enter
                     //dock.stop
 
@@ -179,10 +179,11 @@ namespace WorldOfZuul
                         Program._game.Travel("india");
                         StopWeather();
                         _swept = true;
+                        _10toSweep = false;
                     }
                     else
                     {
-                        helper.say(write: "fake alarm not swept");
+                        helper.say(write: "Nothing happened, probably false alarm.");
                     }
                 }
             }

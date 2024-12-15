@@ -1,7 +1,7 @@
 {
     "text": "You sit with the villagers inside the cyclone shelter. The air is tense, the old lady’s voice cuts through the murmurs as she addresses you with a disapproving tone.",
-    "response": "Young man, you must pay more attention! The shelter is to the north, as I told you before. Cyclone shelters are our lifelines. They’re sturdy buildings made to protect us from the worst storms. This one has saved us more times than I can count.",
-    "options": "1. Apologize for forgetting the direction. 2. Ask more about the cyclone shelters.",
+    "response": "Young man, you must pay more attention! Cyclone shelters are our lifelines. They’re sturdy buildings made to protect us from the worst storms. This one has saved us more times than I can count.",
+    "options": "1. Apologize for not paying attention2. 2. Ask more about the cyclone shelters.",
     "opt1": {
         "text": "",
         "response": "It’s alright, but you must remember next time. When the storm comes, there’s no time to waste. Knowing where to go can save your life.",

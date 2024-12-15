@@ -68,7 +68,7 @@ namespace FiveCountries
                     Console.ResetColor();
                 }
 
-                if (options != null && options != "")
+                if (options != null && options != "" && options != "1")
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     helper.WriteWithDelay(">> " + options);
@@ -127,19 +127,21 @@ namespace FiveCountries
                 {
                     switch (choice)
                     {
-                        case "stoptalking": break;
+                        case "stoptalking": return;
                         default:
                             st.NextLevel(choice);
                             break;
                     }
                 }
             }
+
         }
 
         public static string parseinput(string input)
         {
             return input.ToLower().Trim();
         }
+
         //??
         public static void analyze(string item)
         {

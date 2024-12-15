@@ -1,92 +1,16 @@
 {
-    "text":"first level",
+    "text":"You look over the half destroyed field, and quickly realize what the problem is.",
     "response":"",
-    "options" :"",
+    "options" :"1",
     "opt1" :{
-        "text":"second level",
+        "text":"The villagers tried to expand the field as much as they could, but while achieving that, they also destroyed the natural barrier protecting the field from high waves.",
         "response":"",
-        "options" :"",
+        "options" :"1",
         "opt1" :{
-            "text":"third level",
+            "text":"Use command plant/unplant to build a new barrier protecting the field from the sea. If you don't do it thoroughly, the salty water will still get into the field",
             "response":"",
-            "options" :"",
-            "opt1" :{
-                "text":"fourth level",
-                "response":"",
-                "options" :"",
-                "opt1" :{},
-                "opt2":{}
-            },
-            "opt2":{
-                "text":"fourth level",
-                "response":"",
-                "options" :"",
-                "opt1" :{},
-                "opt2":{}
-            }
-        },
-        "opt2":{
-            "text":"third level",
-            "response":"",
-            "options" :"",
-            "opt1" :{
-                "text":"fourth level",
-                "response":"",
-                "options" :"",
-                "opt1" :{},
-                "opt2":{}
-            },
-            "opt2":{
-                "text":"fourth level",
-                "response":"",
-                "options" :"",
-                "opt1" :{},
-                "opt2":{}
-            }
-        }
-    },
-    "opt2":{
-        "text":"second level",
-        "response":"",
-        "options" :"",
-        "opt1" :{
-            "text":"third level",
-            "response":"",
-            "options" :"",
-            "opt1" :{
-                "text":"fourth level",
-                "response":"",
-                "options" :"",
-                "opt1" :{},
-                "opt2":{}
-            },
-            "opt2":{
-                "text":"fourth level",
-                "response":"",
-                "options" :"",
-                "opt1" :{},
-                "opt2":{}
-            }
-        },
-        "opt2":{
-            "text":"third level",
-            "response":"",
-            "options" :"",
-            "opt1" :{
-                "text":"fourth level",
-                "response":"",
-                "options" :"",
-                "opt1" :{},
-                "opt2":{}
-            },
-            "opt2":{
-                "text":"fourth level",
-                "response":"",
-                "options" :"",
-                "opt1" :{},
-                "opt2":{}
-            }
-        }
-    }
-    }
-
+            "options" :""
+        }}
+    
+    
+}

@@ -1,7 +1,7 @@
 
 
         {
-            "text":"You arrive at the dock where a fisherman is unloading his catch. You can ask him to learn about the local challenges.",
+            "text":"You arrive at the dock where a fisherman is unloading his catch. You can ask him about local challenges.",
             "response":"",
             "options" :"[1] Ask him what he caught. [2] Ask him how he's doing. ",
             "opt1" :{
