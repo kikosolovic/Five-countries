@@ -1,11 +1,11 @@
 {
     "text": "You sit with the villagers inside the cyclone shelter. The air is tense, the old lady’s voice cuts through the murmurs as she addresses you with a disapproving tone.",
     "response": "Young man, you must pay more attention! Cyclone shelters are our lifelines. They’re sturdy buildings made to protect us from the worst storms. This one has saved us more times than I can count.",
-    "options": "1. Apologize for not paying attention2. 2. Ask more about the cyclone shelters.",
+    "options": "[1] Apologize for not paying attention. [2] Ask more about the cyclone shelters.",
     "opt1": {
         "text": "",
         "response": "It’s alright, but you must remember next time. When the storm comes, there’s no time to waste. Knowing where to go can save your life.",
-        "options": "1. Ask how the shelter was built. 2. Ask how often they’ve used the shelter.",
+        "options": "[1] Ask how the shelter was built. [2] Ask how often they’ve used the shelter.",
         "opt1": {
             "text": "",
             "response": "It was built years ago with the help of some government workers and donations. We all pitched in to make sure it was strong enough to withstand the storms. Without it, we’d have nowhere to hide when the winds come.",
@@ -22,7 +22,7 @@
     "opt2": {
         "text": "",
         "response": "These shelters are our only hope during the big storms. They’re built with thick walls and a sturdy roof to protect us from the winds and rain. Everyone in the village knows to run here when the alarm sounds.",
-        "options": "1. Ask if the shelter has ever failed. 2. Ask if they’ve faced worse storms in the past.",
+        "options": "[1] Ask if the shelter has ever failed. [2] Ask if they’ve faced worse storms in the past.",
         "opt1": {
             "text": "",
             "response": "Thankfully, no. This shelter has stood strong through every storm we’ve faced. But we always pray it stays that way.",
@@ -34,4 +34,10 @@
             "options": ""
         }
     }
-}
+ }
+ 
+ 
+ 
+ 
+ 
+ 

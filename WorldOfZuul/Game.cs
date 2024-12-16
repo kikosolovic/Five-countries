@@ -288,7 +288,7 @@ namespace FiveCountries
 
                 previousCountry = currentCountry;
                 currentCountry = currentCountry?.Exits[country];
-                helper.say(write: currentCountry?.LongDescription);
+                // helper.say(write: currentCountry?.LongDescription);
 
             }
             else

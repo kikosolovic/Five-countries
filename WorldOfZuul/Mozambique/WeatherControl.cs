@@ -161,9 +161,9 @@ namespace WorldOfZuul
                 {
 
                     Console.Clear();
-                    helper.say(write: "You have been swept.");
+                    helper.say(write: "You have been swept. Press enter to stand up.");
                     Thread.Sleep(1000);
-                    Program._game.Travel("india");
+                    Program._game.currentCountry = Program._game.currentCountry?.Exits["india"];
                     StopWeather();
                     _swept = true;
                     _10toSweep = false;
@@ -179,9 +179,10 @@ namespace WorldOfZuul
                     {
                         Console.Clear();
 
-                        helper.say(write: "You have been swept.");
+                        helper.say(write: "You have been swept. Press enter to stand up.");
                         Thread.Sleep(1000);
-                        Program._game.Travel("india");
+
+                        Program._game.currentCountry = Program._game.currentCountry?.Exits["india"];
                         StopWeather();
                         _swept = true;
                         _10toSweep = false;
@@ -196,8 +197,8 @@ namespace WorldOfZuul
             else
             {
                 helper.say(write: "You are safe inside the shelter.");
-                Thread.Sleep(3000);
                 FieldControl.verifyField();
+                Thread.Sleep(3000);
 
             }
         }

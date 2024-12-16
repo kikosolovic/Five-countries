@@ -4,7 +4,7 @@
     "options" :"1",
     "opt1" :{
         "text":"You get into an old jeep car and drive off with the fisherman",
-        "response":"You know the village life is not what it used to be, but it is better than nothing. We live in peace, its hard to get by, but it's the only thing we've got.",
+        "response":"You know, village life is not what it used to be, but it is better than nothing. We live in peace, it's hard to get by, but it's the only thing we've got.",
         "options" :"1",
         "opt1" :{
             "text":"The road is bumpy and the car is slow, but the fisherman is happily going his way. Tropic scenery all around, sun is shining, you are enjoying the ride.",
@@ -25,3 +25,5 @@
                         "opt1" :{},
                         "opt2":{}
                     }}}}}}
+ 
+ 

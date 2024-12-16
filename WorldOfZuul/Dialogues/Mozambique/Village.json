@@ -1,6 +1,6 @@
 {
     "text":"The activist steps out of the fisherman’s car and takes in his surroundings. The village is serene, with palm trees swaying gently and rows of small huts made from local materials. In the distance, the blue waters of the Indian Ocean glimmer under the sun. A few villagers are tending to rice fields that stretch along the coast. Suddenly, an old lady hurries toward them with a concerned expression.",
-    "response":"Oh, my boy! I’m so glad you’re back. I always worry when you’re out on the sea. And you, who ever you are, welcome to Macuse. ",
+    "response":"Oh, my boy! I’m so glad you’re back. I always worry when you’re out on the sea. And you, whoever you are, welcome to Macuse. ",
     "options" :"[1] Introduce yourself. [2] Go straight to why you're here.",
     "opt1" :{
         "text":"I am an UN ambassador, I'm here to help. Tell me about your problems.",
@@ -16,8 +16,10 @@
             "response":"Thank you!",
             "options" :""
     }},
-
-
+ 
+ 
+ 
+ 
     "opt2":{
         "text":"I came to help you. Tell me about your troubles.",
         "response":"We have our personal weather alarm at the top of the hill over there, but it doesn't work like it used to. And our fields are getting flooded with every bigger storm.",
@@ -32,4 +34,8 @@
             "response":"Thank you!",
             "options" :""
         }}
-}
+ }
+ 
+ 
+ 
+ 

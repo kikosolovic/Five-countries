@@ -61,7 +61,7 @@ namespace FiveCountries
 
                 default:
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("You have to write a number.");
+                    Console.WriteLine("You have to write a number or press enter.");
                     Console.ResetColor();
                     this.repetition += 1;
                     break;
