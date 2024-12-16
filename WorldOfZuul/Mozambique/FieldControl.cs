@@ -110,7 +110,7 @@ namespace FiveCountries
             }
         }
 
-        public static Boolean verifyField()
+        public static void verifyField()
         {
             List<string> mangroveWall = new List<string>
             {
@@ -136,8 +136,12 @@ namespace FiveCountries
                     status = false;
                 }
             });
-            return status;
 
+            if (status)
+            {
+                Room field = Program._game.currentCountry.Rooms.Where(r => r.ShortDescription == "Field").First();
+                field.mminigameCompleted = true;
+            }
         }
 
     }

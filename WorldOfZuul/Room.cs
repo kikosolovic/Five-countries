@@ -11,6 +11,8 @@ namespace FiveCountries
         public string ShortDescription { get; private set; }
         public string LongDescription { get; private set; }
         public bool mminigamePlayed = false;
+        public bool mminigameCompleted = false;
+        public string outcome;
 
         public MinigameDelegate? minigame { get; set; } = null;
         public Dictionary<string, Room> Exits { get; private set; } = new();
@@ -21,11 +23,12 @@ namespace FiveCountries
             LongDescription = longDesc;
 
         }
-        public Room(string shortDesc, string longDesc, MinigameDelegate? minigame)
+        public Room(string shortDesc, string longDesc, MinigameDelegate? minigame, string outcome)
         {
             ShortDescription = shortDesc;
             LongDescription = longDesc;
             this.minigame = minigame;
+            this.outcome = outcome;
         }
 
         // runs the minigame that is assigned to the room in Init.cs, if there isnt one > null, after the minigame is played it is deleted so

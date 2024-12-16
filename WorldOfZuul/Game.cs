@@ -9,6 +9,7 @@ namespace FiveCountries
         public event EventHandler? CountryChanged;
         private Country? cc;
 
+        private List<Country> Countries;
         public Country? currentCountry
         {
             get => cc;
@@ -23,6 +24,7 @@ namespace FiveCountries
         }
         private Country? previousCountry; //back command for country if needed
 
+
         public int score { get; set; } = 0;
         private string currentItem { get; set; }
 
@@ -30,7 +32,7 @@ namespace FiveCountries
         public Game()
         {
             //initialize the game
-            List<Country> Countries = CreateCountries();
+            Countries = CreateCountries();
             this.currentCountry = Countries[0];
             CreateRooms(Countries);
 
@@ -248,6 +250,9 @@ namespace FiveCountries
                         break;
                     case "error":
                         break;
+                    case "stats":
+                        this.stats();
+                        break;
 
                     default:
                         Console.WriteLine("I don't know what command: " + command.Name + ".");
@@ -351,6 +356,49 @@ namespace FiveCountries
             else
             {
                 WeatherControl.StopWeather();
+            }
+        }
+
+        private void stats()
+        {
+            List<string> FinishedOutcomes = new List<string>();
+            List<string> UnfinishedOutcomes = new List<string>();
+            int totalScore = 0;
+            int completedScore = 0;
+            this.Countries.ForEach(country => country.Rooms.ForEach(room =>
+            {
+
+                if (room.outcome != "")
+                {
+                    totalScore++;
+
+                    if (room.mminigamePlayed == true)
+                    {
+                        completedScore++;
+                        FinishedOutcomes.Add(room.outcome);
+
+                    }
+                    else
+                    {
+                        UnfinishedOutcomes.Add(room.outcome);
+                    }
+                }
+
+            }));
+
+
+            Console.WriteLine("You have completed " + completedScore + " out of " + totalScore + " minigames: ");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            foreach (string outcome in FinishedOutcomes)
+            {
+                Console.WriteLine("You have " + outcome);
+            }
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            foreach (string outcome in UnfinishedOutcomes)
+            {
+                Console.WriteLine("You haven't " + outcome);
             }
         }
 

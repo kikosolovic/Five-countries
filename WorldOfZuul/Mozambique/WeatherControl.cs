@@ -89,6 +89,8 @@ namespace WorldOfZuul
         private static void WeatherStationFixed()
         {
             _stationFixed = true;
+            Room field = Program._game.currentCountry.Rooms.Where(r => r.ShortDescription == "Hill").First();
+            field.mminigameCompleted = true;
             StartWeather();
         }
         public static void tutorialNext(int id)
@@ -157,6 +159,7 @@ namespace WorldOfZuul
             {
                 if (_stationFixed)
                 {
+
                     Console.Clear();
                     helper.say(write: "You have been swept.");
                     Thread.Sleep(1000);
@@ -164,6 +167,8 @@ namespace WorldOfZuul
                     StopWeather();
                     _swept = true;
                     _10toSweep = false;
+                    FieldControl.verifyField();
+
                     //press enter
                     //dock.stop
 
@@ -180,6 +185,7 @@ namespace WorldOfZuul
                         StopWeather();
                         _swept = true;
                         _10toSweep = false;
+                        FieldControl.verifyField();
                     }
                     else
                     {
@@ -191,6 +197,7 @@ namespace WorldOfZuul
             {
                 helper.say(write: "You are safe inside the shelter.");
                 Thread.Sleep(3000);
+                FieldControl.verifyField();
 
             }
         }
