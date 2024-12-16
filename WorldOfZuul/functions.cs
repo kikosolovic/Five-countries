@@ -321,6 +321,10 @@ namespace FiveCountries
                     Console.WriteLine("Sorry, there are no games available in this room.");
                     return (0, 0);
                 }
+                else if(gamesForHere.Count == 1)
+                {
+                    return (gamesForHere[0].game(), gamesForHere[0].id);
+                }
                 else
                 {
                     Console.WriteLine("Here you can choose from the following games:");
