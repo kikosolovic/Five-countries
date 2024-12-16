@@ -14,6 +14,8 @@ namespace FiveCountries
 
     class MinigameCode
     {
+
+        
         public void Dock()
         {
 
@@ -311,8 +313,8 @@ Your task is to find the best spots for wind power plants. You will be shown a m
             Another good thing about wind power is that it can be produced during the night, when solar power is not available.
             Wind power is also very clean, since the pollution is not produced during the production of electricity.
 
-            In real world Haiti might not be the best place to build big wind power plants since its a region that is often hit by hurricanes.
-            But for purpose of the game we omitted this fact.");
+            In real life Haiti might not be the best place to build big wind power plants since it's a region that is often hit by hurricanes.
+            However, we have omitted this fact for the purpose of the game.");
 
             Console.WriteLine(@"
             Choose at least 2 good locations for offshore wind power plants (type 2 numbers spaced by space ''):
@@ -1111,7 +1113,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
             {
                 { 'A', "To generate electricity." },
                 { 'B', "To treat wastewater and remove contaminants." },
-                { 'C', " To provide drinking water." },
+                { 'C', "To provide drinking water." },
                 { 'D', "To manage stormwater." }
             },
             CorrectOption = 'B',
@@ -1119,7 +1121,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
         },
         new Question
         {
-            Text = "Proper sewage treatment can help prevent waterborne diseases.",
+            Text = "Proper sewage treatment can help prevent what diseases?",
             Options = new Dictionary<char, string>
             {
                 { 'A', "Airborne diseases." },

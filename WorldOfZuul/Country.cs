@@ -22,8 +22,9 @@ namespace FiveCountries
         }
 
 
-        public void SetExits(Country? Haiti, Country? India, Country? Brazil, Country? Mozambique, Country? USA)
+        public void SetExits(Country? Denmark, Country? Haiti, Country? India, Country? Brazil, Country? Mozambique, Country? USA)
         {
+            SetExit("denmark", Denmark);
             SetExit("haiti", Haiti);
             SetExit("india", India);
             SetExit("brazil", Brazil);
