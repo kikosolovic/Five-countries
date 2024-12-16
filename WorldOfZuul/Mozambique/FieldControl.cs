@@ -140,7 +140,7 @@ namespace FiveCountries
             if (status)
             {
                 Room field = Program._game.currentCountry.Rooms.Where(r => r.ShortDescription == "Field").First();
-                field.mminigameCompleted = true;
+                field.minigameCompleted = true;
             }
         }
 

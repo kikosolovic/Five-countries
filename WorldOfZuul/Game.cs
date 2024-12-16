@@ -372,7 +372,7 @@ namespace FiveCountries
                 {
                     totalScore++;
 
-                    if (room.mminigamePlayed == true)
+                    if (room.minigamePlayed == true)
                     {
                         completedScore++;
                         FinishedOutcomes.Add(room.outcome);

@@ -10,8 +10,8 @@ namespace FiveCountries
     {
         public string ShortDescription { get; private set; }
         public string LongDescription { get; private set; }
-        public bool mminigamePlayed = false;
-        public bool mminigameCompleted = false;
+        public bool minigamePlayed = false;
+        public bool minigameCompleted = false;
         public string outcome;
 
         public MinigameDelegate? minigame { get; set; } = null;
@@ -35,10 +35,10 @@ namespace FiveCountries
         // player cannot play it multiple times, (might not be the best solution if he fails he has to restart game to play again)
         public void ExecuteMinigame(int score = 0)
         {
-            if (minigame != null && !mminigamePlayed)
+            if (minigame != null && !minigamePlayed)
             {
                 minigame();  // Pass the score by reference
-                this.mminigamePlayed = true;  // Reset the minigame so it can't be played again
+                this.minigamePlayed = true;  // Reset the minigame so it can't be played again
             }
             // else
             // {
@@ -47,7 +47,7 @@ namespace FiveCountries
         }
         public void playAgain()
         {
-            this.mminigamePlayed = false;
+            this.minigamePlayed = false;
             //possible score to get * .5
         }
 
