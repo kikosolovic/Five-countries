@@ -59,23 +59,23 @@ namespace FiveCountries
             // //initialize rooms to Haiti
             Haiti.InitRoom("Outside", "You're at the beautiful park in the middle of the complex.");
             Haiti.InitRoom("Lobby", "You're inside the main hall of the complex.");
-            Haiti.InitRoom("Corridor", "This corridor leads to the other rooms.");
+            //Haiti.InitRoom("Corridor", "This corridor leads to the other rooms.");
             Haiti.InitRoom("PV Lab", "It's pretty dark here. You are in the PV Lab. \n We often test solar panels here, so we need to keep it dark. \n You can see a lot of solar panels and inverters around you. \n This is the place where we design and plan future solar panels.");
             Haiti.InitRoom("Wind Lab", "It's windy here! You are in the Wind Lab. You can see a lot of wind turbines and anemometers around you.\nThere are also countless TVs with real-world and simulation data about wind power plants.\nThis is the place where we design and plan future wind turbines.");
-            Haiti.InitRoom("Energy Storage Lab", "This is the Energy Storage Lab. You can see a lot of batteries and capacitors around you.\nThis is the place where we design and plan future energy storages.");
-            Haiti.InitRoom("Closet", "It's silent here, and also nothing intresting, just some old brooms, mops and tons of dust.");
-            Haiti.InitRoom("Infrastructure Building", "Building of the Infrastructure Department");
+            //Haiti.InitRoom("Energy Storage Lab", "This is the Energy Storage Lab. You can see a lot of batteries and capacitors around you.\nThis is the place where we design and plan future energy storages.");
+            //Haiti.InitRoom("Closet", "It's silent here, and also nothing intresting, just some old brooms, mops and tons of dust.");
+            //Haiti.InitRoom("Infrastructure Building", "Building of the Infrastructure Department");
             //Haiti.InitRoom("Server Building", "Building of the Computational Department");
 
 
-            Haiti.addExit("Outside", new List<string> { "south", "north"/*, "west"*/ }, new List<string> { "Lobby", "Infrastructure Building"/*, "Server Building" */});
-            Haiti.addExit("Lobby", new List<string> { "south", "north", "west", "east" }, new List<string> { "Corridor", "Outside", "Wind Lab", "PV Lab" });
-            Haiti.addExit("Corridor", new List<string> { "north", "west", "east" }, new List<string> { "Lobby", "Energy Storage Lab", "Closet", });
+            Haiti.addExit("Outside", new List<string> { "south"/*, "north", "west"*/ }, new List<string> { "Lobby"/*, "Infrastructure Building", "Server Building" */});
+            Haiti.addExit("Lobby", new List<string> { /*"south",*/ "north", "west", "east" }, new List<string> { /*"Corridor",*/ "Outside", "Wind Lab", "PV Lab" });
+            //Haiti.addExit("Corridor", new List<string> { "north", "west", "east" }, new List<string> { "Lobby", "Energy Storage Lab", "Closet", });
             Haiti.addExit("PV Lab", new List<string> { "west" }, new List<string> { "Lobby" });
             Haiti.addExit("Wind Lab", new List<string> { "east" }, new List<string> { "Lobby" });
-            Haiti.addExit("Energy Storage Lab", new List<string> { "east" }, new List<string> { "Corridor" });
-            Haiti.addExit("Closet", new List<string> { "west" }, new List<string> { "Corridor" });
-            Haiti.addExit("Infrastructure Building", new List<string> { "south" }, new List<string> { "Outside" });
+            //Haiti.addExit("Energy Storage Lab", new List<string> { "east" }, new List<string> { "Corridor" });
+            //Haiti.addExit("Closet", new List<string> { "west" }, new List<string> { "Corridor" });
+            //Haiti.addExit("Infrastructure Building", new List<string> { "south" }, new List<string> { "Outside" });
             //Haiti.addExit("Server Building", new List<string> { "east" }, new List<string> { "Outside" });
 
 

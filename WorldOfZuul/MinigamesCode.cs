@@ -305,7 +305,7 @@ OBJECTIVE: Choose the best location for a wind power plant on Haiti's shore.
 Your task is to find the best spots for wind power plants. You will be shown a map of Haiti's waters and averege wind speed.
 ");
             Console.WriteLine(haitiWindMAp);
-            Console.WriteLine(@"\n\n
+            Console.WriteLine(@"
             This time, we will be working with wind power plants.
             The map shows the average wind speed in m/s for different regions in Haiti.
             The advantage of wind power is that it is more predictable than solar power, especially in regions placed near seas and oceans,
