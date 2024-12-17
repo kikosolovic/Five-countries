@@ -2,32 +2,6 @@
   "version": 3,
   "targets": {
     "net8.0": {
-      "InputSimulator/1.0.4": {
-        "type": "package",
-        "compile": {
-          "lib/net20/WindowsInput.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net20/WindowsInput.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "InputSimulatorPlus/1.0.4": {
-        "type": "package",
-        "compile": {
-          "lib/net20/WindowsInput.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net20/WindowsInput.dll": {
-            "related": ".pdb;.xml"
-          }
-        }
-      },
       "Newtonsoft.Json/13.0.3": {
         "type": "package",
         "compile": {
@@ -44,33 +18,6 @@
     }
   },
   "libraries": {
-    "InputSimulator/1.0.4": {
-      "sha512": "D0LvRCPQMX6/FJHBjng+RO+wRDuHTJrfo7IAc7rmkPvRqchdVGJWg3y70peOtDy3OLNK+HSOwVkH4GiuLnkKgA==",
-      "type": "package",
-      "path": "inputsimulator/1.0.4",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "inputsimulator.1.0.4.nupkg.sha512",
-        "inputsimulator.nuspec",
-        "lib/net20/WindowsInput.dll",
-        "lib/net20/WindowsInput.xml"
-      ]
-    },
-    "InputSimulatorPlus/1.0.4": {
-      "sha512": "Ed3tYc1KTnThQdQM1l9gRJD+uUicFabihIm6O7M5oPKTmKWQl/gtn99T8OTNA0HYxP0wx+WhH5QQetHAr0UO9A==",
-      "type": "package",
-      "path": "inputsimulatorplus/1.0.4",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "inputsimulatorplus.1.0.4.nupkg.sha512",
-        "inputsimulatorplus.nuspec",
-        "lib/net20/WindowsInput.dll",
-        "lib/net20/WindowsInput.pdb",
-        "lib/net20/WindowsInput.xml"
-      ]
-    },
     "Newtonsoft.Json/13.0.3": {
       "sha512": "HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
       "type": "package",
@@ -104,8 +51,6 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "InputSimulator >= 1.0.4",
-      "InputSimulatorPlus >= 1.0.0",
       "Newtonsoft.Json >= 13.0.3"
     ]
   },
@@ -140,25 +85,12 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
-          "InputSimulator": {
-            "target": "Package",
-            "version": "[1.0.4, )"
-          },
-          "InputSimulatorPlus": {
-            "target": "Package",
-            "version": "[1.0.0, )"
-          },
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[13.0.3, )"
@@ -183,43 +115,5 @@
         "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.110/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file /Users/miki/WorldOfZul/WorldOfZuul/obj/project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    },
-    {
-      "code": "NU1603",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "WorldOfZuul depends on InputSimulatorPlus (>= 1.0.0) but InputSimulatorPlus 1.0.0 was not found. An approximate best match of InputSimulatorPlus 1.0.4 was resolved.",
-      "libraryId": "InputSimulatorPlus",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'InputSimulator 1.0.4' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
-      "libraryId": "InputSimulator",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'InputSimulatorPlus 1.0.4' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
-      "libraryId": "InputSimulatorPlus",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    }
-  ]
+  }
 }

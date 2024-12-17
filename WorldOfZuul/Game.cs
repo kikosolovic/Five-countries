@@ -321,24 +321,27 @@ namespace FiveCountries
 
         private static void PrintHelp()
         {
-            Console.WriteLine("You've been sent by the United Nations to complete various tasks in the following countries:");
-            Console.WriteLine("Haiti");
-            Console.WriteLine("Mozambique");
-            Console.WriteLine("India");
-            Console.WriteLine("Brazil");
-            Console.WriteLine("USA");
-            Console.WriteLine("");
-            Console.WriteLine("Navigate by typing 'north', 'south', 'east', or 'west'.");
-            Console.WriteLine("Travel between countries by typing 'travel' and the name of the country.");
-            Console.WriteLine("Type 'look' for more details.");
-            Console.WriteLine("Type 'map' to see the map.");
-            Console.WriteLine("Type 'score' to see your current score.");
-            Console.WriteLine("Type 'play' to play a minigame.");
-            Console.WriteLine("Type 'back' to go to the previous room.");
-            Console.WriteLine("Type 'help' to print this message again.");
-            Console.WriteLine("Type 'quit' to exit the game.");
-            Console.WriteLine("Type 'playagain' to repeat the quest.");
-            Console.WriteLine("Type 'stoptalking' to stop an ongoing conversation.");
+            Console.WriteLine(@"
+
+You've been sent by the United Nations to complete various tasks in the following countries:
+
+            Haiti        Mozambique        India        Brazil        USA
+
+Travel between the countries freely by typing 'travel <name of country>'.
+
+Within the country, explore rooms by typing 'north', 'south', 'east', or 'west'.
+
+Other usefull commands:
+    <look> to get the description of your current room
+    <map> to print the map
+    <stats> to know how many quests you have completed
+    <playagain> to repeat the quest
+    <help> to print this available commands
+    <quit> to quit the game
+
+Quest specific commands might be revealed once you begin a quest.
+During a dialoque you can only choose from the available options or the command 'stoptalking'.
+            ");
         }
     }
 }

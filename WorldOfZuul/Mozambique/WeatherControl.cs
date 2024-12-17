@@ -55,7 +55,7 @@ namespace WorldOfZuul
                     }
                     if (Program._game.currentCountry.currentRoom.ShortDescription == "Hill")
                     {
-                        Thread.Sleep(10 * 1000);
+                        Thread.Sleep(15 * 1000);
                     }
                     else
                     {
@@ -169,19 +169,14 @@ namespace WorldOfZuul
                     _10toSweep = false;
                     FieldControl.verifyField();
 
-                    //press enter
-                    //dock.stop
-
                 }
                 else
                 {
-                    if (_random.Next(1) == 0)
+                    if (_random.Next(3) == 0)
                     {
                         Console.Clear();
-
                         helper.say(write: "You have been swept. Press enter to stand up.");
                         Thread.Sleep(1000);
-
                         Program._game.currentCountry = Program._game.currentCountry?.Exits["india"];
                         StopWeather();
                         _swept = true;
@@ -198,7 +193,7 @@ namespace WorldOfZuul
             {
                 helper.say(write: "You are safe inside the shelter.");
                 FieldControl.verifyField();
-                Thread.Sleep(3000);
+                Thread.Sleep(2000);
 
             }
         }
