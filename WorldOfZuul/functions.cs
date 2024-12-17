@@ -15,37 +15,9 @@ namespace FiveCountries
         MinigameCode minigamesCode = new();
 
         public void PrintMap4(Country Country, string room){
-            //only for develompent smallPrintMap s
-            static void smallPrintMap(List<List<(List<string>,string)>> map){
-                Console.WriteLine("----Current map2:----");
-                Console.WriteLine("----map:----");
-                foreach (var row in map){
-                    foreach (var room in row){
-                        Console.Write(room.Item2.PadLeft(8));
-                        Console.Write(",");
-                    }
-                    Console.WriteLine();
-                }
-                Console.WriteLine("----exits:----");
-                foreach (var row in map){
-                    foreach (var room in row){
-                        string str= "";
-                        foreach(string exit in room.Item1){
-                            str += exit;
-                        }
-                        Console.Write(str.PadLeft(8));
-                        Console.Write(",");
-                    }
-                    Console.WriteLine();
-                }
-                Console.WriteLine("--------------------");
-            }
-
             static (int, int) getPos(List<List<(List<string>,string)>> map, string room){
                 for(int i = 0; i < map.Count; i++){
                     for(int j = 0; j < map[i].Count; j++){
-                        //string roomNameWOexits = String.Join("", room.Split('+','-'));//weird way to remove exits
-                        //if (roomNameWOexits == room){
                         if (map[i][j].Item2 == room){
                             return (i, j);
                         }
@@ -90,9 +62,7 @@ namespace FiveCountries
                         row.Add((new List<string>{}, ""));
                     }
                 }
-                //var temp = map[posNewRoom.Item1][posNewRoom.Item2];
-                //temp.Item2 = nextRoom;
-                map[posNewRoom.Item1][posNewRoom.Item2] = (new List<string>{}, nextRoom);//temp;
+                map[posNewRoom.Item1][posNewRoom.Item2] = (new List<string>{}, nextRoom);
                 
             }
 
@@ -253,8 +223,6 @@ namespace FiveCountries
             //add exits
             foreach(Room roomCurrent in Country.Rooms){
                 foreach(var exit in roomCurrent.Exits){
-                    //Console.WriteLine(roomCurrent.ShortDescription+" "+exit.Key+" "+exit.Value.ShortDescription);
-                    //string roomNameWOexits = String.Join("", roomCurrent.ShortDescription.Split('+','-'));//weird way to remove exits but works
                     (int, int) roomPos = getPos(map2, roomCurrent.ShortDescription);
                     string exitThis = "";
                     switch(exit.Key){
