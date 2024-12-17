@@ -144,22 +144,6 @@ namespace FiveCountries
 
 
         }
-
-        public List<Minigame> CreateGames()
-        {
-            List<Minigame> minigames = new List<Minigame>();
-            Minigame[] Games = {
-                // Country, Room, Description, unique ID, Function, maximum Score
-                new("Haiti", "PV Lab", "Planning PV's instalations", 11, minigamesCode.photovoltaicMinigame, 6),
-                new("Haiti", "Wind Lab", "Planning Wind Power plants", 12, minigamesCode.windpowerMinigame, 2),
-
-            };
-            foreach (Minigame minigame in Games)
-            {
-                minigames.Add(minigame);
-            }
-
-            return minigames;
-        }
+        
     }
 }
