@@ -120,9 +120,8 @@ namespace FiveCountries
             Console.WriteLine("succesfuly ran a function passed as argument");
         }
 
-        public int photovoltaicMinigame()
+        public void photovoltaicMinigame()
         {
-            int score = 0;
             Console.WriteLine(@"
 Welcome to the first minigame in Haiti's Lab!
 OBJECTIVE: Choose the best locations for photovoltaic power plants in Haiti.
@@ -215,7 +214,7 @@ Your task is to find the best spots for Photovoltaic(PV) power plants. You will 
                 answers = Console.ReadLine().Split(' ');
             }
             int[] optimalAnswers = { 8, 9, 3, 11, 2, 4 };
-
+            int score = 0;
             for (int i = 0; i < answers.Length; i++)
             {
                 if (optimalAnswers.Contains(Int32.Parse(answers[i])))
@@ -226,25 +225,26 @@ Your task is to find the best spots for Photovoltaic(PV) power plants. You will 
             if (score == 3)
             {
                 Console.WriteLine("Congrats! You have chosen the best cities available for our new investments!");
+                Program._game.currentCountry.currentRoom.minigameCompleted  = true;
             }
             else if (score == 2)
             {
                 Console.WriteLine("Good job! You have chosen some of the best cities available for our new investments!");
+                Program._game.currentCountry.currentRoom.minigameCompleted  = true;
             }
             else if (score == 1)
             {
                 Console.WriteLine("Good! You have chosen one of the best cities available for our new investments!");
+                Program._game.currentCountry.currentRoom.minigameCompleted  = true;
             }
             else
             {
                 Console.WriteLine("You have not chosen any of the best cities available for our new investments!");
             }
             Console.WriteLine("You have scored: " + score + " points");
-            return score;
         }
-        public int windpowerMinigame()
+        public void windpowerMinigame()
         {
-            int score = 0;
             string haitiWindMAp = @"
 ================================================= MAP OF HAITI =================================================
                     ▓▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
@@ -339,6 +339,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                 answers = Console.ReadLine().Split(' ');
             }
             int[] optimalAnswers = { 1, 2, 5, 6, 9, 11, 12 };
+            int score = 0;
             for (int i = 0; i < answers.Length; i++)
             {
                 if (optimalAnswers.Contains(Int32.Parse(answers[i])) && score < 2)
@@ -349,45 +350,18 @@ Your task is to find the best spots for wind power plants. You will be shown a m
             if (score == 2)
             {
                 Console.WriteLine("Congrats! You have chosen both of the best available places for our new investments!");
+                Program._game.currentCountry.currentRoom.minigameCompleted  = true;
             }
             else if (score == 1)
             {
                 Console.WriteLine("Good job! You have chosen one of the best places available for our new investments!");
-
+                Program._game.currentCountry.currentRoom.minigameCompleted  = true;
             }
             else
             {
                 Console.WriteLine("You have not chosen any of the best places available for our new investments!");
             }
             Console.WriteLine("You have scored: " + score + " points");
-            return score;
-        }
-        public int minigame12()
-        {
-            int score = 0;
-            Console.WriteLine("Welcome to the second minigame in Haiti's Lab!");
-            Console.WriteLine("You will have to help with designing a new Photovoltaic power plant.");
-            Console.WriteLine("How many points:");
-            score = int.Parse(Console.ReadLine() ?? "0");
-            return score;
-            score += 2;
-            return score;
-        }
-        public int minigame13()
-        {
-            int score = 0;
-            Console.WriteLine("Welcome to the third minigame in Haiti's Lab!");
-            Console.WriteLine("You will have to help with designing a new Wind power plant.");
-            return score;
-            return score;
-        }
-
-        public int minigame14()
-        {
-            int score = 0;
-            Console.WriteLine("Welcome to the fourth minigame in Haiti's Lab!");
-            Console.WriteLine("Calculate how big of a photovoltaic power station is needed for the Farm.");
-            return score;
         }
         //quick response function, makes the text yellow, meaning that somebody said that
         public void say(string text, string response, string options)
