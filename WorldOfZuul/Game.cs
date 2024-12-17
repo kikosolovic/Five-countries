@@ -141,7 +141,7 @@ namespace FiveCountries
                         if (command.SecondWord == null || command.SecondWord == "" || command.SecondWord == " ")
                         {
                             FieldControl.printMap();
-                            helper.say(write: "Plant where? Use the same command  with xy coordinates, for example: [plant 16] to plant in the first row and 6th column.");
+                            helper.say(write: "Plant where? Use the same command with xy coordinates, for example: [plant 16] to plant in the first row and 6th column.");
                             break;
                         }
                         FieldControl.plantMangroves(command.SecondWord);
@@ -150,7 +150,7 @@ namespace FiveCountries
                         if (command.SecondWord == null || command.SecondWord == "" || command.SecondWord == " ")
                         {
                             FieldControl.printMap();
-                            helper.say(write: "Unplant where? Use the same command  with xy coordinates, for example: [unplant 16] to unplant in the first row and 6th column.");
+                            helper.say(write: "Unplant where? Use the same command with xy coordinates, for example: [unplant 16] to unplant in the first row and 6th column.");
                             break;
                         }
                         FieldControl.removeMangroves(command.SecondWord);
