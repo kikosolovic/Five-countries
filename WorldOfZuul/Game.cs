@@ -49,36 +49,14 @@ namespace FiveCountries
 
             bool continuePlaying = true;
 
-            //JUST FOR TESTING
-            //you can write a list of commands to automate the testing
-            //List<List<String>> automateTesting = new List<List<string>>{ new List<string>{"south"},new List<string>{"west"}, new List<string>{"play", "1"}};
-            bool automateTestingBool = true;
-
             while (continuePlaying)
-            // note below
             {
 
                 helper.say(location: currentCountry?.ShortDescription + " " + currentCountry?.currentRoom?.ShortDescription + " >");
 
 
-                //string? input = Console.ReadLine();
                 string input = "";
-                //JUST FOR TESTING
-                // if (automateTestingBool)
-                // {
-                //     if (automateTesting.Count > 0)
-                //     {
-                //         input = string.Join(" ", automateTesting[0]);
-                //         Console.WriteLine($"Runned automated test command: {input}");
-                //         automateTesting.RemoveAt(0);
-                //     }
-                //     else
-                //     {
-                //         automateTestingBool = false;
-                //         input = Console.ReadLine();
-                //     }
-                //}
-                //else
+
                 {
                     input = Console.ReadLine();
                 }
@@ -89,10 +67,6 @@ namespace FiveCountries
                 }
 
                 Command? command = parser.GetCommand(input.ToLower().Trim());
-                // 
-
-
-                // 
 
                 if (command == null)
                 {
@@ -120,7 +94,6 @@ namespace FiveCountries
                             Console.WriteLine("Travel where?");
                             break;
                         }
-
                         Travel(command.SecondWord);
                         if (this.currentCountry?.currentRoom?.minigame != null)
                         {
@@ -135,65 +108,12 @@ namespace FiveCountries
                         Move(command.Name);
                         break;
                     case "map":
-                        //customFunctions.PrintMap(currentCountry?.currentRoom?.ShortDescription);
-                        //customFunctions.PrintMap2(currentCountry, currentCountry?.currentRoom?.ShortDescription);
                         customFunctions.PrintMap4(currentCountry, currentCountry?.currentRoom?.ShortDescription);
-                        break;
-                    case "sweep":
-                        WeatherControl.sweep();
-                        break;
-                    case "play":
-                        int scoreGot = 0;
-                        int gameId = 0;
-                        (scoreGot, gameId) = customFunctions.PlayGame(currentCountry, currentCountry.currentRoom, minigames, int.Parse(command?.SecondWord ?? "0"));
-                        foreach (var minigame in minigames)
-                        {
-                            if (minigame.id == gameId)
-                            {
-                                if (minigame.score - scoreGot > 0)
-                                {
-                                    score += scoreGot;
-                                    minigame.score -= scoreGot;
-                                }
-                                else
-                                {
-                                    score += minigame.score;
-                                    minigame.score = 0;
-
-                                }
-                                break;
-                            }
-                        }
-
                         break;
                     case "playagain":
                         this.currentCountry?.currentRoom?.playAgain();
                         this.currentCountry?.currentRoom?.ExecuteMinigame();
                         break;
-                    case "pick":
-                        if (command.SecondWord == null || command.SecondWord == "" || command.SecondWord == " ")
-                        {
-                            helper.say("Pick what?");
-                            break;
-                        }
-                        else
-                        {
-                            currentItem = command.SecondWord;
-                            Console.WriteLine($"You picked {currentItem}");
-                            //probably can pick up whatever 
-                        }
-                        break;
-                    case "analyze":
-                        if (command.SecondWord == null || command.SecondWord == "" || command.SecondWord == " ")
-                        {
-                            helper.say("Analyze what?");
-                            break;
-                        }
-                        else
-                        {
-                            helper.analyze(command.SecondWord);
-                            break;
-                        }
                     case "configure":
                         if (command.SecondWord == null || command.SecondWord == "" || command.SecondWord == " ")
                         {
@@ -207,26 +127,15 @@ namespace FiveCountries
                         }
                     case "weather":
                         if (this.currentCountry?.ShortDescription == "Mozambique")
-
                         {
                             WeatherControl.GetWeather();
-
                         }
-                        break;
-
-
-                    case "score":
-                        Console.WriteLine($"Your score is: {score}");
                         break;
                     case "quit":
                         continuePlaying = false;
                         break;
-
                     case "help":
                         PrintHelp();
-                        break;
-                    case "startminigame":
-                        this.currentCountry?.currentRoom?.ExecuteMinigame();
                         break;
                     case "plant":
                         if (command.SecondWord == null || command.SecondWord == "" || command.SecondWord == " ")
@@ -246,12 +155,9 @@ namespace FiveCountries
                         }
                         FieldControl.removeMangroves(command.SecondWord);
                         break;
-                    case "error":
-                        break;
                     case "stats":
                         this.stats();
                         break;
-
                     default:
                         Console.WriteLine("I don't know what command: " + command.Name + ".");
                         break;
@@ -259,6 +165,8 @@ namespace FiveCountries
             }
 
             Console.WriteLine("Thank you for playing Five Countries!");
+            Console.WriteLine("These are your stats: ");
+            this.stats();
         } // instead of all cases implement dynamic method invocation
 
         public void Move(string direction)
@@ -282,11 +190,11 @@ namespace FiveCountries
         {
             if (currentCountry?.Exits.ContainsKey(country) == true)
             {
+                Console.Clear();
                 helper.loading();
 
                 previousCountry = currentCountry;
                 currentCountry = currentCountry?.Exits[country];
-                // helper.say(write: currentCountry?.LongDescription);
 
             }
             else
@@ -328,16 +236,11 @@ namespace FiveCountries
         }
         public void ExplicitMove(string room)
         {
-
-            // previousRoom = currentRoom;
-            // currentRoom = currentRoom?.Exits[direction];
             currentCountry.setRoom(currentCountry.Rooms.Where(r => r.ShortDescription == room).First(), currentCountry.currentRoom);
             if (this.currentCountry?.currentRoom?.minigame != null)
             {
                 this.currentCountry.currentRoom.ExecuteMinigame();
-
             }
-
         }
 
         public void OnCountryChanged()
