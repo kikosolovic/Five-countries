@@ -98,19 +98,14 @@ namespace FiveCountries
 
 
             // //initialize rooms to Brazil
-            Brazil.InitRoom("Outside", "You are standing outside the main entrance of the university. To the east is a large building, to the south is a computing lab, and to the west is the campus pub.");
-            Brazil.InitRoom("Theatre", "You find yourself inside a large lecture theatre. Rows of seats ascend up to the back, and there's a podium at the front. It's quite dark and quiet.");
-            Brazil.InitRoom("Pub", "You've entered the campus pub. It's a cosy place, with a few students chatting over drinks. There's a bar near you and some pool tables at the far end.");
-            Brazil.InitRoom("Lab", "You're in a computing lab. Desks with computers line the walls, and there's an office to the east. The hum of machines fills the room.");
-            Brazil.InitRoom("Office", "You've entered what seems to be an administration office. There's a large desk with a computer on it, and some bookshelves lining one wall.");
-
-
-            Brazil.addExit("Outside", new List<string> { "east", "south", "west" }, new List<string> { "Theatre", "Lab", "Pub" });
-            Brazil.addExit("Theatre", new List<string> { "west" }, new List<string> { "Outside" });
-            Brazil.addExit("Pub", new List<string> { "east" }, new List<string> { "Outside" });
-            Brazil.addExit("Lab", new List<string> { "north", "east" }, new List<string> { "Outside", "Office" });
-            Brazil.addExit("Office", new List<string> { "west" }, new List<string> { "Lab" });
-
+            Brazil.InitRoom("Deforestated Area", "You are now in a Deforestated Area");
+            Brazil.InitRoom("Mining Zone", "You are now in a Illegal Mining Zone.");
+            Brazil.InitRoom("Tribe", "You are now in a Indigenous tribe.");
+           
+            Brazil.addExit("Deforestated Area", new List<string> { "south" }, new List<string> { "Mining Zone"});
+            Brazil.addExit("Mining Zone", new List<string> { "north","south" }, new List<string> { "Deforestated Area","Tribe" });
+            Brazil.addExit("Tribe", new List<string> { "north" }, new List<string> { "Mining Zone" });
+          
 
             //initialize rooms to Mozambique
             Mozambique.InitRoom("Dock", "You just arrived to Mozambique. The boat dropped you off at a small dock. ", new MinigameDelegate(minigameFunctions.Dock));

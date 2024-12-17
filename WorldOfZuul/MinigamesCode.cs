@@ -423,162 +423,177 @@ Your task is to find the best spots for wind power plants. You will be shown a m
             helper.WriteWithDelay("\nThe UN Ambassador leads you to a suburban neighborhood in Los Angeles.");
             helper.WriteWithDelay("\n'This city is working hard to make its homes more eco-friendly,' the ambassador explains.");
             helper.WriteWithDelay("\n'Your mission is to help by making sustainable choices in this eco-friendly home makeover challenge.'");
-            Console.ResetColor();
-
-            // Questions for the Minigame
-            List<Question> questions = new List<Question>
-    {
-        new Question
-        {
-            Text = "You need a new refrigerator. Which option is the most eco-friendly choice?",
-            Options = new Dictionary<char, string>
-            {
-                { 'A', "A standard refrigerator with a low upfront cost." },
-                { 'B', "An ENERGY STAR-certified refrigerator." },
-                { 'C', "A second-hand refrigerator from a friend." },
-                { 'D', "The largest refrigerator available for more storage." }
-            },
-            CorrectOption = 'B',
-            Explanation = "ENERGY STAR-certified appliances use less energy, saving you money and reducing environmental impact."
-        },
-        new Question
-        {
-            Text = "You're redesigning your garden. What should you plant to conserve water?",
-            Options = new Dictionary<char, string>
-            {
-                { 'A', "A lawn with exotic flowers." },
-                { 'B', "Native drought-resistant plants." },
-                { 'C', "A tropical fruit garden." },
-                { 'D', "Water-intensive grass turf." }
-            },
-            CorrectOption = 'B',
-            Explanation = "Native drought-resistant plants require less water and are well-suited to LA's climate."
-        },
-        new Question
-        {
-            Text = "How can you best reduce household waste?",
-            Options = new Dictionary<char, string>
-            {
-                { 'A', "Use disposable plates and utensils to avoid washing dishes." },
-                { 'B', "Implement a composting system for organic waste." },
-                { 'C', "Throw all waste into the general trash bin." },
-                { 'D', "Burn waste in the backyard." }
-            },
-            CorrectOption = 'B',
-            Explanation = "Composting reduces landfill waste and provides nutrient-rich soil for gardening."
-        },
-        new Question
-        {
-            Text = "Which lighting option is the most energy-efficient for your home?",
-            Options = new Dictionary<char, string>
-            {
-                { 'A', "Incandescent bulbs." },
-                { 'B', "Halogen bulbs." },
-                { 'C', "Compact Fluorescent Lamps (CFLs)." },
-                { 'D', "Light Emitting Diode (LED) bulbs." }
-            },
-            CorrectOption = 'D',
-            Explanation = "LED bulbs are the most energy-efficient and have a longer lifespan than other bulbs."
-        },
-        new Question
-        {
-            Text = "To conserve water during showers, you should:",
-            Options = new Dictionary<char, string>
-            {
-                { 'A', "Take longer showers to relax." },
-                { 'B', "Install a low-flow showerhead." },
-                { 'C', "Keep the water running while not in use." },
-                { 'D', "Shower multiple times a day." }
-            },
-            CorrectOption = 'B',
-            Explanation = "Low-flow showerheads reduce water usage without compromising the shower experience."
         }
-    };
-
-            int minigameScore = 0;
-            int questionNumber = 1;
-
-            foreach (var question in questions)
+         
+        public class theHangman
+        {
+            public static void tribeHangman(int wrong)
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                helper.WriteWithDelay($"Question {questionNumber}: {question.Text}");
-                Console.ResetColor();
+            
 
-                foreach (var option in question.Options)
+                if (wrong == 0)
                 {
-                    Console.Write($"{option.Key}. ");
-                    Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine(option.Value);
-                    Console.ResetColor();
+                    Console.WriteLine("\n+---+");
+                    Console.WriteLine("    |");
+                    Console.WriteLine("    |");
+                    Console.WriteLine("    |");
+                    Console.WriteLine("   ===");
                 }
-
-                Console.Write("\nEnter your choice (A, B, C, or D): ");
-                char playerChoice = GetValidOption();
-
-                if (char.ToUpper(playerChoice) == question.CorrectOption)
+                else if (wrong == 1)
                 {
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("Correct! " + question.Explanation);
-                    helper.incrementScore(1);
-                    minigameScore++;
-                    Console.WriteLine("\nCorrect! " + question.Explanation);
-                    helper.incrementScore(1);
-                    minigameScore += 1;
+                    Console.WriteLine("\n+---+");
+                    Console.WriteLine("O   |");
+                    Console.WriteLine("    |");
+                    Console.WriteLine("    |");
+                    Console.WriteLine("   ===");
                 }
-                else
+                else if (wrong == 2)
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine($"Incorrect. Correct Answer: {question.CorrectOption}. {question.Options[question.CorrectOption]}");
-                    Console.WriteLine(question.Explanation);
+                    Console.WriteLine("\n+---+");
+                    Console.WriteLine("O   |");
+                    Console.WriteLine("|   |");
+                    Console.WriteLine("    |");
+                    Console.WriteLine("   ===");
                 }
-
-                Console.ResetColor();
-                Console.WriteLine("\nPress Enter to continue...");
-                Console.ReadLine();
-                questionNumber++;
+                else if (wrong == 3)
+                {
+                    Console.WriteLine("\n+---+");
+                    Console.WriteLine(" O  |");
+                    Console.WriteLine("/|  |");
+                    Console.WriteLine("    |");
+                    Console.WriteLine("   ===");
+                }
+                else if (wrong == 4)
+                {
+                    Console.WriteLine("\n+---+");
+                    Console.WriteLine(" O  |");
+                    Console.WriteLine("/|\\ |");
+                    Console.WriteLine("    |");
+                    Console.WriteLine("   ===");
+                }
+                else if (wrong == 5)
+                {
+                    Console.WriteLine("\n+---+");
+                    Console.WriteLine(" O  |");
+                    Console.WriteLine("/|\\ |");
+                    Console.WriteLine("/   |");
+                    Console.WriteLine("   ===");
+                }
+                else if (wrong == 6)
+                {
+                    Console.WriteLine("\n+---+");
+                    Console.WriteLine(" O   |");
+                    Console.WriteLine("/|\\  |");
+                    Console.WriteLine("/ \\  |");
+                    Console.WriteLine("    ===");
+                    Console.WriteLine("You lost, try again.");
+                }
+                
             }
 
-            // Final Minigame Results
-            Console.ForegroundColor = ConsoleColor.Blue;
-            helper.WriteWithDelay($"\nGame Over! You scored {helper.getScore()}/{questions.Count}.");
-            if (helper.getScore() == questions.Count)
-                helper.WriteWithDelay("Outstanding work! Your decisions showcase the best of sustainable practices.");
-            else if (helper.getScore() >= questions.Count / 2)
-                helper.WriteWithDelay("Good job! Your efforts show promise, but there's always room for improvement.");
-            else
-                helper.WriteWithDelay("There's a lot to learn about sustainability. Keep trying and you'll get there!");
-            Console.ResetColor();
-
-            // Post-game Dialogue
-            StorylineManager postGameDialogue = new StorylineManager("Dialogues/postGameLA.json");
-
-            while (true)
+            public static int printWord(List<char> guessedLetters, String randomWord)
             {
-                helper.say(postGameDialogue.text, postGameDialogue.response, postGameDialogue.options);
-
-                if (string.IsNullOrEmpty(postGameDialogue.options)) break;
-
-                var choice = helper.parseinput(Console.ReadLine());
-
-                try
+                int counter = 0;
+                int rightLetters = 0;
+                Console.Write("\r\n");
+                foreach (char c in randomWord)
                 {
-                    postGameDialogue.NextLevel(choice);
+                    if (guessedLetters.Contains(c))
+                    {
+                        Console.Write(c + " ");
+                        rightLetters += 1;
+                    }
+                    else
+                    {
+                        Console.Write("  ");
+                    }
+                    counter += 1;
                 }
-                catch (Exception)
+                //Console.Write("\r\n");
+                return rightLetters;
+            }
+
+            private static void printLines(String randomWord)
+            {
+                Console.Write("\r");
+                foreach (char c in randomWord)
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Invalid choice. Please select a valid option.");
-                    Console.ResetColor();
+                    Console.OutputEncoding = System.Text.Encoding.Unicode;
+                    Console.Write("\u0305 ");
                 }
             }
 
-            // Final Dialogue Finisher
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            helper.WriteWithDelay("\nUN Ambassador: 'Your eco-friendly choices have inspired this city to push even further for sustainability.'");
-            helper.WriteWithDelay("A local eco-enthusiast named Mia steps forward. 'Thanks to you, people are already adopting these practices in their homes.'");
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            helper.WriteWithDelay("\nThe ambassador adds, 'Let's move on to our next destination. There's still work to be done.'");
-            Console.ResetColor();
+            static void MainHangman(string[] args)
+            {
+                Console.WriteLine("Welcome to hangman you need to guess the word chosen by the tribe leader to pass :)");
+                Console.WriteLine("-----------------------------------------");
+
+                Random random = new Random();
+                List<string> wordDictionary = new List<string> { "sustainability" };
+                int index = random.Next(wordDictionary.Count);
+                String randomWord = wordDictionary[index];
+
+                foreach (char x in randomWord)
+                {
+                    Console.Write("_ ");
+                }
+
+                int lengthOfWordToGuess = randomWord.Length;
+                int amountOfTimesWrong = 0;
+                List<char> currentLettersGuessed = new List<char>();
+                int currentLettersRight = 0;
+
+                while (amountOfTimesWrong != 6 && currentLettersRight != lengthOfWordToGuess)
+                {
+                    Console.Write("\nLetters guessed so far: ");
+                    foreach (char letter in currentLettersGuessed)
+                    {
+                        Console.Write(letter + " ");
+                    }
+                    
+                    Console.Write("\nGuess a letter: ");
+                    char letterGuessed = Console.ReadLine()[0];
+                    
+                    if (currentLettersGuessed.Contains(letterGuessed))
+                    {
+                        Console.Write("\r\n You have already guessed this letter");
+                        tribeHangman(amountOfTimesWrong);
+                        currentLettersRight = printWord(currentLettersGuessed, randomWord);
+                        printLines(randomWord);
+                    }
+                    else
+                    {
+                    
+                        bool right = false;
+                        for (int i = 0; i < randomWord.Length; i++) { if (letterGuessed == randomWord[i]) { right = true; } }
+
+                    
+                        if (right)
+
+                        {
+                            tribeHangman(amountOfTimesWrong);
+                        
+                            currentLettersGuessed.Add(letterGuessed);
+                            currentLettersRight = printWord(currentLettersGuessed, randomWord);
+                            Console.Write("\r\n");
+                            printLines(randomWord);
+                        }
+                        
+                        else
+                        {
+                            amountOfTimesWrong += 1;
+                            currentLettersGuessed.Add(letterGuessed);
+
+                            tribeHangman(amountOfTimesWrong);
+                        
+                            currentLettersRight = printWord(currentLettersGuessed, randomWord);
+                            Console.Write("\r\n");
+                            printLines(randomWord);
+                        }
+                    }
+                }
+                Console.WriteLine("\r\nGame is over! Thank you for playing :)");
+            }   
         }
 
         // Question Class for Minigames
@@ -588,8 +603,8 @@ Your task is to find the best spots for wind power plants. You will be shown a m
             public Dictionary<char, string> Options { get; set; }
             public char CorrectOption { get; set; }
             public string Explanation { get; set; }
+        
         }
-
         // Method to get a valid option from the player
         private char GetValidOption()
         {
@@ -732,14 +747,6 @@ Your task is to find the best spots for wind power plants. You will be shown a m
             Console.WriteLine("\nYou prepare to move on to the next city, ready to take on new challenges.");
             Console.ResetColor();
         }
-
-
-
-
-
-
-
-
         public void CompostingPuzzleMinigameSFA()
         {
             // Pre-game Dialogue
@@ -1065,9 +1072,6 @@ Your task is to find the best spots for wind power plants. You will be shown a m
 
 
         }
-
-
-
         public void SewagePlantQuiz()
         {
             // Contextual Minigame Introduction
@@ -1190,8 +1194,6 @@ Your task is to find the best spots for wind power plants. You will be shown a m
             Console.ResetColor();
 
         }
-
-
         public void CropFieldQuiz()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -1199,60 +1201,60 @@ Your task is to find the best spots for wind power plants. You will be shown a m
             Console.ResetColor();
 
             List<Question> questions = new List<Question>
-    {
-        new Question
-        {
-            Text = "Which irrigation method involves delivering water directly to the roots of plants through a network of tubes or pipes?",
-            Options = new Dictionary<char, string>
             {
-                { 'A', "Flood irrigation." },
-                { 'B', "Sprinkler irrigation." },
-                { 'C', "Drip irrigation." },
-                { 'D', "Surface irrigation." }
-            },
-            CorrectOption = 'C',
-            Explanation = "Drip irrigation delivers water directly to the roots."
-        },
-        new Question
-        {
-            Text = "What is the main advantage of using drip irrigation over traditional flood irrigation?",
-            Options = new Dictionary<char, string>
-            {
-                { 'A', "It is cheaper to install" },
-                { 'B', "It uses less water and reduces evaporation." },
-                { 'C', "It requires less maintenance." },
-                { 'D', "It is suitable for all types of crops." }
-            },
-            CorrectOption = 'B',
-            Explanation = "Drip irrigation uses less water, thus optimizing its usage. This is especially useful in India."
-        },
-        new Question
-        {
-            Text = "What percentage of India's population lacks access to safely managed drinking water services?",
-            Options = new Dictionary<char, string>
-            {
-                { 'A', "10%" },
-                { 'B', "40%" },
-                { 'C', "70%" },
-                { 'D', "90%" }
-            },
-            CorrectOption = 'B',
-            Explanation = "40 percent of the Indian population lacks access to clean water. That's a little bit over 570 million people."
-        },
-        new Question
-        {
-            Text = "Approximately how many Indians get sick from waterborne diseases every year?",
-            Options = new Dictionary<char, string>
-            {
-                { 'A', "7.2 million" },
-                { 'B', "641 thousand" },
-                { 'C', "37.7 million" },
-                { 'D', "50.1 million" }
-            },
-            CorrectOption = 'C',
-            Explanation = "37.7 million get sick every year due to lack of clean water and sanitation."
-        },
-    };
+                new Question
+                {
+                    Text = "Which irrigation method involves delivering water directly to the roots of plants through a network of tubes or pipes?",
+                    Options = new Dictionary<char, string>
+                    {
+                        { 'A', "Flood irrigation." },
+                        { 'B', "Sprinkler irrigation." },
+                        { 'C', "Drip irrigation." },
+                        { 'D', "Surface irrigation." }
+                    },
+                    CorrectOption = 'C',
+                    Explanation = "Drip irrigation delivers water directly to the roots."
+                },
+                new Question
+                {
+                    Text = "What is the main advantage of using drip irrigation over traditional flood irrigation?",
+                    Options = new Dictionary<char, string>
+                    {
+                        { 'A', "It is cheaper to install" },
+                        { 'B', "It uses less water and reduces evaporation." },
+                        { 'C', "It requires less maintenance." },
+                        { 'D', "It is suitable for all types of crops." }
+                    },
+                    CorrectOption = 'B',
+                    Explanation = "Drip irrigation uses less water, thus optimizing its usage. This is especially useful in India."
+                },
+                new Question
+                {
+                    Text = "What percentage of India's population lacks access to safely managed drinking water services?",
+                    Options = new Dictionary<char, string>
+                    {
+                        { 'A', "10%" },
+                        { 'B', "40%" },
+                        { 'C', "70%" },
+                        { 'D', "90%" }
+                    },
+                    CorrectOption = 'B',
+                    Explanation = "40 percent of the Indian population lacks access to clean water. That's a little bit over 570 million people."
+                },
+                new Question
+                {
+                    Text = "Approximately how many Indians get sick from waterborne diseases every year?",
+                    Options = new Dictionary<char, string>
+                    {
+                        { 'A', "7.2 million" },
+                        { 'B', "641 thousand" },
+                        { 'C', "37.7 million" },
+                        { 'D', "50.1 million" }
+                    },
+                    CorrectOption = 'C',
+                    Explanation = "37.7 million get sick every year due to lack of clean water and sanitation."
+                },
+            };
 
             int minigameScoreField = 0;
             int questionNumber = 1;
@@ -1310,6 +1312,5 @@ Your task is to find the best spots for wind power plants. You will be shown a m
 
 
     }
-
 
 }
