@@ -7,7 +7,7 @@
         "response":"",
         "options" :"1",
         "opt1" :{
-            "text":"Use command plant/unplant to build a new barrier protecting the field from the sea. If you don't do it thoroughly, the salty water will still get into the field",
+            "text":"Use the commands 'plant'/'unplant' to build a new barrier protecting the field from the sea. Be thorough, because the only way to find out if you did a good job is to wait and see what the storm does. Hint: The #'s are the mangroves and the ~'s are the sea.",
             "response":"",
             "options" :""
         }}

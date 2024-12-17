@@ -34,8 +34,8 @@ namespace FiveCountries
         {
             try
             {
-                int x = Int32.Parse(cords[0].ToString());
-                int y = Int32.Parse(cords[1].ToString());
+                int x = Int32.Parse(cords[0].ToString()) - 1;
+                int y = Int32.Parse(cords[1].ToString()) - 1;
                 if (Program._game.currentCountry.currentRoom.ShortDescription == "Field")
                 {
                     if (seedCount == 0)
@@ -44,7 +44,7 @@ namespace FiveCountries
                     }
 
 
-                    if (x < 8 && x > -1 && y < 8 && y > -1)
+                    if (x < 9 && x > 0 && y < 9 && y > 0)
                     {
                         fieldMap[x][y] = "#";
                         seedCount--;
