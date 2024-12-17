@@ -166,13 +166,13 @@ namespace FiveCountries
                     }
                     line += "|";
                     horizontalLineWExits += "+";
-                    string[] finalLine = line.Split(roomToHighlight);
+                    string[] finalLine = line.Split(roomToHighlight.Substring(0, Math.Min(maxLenght, roomToHighlight.Length)));
 
                     Console.WriteLine(horizontalLineBlank);
                     if(finalLine.Length == 1){
                         Console.WriteLine(line);
                     }else{
-                        customFunctions.PrintStringColorful([finalLine[0], roomToHighlight, finalLine[1]], [ConsoleColor.White, ConsoleColor.Green, ConsoleColor.White]);
+                        customFunctions.PrintStringColorful([finalLine[0], roomToHighlight.Substring(0, Math.Min(maxLenght, roomToHighlight.Length)), finalLine[1]], [ConsoleColor.White, ConsoleColor.Green, ConsoleColor.White]);
                     }
                     Console.WriteLine(horizontalLineBlank);
                     Console.WriteLine(horizontalLineWExits);
