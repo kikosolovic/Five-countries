@@ -14,8 +14,6 @@ namespace FiveCountries
 
     class MinigameCode
     {
-
-        
         public void Dock()
         {
 
@@ -425,175 +423,244 @@ Your task is to find the best spots for wind power plants. You will be shown a m
             helper.WriteWithDelay("\n'Your mission is to help by making sustainable choices in this eco-friendly home makeover challenge.'");
         }
          
-        public class theHangman
+        public static int printWord(List<char> guessedLetters, String randomWord)
         {
-            public static void tribeHangman(int wrong)
+            int counter = 0;
+            int rightLetters = 0;
+            Console.Write("\r\n");
+            foreach (char c in randomWord)
             {
-            
+                if (guessedLetters.Contains(c))
+                {
+                    Console.Write(c + " ");
+                    rightLetters += 1;
+                }
+                else
+                {
+                    Console.Write("  ");
+                }
+                counter += 1;
+            }
+            //Console.Write("\r\n");
+            return rightLetters;
+        }
 
-                if (wrong == 0)
+        private static void printLines(String randomWord)
+        {
+            Console.Write("\r");
+            foreach (char c in randomWord)
+            {
+                Console.OutputEncoding = System.Text.Encoding.Unicode;
+                Console.Write("\u0305 ");
+            }
+        }
+
+        public void guessTree()
+        {
+            Random random = new Random();
+            int treesNumber = random.Next(1, 501);
+            int guess;
+
+            Console.WriteLine("Welcome to the Guess the N of Trees! You need to guess how many trees were cut in order to know how many seeds will be needed!");
+
+            do
+            {
+                Console.Write("Guess a number between 1 and 500: ");
+                guess = int.Parse(Console.ReadLine());
+
+                if (guess < treesNumber)
                 {
-                    Console.WriteLine("\n+---+");
-                    Console.WriteLine("    |");
-                    Console.WriteLine("    |");
-                    Console.WriteLine("    |");
-                    Console.WriteLine("   ===");
+                    Console.WriteLine("Too low. Many trees were taken down. Try again.");
                 }
-                else if (wrong == 1)
+                else if (guess > treesNumber)
                 {
-                    Console.WriteLine("\n+---+");
-                    Console.WriteLine("O   |");
-                    Console.WriteLine("    |");
-                    Console.WriteLine("    |");
-                    Console.WriteLine("   ===");
+                    Console.WriteLine("Too high. Try again.");
                 }
-                else if (wrong == 2)
+            } while (guess != treesNumber);
+
+            Console.WriteLine("Congratulations! You guessed the number of trees cut. Now you know how many seeds will be needed.");
+             Program._game.currentCountry.currentRoom.minigameCompleted  = true;
+        }
+
+        public void beatMiners()
+        {
+            int score = 0;
+
+            Random random = new Random();
+            string[] choices = { "rock", "paper", "scissors" };
+            Console.WriteLine("In order to end the illegal mining you need to beat them in a 'rock paper scissors' battle");
+
+            while (score<1)
+            {
+                Console.Write("Enter your choice (rock, paper, scissors): ");
+                string playerChoice = Console.ReadLine().ToLower();
+
+                if (playerChoice != "rock" && playerChoice != "paper" && playerChoice != "scissors")
                 {
-                    Console.WriteLine("\n+---+");
-                    Console.WriteLine("O   |");
-                    Console.WriteLine("|   |");
-                    Console.WriteLine("    |");
-                    Console.WriteLine("   ===");
+                    Console.WriteLine("Invalid choice. Please try again.");
+                    continue;
                 }
-                else if (wrong == 3)
+
+                int computerChoiceIndex = random.Next(3);
+                string computerChoice = choices[computerChoiceIndex];
+
+                Console.WriteLine($"Computer chose: {computerChoice}");
+
+                if (playerChoice == computerChoice)
                 {
-                    Console.WriteLine("\n+---+");
-                    Console.WriteLine(" O  |");
-                    Console.WriteLine("/|  |");
-                    Console.WriteLine("    |");
-                    Console.WriteLine("   ===");
+                    Console.WriteLine("It's a tie!");
                 }
-                else if (wrong == 4)
+                else if ((playerChoice == "rock" && computerChoice == "scissors") ||
+                         (playerChoice == "paper" && computerChoice == "rock") ||
+                         (playerChoice == "scissors" && computerChoice == "paper"))
                 {
-                    Console.WriteLine("\n+---+");
-                    Console.WriteLine(" O  |");
-                    Console.WriteLine("/|\\ |");
-                    Console.WriteLine("    |");
-                    Console.WriteLine("   ===");
+                    Console.WriteLine("You won! Explore Brazil and try other minigames");
+                    Program._game.currentCountry.currentRoom.minigameCompleted  = true;
+                    break;
                 }
-                else if (wrong == 5)
+                else
                 {
-                    Console.WriteLine("\n+---+");
-                    Console.WriteLine(" O  |");
-                    Console.WriteLine("/|\\ |");
-                    Console.WriteLine("/   |");
-                    Console.WriteLine("   ===");
+                    Console.WriteLine("They won! Try again with a different strategy");
                 }
-                else if (wrong == 6)
-                {
-                    Console.WriteLine("\n+---+");
-                    Console.WriteLine(" O   |");
-                    Console.WriteLine("/|\\  |");
-                    Console.WriteLine("/ \\  |");
-                    Console.WriteLine("    ===");
-                    Console.WriteLine("You lost, try again.");
-                }
+                
                 
             }
 
-            public static int printWord(List<char> guessedLetters, String randomWord)
+        }
+         
+        public void tribeHangman(int wrong)
+
+        {
+
+            Console.WriteLine("Welcome to hangman you need to guess the word chosen by the tribe leader to pass :)");
+            Console.WriteLine("-----------------------------------------");
+
+            Random random = new Random();
+            List<string> wordDictionary = new List<string> { "sustainability" };
+            int index = random.Next(wordDictionary.Count);
+            String randomWord = wordDictionary[index];
+
+            foreach (char x in randomWord)
             {
-                int counter = 0;
-                int rightLetters = 0;
-                Console.Write("\r\n");
-                foreach (char c in randomWord)
-                {
-                    if (guessedLetters.Contains(c))
-                    {
-                        Console.Write(c + " ");
-                        rightLetters += 1;
-                    }
-                    else
-                    {
-                        Console.Write("  ");
-                    }
-                    counter += 1;
-                }
-                //Console.Write("\r\n");
-                return rightLetters;
+                Console.Write("_ ");
             }
 
-            private static void printLines(String randomWord)
+            int lengthOfWordToGuess = randomWord.Length;
+            int amountOfTimesWrong = 0;
+            List<char> currentLettersGuessed = new List<char>();
+            int currentLettersRight = 0;
+
+            while (amountOfTimesWrong != 6 && currentLettersRight != lengthOfWordToGuess)
             {
-                Console.Write("\r");
-                foreach (char c in randomWord)
+                Console.Write("\nLetters guessed so far: ");
+                foreach (char letter in currentLettersGuessed)
                 {
-                    Console.OutputEncoding = System.Text.Encoding.Unicode;
-                    Console.Write("\u0305 ");
+                    Console.Write(letter + " ");
                 }
-            }
-
-            static void MainHangman(string[] args)
-            {
-                Console.WriteLine("Welcome to hangman you need to guess the word chosen by the tribe leader to pass :)");
-                Console.WriteLine("-----------------------------------------");
-
-                Random random = new Random();
-                List<string> wordDictionary = new List<string> { "sustainability" };
-                int index = random.Next(wordDictionary.Count);
-                String randomWord = wordDictionary[index];
-
-                foreach (char x in randomWord)
+                
+                Console.Write("\nGuess a letter: ");
+                char letterGuessed = Console.ReadLine()[0];
+                
+                if (currentLettersGuessed.Contains(letterGuessed))
                 {
-                    Console.Write("_ ");
+                    Console.Write("\r\n You have already guessed this letter");
+                    tribeHangman(amountOfTimesWrong);
+                    currentLettersRight = printWord(currentLettersGuessed, randomWord);
+                    printLines(randomWord);
                 }
-
-                int lengthOfWordToGuess = randomWord.Length;
-                int amountOfTimesWrong = 0;
-                List<char> currentLettersGuessed = new List<char>();
-                int currentLettersRight = 0;
-
-                while (amountOfTimesWrong != 6 && currentLettersRight != lengthOfWordToGuess)
+                else
                 {
-                    Console.Write("\nLetters guessed so far: ");
-                    foreach (char letter in currentLettersGuessed)
+                   
+                    bool right = false;
+                    for (int i = 0; i < randomWord.Length; i++) { if (letterGuessed == randomWord[i]) { right = true; } }
+
+                   
+                    if (right)
+
                     {
-                        Console.Write(letter + " ");
-                    }
-                    
-                    Console.Write("\nGuess a letter: ");
-                    char letterGuessed = Console.ReadLine()[0];
-                    
-                    if (currentLettersGuessed.Contains(letterGuessed))
-                    {
-                        Console.Write("\r\n You have already guessed this letter");
                         tribeHangman(amountOfTimesWrong);
+                       
+                        currentLettersGuessed.Add(letterGuessed);
                         currentLettersRight = printWord(currentLettersGuessed, randomWord);
+                        Console.Write("\r\n");
                         printLines(randomWord);
                     }
+                    
                     else
                     {
+                        amountOfTimesWrong += 1;
+                        currentLettersGuessed.Add(letterGuessed);
+
+                        tribeHangman(amountOfTimesWrong);
                     
-                        bool right = false;
-                        for (int i = 0; i < randomWord.Length; i++) { if (letterGuessed == randomWord[i]) { right = true; } }
-
-                    
-                        if (right)
-
-                        {
-                            tribeHangman(amountOfTimesWrong);
-                        
-                            currentLettersGuessed.Add(letterGuessed);
-                            currentLettersRight = printWord(currentLettersGuessed, randomWord);
-                            Console.Write("\r\n");
-                            printLines(randomWord);
-                        }
-                        
-                        else
-                        {
-                            amountOfTimesWrong += 1;
-                            currentLettersGuessed.Add(letterGuessed);
-
-                            tribeHangman(amountOfTimesWrong);
-                        
-                            currentLettersRight = printWord(currentLettersGuessed, randomWord);
-                            Console.Write("\r\n");
-                            printLines(randomWord);
-                        }
+                        currentLettersRight = printWord(currentLettersGuessed, randomWord);
+                        Console.Write("\r\n");
+                        printLines(randomWord);
                     }
                 }
-                Console.WriteLine("\r\nGame is over! Thank you for playing :)");
-            }   
+            
+            Console.WriteLine("\r\nThank you for playing :)");
+          
+
+            if (wrong == 0)
+            {
+                Console.WriteLine("\n+---+");
+                Console.WriteLine("    |");
+                Console.WriteLine("    |");
+                Console.WriteLine("    |");
+                Console.WriteLine("   ===");
+            }
+            else if (wrong == 1)
+            {
+                Console.WriteLine("\n+---+");
+                Console.WriteLine("O   |");
+                Console.WriteLine("    |");
+                Console.WriteLine("    |");
+                Console.WriteLine("   ===");
+            }
+            else if (wrong == 2)
+            {
+                Console.WriteLine("\n+---+");
+                Console.WriteLine("O   |");
+                Console.WriteLine("|   |");
+                Console.WriteLine("    |");
+                Console.WriteLine("   ===");
+            }
+            else if (wrong == 3)
+            {
+                Console.WriteLine("\n+---+");
+                Console.WriteLine(" O  |");
+                Console.WriteLine("/|  |");
+                Console.WriteLine("    |");
+                Console.WriteLine("   ===");
+            }
+            else if (wrong == 4)
+            {
+                Console.WriteLine("\n+---+");
+                Console.WriteLine(" O  |");
+                Console.WriteLine("/|\\ |");
+                Console.WriteLine("    |");
+                Console.WriteLine("   ===");
+            }
+            else if (wrong == 5)
+            {
+                Console.WriteLine("\n+---+");
+                Console.WriteLine(" O  |");
+                Console.WriteLine("/|\\ |");
+                Console.WriteLine("/   |");
+                Console.WriteLine("   ===");
+            }
+            else if (wrong == 6)
+            {
+                Console.WriteLine("\n+---+");
+                Console.WriteLine(" O   |");
+                Console.WriteLine("/|\\  |");
+                Console.WriteLine("/ \\  |");
+                Console.WriteLine("    ===");
+                Console.WriteLine("You lost, try again.");
+            }
+            
+        }
         }
 
         // Question Class for Minigames
