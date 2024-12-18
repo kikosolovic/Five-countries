@@ -1238,7 +1238,6 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                     Console.WriteLine("Correct! " + question.Explanation);
                     helper.incrementScore(1);
                     minigameScoreSewage++;
-                    // I changed it from minigameScore to minigameScoreSewage because the code somehow confuses minigameScore with score and the wrong result appears when you finish the quiz
                 }
                 else
                 {
@@ -1253,17 +1252,25 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                 questionNumber++;
             }
 
-            // Final Minigame Results
             Console.ForegroundColor = ConsoleColor.Blue;
             helper.WriteWithDelay($"\nGame Over! You scored {minigameScoreSewage}/{questions.Count}.");
             if (minigameScoreSewage == questions.Count)
+            {
                 helper.WriteWithDelay("You found all the tools that you'd need. Then you fixed or replaced all of the valves," +
                 " pipes and sensors. Afterwards you managed to unclog the pipes\nand finally did a systems check to see if everything is operational once more. And it is, thanks to you.");
+                Program._game.currentCountry.currentRoom.minigameCompleted = true;
+            }
             else if (minigameScoreSewage < questions.Count && minigameScoreSewage != 0)
+            {
                 helper.WriteWithDelay("You found all the tools that you'd need. You managed to unclog the pipes but just barely and you couldn't do\nanything with the valves, pipes and sensors." +
                 "Perhaps it's better if you refresh your memory and then try again.");
+                Program._game.currentCountry.currentRoom.minigameCompleted = false;
+            }
             else if (minigameScoreSewage == 0)
+            {
                 helper.WriteWithDelay("There's a lot that you haven't learned yet. Come back again.");
+                Program._game.currentCountry.currentRoom.minigameCompleted = false;
+            }
             Console.ResetColor();
 
         }
@@ -1372,13 +1379,23 @@ Your task is to find the best spots for wind power plants. You will be shown a m
             Console.ForegroundColor = ConsoleColor.Blue;
             helper.WriteWithDelay($"\nGame Over! You scored {minigameScoreField}/{questions.Count}.");
             if (minigameScoreField == questions.Count)
+            {
                 helper.WriteWithDelay("You successfully located the underground water source. You connected the tubes to the water and installed the system. " +
                 "\nWhen you were done, you checked if the water is properly irrigating the soil. And it is, due to your valiant efforts.");
+                Program._game.currentCountry.currentRoom.minigameCompleted = true;
+
+            }
             else if (minigameScoreField < questions.Count && minigameScoreField != 0)
+            {
                 helper.WriteWithDelay("You successfully located the underground water source. You connected the tubes to the water and installed the system." +
                 "\nWhen you were done, you checked if the water is properly irrigating the soil. But it's not, the water is not leaking out of the tubes. You better try again.");
+                Program._game.currentCountry.currentRoom.minigameCompleted = false;
+            }
             else if (minigameScoreField == 0)
+            {
                 helper.WriteWithDelay("There's a lot that you haven't learned yet. Come back again.");
+                Program._game.currentCountry.currentRoom.minigameCompleted = false;
+            }
             Console.ResetColor();
 
         }
