@@ -528,7 +528,67 @@ Your task is to find the best spots for wind power plants. You will be shown a m
 
         }
          
-        public void tribeHangman(int wrong)
+        public void tribeHangman(int wrong){
+            if (wrong == 0)
+            {
+                Console.WriteLine("\n+---+");
+                Console.WriteLine("    |");
+                Console.WriteLine("    |");
+                Console.WriteLine("    |");
+                Console.WriteLine("   ===");
+            }
+            else if (wrong == 1)
+            {
+                Console.WriteLine("\n+---+");
+                Console.WriteLine("O   |");
+                Console.WriteLine("    |");
+                Console.WriteLine("    |");
+                Console.WriteLine("   ===");
+            }
+            else if (wrong == 2)
+            {
+                Console.WriteLine("\n+---+");
+                Console.WriteLine("O   |");
+                Console.WriteLine("|   |");
+                Console.WriteLine("    |");
+                Console.WriteLine("   ===");
+            }
+            else if (wrong == 3)
+            {
+                Console.WriteLine("\n+---+");
+                Console.WriteLine(" O  |");
+                Console.WriteLine("/|  |");
+                Console.WriteLine("    |");
+                Console.WriteLine("   ===");
+            }
+            else if (wrong == 4)
+            {
+                Console.WriteLine("\n+---+");
+                Console.WriteLine(" O  |");
+                Console.WriteLine("/|\\ |");
+                Console.WriteLine("    |");
+                Console.WriteLine("   ===");
+            }
+            else if (wrong == 5)
+            {
+                Console.WriteLine("\n+---+");
+                Console.WriteLine(" O  |");
+                Console.WriteLine("/|\\ |");
+                Console.WriteLine("/   |");
+                Console.WriteLine("   ===");
+            }
+            else if (wrong == 6)
+            {
+                Console.WriteLine("\n+---+");
+                Console.WriteLine(" O   |");
+                Console.WriteLine("/|\\  |");
+                Console.WriteLine("/ \\  |");
+                Console.WriteLine("    ===");
+                Console.WriteLine("You lost, try again.");
+            }
+            
+        }
+        public void tribeHangmanMain()
 
         {
 
@@ -600,66 +660,6 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                 }
             
             Console.WriteLine("\r\nThank you for playing :)");
-          
-
-            if (wrong == 0)
-            {
-                Console.WriteLine("\n+---+");
-                Console.WriteLine("    |");
-                Console.WriteLine("    |");
-                Console.WriteLine("    |");
-                Console.WriteLine("   ===");
-            }
-            else if (wrong == 1)
-            {
-                Console.WriteLine("\n+---+");
-                Console.WriteLine("O   |");
-                Console.WriteLine("    |");
-                Console.WriteLine("    |");
-                Console.WriteLine("   ===");
-            }
-            else if (wrong == 2)
-            {
-                Console.WriteLine("\n+---+");
-                Console.WriteLine("O   |");
-                Console.WriteLine("|   |");
-                Console.WriteLine("    |");
-                Console.WriteLine("   ===");
-            }
-            else if (wrong == 3)
-            {
-                Console.WriteLine("\n+---+");
-                Console.WriteLine(" O  |");
-                Console.WriteLine("/|  |");
-                Console.WriteLine("    |");
-                Console.WriteLine("   ===");
-            }
-            else if (wrong == 4)
-            {
-                Console.WriteLine("\n+---+");
-                Console.WriteLine(" O  |");
-                Console.WriteLine("/|\\ |");
-                Console.WriteLine("    |");
-                Console.WriteLine("   ===");
-            }
-            else if (wrong == 5)
-            {
-                Console.WriteLine("\n+---+");
-                Console.WriteLine(" O  |");
-                Console.WriteLine("/|\\ |");
-                Console.WriteLine("/   |");
-                Console.WriteLine("   ===");
-            }
-            else if (wrong == 6)
-            {
-                Console.WriteLine("\n+---+");
-                Console.WriteLine(" O   |");
-                Console.WriteLine("/|\\  |");
-                Console.WriteLine("/ \\  |");
-                Console.WriteLine("    ===");
-                Console.WriteLine("You lost, try again.");
-            }
-            
         }
         }
 
