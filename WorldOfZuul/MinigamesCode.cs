@@ -658,9 +658,9 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                         printLines(randomWord);
                     }
                 }
-            
+            }
             Console.WriteLine("\r\nThank you for playing :)");
-        }
+        
         }
 
         // Question Class for Minigames
