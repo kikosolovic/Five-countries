@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "eIeBfZTm9P4=",
+  "dgSpecHash": "ELv8+syYtqUWVrj3rAQ0AMfGCxSNNXLo1UjYofkXuNhJbyTW45/A4P5Ktk+1LW5QCfQxTdD+QA85UHdV0RqKqA==",
   "success": true,
-  "projectFilePath": "C:\\Uni\\5C 7.11\\Five-countries\\WorldOfZuul\\WorldOfZuul.csproj",
+  "projectFilePath": "/home/kikosolovic/Desktop/SCHOOL/OOP/FiveCountries3/WorldOfZuul/WorldOfZuul.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Acer\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+    "/home/kikosolovic/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512"
   ],
   "logs": []
 }
