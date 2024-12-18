@@ -223,17 +223,17 @@ Your task is to find the best spots for Photovoltaic(PV) power plants. You will 
             if (score == 3)
             {
                 Console.WriteLine("Congrats! You have chosen the best cities available for our new investments!");
-                Program._game.currentCountry.currentRoom.minigameCompleted  = true;
+                Program._game.currentCountry.currentRoom.minigameCompleted = true;
             }
             else if (score == 2)
             {
                 Console.WriteLine("Good job! You have chosen some of the best cities available for our new investments!");
-                Program._game.currentCountry.currentRoom.minigameCompleted  = true;
+                Program._game.currentCountry.currentRoom.minigameCompleted = true;
             }
             else if (score == 1)
             {
                 Console.WriteLine("Good! You have chosen one of the best cities available for our new investments!");
-                Program._game.currentCountry.currentRoom.minigameCompleted  = true;
+                Program._game.currentCountry.currentRoom.minigameCompleted = true;
             }
             else
             {
@@ -348,12 +348,12 @@ Your task is to find the best spots for wind power plants. You will be shown a m
             if (score == 2)
             {
                 Console.WriteLine("Congrats! You have chosen both of the best available places for our new investments!");
-                Program._game.currentCountry.currentRoom.minigameCompleted  = true;
+                Program._game.currentCountry.currentRoom.minigameCompleted = true;
             }
             else if (score == 1)
             {
                 Console.WriteLine("Good job! You have chosen one of the best places available for our new investments!");
-                Program._game.currentCountry.currentRoom.minigameCompleted  = true;
+                Program._game.currentCountry.currentRoom.minigameCompleted = true;
             }
             else
             {
@@ -422,7 +422,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
             helper.WriteWithDelay("\n'This city is working hard to make its homes more eco-friendly,' the ambassador explains.");
             helper.WriteWithDelay("\n'Your mission is to help by making sustainable choices in this eco-friendly home makeover challenge.'");
         }
-         
+
         public static int printWord(List<char> guessedLetters, String randomWord)
         {
             int counter = 0;
@@ -466,7 +466,14 @@ Your task is to find the best spots for wind power plants. You will be shown a m
             do
             {
                 Console.Write("Guess a number between 1 and 500: ");
-                guess = int.Parse(Console.ReadLine());
+
+
+                var input = Console.ReadLine();
+                if (string.IsNullOrEmpty(input) || int.TryParse(input, out guess) == false)
+                {
+                    Console.WriteLine("Invalid input.");
+                    return;
+                }
 
                 if (guess < treesNumber)
                 {
@@ -479,7 +486,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
             } while (guess != treesNumber);
 
             Console.WriteLine("Congratulations! You guessed the number of trees cut. Now you know how many seeds will be needed.");
-             Program._game.currentCountry.currentRoom.minigameCompleted  = true;
+            Program._game.currentCountry.currentRoom.minigameCompleted = true;
         }
 
         public void beatMiners()
@@ -490,7 +497,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
             string[] choices = { "rock", "paper", "scissors" };
             Console.WriteLine("In order to end the illegal mining you need to beat them in a 'rock paper scissors' battle");
 
-            while (score<1)
+            while (score < 1)
             {
                 Console.Write("Enter your choice (rock, paper, scissors): ");
                 string playerChoice = Console.ReadLine().ToLower();
@@ -515,93 +522,21 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                          (playerChoice == "scissors" && computerChoice == "paper"))
                 {
                     Console.WriteLine("You won! Explore Brazil and try other minigames");
-                    Program._game.currentCountry.currentRoom.minigameCompleted  = true;
+                    Program._game.currentCountry.currentRoom.minigameCompleted = true;
                     break;
                 }
                 else
                 {
                     Console.WriteLine("They won! Try again with a different strategy");
                 }
-                
-                
+
+
             }
 
         }
-         
+
         public void tribeHangman(int wrong)
-
         {
-
-            Console.WriteLine("Welcome to hangman you need to guess the word chosen by the tribe leader to pass :)");
-            Console.WriteLine("-----------------------------------------");
-
-            Random random = new Random();
-            List<string> wordDictionary = new List<string> { "sustainability" };
-            int index = random.Next(wordDictionary.Count);
-            String randomWord = wordDictionary[index];
-
-            foreach (char x in randomWord)
-            {
-                Console.Write("_ ");
-            }
-
-            int lengthOfWordToGuess = randomWord.Length;
-            int amountOfTimesWrong = 0;
-            List<char> currentLettersGuessed = new List<char>();
-            int currentLettersRight = 0;
-
-            while (amountOfTimesWrong != 6 && currentLettersRight != lengthOfWordToGuess)
-            {
-                Console.Write("\nLetters guessed so far: ");
-                foreach (char letter in currentLettersGuessed)
-                {
-                    Console.Write(letter + " ");
-                }
-                
-                Console.Write("\nGuess a letter: ");
-                char letterGuessed = Console.ReadLine()[0];
-                
-                if (currentLettersGuessed.Contains(letterGuessed))
-                {
-                    Console.Write("\r\n You have already guessed this letter");
-                    tribeHangman(amountOfTimesWrong);
-                    currentLettersRight = printWord(currentLettersGuessed, randomWord);
-                    printLines(randomWord);
-                }
-                else
-                {
-                   
-                    bool right = false;
-                    for (int i = 0; i < randomWord.Length; i++) { if (letterGuessed == randomWord[i]) { right = true; } }
-
-                   
-                    if (right)
-
-                    {
-                        tribeHangman(amountOfTimesWrong);
-                       
-                        currentLettersGuessed.Add(letterGuessed);
-                        currentLettersRight = printWord(currentLettersGuessed, randomWord);
-                        Console.Write("\r\n");
-                        printLines(randomWord);
-                    }
-                    
-                    else
-                    {
-                        amountOfTimesWrong += 1;
-                        currentLettersGuessed.Add(letterGuessed);
-
-                        tribeHangman(amountOfTimesWrong);
-                    
-                        currentLettersRight = printWord(currentLettersGuessed, randomWord);
-                        Console.Write("\r\n");
-                        printLines(randomWord);
-                    }
-                }
-            
-            Console.WriteLine("\r\nThank you for playing :)");
-          
-
             if (wrong == 0)
             {
                 Console.WriteLine("\n+---+");
@@ -659,8 +594,81 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                 Console.WriteLine("    ===");
                 Console.WriteLine("You lost, try again.");
             }
-            
+
         }
+        public void tribeHangmanMain()
+
+        {
+
+            Console.WriteLine("Welcome to hangman you need to guess the word chosen by the tribe leader to pass :)");
+            Console.WriteLine("-----------------------------------------");
+
+            Random random = new Random();
+            List<string> wordDictionary = new List<string> { "sustainability" };
+            int index = random.Next(wordDictionary.Count);
+            String randomWord = wordDictionary[index];
+
+            foreach (char x in randomWord)
+            {
+                Console.Write("_ ");
+            }
+
+            int lengthOfWordToGuess = randomWord.Length;
+            int amountOfTimesWrong = 0;
+            List<char> currentLettersGuessed = new List<char>();
+            int currentLettersRight = 0;
+
+            while (amountOfTimesWrong != 6 && currentLettersRight != lengthOfWordToGuess)
+            {
+                Console.Write("\nLetters guessed so far: ");
+                foreach (char letter in currentLettersGuessed)
+                {
+                    Console.Write(letter + " ");
+                }
+
+                Console.Write("\nGuess a letter: ");
+                char letterGuessed = Console.ReadLine()[0];
+
+                if (currentLettersGuessed.Contains(letterGuessed))
+                {
+                    Console.Write("\r\n You have already guessed this letter");
+                    tribeHangman(amountOfTimesWrong);
+                    currentLettersRight = printWord(currentLettersGuessed, randomWord);
+                    printLines(randomWord);
+                }
+                else
+                {
+
+                    bool right = false;
+                    for (int i = 0; i < randomWord.Length; i++) { if (letterGuessed == randomWord[i]) { right = true; } }
+
+
+                    if (right)
+
+                    {
+                        tribeHangman(amountOfTimesWrong);
+
+                        currentLettersGuessed.Add(letterGuessed);
+                        currentLettersRight = printWord(currentLettersGuessed, randomWord);
+                        Console.Write("\r\n");
+                        printLines(randomWord);
+                    }
+
+                    else
+                    {
+                        amountOfTimesWrong += 1;
+                        currentLettersGuessed.Add(letterGuessed);
+
+                        tribeHangman(amountOfTimesWrong);
+
+                        currentLettersRight = printWord(currentLettersGuessed, randomWord);
+                        Console.Write("\r\n");
+                        printLines(randomWord);
+                    }
+                }
+            }
+            Console.WriteLine("\r\nThank you for playing :)");
+
         }
 
         // Question Class for Minigames
@@ -670,7 +678,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
             public Dictionary<char, string> Options { get; set; }
             public char CorrectOption { get; set; }
             public string Explanation { get; set; }
-        
+
         }
         // Method to get a valid option from the player
         private char GetValidOption()

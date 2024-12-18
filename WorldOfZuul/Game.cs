@@ -22,11 +22,9 @@ namespace FiveCountries
                 }
             }
         }
-        private Country? previousCountry; //back command for country if needed
-
 
         public int score { get; set; } = 0;
-        private string currentItem { get; set; }
+
 
 
         public Game()
@@ -192,8 +190,6 @@ namespace FiveCountries
             {
                 Console.Clear();
                 helper.loading();
-
-                previousCountry = currentCountry;
                 currentCountry = currentCountry?.Exits[country];
 
             }
