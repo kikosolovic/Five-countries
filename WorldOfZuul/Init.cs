@@ -54,7 +54,7 @@ namespace FiveCountries
             Country USA = countries[5];
 
             // //Initialize rooms to Denmark
-            Denmark.InitRoom("Home", "You're at home.");
+            Denmark.InitRoom("Home", "You're at home right now. You have other places to be, however.");
 
             // //initialize rooms to Haiti
             Haiti.InitRoom("Outside", "You're at the beautiful park in the middle of the complex.");
@@ -85,8 +85,8 @@ namespace FiveCountries
             India.InitRoom("Outside Sewage Treatment Plant", "You find yourself outside the abandoned plant. It looks dilapidated and dirty. The entrance to the lobby is to the north.");
             India.InitRoom("Lobby", "You're inside the lobby of the plant. There's trash on the ground everywhere. The tank room is to the east.");
             India.InitRoom("Storage Room", "There's nothing to see here that's of importance.");
-            India.InitRoom("Tank Room", "You're inside the tank room.", new MinigameDelegate(minigameFunctions.SewagePlantQuiz));
-            India.InitRoom("Crop Field", "You're in front of the crop field.", new MinigameDelegate(minigameFunctions.CropFieldQuiz));
+            India.InitRoom("Tank Room", "You're inside the tank room.", new MinigameDelegate(minigameFunctions.SewagePlantQuiz), "restored function to the village of Kaithi's sewage treatment plant.");
+            India.InitRoom("Crop Field", "You're in front of the crop field.", new MinigameDelegate(minigameFunctions.CropFieldQuiz), "installed a brand new drip irrigation system to a crop field in the Indian state of Uttar Pradesh.");
 
             India.addExit("UN Outpost", new List<string> { "north", "south" }, new List<string> { "Outside Sewage Treatment Plant", "Crop Field" });
             India.addExit("Outside Sewage Treatment Plant", new List<string> { "south", "north" }, new List<string> { "UN Outpost", "Lobby" });
@@ -98,9 +98,9 @@ namespace FiveCountries
 
 
             // //initialize rooms to Brazil
-            Brazil.InitRoom("Deforestated Area", "You are now in a Deforestated Area");
-            Brazil.InitRoom("Mining Zone", "You are now in a Illegal Mining Zone.");
-            Brazil.InitRoom("Tribe", "You are now in a Indigenous tribe.");
+            Brazil.InitRoom("Deforestated Area", "You are now in a Deforestated Area", new MinigameDelegate(minigameFunctions.guessTree), "beaten guessing number of trees game");
+            Brazil.InitRoom("Mining Zone", "You are now in a Illegal Mining Zone.", new MinigameDelegate(minigameFunctions.beatMiners), "beaten illegal miners game");
+            Brazil.InitRoom("Tribe", "You are now in a Indigenous tribe."/*, new MinigameDelegate(minigameFunctions.tribeHangman), "beaten tribe hangman game"*/);
            
             Brazil.addExit("Deforestated Area", new List<string> { "south" }, new List<string> { "Mining Zone"});
             Brazil.addExit("Mining Zone", new List<string> { "north","south" }, new List<string> { "Deforestated Area","Tribe" });
