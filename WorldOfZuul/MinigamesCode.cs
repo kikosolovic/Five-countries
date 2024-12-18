@@ -239,7 +239,6 @@ Your task is to find the best spots for Photovoltaic(PV) power plants. You will 
             {
                 Console.WriteLine("You have not chosen any of the best cities available for our new investments!");
             }
-            Console.WriteLine("You have scored: " + score + " points");
         }
         public void windpowerMinigame()
         {
@@ -359,7 +358,6 @@ Your task is to find the best spots for wind power plants. You will be shown a m
             {
                 Console.WriteLine("You have not chosen any of the best places available for our new investments!");
             }
-            Console.WriteLine("You have scored: " + score + " points");
         }
         //quick response function, makes the text yellow, meaning that somebody said that
         public void say(string text, string response, string options)
