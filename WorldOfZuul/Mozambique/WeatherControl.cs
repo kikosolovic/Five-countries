@@ -42,13 +42,13 @@ namespace WorldOfZuul
                     }
                     if (_currentWeather == "rainy")
                     {
-                        helper.say(write: "It's getting rainy outside. You should hide in case a  storm is comming");
+                        helper.say(write: "It's getting rainy outside. You should hide in case a storm is comming");
                         Thread.Sleep(10000);
                         _currentWeather = _random.Next(2) == 0 ? "stormy" : "rainy";
                     }
                     if (_currentWeather == "stormy")
                     {
-                        helper.say(write: "It's getting stormy outside. You have 10 seconds to get into a shelter inside the village or you will be swept back whence you came from");
+                        helper.say(write: "It's getting stormy outside. You have 10 seconds to hide inside a shelter or you will be swept!");
                         _10toSweep = true;
                         Thread.Sleep(10000);
                         sweep();

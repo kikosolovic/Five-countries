@@ -113,10 +113,6 @@ namespace FiveCountries
             }
         }
 
-        public void testMinigameDelegate()
-        {
-            Console.WriteLine("succesfuly ran a function passed as argument");
-        }
 
         public void photovoltaicMinigame()
         {
@@ -361,36 +357,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
             }
             Console.WriteLine("You have scored: " + score + " points");
         }
-        //quick response function, makes the text yellow, meaning that somebody said that
-        public void say(string text, string response, string options)
-        {//add pretty text, slow rolling or sometjhig
 
-            if (text != null)
-            {
-                Console.ForegroundColor = ConsoleColor.Blue;
-                helper.WriteWithDelay(">> " + text);
-
-                Console.ResetColor();
-            }
-
-            {
-                if (response != null)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    helper.WriteWithDelay(">> " + response);
-                    Console.ResetColor();
-                }
-                {
-                    if (options != null)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        helper.WriteWithDelay(">> " + options);
-                        Console.ResetColor();
-                    }
-
-                }
-            }
-        }
         public void EcoFriendlyHomeMakeover()
         {
             // Pre-game Dialogue
@@ -491,6 +458,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
 
         public void beatMiners()
         {
+            string input = Console.ReadLine();
             int score = 0;
 
             Random random = new Random();
@@ -701,6 +669,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
         }
         public void RecyclingSortingMinigameNYC()
         {
+            int score = 0;
             StorylineManager preGameDialogue = new StorylineManager("Dialogues/nycDialogue.json");
 
             while (true)
@@ -761,14 +730,14 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Correct! This item belongs in recycling.");
-                    helper.incrementScore(1);
+                    score++;
                 }
                 else if ((item == "banana peel" || item == "food scraps" || item == "egg shells" ||
                           item == "coffee grounds") && response == "compost")
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Correct! This item should go to compost.");
-                    helper.incrementScore(1);
+                    score++;
                 }
                 else if ((item == "pizza box with grease" || item == "electronics" ||
                           item == "plastic bag" || item == "styrofoam cup" ||
@@ -776,7 +745,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Correct! This item belongs in the trash.");
-                    helper.incrementScore(1);
+                    score++;
                 }
                 else
                 {
@@ -788,7 +757,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
             }
 
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine($"\nTime's up! You sorted {helper.getScore()} items correctly.");
+            Console.WriteLine($"\nTime's up! You sorted {score} items correctly.");
             Console.WriteLine("The ambassador smiles. 'You've done well. Every properly sorted item is one less going to waste.'");
             Console.WriteLine("The recycling team applauds your effort, inspired by your work.");
             Console.ResetColor();
@@ -898,7 +867,6 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Correct! You placed it in the right bin.");
-                        helper.incrementScore(1);
                         minigameScore++;
                     }
                     else
@@ -922,10 +890,10 @@ Your task is to find the best spots for wind power plants. You will be shown a m
 
             // Display the final score
             Console.ForegroundColor = ConsoleColor.Blue;
-            helper.WriteWithDelay($"\nGame Over! You sorted {helper.getScore()}/{totalItems} items correctly.");
-            if (helper.getScore() == totalItems)
+            helper.WriteWithDelay($"\nGame Over! You sorted {minigameScore.ToString()}/{totalItems} items correctly.");
+            if (minigameScore == totalItems)
                 helper.WriteWithDelay("Excellent! You're a composting champion!");
-            else if (helper.getScore() >= totalItems / 2)
+            else if (minigameScore >= totalItems / 2)
                 helper.WriteWithDelay("Good job! A bit more practice, and you'll master composting.");
             else
                 helper.WriteWithDelay("Keep practicing to improve your composting skills.");
@@ -1013,6 +981,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
 
             int repairStage = 1;
             int mistakes = 0;
+            int minigameScore = 0;
 
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($"You are tasked with repairing a {currentDevice}.");
@@ -1041,28 +1010,28 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                 if ((action == "1" && partToRepair == "Battery") ||
                     (action == "2" && partToRepair == "Charging Port"))
                 {
-                    helper.incrementScore(15);
+                    minigameScore += 15;
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"Great! You successfully repaired the {partToRepair}.");
                     Console.ResetColor();
                 }
                 else if (action == "3" && (partToRepair == "Motherboard" || partToRepair == "Power Supply"))
                 {
-                    helper.incrementScore(20);
+                    minigameScore += (20);
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"Nice job! You used the soldering iron correctly on the {partToRepair}.");
                     Console.ResetColor();
                 }
                 else if (action == "4" && (partToRepair == "Hard Drive" || partToRepair == "Screen"))
                 {
-                    helper.incrementScore(10);
+                    minigameScore += (10);
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"The multimeter helped you diagnose the problem with the {partToRepair}.");
                     Console.ResetColor();
                 }
                 else if (action == "5" && partToRepair == "Battery")
                 {
-                    helper.incrementScore(25);
+                    minigameScore += (25);
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"You successfully recalibrated the battery with the heat gun.");
                     Console.ResetColor();
@@ -1070,14 +1039,14 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                 else if (action == "6" && (partToRepair == "Screen" || partToRepair == "Battery"))
                 {
                     mistakes += 1;
-                    helper.incrementScore(-10); ;
+                    minigameScore -= (10); ;
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine($"Oops! The hammer broke the part. Avoid using the hammer on fragile components!");
                     Console.ResetColor();
                 }
                 else if (action == "7" && partToRepair == "Controller Port")
                 {
-                    helper.incrementScore(15);
+                    minigameScore += (15);
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"You successfully removed the controller port using the pry tool.");
                     Console.ResetColor();
@@ -1085,7 +1054,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                 else
                 {
                     mistakes += 1;
-                    helper.incrementScore(-5);
+                    minigameScore -= (5);
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine($"Incorrect tool choice. Be more careful next time!");
                     Console.ResetColor();
@@ -1094,13 +1063,13 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                 repairStage++;
 
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine($"Your current score is: {helper.getScore()}");
+                Console.WriteLine($"Your current score is: {minigameScore}");
                 Console.ResetColor();
 
                 if ((DateTime.Now - startTime).TotalSeconds >= timeLimit)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine($"Time's up! You repaired the device with a final score of {helper.getScore()}.");
+                    Console.WriteLine($"Time's up! You repaired the device with a final score of {minigameScore}.");
                     Console.ResetColor();
                     break;
                 }
@@ -1238,7 +1207,6 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Correct! " + question.Explanation);
-                    helper.incrementScore(1);
                     minigameScoreSewage++;
                     // I changed it from minigameScore to minigameScoreSewage because the code somehow confuses minigameScore with score and the wrong result appears when you finish the quiz
                 }
@@ -1355,7 +1323,6 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Correct! " + question.Explanation);
-                    helper.incrementScore(1);
                     minigameScoreField++;
                 }
                 else
