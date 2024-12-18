@@ -326,7 +326,7 @@ Other usefull commands:
     <map> to print the map
     <stats> to know how many quests you have completed
     <playagain> to repeat the quest
-    <help> to print this available commands
+    <help> to print the available commands again
     <quit> to quit the game
 
 Quest specific commands might be revealed once you begin a quest.

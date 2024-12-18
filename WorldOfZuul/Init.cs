@@ -60,8 +60,8 @@ namespace FiveCountries
             Haiti.InitRoom("Outside", "You're at the beautiful park in the middle of the complex.");
             Haiti.InitRoom("Lobby", "You're inside the main hall of the complex.");
             //Haiti.InitRoom("Corridor", "This corridor leads to the other rooms.");
-            Haiti.InitRoom("PV Lab", "It's pretty dark here. You are in the PV Lab. \n We often test solar panels here, so we need to keep it dark. \n You can see a lot of solar panels and inverters around you. \n This is the place where we design and plan future solar panels.", new MinigameDelegate(minigameFunctions.photovoltaicMinigame),"choosen best locations for some solar power plants");
-            Haiti.InitRoom("Wind Lab", "It's windy here! You are in the Wind Lab. You can see a lot of wind turbines and anemometers around you.\nThere are also countless TVs with real-world and simulation data about wind power plants.\nThis is the place where we design and plan future wind turbines.", new MinigameDelegate(minigameFunctions.windpowerMinigame), "choosen best locations for some wind power plants");
+            Haiti.InitRoom("PV Lab", "It's pretty dark here. You are in the PV Lab. \n We often test solar panels here, so we need to keep it dark. \n You can see a lot of solar panels and inverters around you. \n This is the place where we design and plan future solar panels.", new MinigameDelegate(minigameFunctions.photovoltaicMinigame),"chosen the best locations for the solar power plants");
+            Haiti.InitRoom("Wind Lab", "It's windy here! You are in the Wind Lab. You can see a lot of wind turbines and anemometers around you.\nThere are also countless TVs with real-world and simulation data about wind power plants.\nThis is the place where we design and plan future wind turbines.", new MinigameDelegate(minigameFunctions.windpowerMinigame), "chosen the best locations for the wind power plants");
             //Haiti.InitRoom("Energy Storage Lab", "This is the Energy Storage Lab. You can see a lot of batteries and capacitors around you.\nThis is the place where we design and plan future energy storages.");
             //Haiti.InitRoom("Closet", "It's silent here, and also nothing intresting, just some old brooms, mops and tons of dust.");
             //Haiti.InitRoom("Infrastructure Building", "Building of the Infrastructure Department");
@@ -110,7 +110,7 @@ namespace FiveCountries
             //initialize rooms to Mozambique
             Mozambique.InitRoom("Dock", "You just arrived to Mozambique. The boat dropped you off at a small dock. ", new MinigameDelegate(minigameFunctions.Dock));
             Mozambique.InitRoom("Village", "You find yourself in a small village. People are walking around. ", new MinigameDelegate(minigameFunctions.Village));
-            Mozambique.InitRoom("Field", "You are in a rice field. There are paths in between the individual rice plants. Locals are caring for  the rice, this harvest is going to be plentiful.", new MinigameDelegate(minigameFunctions.Field), "saved the rice field from flooding in Mozambique.");
+            Mozambique.InitRoom("Field", "You are in a rice field. There are paths in between the individual rice plants. Locals are caring for the rice, this harvest is going to be plentiful.", new MinigameDelegate(minigameFunctions.Field), "saved the rice field from flooding in Mozambique.");
             Mozambique.InitRoom("Hill", "You have a view of the whole village and the oocean behind it.", new MinigameDelegate(minigameFunctions.Hill), "fixed the weather station and helped the village prepare for bad weather in advance in Mozambique.");
             Mozambique.InitRoom("Shelter", "You are inside a cycloon shelter. The harsh weather can't get to you, or so they say.", new MinigameDelegate(minigameFunctions.Shelter));
 

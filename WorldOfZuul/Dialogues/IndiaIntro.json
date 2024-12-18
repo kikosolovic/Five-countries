@@ -21,13 +21,13 @@
                     "opt1": {
                         "text": "Alright, what about the second mission?",
                         "response": "Due to the overprivatization of underground springs, there aren't enough left to support India's crop fields. Your mission is to find an underground water source. We believe that one is located just below the crop field that is to the south. When you find it, you have to install a drip irrigation system which allows for minimal usage of water while effectively soaking the crops. After all, this is what we're trying to avoid here - the unneccessary consumption of water.",
-                        "options": "1. Acknowledge the information.  2. Ask him what repercussions there are from the lack of underground springs.",
+                        "options": "1. Acknowledge the information.  2. Ask him what repercussions there are from the lack of underground springs regarding agriculture?",
                         "opt1": {
                             "text": "OK, I think I have everything I need. I better get to work.",
                             "response": "Very good, sir. Godspeed."
                         },
                         "opt2": {
-                            "text": "What effect does the lack of underground water sources have on the people.",
+                            "text": "What effect does the lack of underground water sources have on the crops?",
                             "response": "Well, if the crop fields don't have proper irrigation systems set up, the farmers will have to rely on seasonal rains. That always leads to a bad yield. So ultimately, with no irrigation comes hunger.",
                             "options": "1. Acknowledge the information.",
                             "opt1": {
@@ -41,17 +41,17 @@
             "opt2": {
                 "text": "What's my objective?",
                 "response": "You're to go to the sewage treatment plant and restore it to working condition.",
-                "options": " 1. Inquire about the second objective",
+                "options": " 1. Inquire about the second objective.",
                 "opt1": {
                     "text": "Alright, what about the second mission?",
                     "response": "Due to the overprivatization of underground springs, there aren't enough left to support India's crop fields. Your mission is to find an underground water source. We believe that one is located just below the crop field that is to the south. When you find it, you have to install a drip irrigation system which allows for minimal usage of water while effectively soaking the crops. After all, this is what we're trying to avoid here - the unneccessary consumption of water.",
-                    "options": "1. Acknowledge the information.  2. Ask him what repercussions there are from the lack of underground springs.",
+                    "options": "1. Acknowledge the information.  2. Ask him what repercussions there are from the lack of underground springs regarding agriculture?",
                     "opt1": {
                         "text": "OK, I think I have everything I need. I better get to work.",
                         "response": "Very good, sir. Godspeed."
                     },
                     "opt2": {
-                        "text": "What effect does the lack of underground water sources have on the people.",
+                        "text": "What effect does the lack of underground water sources have on the crops?",
                         "response": "Well, if the crop fields don't have proper irrigation systems set up, the farmers will have to rely on seasonal rains. That always leads to a bad yield. So ultimately, with no irrigation comes hunger.",
                         "options": "1. Acknowledge the information.",
                         "opt1": {
@@ -65,17 +65,17 @@
         "opt2": {
             "text": "Cut to the chase, what do I need to do.",
             "response": "You're to go to the sewage treatment plant and restore it to working condition.",
-            "options": " 1. Inquire about the second objective",
+            "options": " 1. Inquire about the second objective.",
             "opt1": {
                 "text": "Alright, what about the second mission?",
                 "response": "Due to the overprivatization of underground springs, there aren't enough left to support India's crop fields. Your mission is to find an underground water source. We believe that one is located just below the crop field that is to the south. When you find it, you have to install a drip irrigation system which allows for minimal usage of water while effectively soaking the crops. After all, this is what we're trying to avoid here - the unneccessary consumption of water.",
-                "options": "1. Acknowledge the information.  2. Ask him what repercussions there are from the lack of underground springs.",
+                "options": "1. Acknowledge the information.  2. Ask him what repercussions there are from the lack of underground springs regarding agriculture?",
                 "opt1": {
                     "text": "OK, I think I have everything I need. I better get to work.",
                     "response": "Very good, sir. Godspeed."
                 },
                 "opt2": {
-                    "text": "What effect does the lack of underground water sources have on the people.",
+                    "text": "What effect does the lack of underground water sources have on the crops?",
                     "response": "Well, if the crop fields don't have proper irrigation systems set up, the farmers will have to rely on seasonal rains. That always leads to a bad yield. So ultimately, with no irrigation comes hunger.",
                     "options": "1. Acknowledge the information.",
                     "opt1": {
@@ -89,13 +89,13 @@
     "opt2": {
         "text": "Alright, what about the second mission?",
         "response": "Due to the overprivatization of underground springs, there aren't enough left to support India's crop fields. Your mission is to find an underground water source. We believe that one such source of substantial quantity is located just below the crop field that is to the south. ",
-        "options": "1. Acknowledge the information.  2. Ask him what repercussions there are from the lack of underground springs.",
+        "options": "1. Acknowledge the information.  2. Ask him what repercussions there are from the lack of underground springs regarding agriculture?",
         "opt1": {
             "text": "OK, I think I have everything I need. I better get to work.",
             "response": "Very good, sir. Godspeed."
         },
         "opt2": {
-            "text": "What effect does the lack of underground water sources have on the people.",
+            "text": "What effect does the lack of underground water sources have on the crops?",
             "response": "Well, if the crop fields don't have proper irrigation systems set up, the farmers will have to rely on seasonal rains. That always leads to a bad yield. So ultimately, with no irrigation comes hunger.",
             "options": "1. Acknowledge the information.",
             "opt1": {
