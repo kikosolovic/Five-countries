@@ -36,10 +36,11 @@ namespace FiveCountries
 
         public void Play()
         {
+            Console.ResetColor();
             Parser parser = new();
             CustomFunctions customFunctions = new();
 
-
+            Console.ResetColor();
             PrintWelcome();
             PrintHelp();
 
@@ -162,6 +163,7 @@ namespace FiveCountries
             Console.WriteLine("Thank you for playing Five Countries!");
             Console.WriteLine("These are your stats: ");
             this.stats();
+            Console.ResetColor();
         }
 
         public void Move(string direction)
