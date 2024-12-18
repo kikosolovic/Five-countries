@@ -1253,7 +1253,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
             if (minigameScoreSewage == questions.Count)
                 helper.WriteWithDelay("You found all the tools that you'd need. Then you fixed or replaced all of the valves," +
                 " pipes and sensors. Afterwards you managed to unclog the pipes\nand finally did a systems check to see if everything is operational once more. And it is, thanks to you.");
-            else if (minigameScoreSewage < questions.Count)
+            else if (minigameScoreSewage < questions.Count && minigameScoreSewage != 0)
                 helper.WriteWithDelay("You found all the tools that you'd need. You managed to unclog the pipes but just barely and you couldn't do\nanything with the valves, pipes and sensors." +
                 "Perhaps it's better if you refresh your memory and then try again.");
             else if (minigameScoreSewage == 0)
@@ -1368,7 +1368,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
             if (minigameScoreField == questions.Count)
                 helper.WriteWithDelay("You successfully located the underground water source. You connected the tubes to the water and installed the system. " +
                 "\nWhen you were done, you checked if the water is properly irrigating the soil. And it is, due to your valiant efforts.");
-            else if (minigameScoreField < questions.Count)
+            else if (minigameScoreField < questions.Count && minigameScoreField != 0)
                 helper.WriteWithDelay("You successfully located the underground water source. You connected the tubes to the water and installed the system." +
                 "\nWhen you were done, you checked if the water is properly irrigating the soil. But it's not, the water is not leaking out of the tubes. You better try again.");
             else if (minigameScoreField == 0)

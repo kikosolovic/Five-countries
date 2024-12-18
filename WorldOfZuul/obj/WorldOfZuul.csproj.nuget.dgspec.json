@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Uni\\5C 7.11\\Five-countries\\WorldOfZuul\\WorldOfZuul.csproj": {}
+    "c:\\Uni\\5C 7.11\\Five-countries\\WorldOfZuul\\WorldOfZuul.csproj": {}
   },
   "projects": {
-    "C:\\Uni\\5C 7.11\\Five-countries\\WorldOfZuul\\WorldOfZuul.csproj": {
+    "c:\\Uni\\5C 7.11\\Five-countries\\WorldOfZuul\\WorldOfZuul.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Uni\\5C 7.11\\Five-countries\\WorldOfZuul\\WorldOfZuul.csproj",
+        "projectUniqueName": "c:\\Uni\\5C 7.11\\Five-countries\\WorldOfZuul\\WorldOfZuul.csproj",
         "projectName": "WorldOfZuul",
-        "projectPath": "C:\\Uni\\5C 7.11\\Five-countries\\WorldOfZuul\\WorldOfZuul.csproj",
+        "projectPath": "c:\\Uni\\5C 7.11\\Five-countries\\WorldOfZuul\\WorldOfZuul.csproj",
         "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-        "outputPath": "C:\\Uni\\5C 7.11\\Five-countries\\WorldOfZuul\\obj\\",
+        "outputPath": "c:\\Uni\\5C 7.11\\Five-countries\\WorldOfZuul\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
