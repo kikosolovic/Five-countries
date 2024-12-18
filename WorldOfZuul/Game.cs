@@ -23,13 +23,11 @@ namespace FiveCountries
             }
         }
 
-        public int score { get; set; } = 0;
 
 
 
         public Game()
         {
-            //initialize the game
             Countries = CreateCountries();
             this.currentCountry = Countries[0];
             CreateRooms(Countries);
@@ -83,8 +81,7 @@ namespace FiveCountries
                         if (currentCountry?.previousRoom == null)
                             Console.WriteLine("You can't go back from here!");
                         else
-                            // currentRoom = previousRoom;
-                            currentCountry.setRoom(currentCountry.previousRoom, currentCountry?.currentRoom);//can only go back once?
+                            currentCountry.setRoom(currentCountry.previousRoom, currentCountry?.currentRoom);
                         break;
                     case "travel":
                         if (command.SecondWord == null || command.SecondWord == "" || command.SecondWord == " ")
@@ -165,7 +162,7 @@ namespace FiveCountries
             Console.WriteLine("Thank you for playing Five Countries!");
             Console.WriteLine("These are your stats: ");
             this.stats();
-        } // instead of all cases implement dynamic method invocation
+        }
 
         public void Move(string direction)
         {
@@ -197,13 +194,10 @@ namespace FiveCountries
             {
                 Console.WriteLine($"You can't go to {country} yet!");
             }
-            // Print the description of the new location (current room)
             Console.WriteLine(currentCountry?.currentRoom?.LongDescription);
 
-            // Trigger the NPC dialogue if arriving in a room in the USA
             if (currentCountry?.ShortDescription == "USA" && currentCountry?.currentRoom != null)
             {
-                // Check for specific room and display unique dialogues
                 switch (currentCountry.currentRoom.ShortDescription)
                 {
                     case "NYC": // New York City
@@ -269,7 +263,7 @@ namespace FiveCountries
                 {
                     totalScore++;
 
-                    if (room.minigamePlayed == true)
+                    if (room.minigameCompleted == true)
                     {
                         completedScore++;
                         FinishedOutcomes.Add(room.outcome);

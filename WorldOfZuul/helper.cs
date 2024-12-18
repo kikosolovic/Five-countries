@@ -13,17 +13,6 @@ namespace FiveCountries
         static CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
 
 
-        //Score
-
-        public static void incrementScore(int score)
-        {
-            Program._game.score += score;
-        }
-
-        public static int getScore()
-        {
-            return Program._game.score;
-        }
 
         //Text
         public static void WriteWithDelay(string text)
