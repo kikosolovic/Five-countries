@@ -28,8 +28,8 @@ namespace FiveCountries
 
         public Game()
         {
-            Countries = CreateCountries();
-            this.currentCountry = Countries[0];
+            Countries = CreateCountries()!;
+            this.currentCountry = Countries[0]!;
             CreateRooms(Countries);
 
         }
