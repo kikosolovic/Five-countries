@@ -123,16 +123,14 @@ namespace FiveCountries
 
 
             // //initialize rooms to USA
-            USA.InitRoom("New York City", "You are in New York City, where waste management and recycling initiatives are critical to reducing urban waste.", new MinigameDelegate(minigameFunctions.RecyclingSortingMinigameNYC));
-            USA.InitRoom("Chicago", "You are in Chicago, focusing on electronic waste recycling and management.", new MinigameDelegate(minigameFunctions.ElectronicRepairChallenge));
-            USA.InitRoom("Houston", "You are in Houston, where industrial waste and hazardous waste management are major concerns.");
-            USA.InitRoom("Los Angeles", "You are in Los Angeles, dealing with challenges related to plastic waste and sustainable disposal methods.", new MinigameDelegate(minigameFunctions.EcoFriendlyHomeMakeover));
-            USA.InitRoom("San Francisco", "You are in San Francisco, known for its zero-waste goals and composting initiatives.", new MinigameDelegate(minigameFunctions.CompostingPuzzleMinigameSFA));
+            USA.InitRoom("New York City", "You are in New York City, where waste management and recycling initiatives are critical to reducing urban waste.", new MinigameDelegate(minigameFunctions.RecyclingSortingMinigameNYC), "helped with the recycling initiative in NYC.");
+            USA.InitRoom("Chicago", "You are in Chicago, focusing on electronic waste recycling and management.", new MinigameDelegate(minigameFunctions.ElectronicRepairChallenge),"helped with the electronic waste crisis in Chicago.");
+            USA.InitRoom("Los Angeles", "You are in Los Angeles, dealing with challenges related to plastic waste and sustainable disposal methods.", new MinigameDelegate(minigameFunctions.EcoFriendlyHomeMakeover),"resolved plastic waste issues in LA.");
+            USA.InitRoom("San Francisco", "You are in San Francisco, known for its zero-waste goals and composting initiatives.", new MinigameDelegate(minigameFunctions.CompostingPuzzleMinigameSFA),"helped with the composting challenge in San Francisco.");
 
             USA.addExit("New York City", new List<string> { "south" }, new List<string> { "Chicago" });
-            USA.addExit("Chicago", new List<string> { "north", "south" }, new List<string> { "New York City", "Houston" });
-            USA.addExit("Houston", new List<string> { "north", "south" }, new List<string> { "Chicago", "Los Angeles" });
-            USA.addExit("Los Angeles", new List<string> { "north", "south" }, new List<string> { "Houston", "San Francisco" });
+            USA.addExit("Chicago", new List<string> { "north", "south" }, new List<string> { "New York City", "Los Angeles" });
+            USA.addExit("Los Angeles", new List<string> { "north", "south" }, new List<string> { "Chicago", "San Francisco" });
             USA.addExit("San Francisco", new List<string> { "north" }, new List<string> { "Los Angeles" });
 
 

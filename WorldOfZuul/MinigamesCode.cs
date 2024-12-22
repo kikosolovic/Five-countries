@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using WorldOfZuul;
 using FiveCountries;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks.Sources;
 
 
 // all minigames/quests should be created here, and referenced in Init.cs
@@ -358,7 +359,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
 
         public void EcoFriendlyHomeMakeover()
         {
-            // Pre-game Dialogue
+            
             StorylineManager preGameDialogue = new StorylineManager("Dialogues/laDialogue.json");
 
             while (true)
@@ -381,11 +382,167 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                 }
             }
 
-            // Contextual Minigame Introduction
+            
             Console.ForegroundColor = ConsoleColor.Cyan;
             helper.WriteWithDelay("\nThe UN Ambassador leads you to a suburban neighborhood in Los Angeles.");
             helper.WriteWithDelay("\n'This city is working hard to make its homes more eco-friendly,' the ambassador explains.");
             helper.WriteWithDelay("\n'Your mission is to help by making sustainable choices in this eco-friendly home makeover challenge.'");
+            Console.ResetColor();
+
+            
+            List<Question> questions = new List<Question>
+    {
+        new Question
+        {
+            Text = "You need a new refrigerator. Which option is the most eco-friendly choice?",
+            Options = new Dictionary<char, string>
+            {
+                { 'A', "A standard refrigerator with a low upfront cost." },
+                { 'B', "An ENERGY STAR-certified refrigerator." },
+                { 'C', "A second-hand refrigerator from a friend." },
+                { 'D', "The largest refrigerator available for more storage." }
+            },
+            CorrectOption = 'B',
+            Explanation = "ENERGY STAR-certified appliances use less energy, saving you money and reducing environmental impact."
+        },
+        new Question
+        {
+            Text = "You're redesigning your garden. What should you plant to conserve water?",
+            Options = new Dictionary<char, string>
+            {
+                { 'A', "A lawn with exotic flowers." },
+                { 'B', "Native drought-resistant plants." },
+                { 'C', "A tropical fruit garden." },
+                { 'D', "Water-intensive grass turf." }
+            },
+            CorrectOption = 'B',
+            Explanation = "Native drought-resistant plants require less water and are well-suited to LA's climate."
+        },
+        new Question
+        {
+            Text = "How can you best reduce household waste?",
+            Options = new Dictionary<char, string>
+            {
+                { 'A', "Use disposable plates and utensils to avoid washing dishes." },
+                { 'B', "Implement a composting system for organic waste." },
+                { 'C', "Throw all waste into the general trash bin." },
+                { 'D', "Burn waste in the backyard." }
+            },
+            CorrectOption = 'B',
+            Explanation = "Composting reduces landfill waste and provides nutrient-rich soil for gardening."
+        },
+        new Question
+        {
+            Text = "Which lighting option is the most energy-efficient for your home?",
+            Options = new Dictionary<char, string>
+            {
+                { 'A', "Incandescent bulbs." },
+                { 'B', "Halogen bulbs." },
+                { 'C', "Compact Fluorescent Lamps (CFLs)." },
+                { 'D', "Light Emitting Diode (LED) bulbs." }
+            },
+            CorrectOption = 'D',
+            Explanation = "LED bulbs are the most energy-efficient and have a longer lifespan than other bulbs."
+        },
+        new Question
+        {
+            Text = "To conserve water during showers, you should:",
+            Options = new Dictionary<char, string>
+            {
+                { 'A', "Take longer showers to relax." },
+                { 'B', "Install a low-flow showerhead." },
+                { 'C', "Keep the water running while not in use." },
+                { 'D', "Shower multiple times a day." }
+            },
+            CorrectOption = 'B',
+            Explanation = "Low-flow showerheads reduce water usage without compromising the shower experience."
+        }
+    };
+
+            int minigameScore = 0;
+            int questionNumber = 1;
+
+            foreach (var question in questions)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                helper.WriteWithDelay($"Question {questionNumber}: {question.Text}");
+                Console.ResetColor();
+
+                foreach (var option in question.Options)
+                {
+                    Console.Write($"{option.Key}. ");
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine(option.Value);
+                    Console.ResetColor();
+                }
+
+                Console.Write("\nEnter your choice (A, B, C, or D): ");
+                char playerChoice = GetValidOption();
+
+                if (char.ToUpper(playerChoice) == question.CorrectOption)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("Correct! " + question.Explanation);
+                    
+                    minigameScore++;
+                    Console.WriteLine("\nCorrect! " + question.Explanation);
+                    minigameScore += 1;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"Incorrect. Correct Answer: {question.CorrectOption}. {question.Options[question.CorrectOption]}");
+                    Console.WriteLine(question.Explanation);
+                }
+
+                Console.ResetColor();
+                Console.WriteLine("\nPress Enter to continue...");
+                Console.ReadLine();
+                questionNumber++;
+            }
+
+            // Final Minigame Results
+            Console.ForegroundColor = ConsoleColor.Blue;
+            helper.WriteWithDelay($"\nGame Over! You scored {minigameScore}/{questions.Count}.");
+            if (minigameScore == questions.Count)
+                helper.WriteWithDelay("Outstanding work! Your decisions showcase the best of sustainable practices.");
+            else if (minigameScore >= questions.Count / 2)
+                helper.WriteWithDelay("Good job! Your efforts show promise, but there's always room for improvement.");
+            else
+                helper.WriteWithDelay("There's a lot to learn about sustainability. Keep trying and you'll get there!");
+            Console.ResetColor();
+            Program._game.currentCountry.currentRoom.minigameCompleted = true;
+
+            // Post-game Dialogue
+            StorylineManager postGameDialogue = new StorylineManager("Dialogues/postGameLA.json");
+
+            while (true)
+            {
+                helper.say(postGameDialogue.text, postGameDialogue.response, postGameDialogue.options);
+
+                if (string.IsNullOrEmpty(postGameDialogue.options)) break;
+
+                var choice = helper.parseinput(Console.ReadLine());
+
+                try
+                {
+                    postGameDialogue.NextLevel(choice);
+                }
+                catch (Exception)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Invalid choice. Please select a valid option.");
+                    Console.ResetColor();
+                }
+            }
+
+            // Final Dialogue Finisher
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            helper.WriteWithDelay("\nUN Ambassador: 'Your eco-friendly choices have inspired this city to push even further for sustainability.'");
+            helper.WriteWithDelay("A local eco-enthusiast named Mia steps forward. 'Thanks to you, people are already adopting these practices in their homes.'");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            helper.WriteWithDelay("\nThe ambassador adds, 'Let's move on to our next destination. There's still work to be done.'");
+            Console.ResetColor();
         }
 
         public static int printWord(List<char> guessedLetters, String randomWord)
@@ -706,12 +863,12 @@ Your task is to find the best spots for wind power plants. You will be shown a m
             string[] items = {
         "plastic bottle", "banana peel", "glass jar", "pizza box with grease",
         "electronics", "paper", "food scraps", "plastic bag", "tin can",
-        "aluminum foil", "egg shells", "styrofoam cup", "cardboard box",
+        "aluminum foil", "egg shells", "styrofoam cup",
         "used tissue", "coffee grounds", "cereal box", "broken toy"
     };
 
             Random random = new Random();
-            int timeLimit = 15;
+            int timeLimit = 40;
             DateTime endTime = DateTime.Now.AddSeconds(timeLimit);
 
             while (DateTime.Now < endTime)
@@ -759,6 +916,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
             Console.WriteLine("The ambassador smiles. 'You've done well. Every properly sorted item is one less going to waste.'");
             Console.WriteLine("The recycling team applauds your effort, inspired by your work.");
             Console.ResetColor();
+            Program._game.currentCountry.currentRoom.minigameCompleted = true;
 
             StorylineManager postGameDialogue = new StorylineManager("Dialogues/postGameNYC.json");
 
@@ -896,6 +1054,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
             else
                 helper.WriteWithDelay("Keep practicing to improve your composting skills.");
             Console.ResetColor();
+            Program._game.currentCountry.currentRoom.minigameCompleted = true;
 
             // Post-game Dialogue
             StorylineManager postGameDialogue = new StorylineManager("Dialogues/postGameSFA.json");
@@ -920,7 +1079,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                 }
             }
 
-            // Final Dialogue Finisher
+            
             Console.ForegroundColor = ConsoleColor.Yellow;
             helper.WriteWithDelay("\nUN Ambassador: 'You've done an amazing job here in San Francisco. Your dedication to sustainability is inspiring.'");
             helper.WriteWithDelay("A local community leader adds: 'Thanks to your efforts, more people understand the value of composting. We're ready to make an even bigger impact!'");

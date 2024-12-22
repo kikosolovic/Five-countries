@@ -1,6 +1,6 @@
 {
-  "text": "As you step outside the clean-up site, the Mayor of Chicago greets you with a warm handshake. Jamal, a local entrepreneur, is also there, holding a bag of composting materials.",
-  "response": "Mayor: 'You've done an outstanding job today. The whole city has taken notice of your efforts, and Jamal looks like he's ready to start a composting program himself.'",
+  "text": "As you step outside the clean-up site, the Mayor of Chicago greets you with a warm handshake. Jamal, a local entrepreneur, is also there, holding a toolkit for repairing electronic devices.",
+  "response": "Mayor: 'You've done an outstanding job today. The whole city has taken notice of your efforts, and Jamal looks like he's ready to launch a new program to repair electronic waste.'",
   "options": "1. Thank the Mayor. 2. Ask Jamal how he feels about the project now.",
   "opt1": {
     "text": "You thank the Mayor for his support and the opportunity to help.",
@@ -18,23 +18,23 @@
     }
   },
   "opt2": {
-    "text": "You ask Jamal how he feels about the composting project now.",
-    "response": "Jamal: 'It's honestly been eye-opening. I never realized how much waste we could divert just by changing our habits. I'm excited to get my business involved in composting and spread the word!'",
+    "text": "You ask Jamal how he feels about the repair initiative now.",
+    "response": "Jamal: 'It's been eye-opening. I never realized how much e-waste could be repurposed with a little know-how. I'm excited to get my business involved in repairs and help reduce waste in the city!'",
     "options": "1. Encourage Jamal to share what he's learned with others. 2. Ask Jamal about his future plans for sustainability.",
     "opt1": {
-      "text": "You encourage Jamal to become an advocate for composting.",
-      "response": "Jamal: 'That's the plan! I'm already looking into some local initiatives, and I want to host a workshop to teach others what I've learned.'",
+      "text": "You encourage Jamal to become an advocate for repairing electronic devices.",
+      "response": "Jamal: 'That's the plan! I'm already looking into some local workshops, and I want to host one to teach others how to repair and recycle their old electronics.'",
       "options": null
     },
     "opt2": {
       "text": "You ask Jamal about his plans for expanding his sustainability efforts.",
-      "response": "Jamal: 'I'm thinking about partnering with local farmers to create a sustainable cycle. It's all about keeping it local and making an impact that people can see and feel.'",
+      "response": "Jamal: 'I'm thinking about partnering with local organizations to set up more repair stations around the city. It's all about giving people the tools to take care of their own waste.'",
       "options": null
     }
   },
   "finalText": {
     "text": "The Mayor nods and Jamal waves goodbye as you prepare to leave.",
-    "response": "Mayor: 'You've done more than just help clean up today—you've sparked a movement. The future of Chicago looks a little greener thanks to your efforts. Let's keep this momentum going, and take it to the next city.'",
+    "response": "Mayor: 'You've done more than just help clean up today—you've sparked a movement. The future of Chicago looks a little greener and more sustainable thanks to your efforts. Let's keep this momentum going, and take it to the next city.'",
     "options": null
   }
 }
