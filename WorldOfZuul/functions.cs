@@ -204,11 +204,6 @@ namespace FiveCountries
                 counter++;
                 if (lastCountOfNotAdded == notAddedRooms.Count){
                     break;
-                    string notAddedRoomsString = "";
-                    foreach(var room3 in notAddedRooms){
-                        notAddedRoomsString += room3.Item1+" "+room3.Item2+" "+room3.Item3+"\n";
-                    }
-                    throw new Exception("Map generation failed. Room(s) not connected. Check the room(s):\n"+notAddedRoomsString);
                 }
             }
             

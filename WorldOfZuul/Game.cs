@@ -55,7 +55,7 @@ namespace FiveCountries
                 string input = "";
 
                 {
-                    input = Console.ReadLine();
+                    input = Console.ReadLine()??"";
                 }
 
                 if (string.IsNullOrEmpty(input))

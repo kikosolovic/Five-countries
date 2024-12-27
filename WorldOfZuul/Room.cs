@@ -17,12 +17,6 @@ namespace FiveCountries
         public MinigameDelegate? minigame { get; set; } = null;
         public Dictionary<string, Room> Exits { get; private set; } = new();
 
-        public Room(string shortDesc, string longDesc)
-        {
-            ShortDescription = shortDesc;
-            LongDescription = longDesc;
-
-        }
         public Room(string shortDesc, string longDesc, MinigameDelegate? minigame, string outcome)
         {
             ShortDescription = shortDesc;
