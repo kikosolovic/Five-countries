@@ -20,7 +20,7 @@ namespace WorldOfZuul
         public static bool _swept = false;
         public static bool _10toSweep = false;
         public static bool _tutorial = true;
-        public static List<string> _toConfigure = new List<string> { "sunny", "rainy", "stormy" };
+        public static List<string> _toConfigure = new List<string> { "cloudy", "rainy", "stormy" };
         private static Random _random = new Random();
 
         public static void StartWeather()
@@ -34,15 +34,15 @@ namespace WorldOfZuul
                 {
                     if (_currentWeather == "windy")
                     {
-                        helper.say(write: "The wind is picking up. In these parts that might mean a storm is comming");
+                        helper.say(write: "The wind is picking up. In these parts that might mean a storm is coming.");
                     }
                     if (_currentWeather == "cloudy")
                     {
-                        helper.say(write: "It's getting cloudy outside. Do you know where to hide if you need too?");
+                        helper.say(write: "It's getting cloudy outside. Do you know where to hide if you need to?");
                     }
                     if (_currentWeather == "rainy")
                     {
-                        helper.say(write: "It's getting rainy outside. You should hide in case a storm is comming");
+                        helper.say(write: "It's getting rainy outside. You should hide in case a storm is coming.");
                         Thread.Sleep(10000);
                         _currentWeather = _random.Next(2) == 0 ? "stormy" : "rainy";
                     }
@@ -89,8 +89,8 @@ namespace WorldOfZuul
         private static void WeatherStationFixed()
         {
             _stationFixed = true;
-            Room field = Program._game.currentCountry.Rooms.Where(r => r.ShortDescription == "Field").First();
-            field.minigameCompleted = true;
+            Room weatherStation = Program._game.currentCountry.Rooms.Where(r => r.ShortDescription == "Hill").First();
+            weatherStation.minigameCompleted = true;
             StartWeather();
         }
         public static void tutorialNext(int id)
@@ -107,7 +107,7 @@ namespace WorldOfZuul
             {
 
                 helper.say(write: "Weather station needs to be configured");
-                helper.say(write: "Since you are not an expert, you can only configure based on the current weather. Write the command configure [weather] with sunny/rainy/stormy depending on what you can see from the hill. Use command weather to get updated on what you see.");
+                helper.say(write: "Since you are not an expert, you can only configure based on the current weather. Write the command configure [weather] with sunny/rainy/stormy depending on what you can see from the hill. Use the command weather to get updated on what you see.");
 
             }
             else
@@ -133,22 +133,22 @@ namespace WorldOfZuul
                         }
                         else
                         {
-                            helper.say(write: "Nice! Weather station needs to be configured for " + _toConfigure.Count + " more weathers");
+                            helper.say(write: "Nice! Weather station needs to be configured for " + _toConfigure.Count + " more weathers.");
                         }
                     }
                     else
                     {
-                        helper.say(write: "This weeather is already configured");
+                        helper.say(write: "This weather is already configured.");
                     }
                 }
                 else
                 {
-                    helper.say(write: "You can only configure the current weather");
+                    helper.say(write: "You can only configure the current weather.");
                 }
             }
             else
             {
-                helper.say(write: "You can only configure the weather station on the Hill");
+                helper.say(write: "You can only configure the weather station on the Hill.");
             }
         }
         public static void sweep()
@@ -163,7 +163,7 @@ namespace WorldOfZuul
                     Console.Clear();
                     helper.say(write: "You have been swept. Press enter to stand up.");
                     Thread.Sleep(1000);
-                    Program._game.currentCountry = Program._game.currentCountry?.Exits["india"];
+                    Program._game.currentCountry = Program._game.currentCountry?.Exits["denmark"];
                     StopWeather();
                     _swept = true;
                     _10toSweep = false;
@@ -177,7 +177,7 @@ namespace WorldOfZuul
                         Console.Clear();
                         helper.say(write: "You have been swept. Press enter to stand up.");
                         Thread.Sleep(1000);
-                        Program._game.currentCountry = Program._game.currentCountry?.Exits["india"];
+                        Program._game.currentCountry = Program._game.currentCountry?.Exits["denmark"];
                         StopWeather();
                         _swept = true;
                         _10toSweep = false;
