@@ -52,7 +52,7 @@ namespace FiveCountries
                     }
                 }
             }
-            helper.say(write: "All of a sudden you see a big wawe heading straight towards the village. You estimate that it will take you in about 3 seconds.");
+            helper.say(write: "All of a sudden you see a big wave heading straight towards the village. You estimate that it will take you in about 3 seconds.");
             Thread.Sleep(4000);
             helper.say(write: "3");
             Thread.Sleep(1000);
@@ -170,9 +170,7 @@ Your task is to find the best spots for Photovoltaic(PV) power plants. You will 
             ▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓██████████                      * - city             
                1200      1500      1800   kWh/kWp/year          | - border with Dominican Republic
 
-            Data from: https://globalsolaratlas.info/download/haiti @ 25.11.2024
-            Disclaimer: The data might not be 100% accurate, because of many technical factors like resolution, available color depth etc.,
-                but it is a good estimation.";
+            ";
             Console.WriteLine(haitiMapPV);
             Console.WriteLine(@"
             On the map you can see the predicted solar yield in kWh/kWp/year for different regions in Haiti.
@@ -290,9 +288,7 @@ Your task is to find the best spots for Photovoltaic(PV) power plants. You will 
             0         3         7        10    m/s              | - border with Dominican Republic
                                                                 ' ' - land
             
-            Data from: https://globalwindatlas.info/en/area/Haiti @ 04.12.2024
-            Disclaimer: The data might not be 100% accurate, because of many technical factors like resolution, available color depth etc.,
-                but it is a good estimation.";
+            ";
             Console.WriteLine(@"
 Welcome to another minigame in Haiti's Lab!
 OBJECTIVE: Choose the best location for a wind power plant on Haiti's shore.
@@ -485,8 +481,6 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                     Console.WriteLine("Correct! " + question.Explanation);
                     
                     minigameScore++;
-                    Console.WriteLine("\nCorrect! " + question.Explanation);
-                    minigameScore += 1;
                 }
                 else
                 {
@@ -1121,8 +1115,8 @@ Your task is to find the best spots for wind power plants. You will be shown a m
             string[] devices = new string[] { "Smartphone", "Laptop", "Old Television", "Gaming Console", "MP3 Player" };
             string[][] deviceParts = {
         new string[] { "Screen", "Battery", "Charging Port", "Motherboard" },
-        new string[] { "Keyboard", "Hard Drive", "Battery", "Display", "Fans" },
-        new string[] { "Screen", "Speakers", "Power Supply", "Motherboard" },
+        new string[] { "Keyboard", "Hard Drive", "Battery", "Display", "Fans" },  //motherboard, power supply, screen, charging port, hard drive, battery
+        new string[] { "Screen", "Speakers", "Power Supply", "Motherboard" },     // fans, speakers, keyboard, headphone jack, buttons, power button
         new string[] { "Controller Port", "Power Button", "Fan", "Power Supply" },
         new string[] { "Battery", "Headphone Jack", "Buttons", "Screen" }
     };
