@@ -98,9 +98,9 @@ namespace FiveCountries
 
 
             // //initialize rooms to Brazil
-            Brazil.InitRoom("Deforestated Area", "You are now in a Deforestated Area", new MinigameDelegate(minigameFunctions.guessTree), "beaten guessing number of trees game");
-            Brazil.InitRoom("Mining Zone", "You are now in a Illegal Mining Zone.", new MinigameDelegate(minigameFunctions.beatMiners), "beaten illegal miners game");
-            Brazil.InitRoom("Tribe", "You are now in a Indigenous tribe.", new MinigameDelegate(minigameFunctions.tribeHangmanMain), "beaten tribe hangman game");
+            Brazil.InitRoom("Deforestated Area", "You are now in a Deforestated Area", new MinigameDelegate(minigameFunctions.guessTree), "You have helped to recover a large area that was before devastated!");
+            Brazil.InitRoom("Mining Zone", "You are now in a Illegal Mining Zone.", new MinigameDelegate(minigameFunctions.beatMiners), "Illegal mining in this area is not a thing anymore!");
+            Brazil.InitRoom("Tribe", "You are now in a Indigenous tribe.", new MinigameDelegate(minigameFunctions.tribeHangmanMain), "You have learned about sustainability with natives!");
            
             Brazil.addExit("Deforestated Area", new List<string> { "south" }, new List<string> { "Mining Zone"});
             Brazil.addExit("Mining Zone", new List<string> { "north","south" }, new List<string> { "Deforestated Area","Tribe" });
