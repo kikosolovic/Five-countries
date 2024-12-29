@@ -14,7 +14,7 @@ namespace FiveCountries
     {
         MinigameCode minigamesCode = new();
 
-        public void PrintMap4(Country Country, string room){
+        public void PrintMap(Country Country, string room){
             static (int, int) getPos(List<List<(List<string>,string)>> map, string room){
                 for(int i = 0; i < map.Count; i++){
                     for(int j = 0; j < map[i].Count; j++){
@@ -264,34 +264,6 @@ namespace FiveCountries
 
 
         }
-
-        public void loading()
-        {
-            string loadingText = "traveling ";
-            Console.Write(loadingText);
-            var spinnerChars = new[] { '/', '-', '\\', '|' };
-
-            for (int i = 0; i < 20; i++)
-            {
-                Console.Write(spinnerChars[i % spinnerChars.Length]);
-                Thread.Sleep(100);
-                Console.Write('\b');
-            }
-
-            Console.SetCursorPosition(0, Console.CursorTop);
-            Console.Write(new string(' ', 10));
-            Console.SetCursorPosition(0, Console.CursorTop);
-
-
-        }
-        
-
-        
-
-        
-
-
-
     }
 
 
