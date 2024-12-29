@@ -104,7 +104,7 @@ namespace FiveCountries
                         Move(command.Name);
                         break;
                     case "map":
-                        customFunctions.PrintMap4(currentCountry, currentCountry?.currentRoom?.ShortDescription);
+                        customFunctions.PrintMap(currentCountry, currentCountry?.currentRoom?.ShortDescription);
                         break;
                     case "playagain":
                         this.currentCountry?.currentRoom?.playAgain();
@@ -279,7 +279,7 @@ namespace FiveCountries
 
             }));
 
-
+            Console.WriteLine("Progress: ["+new string('#', completedScore)+new string('_', totalScore-completedScore)+"]");
             Console.WriteLine("You have completed " + completedScore + " out of " + totalScore + " minigames: ");
 
             Console.ForegroundColor = ConsoleColor.Green;
