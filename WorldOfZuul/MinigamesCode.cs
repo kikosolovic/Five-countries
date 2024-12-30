@@ -629,7 +629,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
 
             Random random = new Random();
             string[] choices = { "rock", "paper", "scissors" };
-            Console.WriteLine("In order to end the illegal mining you need to beat them in a 'rock paper scissors' battle");
+            Console.WriteLine("In order to end the illegal mining you need to beat them in a 'rock paper scissors' battle.");
 
             while (score < 1)
             {
@@ -664,14 +664,14 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                 {
 
                     Console.ForegroundColor = ConsoleColor.DarkGreen;
-                    Console.WriteLine("You have defeated them, now you are one step closer to susatinability");
+                    Console.WriteLine("You have defeated them, now you are one step closer to sustainability");
                     Program._game.currentCountry.currentRoom.minigameCompleted = true;
                     break;
                 }
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("They won! Try again with a different strategy");
+                    Console.WriteLine("They won! Try again with a different strategy.");
                     Console.ResetColor();
                 }
 
@@ -750,7 +750,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
         {
 
             Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine("You need to guess the word chosen by the tribe leader to pass");
+            Console.WriteLine("You need to guess the word chosen by the tribe leader to pass.");
             Console.ResetColor();
             
             
@@ -777,7 +777,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
 
                 if (currentLettersGuessed.Contains(letterGuessed))
                 {
-                    Console.Write("\r\n You have already guessed this letter");
+                    Console.Write("\r\n You have already guessed this letter.");
                     tribeHangman(amountOfTimesWrong);
                     currentLettersRight = printWord(currentLettersGuessed, randomWord);
                     Console.Write(belowLines);
@@ -814,7 +814,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                 }
             }
             Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine("You have learned a little bit more about sustainability");
+            Console.WriteLine("You have learned a little bit more about sustainability.");
             Console.ResetColor();
 
         }
