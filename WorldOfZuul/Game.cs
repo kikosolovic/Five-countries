@@ -28,18 +28,19 @@ namespace FiveCountries
 
         public Game()
         {
-            Countries = CreateCountries();
-            this.currentCountry = Countries[0];
+            Countries = CreateCountries()!;
+            this.currentCountry = Countries[0]!;
             CreateRooms(Countries);
 
         }
 
         public void Play()
         {
+            Console.ResetColor();
             Parser parser = new();
             CustomFunctions customFunctions = new();
 
-
+            Console.ResetColor();
             PrintWelcome();
             PrintHelp();
 
@@ -54,7 +55,7 @@ namespace FiveCountries
                 string input = "";
 
                 {
-                    input = Console.ReadLine();
+                    input = Console.ReadLine() ?? "";
                 }
 
                 if (string.IsNullOrEmpty(input))
@@ -103,7 +104,7 @@ namespace FiveCountries
                         Move(command.Name);
                         break;
                     case "map":
-                        customFunctions.PrintMap4(currentCountry, currentCountry?.currentRoom?.ShortDescription);
+                        customFunctions.PrintMap(currentCountry, currentCountry?.currentRoom?.ShortDescription);
                         break;
                     case "playagain":
                         this.currentCountry?.currentRoom?.playAgain();
@@ -160,8 +161,9 @@ namespace FiveCountries
             }
 
             Console.WriteLine("Thank you for playing Five Countries!");
-            Console.WriteLine("These are your stats: ");
             this.stats();
+            Console.ResetColor();
+            WeatherControl.StopWeather();
         }
 
         public void Move(string direction)
@@ -277,7 +279,7 @@ namespace FiveCountries
 
             }));
 
-
+            Console.WriteLine("Progress: [" + new string('#', completedScore) + new string('_', totalScore - completedScore) + "]");
             Console.WriteLine("You have completed " + completedScore + " out of " + totalScore + " minigames: ");
 
             Console.ForegroundColor = ConsoleColor.Green;

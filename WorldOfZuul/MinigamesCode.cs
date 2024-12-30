@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using WorldOfZuul;
 using FiveCountries;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks.Sources;
 
 
 // all minigames/quests should be created here, and referenced in Init.cs
@@ -51,7 +52,7 @@ namespace FiveCountries
                     }
                 }
             }
-            helper.say(write: "All of a sudden you see a big wawe heading straight towards the village. You estimate that it will take you in about 3 seconds.");
+            helper.say(write: "All of a sudden you see a big wave heading straight towards the village. You estimate that it will take you in about 3 seconds.");
             Thread.Sleep(4000);
             helper.say(write: "3");
             Thread.Sleep(1000);
@@ -169,9 +170,7 @@ Your task is to find the best spots for Photovoltaic(PV) power plants. You will 
             ▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓██████████                      * - city             
                1200      1500      1800   kWh/kWp/year          | - border with Dominican Republic
 
-            Data from: https://globalsolaratlas.info/download/haiti @ 25.11.2024
-            Disclaimer: The data might not be 100% accurate, because of many technical factors like resolution, available color depth etc.,
-                but it is a good estimation.";
+            ";
             Console.WriteLine(haitiMapPV);
             Console.WriteLine(@"
             On the map you can see the predicted solar yield in kWh/kWp/year for different regions in Haiti.
@@ -289,9 +288,7 @@ Your task is to find the best spots for Photovoltaic(PV) power plants. You will 
             0         3         7        10    m/s              | - border with Dominican Republic
                                                                 ' ' - land
             
-            Data from: https://globalwindatlas.info/en/area/Haiti @ 04.12.2024
-            Disclaimer: The data might not be 100% accurate, because of many technical factors like resolution, available color depth etc.,
-                but it is a good estimation.";
+            ";
             Console.WriteLine(@"
 Welcome to another minigame in Haiti's Lab!
 OBJECTIVE: Choose the best location for a wind power plant on Haiti's shore.
@@ -358,7 +355,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
 
         public void EcoFriendlyHomeMakeover()
         {
-            // Pre-game Dialogue
+            
             StorylineManager preGameDialogue = new StorylineManager("Dialogues/laDialogue.json");
 
             while (true)
@@ -381,11 +378,165 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                 }
             }
 
-            // Contextual Minigame Introduction
+            
             Console.ForegroundColor = ConsoleColor.Cyan;
             helper.WriteWithDelay("\nThe UN Ambassador leads you to a suburban neighborhood in Los Angeles.");
             helper.WriteWithDelay("\n'This city is working hard to make its homes more eco-friendly,' the ambassador explains.");
             helper.WriteWithDelay("\n'Your mission is to help by making sustainable choices in this eco-friendly home makeover challenge.'");
+            Console.ResetColor();
+
+            
+            List<Question> questions = new List<Question>
+    {
+        new Question
+        {
+            Text = "You need a new refrigerator. Which option is the most eco-friendly choice?",
+            Options = new Dictionary<char, string>
+            {
+                { 'A', "A standard refrigerator with a low upfront cost." },
+                { 'B', "An ENERGY STAR-certified refrigerator." },
+                { 'C', "A second-hand refrigerator from a friend." },
+                { 'D', "The largest refrigerator available for more storage." }
+            },
+            CorrectOption = 'B',
+            Explanation = "ENERGY STAR-certified appliances use less energy, saving you money and reducing environmental impact."
+        },
+        new Question
+        {
+            Text = "You're redesigning your garden. What should you plant to conserve water?",
+            Options = new Dictionary<char, string>
+            {
+                { 'A', "A lawn with exotic flowers." },
+                { 'B', "Native drought-resistant plants." },
+                { 'C', "A tropical fruit garden." },
+                { 'D', "Water-intensive grass turf." }
+            },
+            CorrectOption = 'B',
+            Explanation = "Native drought-resistant plants require less water and are well-suited to LA's climate."
+        },
+        new Question
+        {
+            Text = "How can you best reduce household waste?",
+            Options = new Dictionary<char, string>
+            {
+                { 'A', "Use disposable plates and utensils to avoid washing dishes." },
+                { 'B', "Implement a composting system for organic waste." },
+                { 'C', "Throw all waste into the general trash bin." },
+                { 'D', "Burn waste in the backyard." }
+            },
+            CorrectOption = 'B',
+            Explanation = "Composting reduces landfill waste and provides nutrient-rich soil for gardening."
+        },
+        new Question
+        {
+            Text = "Which lighting option is the most energy-efficient for your home?",
+            Options = new Dictionary<char, string>
+            {
+                { 'A', "Incandescent bulbs." },
+                { 'B', "Halogen bulbs." },
+                { 'C', "Compact Fluorescent Lamps (CFLs)." },
+                { 'D', "Light Emitting Diode (LED) bulbs." }
+            },
+            CorrectOption = 'D',
+            Explanation = "LED bulbs are the most energy-efficient and have a longer lifespan than other bulbs."
+        },
+        new Question
+        {
+            Text = "To conserve water during showers, you should:",
+            Options = new Dictionary<char, string>
+            {
+                { 'A', "Take longer showers to relax." },
+                { 'B', "Install a low-flow showerhead." },
+                { 'C', "Keep the water running while not in use." },
+                { 'D', "Shower multiple times a day." }
+            },
+            CorrectOption = 'B',
+            Explanation = "Low-flow showerheads reduce water usage without compromising the shower experience."
+        }
+    };
+
+            int minigameScore = 0;
+            int questionNumber = 1;
+
+            foreach (var question in questions)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                helper.WriteWithDelay($"Question {questionNumber}: {question.Text}");
+                Console.ResetColor();
+
+                foreach (var option in question.Options)
+                {
+                    Console.Write($"{option.Key}. ");
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine(option.Value);
+                    Console.ResetColor();
+                }
+
+                Console.Write("\nEnter your choice (A, B, C, or D): ");
+                char playerChoice = GetValidOption();
+
+                if (char.ToUpper(playerChoice) == question.CorrectOption)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("Correct! " + question.Explanation);
+                    
+                    minigameScore++;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"Incorrect. Correct Answer: {question.CorrectOption}. {question.Options[question.CorrectOption]}");
+                    Console.WriteLine(question.Explanation);
+                }
+
+                Console.ResetColor();
+                Console.WriteLine("\nPress Enter to continue...");
+                Console.ReadLine();
+                questionNumber++;
+            }
+
+            // Final Minigame Results
+            Console.ForegroundColor = ConsoleColor.Blue;
+            helper.WriteWithDelay($"\nGame Over! You scored {minigameScore}/{questions.Count}.");
+            if (minigameScore == questions.Count)
+                helper.WriteWithDelay("Outstanding work! Your decisions showcase the best of sustainable practices.");
+            else if (minigameScore >= questions.Count / 2)
+                helper.WriteWithDelay("Good job! Your efforts show promise, but there's always room for improvement.");
+            else
+                helper.WriteWithDelay("There's a lot to learn about sustainability. Keep trying and you'll get there!");
+            Console.ResetColor();
+            Program._game.currentCountry.currentRoom.minigameCompleted = true;
+
+            // Post-game Dialogue
+            StorylineManager postGameDialogue = new StorylineManager("Dialogues/postGameLA.json");
+
+            while (true)
+            {
+                helper.say(postGameDialogue.text, postGameDialogue.response, postGameDialogue.options);
+
+                if (string.IsNullOrEmpty(postGameDialogue.options)) break;
+
+                var choice = helper.parseinput(Console.ReadLine());
+
+                try
+                {
+                    postGameDialogue.NextLevel(choice);
+                }
+                catch (Exception)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Invalid choice. Please select a valid option.");
+                    Console.ResetColor();
+                }
+            }
+
+            // Final Dialogue Finisher
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            helper.WriteWithDelay("\nUN Ambassador: 'Your eco-friendly choices have inspired this city to push even further for sustainability.'");
+            helper.WriteWithDelay("A local eco-enthusiast named Mia steps forward. 'Thanks to you, people are already adopting these practices in their homes.'");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            helper.WriteWithDelay("\nThe ambassador adds, 'Let's move on to our next destination. There's still work to be done.'");
+            Console.ResetColor();
         }
 
         public static int printWord(List<char> guessedLetters, String randomWord)
@@ -425,12 +576,17 @@ Your task is to find the best spots for wind power plants. You will be shown a m
             Random random = new Random();
             int treesNumber = random.Next(1, 501);
             int guess;
+    
 
-            Console.WriteLine("Welcome to the Guess the N of Trees! You need to guess how many trees were cut in order to know how many seeds will be needed!");
+            Console.WriteLine("You need to guess how many trees were cut in order to know how many seeds will be needed to recover the area!");
+
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write("Guess a number between 1 and 500: ");
+            Console.ResetColor();
 
             do
             {
-                Console.Write("Guess a number between 1 and 500: ");
+                
 
 
                 var input = Console.ReadLine();
@@ -438,19 +594,31 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                 {
                     Console.WriteLine("Invalid input.");
                     return;
+
+                
                 }
 
-                if (guess < treesNumber)
+                else if (guess < treesNumber)
                 {
-                    Console.WriteLine("Too low. Many trees were taken down. Try again.");
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine("Too low");
+                    Console.ResetColor();
+                    Console.WriteLine("Try a number greater than " + guess);
                 }
                 else if (guess > treesNumber)
                 {
-                    Console.WriteLine("Too high. Try again.");
+
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("Too high");
+                    Console.ResetColor();
+                    Console.WriteLine("Guess a number smaller than " + guess);
                 }
             } while (guess != treesNumber);
 
-            Console.WriteLine("Congratulations! You guessed the number of trees cut. Now you know how many seeds will be needed.");
+            
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine("You guessed right! Now you have planted " + treesNumber + " seeds!");
+            Console.ResetColor();
             Program._game.currentCountry.currentRoom.minigameCompleted = true;
         }
 
@@ -465,12 +633,17 @@ Your task is to find the best spots for wind power plants. You will be shown a m
 
             while (score < 1)
             {
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
                 Console.Write("Enter your choice (rock, paper, scissors): ");
+                Console.ResetColor();
+
                 string playerChoice = Console.ReadLine().ToLower();
 
                 if (playerChoice != "rock" && playerChoice != "paper" && playerChoice != "scissors")
                 {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine("Invalid choice. Please try again.");
+                    Console.ResetColor();
                     continue;
                 }
 
@@ -481,19 +654,25 @@ Your task is to find the best spots for wind power plants. You will be shown a m
 
                 if (playerChoice == computerChoice)
                 {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("It's a tie!");
+                    Console.ResetColor();
                 }
                 else if ((playerChoice == "rock" && computerChoice == "scissors") ||
                          (playerChoice == "paper" && computerChoice == "rock") ||
                          (playerChoice == "scissors" && computerChoice == "paper"))
                 {
-                    Console.WriteLine("You won! Explore Brazil and try other minigames");
+
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    Console.WriteLine("You have defeated them, now you are one step closer to susatinability");
                     Program._game.currentCountry.currentRoom.minigameCompleted = true;
                     break;
                 }
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine("They won! Try again with a different strategy");
+                    Console.ResetColor();
                 }
 
 
@@ -503,6 +682,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
 
         public void tribeHangman(int wrong)
         {
+            Console.ForegroundColor = ConsoleColor.Gray;
             if (wrong == 0)
             {
                 Console.WriteLine("\n+---+");
@@ -553,32 +733,32 @@ Your task is to find the best spots for wind power plants. You will be shown a m
             }
             else if (wrong == 6)
             {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.WriteLine("\n+---+");
                 Console.WriteLine(" O   |");
                 Console.WriteLine("/|\\  |");
                 Console.WriteLine("/ \\  |");
                 Console.WriteLine("    ===");
                 Console.WriteLine("You lost, try again.");
+                Console.ResetColor();
             }
+            Console.ResetColor();
 
         }
         public void tribeHangmanMain()
 
         {
 
-            Console.WriteLine("Welcome to hangman you need to guess the word chosen by the tribe leader to pass :)");
-            Console.WriteLine("-----------------------------------------");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine("You need to guess the word chosen by the tribe leader to pass");
+            Console.ResetColor();
+            
+            
+            String randomWord = "sustainability";
 
-            Random random = new Random();
-            List<string> wordDictionary = new List<string> { "sustainability" };
-            int index = random.Next(wordDictionary.Count);
-            String randomWord = wordDictionary[index];
-
-            foreach (char x in randomWord)
-            {
-                Console.Write("_ ");
-            }
-
+            string belowLines = "_ _ _ _ _ _ _ _ _ _ _ _ _ _";
+            Console.Write(belowLines);
+            
             int lengthOfWordToGuess = randomWord.Length;
             int amountOfTimesWrong = 0;
             List<char> currentLettersGuessed = new List<char>();
@@ -600,7 +780,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                     Console.Write("\r\n You have already guessed this letter");
                     tribeHangman(amountOfTimesWrong);
                     currentLettersRight = printWord(currentLettersGuessed, randomWord);
-                    printLines(randomWord);
+                    Console.Write(belowLines);
                 }
                 else
                 {
@@ -617,7 +797,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                         currentLettersGuessed.Add(letterGuessed);
                         currentLettersRight = printWord(currentLettersGuessed, randomWord);
                         Console.Write("\r\n");
-                        printLines(randomWord);
+                        Console.Write(belowLines);
                     }
 
                     else
@@ -633,7 +813,9 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                     }
                 }
             }
-            Console.WriteLine("\r\nThank you for playing :)");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine("You have learned a little bit more about sustainability");
+            Console.ResetColor();
 
         }
 
@@ -706,12 +888,12 @@ Your task is to find the best spots for wind power plants. You will be shown a m
             string[] items = {
         "plastic bottle", "banana peel", "glass jar", "pizza box with grease",
         "electronics", "paper", "food scraps", "plastic bag", "tin can",
-        "aluminum foil", "egg shells", "styrofoam cup", "cardboard box",
+        "aluminum foil", "egg shells", "styrofoam cup",
         "used tissue", "coffee grounds", "cereal box", "broken toy"
     };
 
             Random random = new Random();
-            int timeLimit = 15;
+            int timeLimit = 40;
             DateTime endTime = DateTime.Now.AddSeconds(timeLimit);
 
             while (DateTime.Now < endTime)
@@ -759,6 +941,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
             Console.WriteLine("The ambassador smiles. 'You've done well. Every properly sorted item is one less going to waste.'");
             Console.WriteLine("The recycling team applauds your effort, inspired by your work.");
             Console.ResetColor();
+            Program._game.currentCountry.currentRoom.minigameCompleted = true;
 
             StorylineManager postGameDialogue = new StorylineManager("Dialogues/postGameNYC.json");
 
@@ -896,6 +1079,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
             else
                 helper.WriteWithDelay("Keep practicing to improve your composting skills.");
             Console.ResetColor();
+            Program._game.currentCountry.currentRoom.minigameCompleted = true;
 
             // Post-game Dialogue
             StorylineManager postGameDialogue = new StorylineManager("Dialogues/postGameSFA.json");
@@ -920,7 +1104,7 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                 }
             }
 
-            // Final Dialogue Finisher
+            
             Console.ForegroundColor = ConsoleColor.Yellow;
             helper.WriteWithDelay("\nUN Ambassador: 'You've done an amazing job here in San Francisco. Your dedication to sustainability is inspiring.'");
             helper.WriteWithDelay("A local community leader adds: 'Thanks to your efforts, more people understand the value of composting. We're ready to make an even bigger impact!'");
@@ -962,8 +1146,8 @@ Your task is to find the best spots for wind power plants. You will be shown a m
             string[] devices = new string[] { "Smartphone", "Laptop", "Old Television", "Gaming Console", "MP3 Player" };
             string[][] deviceParts = {
         new string[] { "Screen", "Battery", "Charging Port", "Motherboard" },
-        new string[] { "Keyboard", "Hard Drive", "Battery", "Display", "Fans" },
-        new string[] { "Screen", "Speakers", "Power Supply", "Motherboard" },
+        new string[] { "Keyboard", "Hard Drive", "Battery", "Display", "Fans" },  //motherboard, power supply, screen, charging port, hard drive, battery
+        new string[] { "Screen", "Speakers", "Power Supply", "Motherboard" },     // fans, speakers, keyboard, headphone jack, buttons, power button
         new string[] { "Controller Port", "Power Button", "Fan", "Power Supply" },
         new string[] { "Battery", "Headphone Jack", "Buttons", "Screen" }
     };
@@ -1206,7 +1390,6 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Correct! " + question.Explanation);
                     minigameScoreSewage++;
-                    // I changed it from minigameScore to minigameScoreSewage because the code somehow confuses minigameScore with score and the wrong result appears when you finish the quiz
                 }
                 else
                 {
@@ -1221,17 +1404,25 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                 questionNumber++;
             }
 
-            // Final Minigame Results
             Console.ForegroundColor = ConsoleColor.Blue;
             helper.WriteWithDelay($"\nGame Over! You scored {minigameScoreSewage}/{questions.Count}.");
             if (minigameScoreSewage == questions.Count)
+            {
                 helper.WriteWithDelay("You found all the tools that you'd need. Then you fixed or replaced all of the valves," +
                 " pipes and sensors. Afterwards you managed to unclog the pipes\nand finally did a systems check to see if everything is operational once more. And it is, thanks to you.");
+                Program._game.currentCountry.currentRoom.minigameCompleted = true;
+            }
             else if (minigameScoreSewage < questions.Count && minigameScoreSewage != 0)
+            {
                 helper.WriteWithDelay("You found all the tools that you'd need. You managed to unclog the pipes but just barely and you couldn't do\nanything with the valves, pipes and sensors." +
                 "Perhaps it's better if you refresh your memory and then try again.");
+                Program._game.currentCountry.currentRoom.minigameCompleted = false;
+            }
             else if (minigameScoreSewage == 0)
+            {
                 helper.WriteWithDelay("There's a lot that you haven't learned yet. Come back again.");
+                Program._game.currentCountry.currentRoom.minigameCompleted = false;
+            }
             Console.ResetColor();
 
         }
@@ -1339,13 +1530,23 @@ Your task is to find the best spots for wind power plants. You will be shown a m
             Console.ForegroundColor = ConsoleColor.Blue;
             helper.WriteWithDelay($"\nGame Over! You scored {minigameScoreField}/{questions.Count}.");
             if (minigameScoreField == questions.Count)
+            {
                 helper.WriteWithDelay("You successfully located the underground water source. You connected the tubes to the water and installed the system. " +
                 "\nWhen you were done, you checked if the water is properly irrigating the soil. And it is, due to your valiant efforts.");
+                Program._game.currentCountry.currentRoom.minigameCompleted = true;
+
+            }
             else if (minigameScoreField < questions.Count && minigameScoreField != 0)
+            {
                 helper.WriteWithDelay("You successfully located the underground water source. You connected the tubes to the water and installed the system." +
                 "\nWhen you were done, you checked if the water is properly irrigating the soil. But it's not, the water is not leaking out of the tubes. You better try again.");
+                Program._game.currentCountry.currentRoom.minigameCompleted = false;
+            }
             else if (minigameScoreField == 0)
+            {
                 helper.WriteWithDelay("There's a lot that you haven't learned yet. Come back again.");
+                Program._game.currentCountry.currentRoom.minigameCompleted = false;
+            }
             Console.ResetColor();
 
         }

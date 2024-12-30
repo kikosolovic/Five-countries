@@ -1,9 +1,9 @@
 {
   "text": "The composting team applauds your efforts as you step outside the bustling composting center. A local leader named Alex approaches you with a broad smile.",
   "response": "Alex: 'What an amazing job! Composting is vital to our community, and your example inspires us all to do better.'",
-  "options": "1. Thank Alex for their kind words. 2. Ask how the community can improve further.",
+  "options": "1. Thank Alex for his kind words. 2. Ask how the community can improve further.",
   "opt1": {
-    "text": "You thank Alex for their encouragement.",
+    "text": "You thank Alex for his encouragement.",
     "response": "Alex: 'We all play a role in creating a sustainable future. Keep up the great work!'",
     "options": null
   },

@@ -14,7 +14,7 @@ namespace FiveCountries
     {
         MinigameCode minigamesCode = new();
 
-        public void PrintMap4(Country Country, string room){
+        public void PrintMap(Country Country, string room){
             static (int, int) getPos(List<List<(List<string>,string)>> map, string room){
                 for(int i = 0; i < map.Count; i++){
                     for(int j = 0; j < map[i].Count; j++){
@@ -204,11 +204,6 @@ namespace FiveCountries
                 counter++;
                 if (lastCountOfNotAdded == notAddedRooms.Count){
                     break;
-                    string notAddedRoomsString = "";
-                    foreach(var room3 in notAddedRooms){
-                        notAddedRoomsString += room3.Item1+" "+room3.Item2+" "+room3.Item3+"\n";
-                    }
-                    throw new Exception("Map generation failed. Room(s) not connected. Check the room(s):\n"+notAddedRoomsString);
                 }
             }
             
@@ -269,84 +264,6 @@ namespace FiveCountries
 
 
         }
-
-        public (int, int) PlayGame(Country country, Room room, List<Minigame> minigames, int gameNumber = 0)
-        {
-            int counter = 1;
-            List<Minigame> gamesForHere = new List<Minigame>();
-
-            foreach (var minigame in minigames)// Get all games for this room
-            {
-                if (minigame.country == country.ShortDescription && minigame.room == room.ShortDescription)
-                {
-                    gamesForHere.Add(minigame);
-                }
-            }
-            if (gameNumber == 0)
-            {
-                if (gamesForHere.Count == 0)
-                {
-                    Console.WriteLine("Sorry, there are no games available in this room.");
-                    return (0, 0);
-                }
-                else if(gamesForHere.Count == 1)
-                {
-                    return (gamesForHere[0].game(), gamesForHere[0].id);
-                }
-                else
-                {
-                    Console.WriteLine("Here you can choose from the following games:");
-                    foreach (var minigame in gamesForHere)
-                    {
-                        Console.WriteLine($"{counter}.{minigame.description}, score available: {minigame.score}");
-                        counter++;
-                    }
-                }
-                Console.Write("# of the game you want to play: ");
-                string? input = Console.ReadLine();
-                gameNumber = int.Parse(input);
-            }
-
-            if (gameNumber > gamesForHere.Count || gameNumber < 1)
-            {
-                Console.WriteLine("Invalid game number.");
-                return (0, 0);
-            }
-
-            //int gameid = gamesForHere[gameNumber-1].id;
-
-            return (gamesForHere[gameNumber - 1].game(), gamesForHere[gameNumber - 1].id);
-
-        }
-
-
-        public void loading()
-        {
-            string loadingText = "traveling ";
-            Console.Write(loadingText);
-            var spinnerChars = new[] { '/', '-', '\\', '|' };
-
-            for (int i = 0; i < 20; i++)
-            {
-                Console.Write(spinnerChars[i % spinnerChars.Length]);
-                Thread.Sleep(100);
-                Console.Write('\b');
-            }
-
-            Console.SetCursorPosition(0, Console.CursorTop);
-            Console.Write(new string(' ', 10));
-            Console.SetCursorPosition(0, Console.CursorTop);
-
-
-        }
-        
-
-        
-
-        
-
-
-
     }
 
 
