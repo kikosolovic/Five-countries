@@ -55,7 +55,7 @@ namespace FiveCountries
                 string input = "";
 
                 {
-                    input = Console.ReadLine()??"";
+                    input = Console.ReadLine() ?? "";
                 }
 
                 if (string.IsNullOrEmpty(input))
@@ -161,9 +161,9 @@ namespace FiveCountries
             }
 
             Console.WriteLine("Thank you for playing Five Countries!");
-            Console.WriteLine("These are your stats: ");
             this.stats();
             Console.ResetColor();
+            WeatherControl.StopWeather();
         }
 
         public void Move(string direction)
@@ -279,7 +279,7 @@ namespace FiveCountries
 
             }));
 
-            Console.WriteLine("Progress: ["+new string('#', completedScore)+new string('_', totalScore-completedScore)+"]");
+            Console.WriteLine("Progress: [" + new string('#', completedScore) + new string('_', totalScore - completedScore) + "]");
             Console.WriteLine("You have completed " + completedScore + " out of " + totalScore + " minigames: ");
 
             Console.ForegroundColor = ConsoleColor.Green;

@@ -22,12 +22,13 @@ namespace WorldOfZuul
         public static bool _tutorial = true;
         public static List<string> _toConfigure = new List<string> { "sunny", "rainy", "stormy" };
         private static Random _random = new Random();
+        private static Thread? thread;
 
         public static void StartWeather()
         {
             _weatherRunning = true;
-            string[] options = _stationFixed ? new string[] { "sunny", "sunny", "sunny", "cloudy", "rainy", "stormy" } : new string[] { "sunny", "windy", "cloudy", "rainy", "rainy", "rainy", "stormy" };
-            Thread thread = new Thread(() =>
+            string[] options = _stationFixed ? new string[] { "sunny", "sunny", "sunny", "cloudy", "rainy", "stormy" } : new string[] { "sunny", "sunny", "windy", "cloudy", "rainy", "rainy", "stormy" };
+            thread = new Thread(() =>
             {
                 while (_weatherRunning)
 
@@ -43,23 +44,23 @@ namespace WorldOfZuul
                     if (_currentWeather == "rainy")
                     {
                         helper.say(write: "It's getting rainy outside. You should hide in case a storm is coming.");
-                        Thread.Sleep(10000);
+                        countdown(10);
                         _currentWeather = _random.Next(2) == 0 ? "stormy" : "rainy";
                     }
                     if (_currentWeather == "stormy")
                     {
                         helper.say(write: "It's getting stormy outside. You have 10 seconds to hide inside a shelter or you will be swept!");
                         _10toSweep = true;
-                        Thread.Sleep(10000);
+                        countdown(10);
                         sweep();
                     }
                     if (Program._game.currentCountry.currentRoom.ShortDescription == "Hill")
                     {
-                        Thread.Sleep(15 * 1000);
+                        countdown(15);
                     }
                     else
                     {
-                        Thread.Sleep(30 * 1000);
+                        countdown(30);
                     }
                     _currentWeather = options[_random.Next(options.Length - 2)];
 
@@ -71,8 +72,29 @@ namespace WorldOfZuul
         public static void StopWeather()
         {
             _weatherRunning = false;
+            // if (thread != null)
+            // {
+            //     try
+            //     {
+            //         thread.Abort();
+            //     }
+            //     catch { }
+            // }
         }
 
+        public static void countdown(int time)
+        {
+
+            for (double i = 0; i <= time; i += 0.5)
+            {
+                Thread.Sleep(500);
+                if (!_weatherRunning)
+                {
+                    return;
+                }
+            }
+
+        }
 
         public static void GetWeather()
         {

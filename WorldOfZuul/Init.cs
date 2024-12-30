@@ -8,8 +8,6 @@ namespace FiveCountries
 {
     public class Init
     {
-        MinigameCode minigamesCode = new();
-
         public List<Country> CreateCountries()
         {
             List<Country> Countries = new List<Country>();
@@ -60,7 +58,7 @@ namespace FiveCountries
             Haiti.InitRoom("Outside", "You're at the beautiful park in the middle of the complex.");
             Haiti.InitRoom("Lobby", "You're inside the main hall of the complex.");
             //Haiti.InitRoom("Corridor", "This corridor leads to the other rooms.");
-            Haiti.InitRoom("PV Lab", "It's pretty dark here. You are in the PV Lab. \n We often test solar panels here, so we need to keep it dark. \n You can see a lot of solar panels and inverters around you. \n This is the place where we design and plan future solar panels.", new MinigameDelegate(minigameFunctions.photovoltaicMinigame),"chosen the best locations for the solar power plants");
+            Haiti.InitRoom("PV Lab", "It's pretty dark here. You are in the PV Lab. \n We often test solar panels here, so we need to keep it dark. \n You can see a lot of solar panels and inverters around you. \n This is the place where we design and plan future solar panels.", new MinigameDelegate(minigameFunctions.photovoltaicMinigame), "chosen the best locations for the solar power plants");
             Haiti.InitRoom("Wind Lab", "It's windy here! You are in the Wind Lab. You can see a lot of wind turbines and anemometers around you.\nThere are also countless TVs with real-world and simulation data about wind power plants.\nThis is the place where we design and plan future wind turbines.", new MinigameDelegate(minigameFunctions.windpowerMinigame), "chosen the best locations for the wind power plants");
             //Haiti.InitRoom("Energy Storage Lab", "This is the Energy Storage Lab. You can see a lot of batteries and capacitors around you.\nThis is the place where we design and plan future energy storages.");
             //Haiti.InitRoom("Closet", "It's silent here, and also nothing intresting, just some old brooms, mops and tons of dust.");
@@ -105,7 +103,7 @@ namespace FiveCountries
             Brazil.addExit("Deforestated Area", new List<string> { "south" }, new List<string> { "Mining Zone"});
             Brazil.addExit("Mining Zone", new List<string> { "north","south" }, new List<string> { "Deforestated Area","Tribe" });
             Brazil.addExit("Tribe", new List<string> { "north" }, new List<string> { "Mining Zone" });
-          
+
 
             //initialize rooms to Mozambique
             Mozambique.InitRoom("Dock", "You just arrived to Mozambique. The boat dropped you off at a small dock. ", new MinigameDelegate(minigameFunctions.Dock));
@@ -124,9 +122,9 @@ namespace FiveCountries
 
             // //initialize rooms to USA
             USA.InitRoom("New York City", "You are in New York City, where waste management and recycling initiatives are critical to reducing urban waste.", new MinigameDelegate(minigameFunctions.RecyclingSortingMinigameNYC), "helped with the recycling initiative in NYC.");
-            USA.InitRoom("Chicago", "You are in Chicago, focusing on electronic waste recycling and management.", new MinigameDelegate(minigameFunctions.ElectronicRepairChallenge),"helped with the electronic waste crisis in Chicago.");
-            USA.InitRoom("Los Angeles", "You are in Los Angeles, dealing with challenges related to plastic waste and sustainable disposal methods.", new MinigameDelegate(minigameFunctions.EcoFriendlyHomeMakeover),"resolved plastic waste issues in LA.");
-            USA.InitRoom("San Francisco", "You are in San Francisco, known for its zero-waste goals and composting initiatives.", new MinigameDelegate(minigameFunctions.CompostingPuzzleMinigameSFA),"helped with the composting challenge in San Francisco.");
+            USA.InitRoom("Chicago", "You are in Chicago, focusing on electronic waste recycling and management.", new MinigameDelegate(minigameFunctions.ElectronicRepairChallenge), "helped with the electronic waste crisis in Chicago.");
+            USA.InitRoom("Los Angeles", "You are in Los Angeles, dealing with challenges related to plastic waste and sustainable disposal methods.", new MinigameDelegate(minigameFunctions.EcoFriendlyHomeMakeover), "resolved plastic waste issues in LA.");
+            USA.InitRoom("San Francisco", "You are in San Francisco, known for its zero-waste goals and composting initiatives.", new MinigameDelegate(minigameFunctions.CompostingPuzzleMinigameSFA), "helped with the composting challenge in San Francisco.");
 
             USA.addExit("New York City", new List<string> { "south" }, new List<string> { "Chicago" });
             USA.addExit("Chicago", new List<string> { "north", "south" }, new List<string> { "New York City", "Los Angeles" });
@@ -137,6 +135,6 @@ namespace FiveCountries
 
 
         }
-        
+
     }
 }
