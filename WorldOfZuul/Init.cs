@@ -8,8 +8,6 @@ namespace FiveCountries
 {
     public class Init
     {
-        MinigameCode minigamesCode = new();
-
         public List<Country> CreateCountries()
         {
             List<Country> Countries = new List<Country>();
@@ -60,7 +58,7 @@ namespace FiveCountries
             Haiti.InitRoom("Outside", "You're at the beautiful park in the middle of the complex.");
             Haiti.InitRoom("Lobby", "You're inside the main hall of the complex.");
             //Haiti.InitRoom("Corridor", "This corridor leads to the other rooms.");
-            Haiti.InitRoom("PV Lab", "It's pretty dark here. You are in the PV Lab. \n We often test solar panels here, so we need to keep it dark. \n You can see a lot of solar panels and inverters around you. \n This is the place where we design and plan future solar panels.", new MinigameDelegate(minigameFunctions.photovoltaicMinigame),"chosen the best locations for the solar power plants");
+            Haiti.InitRoom("PV Lab", "It's pretty dark here. You are in the PV Lab. \n We often test solar panels here, so we need to keep it dark. \n You can see a lot of solar panels and inverters around you. \n This is the place where we design and plan future solar panels.", new MinigameDelegate(minigameFunctions.photovoltaicMinigame), "chosen the best locations for the solar power plants");
             Haiti.InitRoom("Wind Lab", "It's windy here! You are in the Wind Lab. You can see a lot of wind turbines and anemometers around you.\nThere are also countless TVs with real-world and simulation data about wind power plants.\nThis is the place where we design and plan future wind turbines.", new MinigameDelegate(minigameFunctions.windpowerMinigame), "chosen the best locations for the wind power plants");
             //Haiti.InitRoom("Energy Storage Lab", "This is the Energy Storage Lab. You can see a lot of batteries and capacitors around you.\nThis is the place where we design and plan future energy storages.");
             //Haiti.InitRoom("Closet", "It's silent here, and also nothing intresting, just some old brooms, mops and tons of dust.");
@@ -101,11 +99,11 @@ namespace FiveCountries
             Brazil.InitRoom("Deforestated Area", "You are now in a Deforestated Area", new MinigameDelegate(minigameFunctions.guessTree), "beaten guessing number of trees game");
             Brazil.InitRoom("Mining Zone", "You are now in a Illegal Mining Zone.", new MinigameDelegate(minigameFunctions.beatMiners), "beaten illegal miners game");
             Brazil.InitRoom("Tribe", "You are now in a Indigenous tribe.", new MinigameDelegate(minigameFunctions.tribeHangmanMain), "beaten tribe hangman game");
-           
-            Brazil.addExit("Deforestated Area", new List<string> { "south" }, new List<string> { "Mining Zone"});
-            Brazil.addExit("Mining Zone", new List<string> { "north","south" }, new List<string> { "Deforestated Area","Tribe" });
+
+            Brazil.addExit("Deforestated Area", new List<string> { "south" }, new List<string> { "Mining Zone" });
+            Brazil.addExit("Mining Zone", new List<string> { "north", "south" }, new List<string> { "Deforestated Area", "Tribe" });
             Brazil.addExit("Tribe", new List<string> { "north" }, new List<string> { "Mining Zone" });
-          
+
 
             //initialize rooms to Mozambique
             Mozambique.InitRoom("Dock", "You just arrived to Mozambique. The boat dropped you off at a small dock. ", new MinigameDelegate(minigameFunctions.Dock));
@@ -139,6 +137,6 @@ namespace FiveCountries
 
 
         }
-        
+
     }
 }

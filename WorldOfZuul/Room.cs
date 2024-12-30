@@ -31,24 +31,19 @@ namespace FiveCountries
             this.outcome = outcome;
         }
 
-        // runs the minigame that is assigned to the room in Init.cs, if there isnt one > null, after the minigame is played it is deleted so
-        // player cannot play it multiple times, (might not be the best solution if he fails he has to restart game to play again)
+
         public void ExecuteMinigame(int score = 0)
         {
             if (minigame != null && !minigamePlayed)
             {
-                minigame();  // Pass the score by reference
-                this.minigamePlayed = true;  // Reset the minigame so it can't be played again
+                minigame();
+                this.minigamePlayed = true;
             }
-            // else
-            // {
-            //     Console.WriteLine("There is no minigame in this room, or you have already played it.");
-            // }
+
         }
         public void playAgain()
         {
             this.minigamePlayed = false;
-            //possible score to get * .5
         }
 
 

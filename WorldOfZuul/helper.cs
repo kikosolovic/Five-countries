@@ -10,9 +10,6 @@ namespace FiveCountries
     public static class helper
     {
         private static readonly object ConsoleLock = new object();
-        static CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
-
-
 
         //Text
         public static void WriteWithDelay(string text)
