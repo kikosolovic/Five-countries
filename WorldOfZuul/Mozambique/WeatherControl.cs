@@ -20,7 +20,7 @@ namespace WorldOfZuul
         public static bool _swept = false;
         public static bool _10toSweep = false;
         public static bool _tutorial = true;
-        public static List<string> _toConfigure = new List<string> { "cloudy", "rainy", "stormy" };
+        public static List<string> _toConfigure = new List<string> { "sunny", "rainy", "stormy" };
         private static Random _random = new Random();
 
         public static void StartWeather()
