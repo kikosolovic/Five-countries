@@ -1134,36 +1134,32 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                     Console.WriteLine("Invalid choice. Please select a valid option.");
                     Console.ResetColor();
                 }
-
             }
 
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("Welcome to the Advanced Electronic Repair Challenge!");
+            Console.WriteLine("Welcome to the Electronic Repair Challenge!");
             Console.ResetColor();
 
-            Console.WriteLine("You are tasked with repairing various electronic devices.");
+            Console.WriteLine("\nInstructions:");
+            Console.WriteLine("1. You will repair parts of an electronic device.");
+            Console.WriteLine("2. Each part requires a specific tool. Use the hints below to select the correct one:");
+            Console.WriteLine("   - Screwdriver: For screws or assembling mechanical parts.");
+            Console.WriteLine("   - Soldering Iron: For repairing electronic circuits.");
+            Console.WriteLine("   - Multimeter: For diagnosing electrical issues.");
+            Console.WriteLine("3. Complete the repairs to finish the challenge successfully!\n");
 
-            string[] devices = new string[] { "Smartphone", "Laptop", "Old Television", "Gaming Console", "MP3 Player" };
+            string[] devices = { "Smartphone", "Laptop", "Old Television" };
             string[][] deviceParts = {
-        new string[] { "Screen", "Battery", "Charging Port", "Motherboard" },
-        new string[] { "Keyboard", "Hard Drive", "Battery", "Display", "Fans" },  //motherboard, power supply, screen, charging port, hard drive, battery
-        new string[] { "Screen", "Speakers", "Power Supply", "Motherboard" },     // fans, speakers, keyboard, headphone jack, buttons, power button
-        new string[] { "Controller Port", "Power Button", "Fan", "Power Supply" },
-        new string[] { "Battery", "Headphone Jack", "Buttons", "Screen" }
+        new string[] { "Screen", "Battery", "Charging Port" },
+        new string[] { "Keyboard", "Hard Drive", "Battery" },
+        new string[] { "Screen", "Speakers", "Power Supply" }
     };
 
-            string[] tools = { "Screwdriver", "Spudger", "Soldering Iron", "Multimeter", "Heat Gun", "Hammer", "Plastic Pry Tool" };
-
-            int timeLimit = 120;
-            DateTime startTime = DateTime.Now;
+            string[] tools = { "Screwdriver", "Soldering Iron", "Multimeter" };
 
             Random rand = new Random();
             string currentDevice = devices[rand.Next(devices.Length)];
             string[] currentParts = deviceParts[Array.IndexOf(devices, currentDevice)];
-
-            int repairStage = 1;
-            int mistakes = 0;
-            int minigameScore = 0;
 
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($"You are tasked with repairing a {currentDevice}.");
@@ -1175,103 +1171,56 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                 Console.WriteLine($"- {part}");
             }
 
-            while ((DateTime.Now - startTime).TotalSeconds < timeLimit && repairStage <= currentParts.Length)
+            foreach (var partToRepair in currentParts)
             {
-                string partToRepair = currentParts[rand.Next(currentParts.Length)];
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine($"\nStage {repairStage}: You need to repair: {partToRepair}");
+                Console.WriteLine($"\nYou need to repair: {partToRepair}");
                 Console.ResetColor();
 
-                Console.ForegroundColor = ConsoleColor.Yellow;
+                if (partToRepair == "Screen")
+                {
+                    Console.WriteLine("Hint: Screens often need a diagnostic tool or a precise repair tool.");
+                }
+                else if (partToRepair == "Battery")
+                {
+                    Console.WriteLine("Hint: Batteries are delicate and might need precise connections repaired.");
+                }
+                else if (partToRepair == "Charging Port")
+                {
+                    Console.WriteLine("Hint: Ports often involve delicate soldering.");
+                }
+                else if (partToRepair == "Keyboard" || partToRepair == "Hard Drive")
+                {
+                    Console.WriteLine("Hint: These parts often involve screws or assembly adjustments.");
+                }
+                else if (partToRepair == "Speakers" || partToRepair == "Power Supply")
+                {
+                    Console.WriteLine("Hint: Electrical components often require diagnosing issues.");
+                }
+
                 Console.WriteLine("Select an action:");
-                Console.WriteLine("1. Use Screwdriver\n2. Use Spudger\n3. Use Soldering Iron\n4. Use Multimeter\n5. Use Heat Gun\n6. Use Hammer\n7. Use Plastic Pry Tool");
-                Console.ResetColor();
+                Console.WriteLine("1. Use Screwdriver\n2. Use Soldering Iron\n3. Use Multimeter");
 
                 string action = Console.ReadLine();
 
-                if ((action == "1" && partToRepair == "Battery") ||
-                    (action == "2" && partToRepair == "Charging Port"))
+                if ((action == "1" && (partToRepair == "Keyboard" || partToRepair == "Hard Drive")) ||
+                    (action == "2" && (partToRepair == "Charging Port" || partToRepair == "Power Supply")) ||
+                    (action == "3" && (partToRepair == "Screen" || partToRepair == "Speakers")))
                 {
-                    minigameScore += 15;
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"Great! You successfully repaired the {partToRepair}.");
                     Console.ResetColor();
                 }
-                else if (action == "3" && (partToRepair == "Motherboard" || partToRepair == "Power Supply"))
-                {
-                    minigameScore += (20);
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine($"Nice job! You used the soldering iron correctly on the {partToRepair}.");
-                    Console.ResetColor();
-                }
-                else if (action == "4" && (partToRepair == "Hard Drive" || partToRepair == "Screen"))
-                {
-                    minigameScore += (10);
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine($"The multimeter helped you diagnose the problem with the {partToRepair}.");
-                    Console.ResetColor();
-                }
-                else if (action == "5" && partToRepair == "Battery")
-                {
-                    minigameScore += (25);
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine($"You successfully recalibrated the battery with the heat gun.");
-                    Console.ResetColor();
-                }
-                else if (action == "6" && (partToRepair == "Screen" || partToRepair == "Battery"))
-                {
-                    mistakes += 1;
-                    minigameScore -= (10); ;
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine($"Oops! The hammer broke the part. Avoid using the hammer on fragile components!");
-                    Console.ResetColor();
-                }
-                else if (action == "7" && partToRepair == "Controller Port")
-                {
-                    minigameScore += (15);
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine($"You successfully removed the controller port using the pry tool.");
-                    Console.ResetColor();
-                }
                 else
                 {
-                    mistakes += 1;
-                    minigameScore -= (5);
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine($"Incorrect tool choice. Be more careful next time!");
+                    Console.WriteLine($"Incorrect tool choice. Try again next time!");
                     Console.ResetColor();
                 }
-
-                repairStage++;
-
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine($"Your current score is: {minigameScore}");
-                Console.ResetColor();
-
-                if ((DateTime.Now - startTime).TotalSeconds >= timeLimit)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine($"Time's up! You repaired the device with a final score of {minigameScore}.");
-                    Console.ResetColor();
-                    break;
-                }
             }
 
-            if (repairStage > currentParts.Length)
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"Congratulations! You've repaired the device.");
-                Console.ResetColor();
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"You didn't complete the repairs in time. Try again!");
-                Console.ResetColor();
-            }
-
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"You had {mistakes} mistakes. Better luck next time!");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Congratulations! You have completed the repairs.");
             Console.ResetColor();
 
             StorylineManager postGameDialogue = new StorylineManager("Dialogues/postGameChicago.json");
@@ -1295,9 +1244,10 @@ Your task is to find the best spots for wind power plants. You will be shown a m
                     Console.ResetColor();
                 }
             }
-
-
         }
+
+
+
         public void SewagePlantQuiz()
         {
             // Contextual Minigame Introduction
